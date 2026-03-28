@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Portal</title>
+  <meta property="og:title" content="Projects Portal" />
+  <meta property="og:description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作" />
+  <style>
+    /* ===== リセット・ベース ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0f172a;
+      --card-bg:   #1e293b;
+      --accent:    #3b82f6;
+      --text:      #f1f5f9;
+      --text-muted:#94a3b8;
+      --radius:    12px;
+      --transition: 0.25s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== ヘッダー・ナビ ===== */
+    header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    header .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== ヒーローセクション ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+    }
+
+    .hero__eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== カードグリッド ===== */
+    .projects {
+      flex: 1;
+      padding: 0 1.5rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ===== カード ===== */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      border-color: rgba(59, 130, 246, 0.35);
+      outline: none;
+    }
+
+    .card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* タグ */
+    .card__tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2em 0.65em;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    /* カードタイトル */
+    .card__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* カード説明 */
+    .card__desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* 注記（健康管理のみ） */
+    .card__note {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+
+    /* カードフッター（リンク表示） */
+    .card__footer {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+
+    .card__footer svg {
+      flex-shrink: 0;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      text-align: center;
+      padding: 1.75rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ===== レスポンシブ（768px 以下） ===== */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3.5rem 1rem 2.5rem;
+      }
+
+      .projects {
+        padding: 0 1rem 3.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ナビゲーション -->
+  <header>
+    <span class="logo" aria-label="Projects Portal">Projects Portal</span>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero" aria-labelledby="hero-title">
+    <span class="hero__eyebrow">個人開発</span>
+    <h1 class="hero__title" id="hero-title">Projects Portal</h1>
+    <p class="hero__subtitle">個人プロジェクト一覧</p>
+  </section>
+
+  <!-- カードグリッド -->
+  <main class="projects" id="main-content">
+    <ul class="grid" role="list">
+
+      <!-- 1. SSD価格トラッカー -->
+      <li>
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/ssd-deal-tracker/"
+          target="_blank"
+          rel="noopener"
+          aria-label="SSD価格トラッカー（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(29, 78, 216, 0.25); color: #60a5fa;"
+          >ツール</span>
+          <h2 class="card__title">SSD価格トラッカー</h2>
+          <p class="card__desc">
+            SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。
+          </p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 2. ITパスポート演習 -->
+      <li>
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/it-passport-training/"
+          target="_blank"
+          rel="noopener"
+          aria-label="ITパスポート演習（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(21, 128, 61, 0.25); color: #4ade80;"
+          >学習</span>
+          <h2 class="card__title">ITパスポート演習</h2>
+          <p class="card__desc">
+            過去問800問を収録したPWA学習アプリ。オフラインでも使える。
+          </p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 3. 健康管理「律」 -->
+      <li>
+        <a
+          class="card"
+          href="https://script.google.com/macros/s/AKfycbwuE8VSTwE09yT8giGc_dW3TeMj-P_G-pLv2HNd8VwxcBAwdlqwjCro1JnYxZtMn96DbQ/exec"
+          target="_blank"
+          rel="noopener"
+          aria-label="健康管理「律」（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(180, 83, 9, 0.25); color: #fb923c;"
+          >ヘルスケア</span>
+          <h2 class="card__title">健康管理「律」</h2>
+          <p class="card__desc">
+            食事記録・体重推移ダッシュボード。Android アプリと連携。
+          </p>
+          <p class="card__note">※ 認証トークンが必要です</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 4. MAGI System -->
+      <li>
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/magi-system/"
+          target="_blank"
+          rel="noopener"
+          aria-label="MAGI System（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(124, 58, 237, 0.25); color: #a78bfa;"
+          >AI</span>
+          <h2 class="card__title">MAGI System</h2>
+          <p class="card__desc">
+            3体のAIが異なる価値観で議論し、意思決定の死角を照らす多角的審議システム。
+          </p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 5. 赤い桜 世界設定資料 -->
+      <li>
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/kaiserreich-akai-sakura/"
+          target="_blank"
+          rel="noopener"
+          aria-label="赤い桜 世界設定資料（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(190, 24, 93, 0.25); color: #f472b6;"
+          >創作</span>
+          <h2 class="card__title">赤い桜 世界設定資料</h2>
+          <p class="card__desc">
+            カイザーライヒ世界の設定資料集。国際関係・日本内政・連邦制度・シナリオ構成。
+          </p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+    </ul>
+  </main>
+
+  <!-- フッター -->
+  <footer>
+    <p>&copy; 2026 Projects Portal</p>
+  </footer>
+
+</body>
+</html>
