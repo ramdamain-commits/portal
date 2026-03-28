@@ -19,13 +19,15 @@
     }
 
     :root {
-      --bg:        #0f172a;
-      --card-bg:   #1e293b;
-      --accent:    #3b82f6;
-      --text:      #f1f5f9;
-      --text-muted:#94a3b8;
-      --radius:    12px;
-      --transition: 0.25s ease;
+      --bg:           #0f172a;
+      --card-bg:      #1e293b;
+      --accent:       #3b82f6;
+      --text:         #f1f5f9;
+      --text-muted:   #94a3b8;
+      --radius:       12px;
+      --transition:   0.25s ease;
+      /* スティッキーヘッダーの高さ */
+      --header-h:     56px;
     }
 
     html {
@@ -44,8 +46,33 @@
 
     /* ===== ヘッダー・ナビ ===== */
     header {
-      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      /* 初期状態: 背景なし・blur なし */
+      background-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition:
+        background-color 0.3s ease,
+        backdrop-filter 0.3s ease,
+        -webkit-backdrop-filter 0.3s ease,
+        box-shadow 0.3s ease,
+        height 0.3s ease;
+    }
+
+    /* スクロール後に JS が付与するクラス */
+    header.is-scrolled {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+      height: 48px;
     }
 
     header .logo {
@@ -86,6 +113,56 @@
       margin: 0 auto;
     }
 
+    /* ===== カテゴリフィルターバー ===== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0 1.5rem 2.5rem;
+    }
+
+    .filter-btn {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.4em 1.1em;
+      transition:
+        background-color var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+      /* タッチ操作の最適化 */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      color: var(--text);
+    }
+
+    /* アクティブ状態 */
+    .filter-btn.is-active {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.35);
+    }
+
+    .filter-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     /* ===== カードグリッド ===== */
     .projects {
       flex: 1;
@@ -117,6 +194,9 @@
         transform var(--transition),
         box-shadow var(--transition),
         border-color var(--transition);
+      /* タッチ最適化 */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .card:hover,
@@ -130,6 +210,29 @@
     .card:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
+    }
+
+    /* ===== カード登場アニメーション =====
+     * 初期状態: 不可視 + 少し下にオフセット
+     * IntersectionObserver が .is-visible を付与したときに
+     * フェードイン + スライドアップする
+     */
+    .card-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+    }
+
+    .card-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* フィルターで非表示にするアイテム */
+    .card-item.is-hidden {
+      display: none;
     }
 
     /* タグ */
@@ -181,6 +284,20 @@
       flex-shrink: 0;
     }
 
+    /* ===== フィルター結果が 0 件のとき ===== */
+    .no-results {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .no-results.is-visible {
+      display: block;
+    }
+
     /* ===== フッター ===== */
     footer {
       text-align: center;
@@ -196,6 +313,16 @@
         padding: 3.5rem 1rem 2.5rem;
       }
 
+      .filter-bar {
+        padding: 0 1rem 2rem;
+        gap: 0.4rem;
+      }
+
+      .filter-btn {
+        font-size: 0.75rem;
+        padding: 0.35em 0.9em;
+      }
+
       .projects {
         padding: 0 1rem 3.5rem;
       }
@@ -204,12 +331,30 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ===== prefers-reduced-motion: アニメーション全無効 ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      /* 登場アニメーションを即座に表示済み状態にする */
+      .card-item {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- ナビゲーション -->
-  <header>
+  <header id="site-header">
     <span class="logo" aria-label="Projects Portal">Projects Portal</span>
   </header>
 
@@ -220,12 +365,27 @@
     <p class="hero__subtitle">個人プロジェクト一覧</p>
   </section>
 
+  <!--
+    カテゴリフィルターバー
+    role="toolbar" + aria-label でフィルターグループとして明示
+    aria-pressed でスクリーンリーダーにアクティブ状態を通知
+    roving tabindex: アクティブボタンだけ tabindex="0"
+  -->
+  <div class="filter-bar" role="toolbar" aria-label="カテゴリでフィルター">
+    <button class="filter-btn is-active" data-filter="all"        aria-pressed="true"  tabindex="0" >全て</button>
+    <button class="filter-btn"           data-filter="ツール"     aria-pressed="false" tabindex="-1">ツール</button>
+    <button class="filter-btn"           data-filter="学習"       aria-pressed="false" tabindex="-1">学習</button>
+    <button class="filter-btn"           data-filter="ヘルスケア" aria-pressed="false" tabindex="-1">ヘルスケア</button>
+    <button class="filter-btn"           data-filter="AI"         aria-pressed="false" tabindex="-1">AI</button>
+    <button class="filter-btn"           data-filter="創作"       aria-pressed="false" tabindex="-1">創作</button>
+  </div>
+
   <!-- カードグリッド -->
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
       <!-- 1. SSD価格トラッカー -->
-      <li>
+      <li class="card-item" data-category="ツール">
         <a
           class="card"
           href="https://ramdamain-commits.github.io/ssd-deal-tracker/"
@@ -251,7 +411,7 @@
       </li>
 
       <!-- 2. ITパスポート演習 -->
-      <li>
+      <li class="card-item" data-category="学習">
         <a
           class="card"
           href="https://ramdamain-commits.github.io/it-passport-training/"
@@ -277,7 +437,7 @@
       </li>
 
       <!-- 3. 健康管理「律」 -->
-      <li>
+      <li class="card-item" data-category="ヘルスケア">
         <a
           class="card"
           href="https://script.google.com/macros/s/AKfycbx-qlHpijg69OWcfVCc46Dg46TXZCggeJIW9SpDEtuDXlqDj6ES227QvZS4w6J65hPa7Q/exec?page=weight-trend&amp;shared_token=4e93ae93-efb9-4fc3-be0d-f9afc8d076123875877a468d4a728d47734d609965de"
@@ -304,7 +464,7 @@
       </li>
 
       <!-- 4. MAGI System -->
-      <li>
+      <li class="card-item" data-category="AI">
         <a
           class="card"
           href="https://ramdamain-commits.github.io/magi-system/"
@@ -330,7 +490,7 @@
       </li>
 
       <!-- 5. 赤い桜 世界設定資料 -->
-      <li>
+      <li class="card-item" data-category="創作">
         <a
           class="card"
           href="https://ramdamain-commits.github.io/kaiserreich-akai-sakura/"
@@ -355,6 +515,11 @@
         </a>
       </li>
 
+      <!-- フィルター結果が 0 件のとき表示 -->
+      <li class="no-results" aria-live="polite" role="status">
+        該当するプロジェクトはありません
+      </li>
+
     </ul>
   </main>
 
@@ -362,6 +527,192 @@
   <footer>
     <p>&copy; 2026 Projects Portal</p>
   </footer>
+
+  <script>
+    'use strict';
+
+    /* ========================================================
+     * 1. prefers-reduced-motion の検出
+     *    motion 無効環境ではアニメーション系処理をスキップ
+     * ======================================================== */
+    var prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    /* ========================================================
+     * 2. スクロールに応じたスティッキーヘッダー
+     *    スクロール量が閾値を超えたら is-scrolled を付与し
+     *    backdrop-blur + 背景色でヘッダーをコンパクト化する
+     * ======================================================== */
+    (function initStickyHeader() {
+      var header = document.getElementById('site-header');
+      if (!header) return;
+
+      var SCROLL_THRESHOLD = 10;
+
+      function onScroll() {
+        if (window.scrollY > SCROLL_THRESHOLD) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+
+      // passive: true でスクロールパフォーマンスを確保
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ページリロード後にスクロール位置が残っている場合の初回チェック
+      onScroll();
+    })();
+
+    /* ========================================================
+     * 3. カード登場アニメーション（IntersectionObserver）
+     *    画面に入ったタイミングで stagger 付きフェードインを発火
+     * ======================================================== */
+    (function initCardEntrance() {
+      var items = document.querySelectorAll('.card-item');
+      if (!items.length) return;
+
+      // motion 無効環境では即座に全カードを表示
+      if (prefersReducedMotion) {
+        items.forEach(function(el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var STAGGER_MS = 80; // カード間の遅延（ミリ秒）
+
+      var observer = new IntersectionObserver(
+        function(entries) {
+          entries.forEach(function(entry) {
+            if (!entry.isIntersecting) return;
+
+            var el = entry.target;
+            var index = parseInt(el.dataset.staggerIndex || '0', 10);
+
+            // stagger 遅延を付けてフェードイン
+            setTimeout(function() {
+              el.classList.add('is-visible');
+            }, index * STAGGER_MS);
+
+            // 一度表示したら監視を止める（再発火防止）
+            observer.unobserve(el);
+          });
+        },
+        {
+          threshold: 0.05,                  // 5% 可視になったら発火
+          rootMargin: '-40px 0px 0px 0px',  // ヘッダー分のオフセット
+        }
+      );
+
+      items.forEach(function(el, i) {
+        el.dataset.staggerIndex = String(i);
+        observer.observe(el);
+      });
+    })();
+
+    /* ========================================================
+     * 4. カテゴリフィルター
+     *    ボタンクリックでカードを絞り込む
+     *    キーボード: 矢印キーでボタン間を移動（roving focus パターン）
+     * ======================================================== */
+    (function initFilter() {
+      var filterBtns = document.querySelectorAll('.filter-btn');
+      var cardItems  = document.querySelectorAll('.card-item');
+      var noResults  = document.querySelector('.no-results');
+      if (!filterBtns.length || !cardItems.length) return;
+
+      // フィルター切替時の stagger タイマーを保持（連打対策）
+      var staggerTimers = [];
+
+      // フィルター適用
+      function applyFilter(category) {
+        // 前回のタイマーをキャンセル
+        staggerTimers.forEach(clearTimeout);
+        staggerTimers = [];
+
+        var visibleCount = 0;
+
+        cardItems.forEach(function(item) {
+          var itemCategory = item.dataset.category || '';
+          var isMatch = (category === 'all') || (itemCategory === category);
+
+          if (isMatch) {
+            item.classList.remove('is-hidden');
+            visibleCount++;
+
+            // motion 有効環境のみ、フィルター切替後に stagger を再適用
+            if (!prefersReducedMotion) {
+              item.classList.remove('is-visible');
+              var delay = (visibleCount - 1) * 60;
+              var timerId = (function(el, d) {
+                return setTimeout(function() { el.classList.add('is-visible'); }, d);
+              })(item, delay);
+              staggerTimers.push(timerId);
+            }
+          } else {
+            item.classList.add('is-hidden');
+            item.classList.remove('is-visible');
+          }
+        });
+
+        // 0件メッセージの表示切替
+        if (noResults) {
+          if (visibleCount === 0) {
+            noResults.classList.add('is-visible');
+          } else {
+            noResults.classList.remove('is-visible');
+          }
+        }
+      }
+
+      // ボタンのアクティブ状態 + roving tabindex を切替
+      function setActiveBtn(activeBtn) {
+        filterBtns.forEach(function(btn) {
+          var isActive = btn === activeBtn;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-pressed', String(isActive));
+          // roving tabindex: アクティブだけ Tab で到達可能にする
+          btn.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+      }
+
+      // クリックイベント
+      filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var category = btn.dataset.filter || 'all';
+          setActiveBtn(btn);
+          applyFilter(category);
+        });
+      });
+
+      // キーボード操作: 矢印キーでボタン間を移動（roving tabindex パターン）
+      var btnArray = Array.from(filterBtns);
+      filterBtns.forEach(function(btn, i) {
+        btn.addEventListener('keydown', function(e) {
+          var targetIndex = -1;
+
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            targetIndex = (i + 1) % btnArray.length;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            targetIndex = (i - 1 + btnArray.length) % btnArray.length;
+          } else if (e.key === 'Home') {
+            targetIndex = 0;
+          } else if (e.key === 'End') {
+            targetIndex = btnArray.length - 1;
+          }
+
+          if (targetIndex >= 0) {
+            e.preventDefault();
+            // roving tabindex: 移動先だけ tabindex="0" にする
+            btnArray.forEach(function(b, j) {
+              b.setAttribute('tabindex', j === targetIndex ? '0' : '-1');
+            });
+            btnArray[targetIndex].focus();
+          }
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
