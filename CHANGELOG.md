@@ -2,6 +2,8 @@
 
 ## 2026-03-28
 
+- SSD最安値ウィジェット追加（GitHub Pages の mock-data.json から取得、スケルトンローディング付き）
+- FP3級過去問トレーニングのカードをポータルに追加
 - カテゴリフィルター追加（全て / ツール / 学習 / ヘルスケア / AI / 創作）
 - カード登場アニメーション追加（IntersectionObserver + stagger）
 - スティッキーヘッダー追加（スクロール連動 backdrop-blur）
