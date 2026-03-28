@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <!-- 背景グラデーション -->
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <!-- アクセントカラーのグロー効果 -->
+    <radialGradient id="glow" cx="50%" cy="55%" r="45%">
+      <stop offset="0%"   stop-color="#3b82f6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- カードの背景 -->
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- ベース背景 -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+
+  <!-- グロー -->
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- 装飾: 左上の大きい円（ぼかし） -->
+  <circle cx="-60" cy="-60" r="280" fill="none" stroke="#3b82f6" stroke-opacity="0.08" stroke-width="60"/>
+
+  <!-- 装飾: 右下の円 -->
+  <circle cx="1280" cy="700" r="300" fill="none" stroke="#3b82f6" stroke-opacity="0.07" stroke-width="50"/>
+
+  <!-- 装飾: グリッドドット（軽量版: 縦横5列） -->
+  <g fill="#3b82f6" fill-opacity="0.12">
+    <!-- 行1 -->
+    <circle cx="80"  cy="80"  r="2.5"/>
+    <circle cx="200" cy="80"  r="2.5"/>
+    <circle cx="320" cy="80"  r="2.5"/>
+    <circle cx="440" cy="80"  r="2.5"/>
+    <circle cx="560" cy="80"  r="2.5"/>
+    <!-- 行2 -->
+    <circle cx="80"  cy="160" r="2.5"/>
+    <circle cx="200" cy="160" r="2.5"/>
+    <circle cx="320" cy="160" r="2.5"/>
+    <circle cx="440" cy="160" r="2.5"/>
+    <circle cx="560" cy="160" r="2.5"/>
+    <!-- 行3 -->
+    <circle cx="80"  cy="240" r="2.5"/>
+    <circle cx="200" cy="240" r="2.5"/>
+    <circle cx="320" cy="240" r="2.5"/>
+    <circle cx="440" cy="240" r="2.5"/>
+    <circle cx="560" cy="240" r="2.5"/>
+    <!-- 右下グリッド -->
+    <circle cx="720" cy="440" r="2.5"/>
+    <circle cx="840" cy="440" r="2.5"/>
+    <circle cx="960" cy="440" r="2.5"/>
+    <circle cx="1080" cy="440" r="2.5"/>
+    <circle cx="1120" cy="440" r="2.5"/>
+    <circle cx="720"  cy="520" r="2.5"/>
+    <circle cx="840"  cy="520" r="2.5"/>
+    <circle cx="960"  cy="520" r="2.5"/>
+    <circle cx="1080" cy="520" r="2.5"/>
+    <circle cx="1120" cy="520" r="2.5"/>
+  </g>
+
+  <!-- アクセントライン（上部） -->
+  <rect x="0" y="0" width="1200" height="4" fill="#3b82f6" opacity="0.9"/>
+
+  <!-- 中央コンテンツエリア -->
+  <!-- バッジ: 個人開発 -->
+  <rect x="520" y="180" width="160" height="32" rx="16" fill="rgba(59,130,246,0.2)" stroke="#3b82f6" stroke-opacity="0.5" stroke-width="1"/>
+  <text
+    x="600" y="202"
+    font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+    font-size="13"
+    font-weight="700"
+    letter-spacing="3"
+    text-anchor="middle"
+    fill="#60a5fa"
+  >個人開発</text>
+
+  <!-- メインタイトル -->
+  <text
+    x="600" y="298"
+    font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+    font-size="80"
+    font-weight="800"
+    letter-spacing="-2"
+    text-anchor="middle"
+    fill="#f1f5f9"
+  >Projects Portal</text>
+
+  <!-- サブタイトル -->
+  <text
+    x="600" y="368"
+    font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+    font-size="30"
+    font-weight="400"
+    letter-spacing="1"
+    text-anchor="middle"
+    fill="#94a3b8"
+  >個人プロジェクト一覧</text>
+
+  <!-- アクセントセパレーター -->
+  <rect x="540" y="400" width="120" height="3" rx="2" fill="#3b82f6" opacity="0.8"/>
+
+  <!-- タグ群 -->
+  <!-- ツール -->
+  <rect x="282" y="438" width="84" height="28" rx="14" fill="rgba(29,78,216,0.3)" stroke="#60a5fa" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="324" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#60a5fa">ツール</text>
+
+  <!-- 学習 -->
+  <rect x="382" y="438" width="84" height="28" rx="14" fill="rgba(21,128,61,0.3)" stroke="#4ade80" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="424" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#4ade80">学習</text>
+
+  <!-- AI -->
+  <rect x="482" y="438" width="84" height="28" rx="14" fill="rgba(124,58,237,0.3)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="524" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="2" text-anchor="middle" fill="#a78bfa">AI</text>
+
+  <!-- ヘルスケア -->
+  <rect x="582" y="438" width="104" height="28" rx="14" fill="rgba(180,83,9,0.3)" stroke="#fb923c" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="634" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#fb923c">ヘルスケア</text>
+
+  <!-- 創作 -->
+  <rect x="702" y="438" width="84" height="28" rx="14" fill="rgba(190,24,93,0.3)" stroke="#f472b6" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="744" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#f472b6">創作</text>
+
+  <!-- URL -->
+  <text
+    x="600" y="540"
+    font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"
+    font-size="16"
+    font-weight="400"
+    letter-spacing="0.5"
+    text-anchor="middle"
+    fill="#475569"
+  >ramdamain-commits.github.io/portal</text>
+</svg>
