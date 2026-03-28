@@ -839,9 +839,11 @@
      *    取得失敗 / タイムアウト時はウィジェット要素を非表示のままにする。
      * ======================================================== */
     (function initSsdWidget() {
-      var MOCK_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/mock-data.json';
+      // GAS API: ssd-deal-tracker のリアルタイム価格データ
+      var API_URL = 'https://script.google.com/macros/s/AKfycbzNaFEMQHRiqbOjzItBMwFMetRiKLTcrNFMH0wbXzbfVpjWCHIcPMUlPfQKjR6JEj4now/exec';
       var TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
-      var MAX_ITEMS = 5;
+      // 「買い時」ステータスの製品を最大3件表示
+      var MAX_ITEMS = 3;
       // fetch タイムアウト（ms）: 遅い回線でも UX を損なわないよう短めに設定
       var TIMEOUT_MS = 5000;
 
@@ -878,8 +880,11 @@
           return;
         }
 
-        // 最大 MAX_ITEMS 件に絞る（current_price 昇順でソートして安い順に表示）
-        var sorted = products
+        // 「買い時」ステータスに絞り、current_price 昇順で最大 MAX_ITEMS 件を表示
+        var buyItems = products.filter(function(p) { return p.status === '買い時'; });
+        // 「買い時」が0件の場合は全製品を対象にする（フォールバック）
+        var candidates = buyItems.length > 0 ? buyItems : products;
+        var sorted = candidates
           .slice()
           .sort(function(a, b) { return a.current_price - b.current_price; })
           .slice(0, MAX_ITEMS);
@@ -967,7 +972,7 @@
       // スケルトンを先に表示してからデータ取得開始
       showSkeleton();
 
-      fetch(MOCK_URL, controller ? { signal: controller.signal } : {})
+      fetch(API_URL, controller ? { signal: controller.signal } : {})
         .then(function(res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
