@@ -318,6 +318,165 @@
       display: block;
     }
 
+    /* ===== SSD最安値ウィジェット ===== */
+    .ssd-widget {
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .ssd-widget__inner {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem 1rem;
+    }
+
+    /* ヘッダー行: タイトル + 更新日時 */
+    .ssd-widget__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .ssd-widget__title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .ssd-widget__updated {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* 商品行リスト */
+    .ssd-widget__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .ssd-widget__row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    /* ステータスインジケーター (●) */
+    .ssd-widget__dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .ssd-widget__dot--buy {
+      background-color: #4ade80; /* 買い時: 緑 */
+    }
+
+    .ssd-widget__dot--wait {
+      background-color: #fbbf24; /* もう少し: 黄 */
+    }
+
+    /* 商品名 */
+    .ssd-widget__name {
+      flex: 1;
+      min-width: 0;
+      color: var(--text);
+      /* 長い名前は省略 */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* 価格 */
+    .ssd-widget__price {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* ステータスラベル */
+    .ssd-widget__status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 0.15em 0.5em;
+      border-radius: 999px;
+    }
+
+    .ssd-widget__status--buy {
+      background-color: rgba(74, 222, 128, 0.15);
+      color: #4ade80;
+    }
+
+    .ssd-widget__status--wait {
+      background-color: rgba(251, 191, 36, 0.15);
+      color: #fbbf24;
+    }
+
+    /* フッターリンク */
+    .ssd-widget__footer {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      /* ボーダー上で視覚的に区切る */
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      width: 100%;
+    }
+
+    .ssd-widget__footer:hover {
+      color: #93c5fd;
+    }
+
+    .ssd-widget__footer:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* ローディング用スケルトン */
+    @keyframes ssd-skeleton-pulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 0.8; }
+    }
+
+    .ssd-widget__skeleton {
+      height: 0.75rem;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.1);
+      animation: ssd-skeleton-pulse 1.4s ease-in-out infinite;
+    }
+
+    /* モバイル: パディング縮小 */
+    @media (max-width: 768px) {
+      .ssd-widget {
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .ssd-widget__inner {
+        padding: 1rem 1.1rem 0.85rem;
+      }
+
+      .ssd-widget__name {
+        max-width: 140px;
+      }
+    }
+
     /* ===== フッター ===== */
     footer {
       text-align: center;
@@ -384,6 +543,23 @@
     <h1 class="hero__title" id="hero-title">Projects Portal</h1>
     <p class="hero__subtitle">個人プロジェクト一覧</p>
   </section>
+
+  <!--
+    SSD最安値ウィジェット
+    JS が fetch 成功時に aria-hidden="false" + コンテンツ描画を行う
+    取得失敗時は aria-hidden="true" のまま（ユーザーにエラーを見せない）
+  -->
+  <aside
+    class="ssd-widget"
+    id="ssd-widget"
+    aria-label="SSD最安値速報"
+    aria-hidden="true"
+    hidden
+  >
+    <div class="ssd-widget__inner">
+      <!-- JS がここにコンテンツを挿入する -->
+    </div>
+  </aside>
 
   <!--
     カテゴリフィルターバー
@@ -657,7 +833,159 @@
     })();
 
     /* ========================================================
-     * 4. カテゴリフィルター
+     * 4. SSD最安値ウィジェット
+     *    ssd-deal-tracker の GitHub Pages 上の mock-data.json を fetch し、
+     *    最大5件の最安値リストを描画する。
+     *    取得失敗 / タイムアウト時はウィジェット要素を非表示のままにする。
+     * ======================================================== */
+    (function initSsdWidget() {
+      var MOCK_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/mock-data.json';
+      var TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
+      var MAX_ITEMS = 5;
+      // fetch タイムアウト（ms）: 遅い回線でも UX を損なわないよう短めに設定
+      var TIMEOUT_MS = 5000;
+
+      var widget = document.getElementById('ssd-widget');
+      if (!widget) return;
+
+      /* ---- ローディング中: スケルトンを表示 ---- */
+      function showSkeleton() {
+        var inner = widget.querySelector('.ssd-widget__inner');
+        inner.innerHTML =
+          '<div class="ssd-widget__header">' +
+            '<span class="ssd-widget__title">SSD 最安値速報</span>' +
+          '</div>' +
+          '<div class="ssd-widget__list">' +
+            Array(3).fill(
+              '<div class="ssd-widget__row" role="listitem">' +
+                '<div class="ssd-widget__skeleton" style="width:8px;height:8px;border-radius:50%;flex-shrink:0"></div>' +
+                '<div class="ssd-widget__skeleton" style="flex:1;max-width:200px"></div>' +
+                '<div class="ssd-widget__skeleton" style="width:64px"></div>' +
+              '</div>'
+            ).join('') +
+          '</div>';
+        widget.hidden = false;
+        widget.setAttribute('aria-hidden', 'false');
+      }
+
+      /* ---- 成功時: データを描画 ---- */
+      function renderSsdWidget(data) {
+        var products = data.products;
+        if (!Array.isArray(products) || products.length === 0) {
+          // データ不正は失敗扱いにして非表示
+          widget.hidden = true;
+          widget.setAttribute('aria-hidden', 'true');
+          return;
+        }
+
+        // 最大 MAX_ITEMS 件に絞る（current_price 昇順でソートして安い順に表示）
+        var sorted = products
+          .slice()
+          .sort(function(a, b) { return a.current_price - b.current_price; })
+          .slice(0, MAX_ITEMS);
+
+        // 更新日時を "MM/DD HH:mm" 形式でフォーマット
+        var updatedLabel = '';
+        if (data.updated_at) {
+          var d = new Date(data.updated_at);
+          if (!isNaN(d.getTime())) {
+            var mm = String(d.getMonth() + 1).padStart(2, '0');
+            var dd = String(d.getDate()).padStart(2, '0');
+            var hh = String(d.getHours()).padStart(2, '0');
+            var min = String(d.getMinutes()).padStart(2, '0');
+            updatedLabel = mm + '/' + dd + ' ' + hh + ':' + min + ' 更新';
+          }
+        }
+
+        // 商品行 HTML を生成
+        var rowsHtml = sorted.map(function(p) {
+          // status が "買い時" なら緑、それ以外（"もう少し" 等）は黄
+          var isBuy = p.status === '買い時';
+          var dotClass    = isBuy ? 'ssd-widget__dot--buy'    : 'ssd-widget__dot--wait';
+          var statusClass = isBuy ? 'ssd-widget__status--buy' : 'ssd-widget__status--wait';
+          var statusLabel = p.status || '';
+
+          // 価格を "¥XX,XXX" 形式に変換
+          var priceStr = '¥' + Number(p.current_price).toLocaleString('ja-JP');
+
+          // 商品名 + 容量を結合（容量が別フィールドの場合のみ付与）
+          var nameStr = p.name || '';
+          if (p.capacity && nameStr.indexOf(p.capacity) === -1) {
+            nameStr += ' ' + p.capacity;
+          }
+
+          return (
+            '<div class="ssd-widget__row" role="listitem">' +
+              '<span class="ssd-widget__dot ' + dotClass + '" aria-hidden="true"></span>' +
+              '<span class="ssd-widget__name">' + escapeHtml(nameStr) + '</span>' +
+              '<span class="ssd-widget__price">' + escapeHtml(priceStr) + '</span>' +
+              '<span class="ssd-widget__status ' + statusClass + '">' + escapeHtml(statusLabel) + '</span>' +
+            '</div>'
+          );
+        }).join('');
+
+        var updatedHtml = updatedLabel
+          ? '<span class="ssd-widget__updated">' + escapeHtml(updatedLabel) + '</span>'
+          : '';
+
+        var inner = widget.querySelector('.ssd-widget__inner');
+        inner.innerHTML =
+          '<div class="ssd-widget__header">' +
+            '<span class="ssd-widget__title">SSD 最安値速報</span>' +
+            updatedHtml +
+          '</div>' +
+          '<div class="ssd-widget__list" role="list" aria-label="SSD価格一覧">' +
+            rowsHtml +
+          '</div>' +
+          '<a class="ssd-widget__footer" href="' + TRACKER_URL + '" target="_blank" rel="noopener">' +
+            '<svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+              '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>' +
+            'SSD Deal Tracker で詳しく見る' +
+          '</a>';
+
+        widget.hidden = false;
+        widget.setAttribute('aria-hidden', 'false');
+      }
+
+      /* ---- XSS 対策: 最小限のエスケープ ---- */
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      /* ---- fetch + AbortController でタイムアウト制御 ---- */
+      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timeoutId = controller
+        ? setTimeout(function() { controller.abort(); }, TIMEOUT_MS)
+        : null;
+
+      // スケルトンを先に表示してからデータ取得開始
+      showSkeleton();
+
+      fetch(MOCK_URL, controller ? { signal: controller.signal } : {})
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          clearTimeout(timeoutId);
+          renderSsdWidget(data);
+        })
+        .catch(function() {
+          // 取得失敗 / タイムアウト: ウィジェットを非表示に戻す
+          clearTimeout(timeoutId);
+          widget.hidden = true;
+          widget.setAttribute('aria-hidden', 'true');
+        });
+    })();
+
+    /* ========================================================
+     * 5. カテゴリフィルター
      *    ボタンクリックでカードを絞り込む
      *    キーボード: 矢印キーでボタン間を移動（roving focus パターン）
      * ======================================================== */
