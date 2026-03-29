@@ -2,12 +2,20 @@
 
 ## 2026-03-28
 
-- SSD最安値ウィジェット追加（GitHub Pages の mock-data.json から取得、スケルトンローディング付き）
+### Added
+- SSD最安値ウィジェット追加（GAS API 連携、買い時フィルタ、graceful degradation、スケルトンローディング付き）
 - FP3級過去問トレーニングのカードをポータルに追加
 - カテゴリフィルター追加（全て / ツール / 学習 / ヘルスケア / AI / 創作）
 - カード登場アニメーション追加（IntersectionObserver + stagger）
 - スティッキーヘッダー追加（スクロール連動 backdrop-blur）
 - OGP画像（og-image.svg）・Favicon（favicon.svg）追加
 - Twitter Card メタタグ追加
-- 健康管理カード記載修正（個人運用・認証必要の明記）
+- GitHub Pages デプロイ workflow 追加
 - アクセシビリティ強化（roving tabindex、prefers-reduced-motion 対応）
+
+### Fixed
+- SSD ウィジェットのレビュー指摘対応
+- 健康管理カードの認証注記を改善（共有リンクで体重推移グラフを閲覧可能な旨を明記）
+- ヘルスケアリンクをサマリページ（体重推移）に変更
+- カードグリッドのリストマーカー（`•`）をリセット CSS で非表示化
+- GAS Web App URL を現在のデプロイメントに更新
