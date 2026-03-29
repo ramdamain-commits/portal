@@ -580,6 +580,8 @@
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
+      <!-- CATALOG-START: この領域は setting/Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+
       <!-- 1. SSD価格トラッカー -->
       <li class="card-item" data-category="ツール">
         <a
@@ -633,10 +635,11 @@
       </li>
 
       <!-- 3. 健康管理「律」 -->
+      <!-- TODO: P0-1 解決後に公開 endpoint URL を設定。token 付き URL を除去済み -->
       <li class="card-item" data-category="ヘルスケア">
         <a
           class="card"
-          href="https://script.google.com/macros/s/AKfycbx-qlHpijg69OWcfVCc46Dg46TXZCggeJIW9SpDEtuDXlqDj6ES227QvZS4w6J65hPa7Q/exec?page=weight-trend&amp;shared_token=4e93ae93-efb9-4fc3-be0d-f9afc8d076123875877a468d4a728d47734d609965de"
+          href="#"
           target="_blank"
           rel="noopener"
           aria-label="健康管理「律」（新しいタブで開く）"
@@ -711,22 +714,22 @@
         </a>
       </li>
 
-      <!-- 6. FP3級過去問トレーニング -->
+      <!-- 6. FP3級ドリル -->
       <li class="card-item" data-category="学習">
         <a
           class="card"
           href="https://ramdamain-commits.github.io/fp3-training/"
           target="_blank"
           rel="noopener"
-          aria-label="FP3級過去問トレーニング（新しいタブで開く）"
+          aria-label="FP3級ドリル（新しいタブで開く）"
         >
           <span
             class="card__tag"
             style="background-color: rgba(21, 128, 61, 0.25); color: #4ade80;"
           >学習</span>
-          <h2 class="card__title">FP3級過去問トレーニング</h2>
+          <h2 class="card__title">FP3級ドリル</h2>
           <p class="card__desc">
-            FP3級過去問の学習PWAアプリ。オフラインでも使える。
+            FP3級の出題傾向ベース練習アプリ。オフラインでも使えるPWA。
           </p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -736,6 +739,8 @@
           </span>
         </a>
       </li>
+
+      <!-- CATALOG-END -->
 
       <!-- フィルター結果が 0 件のとき表示 -->
       <li class="no-results" aria-live="polite" role="status">

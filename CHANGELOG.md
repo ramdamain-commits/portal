@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-03-29
+
+### Changed
+- カードリストを `setting/projects.json` ベースの catalog 管理に移行（CATALOG-START/END マーカー追加）
+- 健康管理「律」カードから token 付き GAS URL を除去（P0-1 対応。リンク先は仮置き `#`）
+- FP3級過去問トレーニング → FP3級ドリル に名称変更（README 修正に合わせて統一）
+- README から PWA 対応の記載を削除（manifest.json / sw.js が存在しないため）
+
 ## 2026-03-28
 
 ### Added

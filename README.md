@@ -15,7 +15,6 @@
 | アクセシビリティ | roving tabindex によるキーボードナビゲーション、prefers-reduced-motion 対応 |
 | OGP / Twitter Card | og-image.svg + favicon.svg によるリッチプレビュー |
 | レスポンシブ対応 | モバイル〜デスクトップに対応 |
-| PWA 対応 | GitHub Pages 上でそのまま動作 |
 
 ## 技術スタック
 
