@@ -26,6 +26,8 @@
   <meta name="twitter:title"       content="Projects Portal" />
   <meta name="twitter:description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作" />
   <meta name="twitter:image"       content="https://ramdamain-commits.github.io/portal/og-image.svg" />
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0f172a" />
   <style>
     /* ===== リセット・ベース ===== */
     *, *::before, *::after {
@@ -196,7 +198,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
-      list-style: none;
     }
 
     /* ===== カード ===== */
@@ -219,15 +220,16 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    .card:hover,
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
     .card:focus-visible {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
       border-color: rgba(59, 130, 246, 0.35);
-      outline: none;
-    }
-
-    .card:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
@@ -589,7 +591,7 @@
           class="card"
           href="https://ramdamain-commits.github.io/ssd-deal-tracker/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="SSD価格トラッカー（新しいタブで開く）"
         >
           <span
@@ -615,7 +617,7 @@
           class="card"
           href="https://ramdamain-commits.github.io/it-passport-training/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="ITパスポート演習（新しいタブで開く）"
         >
           <span
@@ -641,7 +643,7 @@
           class="card"
           href="https://script.google.com/macros/s/AKfycbwTeTtgCl4TrRC2Wdqtf23prVitDlrW3dOua3iFvnYCEPt7JHmzFJ25w1v9rCYI_p29bQ/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="健康管理「律」（新しいタブで開く）"
         >
           <span
@@ -668,7 +670,7 @@
           class="card"
           href="https://ramdamain-commits.github.io/magi-system/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="MAGI System（新しいタブで開く）"
         >
           <span
@@ -694,7 +696,7 @@
           class="card"
           href="https://ramdamain-commits.github.io/kaiserreich-akai-sakura/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="赤い桜（新しいタブで開く）"
         >
           <span
@@ -720,7 +722,7 @@
           class="card"
           href="https://ramdamain-commits.github.io/fp3-training/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="FP3級ドリル（新しいタブで開く）"
         >
           <span
@@ -745,7 +747,7 @@
           class="card"
           href="https://ramdamain-commits.github.io/paradox-game-guides/"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           aria-label="Paradox攻略ガイド（新しいタブで開く）"
         >
           <span
@@ -787,7 +789,7 @@
      * 1. prefers-reduced-motion の検出
      *    motion 無効環境ではアニメーション系処理をスキップ
      * ======================================================== */
-    var prefersReducedMotion = window.matchMedia(
+    const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
@@ -797,10 +799,10 @@
      *    backdrop-blur + 背景色でヘッダーをコンパクト化する
      * ======================================================== */
     (function initStickyHeader() {
-      var header = document.getElementById('site-header');
+      const header = document.getElementById('site-header');
       if (!header) return;
 
-      var SCROLL_THRESHOLD = 10;
+      const SCROLL_THRESHOLD = 10;
 
       function onScroll() {
         if (window.scrollY > SCROLL_THRESHOLD) {
@@ -822,27 +824,27 @@
      *    画面に入ったタイミングで stagger 付きフェードインを発火
      * ======================================================== */
     (function initCardEntrance() {
-      var items = document.querySelectorAll('.card-item');
+      const items = document.querySelectorAll('.card-item');
       if (!items.length) return;
 
       // motion 無効環境では即座に全カードを表示
       if (prefersReducedMotion) {
-        items.forEach(function(el) { el.classList.add('is-visible'); });
+        items.forEach((el) => { el.classList.add('is-visible'); });
         return;
       }
 
-      var STAGGER_MS = 80; // カード間の遅延（ミリ秒）
+      const STAGGER_MS = 80; // カード間の遅延（ミリ秒）
 
-      var observer = new IntersectionObserver(
-        function(entries) {
-          entries.forEach(function(entry) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
 
-            var el = entry.target;
-            var index = parseInt(el.dataset.staggerIndex || '0', 10);
+            const el = entry.target;
+            const index = parseInt(el.dataset.staggerIndex || '0', 10);
 
             // stagger 遅延を付けてフェードイン
-            setTimeout(function() {
+            setTimeout(() => {
               el.classList.add('is-visible');
             }, index * STAGGER_MS);
 
@@ -856,7 +858,7 @@
         }
       );
 
-      items.forEach(function(el, i) {
+      items.forEach((el, i) => {
         el.dataset.staggerIndex = String(i);
         observer.observe(el);
       });
@@ -870,19 +872,19 @@
      * ======================================================== */
     (function initSsdWidget() {
       // GAS API: ssd-deal-tracker のリアルタイム価格データ
-      var API_URL = 'https://script.google.com/macros/s/AKfycbzNaFEMQHRiqbOjzItBMwFMetRiKLTcrNFMH0wbXzbfVpjWCHIcPMUlPfQKjR6JEj4now/exec';
-      var TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
+      const API_URL = 'https://script.google.com/macros/s/AKfycbzNaFEMQHRiqbOjzItBMwFMetRiKLTcrNFMH0wbXzbfVpjWCHIcPMUlPfQKjR6JEj4now/exec';
+      const TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
       // 「買い時」ステータスの製品を最大3件表示
-      var MAX_ITEMS = 3;
+      const MAX_ITEMS = 3;
       // fetch タイムアウト（ms）: 遅い回線でも UX を損なわないよう短めに設定
-      var TIMEOUT_MS = 5000;
+      const TIMEOUT_MS = 5000;
 
-      var widget = document.getElementById('ssd-widget');
+      const widget = document.getElementById('ssd-widget');
       if (!widget) return;
 
       /* ---- ローディング中: スケルトンを表示 ---- */
       function showSkeleton() {
-        var inner = widget.querySelector('.ssd-widget__inner');
+        const inner = widget.querySelector('.ssd-widget__inner');
         inner.innerHTML =
           '<div class="ssd-widget__header">' +
             '<span class="ssd-widget__title">SSD 最安値速報</span>' +
@@ -902,7 +904,7 @@
 
       /* ---- 成功時: データを描画 ---- */
       function renderSsdWidget(data) {
-        var products = data.products;
+        const products = data.products;
         if (!Array.isArray(products) || products.length === 0) {
           // データ不正は失敗扱いにして非表示
           widget.hidden = true;
@@ -911,40 +913,40 @@
         }
 
         // 「買い時」ステータスに絞り、current_price 昇順で最大 MAX_ITEMS 件を表示
-        var buyItems = products.filter(function(p) { return p.status === '買い時'; });
+        const buyItems = products.filter((p) => { return p.status === '買い時'; });
         // 「買い時」が0件の場合は全製品を対象にする（フォールバック）
-        var candidates = buyItems.length > 0 ? buyItems : products;
-        var sorted = candidates
+        const candidates = buyItems.length > 0 ? buyItems : products;
+        const sorted = candidates
           .slice()
-          .sort(function(a, b) { return a.current_price - b.current_price; })
+          .sort((a, b) => { return a.current_price - b.current_price; })
           .slice(0, MAX_ITEMS);
 
         // 更新日時を "MM/DD HH:mm" 形式でフォーマット
-        var updatedLabel = '';
+        let updatedLabel = '';
         if (data.updated_at) {
-          var d = new Date(data.updated_at);
+          const d = new Date(data.updated_at);
           if (!isNaN(d.getTime())) {
-            var mm = String(d.getMonth() + 1).padStart(2, '0');
-            var dd = String(d.getDate()).padStart(2, '0');
-            var hh = String(d.getHours()).padStart(2, '0');
-            var min = String(d.getMinutes()).padStart(2, '0');
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            const hh = String(d.getHours()).padStart(2, '0');
+            const min = String(d.getMinutes()).padStart(2, '0');
             updatedLabel = mm + '/' + dd + ' ' + hh + ':' + min + ' 更新';
           }
         }
 
         // 商品行 HTML を生成
-        var rowsHtml = sorted.map(function(p) {
+        const rowsHtml = sorted.map((p) => {
           // status が "買い時" なら緑、それ以外（"もう少し" 等）は黄
-          var isBuy = p.status === '買い時';
-          var dotClass    = isBuy ? 'ssd-widget__dot--buy'    : 'ssd-widget__dot--wait';
-          var statusClass = isBuy ? 'ssd-widget__status--buy' : 'ssd-widget__status--wait';
-          var statusLabel = p.status || '';
+          const isBuy = p.status === '買い時';
+          const dotClass    = isBuy ? 'ssd-widget__dot--buy'    : 'ssd-widget__dot--wait';
+          const statusClass = isBuy ? 'ssd-widget__status--buy' : 'ssd-widget__status--wait';
+          const statusLabel = p.status || '';
 
           // 価格を "¥XX,XXX" 形式に変換
-          var priceStr = '¥' + Number(p.current_price).toLocaleString('ja-JP');
+          const priceStr = '¥' + Number(p.current_price).toLocaleString('ja-JP');
 
           // 商品名 + 容量を結合（容量が別フィールドの場合のみ付与）
-          var nameStr = p.name || '';
+          let nameStr = p.name || '';
           if (p.capacity && nameStr.indexOf(p.capacity) === -1) {
             nameStr += ' ' + p.capacity;
           }
@@ -959,11 +961,11 @@
           );
         }).join('');
 
-        var updatedHtml = updatedLabel
+        const updatedHtml = updatedLabel
           ? '<span class="ssd-widget__updated">' + escapeHtml(updatedLabel) + '</span>'
           : '';
 
-        var inner = widget.querySelector('.ssd-widget__inner');
+        const inner = widget.querySelector('.ssd-widget__inner');
         inner.innerHTML =
           '<div class="ssd-widget__header">' +
             '<span class="ssd-widget__title">SSD 最安値速報</span>' +
@@ -972,7 +974,7 @@
           '<div class="ssd-widget__list" role="list" aria-label="SSD価格一覧">' +
             rowsHtml +
           '</div>' +
-          '<a class="ssd-widget__footer" href="' + TRACKER_URL + '" target="_blank" rel="noopener">' +
+          '<a class="ssd-widget__footer" href="' + TRACKER_URL + '" target="_blank" rel="noopener noreferrer">' +
             '<svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
               '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
             '</svg>' +
@@ -994,24 +996,24 @@
       }
 
       /* ---- fetch + AbortController でタイムアウト制御 ---- */
-      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      var timeoutId = controller
-        ? setTimeout(function() { controller.abort(); }, TIMEOUT_MS)
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timeoutId = controller
+        ? setTimeout(() => { controller.abort(); }, TIMEOUT_MS)
         : null;
 
       // スケルトンを先に表示してからデータ取得開始
       showSkeleton();
 
       fetch(API_URL, controller ? { signal: controller.signal } : {})
-        .then(function(res) {
+        .then((res) => {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
         })
-        .then(function(data) {
+        .then((data) => {
           clearTimeout(timeoutId);
           renderSsdWidget(data);
         })
-        .catch(function() {
+        .catch(() => {
           // 取得失敗 / タイムアウト: ウィジェットを非表示に戻す
           clearTimeout(timeoutId);
           widget.hidden = true;
@@ -1025,13 +1027,13 @@
      *    キーボード: 矢印キーでボタン間を移動（roving focus パターン）
      * ======================================================== */
     (function initFilter() {
-      var filterBtns = document.querySelectorAll('.filter-btn');
-      var cardItems  = document.querySelectorAll('.card-item');
-      var noResults  = document.querySelector('.no-results');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cardItems  = document.querySelectorAll('.card-item');
+      const noResults  = document.querySelector('.no-results');
       if (!filterBtns.length || !cardItems.length) return;
 
       // フィルター切替時の stagger タイマーを保持（連打対策）
-      var staggerTimers = [];
+      let staggerTimers = [];
 
       // フィルター適用
       function applyFilter(category) {
@@ -1039,11 +1041,11 @@
         staggerTimers.forEach(clearTimeout);
         staggerTimers = [];
 
-        var visibleCount = 0;
+        let visibleCount = 0;
 
-        cardItems.forEach(function(item) {
-          var itemCategory = item.dataset.category || '';
-          var isMatch = (category === 'all') || (itemCategory === category);
+        cardItems.forEach((item) => {
+          const itemCategory = item.dataset.category || '';
+          const isMatch = (category === 'all') || (itemCategory === category);
 
           if (isMatch) {
             item.classList.remove('is-hidden');
@@ -1052,10 +1054,8 @@
             // motion 有効環境のみ、フィルター切替後に stagger を再適用
             if (!prefersReducedMotion) {
               item.classList.remove('is-visible');
-              var delay = (visibleCount - 1) * 60;
-              var timerId = (function(el, d) {
-                return setTimeout(function() { el.classList.add('is-visible'); }, d);
-              })(item, delay);
+              const delay = (visibleCount - 1) * 60;
+              const timerId = setTimeout(() => { el.classList.add('is-visible'); }, delay);
               staggerTimers.push(timerId);
             }
           } else {
@@ -1076,8 +1076,8 @@
 
       // ボタンのアクティブ状態 + roving tabindex を切替
       function setActiveBtn(activeBtn) {
-        filterBtns.forEach(function(btn) {
-          var isActive = btn === activeBtn;
+        filterBtns.forEach((btn) => {
+          const isActive = btn === activeBtn;
           btn.classList.toggle('is-active', isActive);
           btn.setAttribute('aria-pressed', String(isActive));
           // roving tabindex: アクティブだけ Tab で到達可能にする
@@ -1086,19 +1086,19 @@
       }
 
       // クリックイベント
-      filterBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var category = btn.dataset.filter || 'all';
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const category = btn.dataset.filter || 'all';
           setActiveBtn(btn);
           applyFilter(category);
         });
       });
 
       // キーボード操作: 矢印キーでボタン間を移動（roving tabindex パターン）
-      var btnArray = Array.from(filterBtns);
-      filterBtns.forEach(function(btn, i) {
-        btn.addEventListener('keydown', function(e) {
-          var targetIndex = -1;
+      const btnArray = Array.from(filterBtns);
+      filterBtns.forEach((btn, i) => {
+        btn.addEventListener('keydown', (e) => {
+          let targetIndex = -1;
 
           if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
             targetIndex = (i + 1) % btnArray.length;
@@ -1113,7 +1113,7 @@
           if (targetIndex >= 0) {
             e.preventDefault();
             // roving tabindex: 移動先だけ tabindex="0" にする
-            btnArray.forEach(function(b, j) {
+            btnArray.forEach((b, j) => {
               b.setAttribute('tabindex', j === targetIndex ? '0' : '-1');
             });
             btnArray[targetIndex].focus();
