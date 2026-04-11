@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-04-10
+
+### Changed
+- README のカテゴリ一覧を現状に合わせて更新し、`ゲーム` カテゴリとカタログ更新手順を追記
+- `CATALOG-START` コメント表記を `Invoke-ProjectCatalog.ps1` ベースに統一
+- ローカル専用の `.claude/` を `.gitignore` で追跡除外
+
 ## 2026-03-29
 
 ### Changed
