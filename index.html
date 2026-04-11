@@ -583,7 +583,7 @@
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
-                                    <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+                                          <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
 
       <!-- 1. SSD価格トラッカー -->
       <li class="card-item" data-category="ツール">
@@ -764,7 +764,7 @@
           <p class="card__desc">
             EU5/VIC3/CK3の攻略ガイド・MOD記事・ローカライズ対照表。ゲームスクリプト一次ソース方式。
           </p>
-          <p class="card__note">Web公開（GitHub Pages）検討中</p>
+          <p class="card__note">GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1089,7 +1089,7 @@
             if (!prefersReducedMotion) {
               item.classList.remove('is-visible');
               const delay = (visibleCount - 1) * 60;
-              const timerId = setTimeout(() => { el.classList.add('is-visible'); }, delay);
+              const timerId = setTimeout(() => { item.classList.add('is-visible'); }, delay);
               staggerTimers.push(timerId);
             }
           } else {
