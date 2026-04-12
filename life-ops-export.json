@@ -1,0 +1,687 @@
+{
+  "exportedAt": "2026-04-12 15:27",
+  "projects": [
+    {
+      "id": "ssd-deal-tracker",
+      "displayName": "SSD価格トラッカー",
+      "description": "SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。",
+      "category": "ツール",
+      "repoName": "ssd-deal-tracker",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/ssd-deal-tracker/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "1TB NVMe 5製品を監視中。NAND相場で target_price 再調整予定"
+    },
+    {
+      "id": "it-passport-training",
+      "displayName": "ITパスポート演習",
+      "description": "過去問800問を収録したPWA学習アプリ。オフラインでも使える。",
+      "category": "学習",
+      "repoName": "it-passport-training",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/it-passport-training/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "過去問800問収録済み。安定運用中"
+    },
+    {
+      "id": "healthcare",
+      "displayName": "健康管理「律」",
+      "description": "食事記録・体重推移ダッシュボード。GAS + Android で個人運用中。",
+      "category": "ヘルスケア",
+      "repoName": "healthcare",
+      "visibility": "limited",
+      "status": "active",
+      "publicUrl": "https://script.google.com/macros/s/AKfycbwTeTtgCl4TrRC2Wdqtf23prVitDlrW3dOua3iFvnYCEPt7JHmzFJ25w1v9rCYI_p29bQ/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367",
+      "sourceOfTruth": "docs/health-tracking-system-spec.md",
+      "portalVisible": true,
+      "note": "※ 共有リンクで体重推移のみ閲覧可。食事記録など全機能は認証が必要です"
+    },
+    {
+      "id": "magi-system",
+      "displayName": "MAGI System",
+      "description": "3体のAIが異なる価値観で議論し、意思決定の死角を照らす多角的審議システム。",
+      "category": "AI",
+      "repoName": "magi-system",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/magi-system/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "Claude API 連携。ブラウザ完結型"
+    },
+    {
+      "id": "kaiserreich-akai-sakura",
+      "displayName": "赤い桜 世界設定資料",
+      "description": "カイザーライヒ世界の設定資料集。国際関係・日本内政・連邦制度・シナリオ構成。",
+      "category": "創作",
+      "repoName": "kaiserreich-akai-sakura",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/kaiserreich-akai-sakura/",
+      "sourceOfTruth": "manuscript/ (non-public)",
+      "portalVisible": true,
+      "note": "5稿+校正完了（421K字）。Pages公開済"
+    },
+    {
+      "id": "fp3-training",
+      "displayName": "FP3級ドリル",
+      "description": "FP3級の出題傾向ベース練習アプリ。オフラインでも使えるPWA。",
+      "category": "学習",
+      "repoName": "fp3-training",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/fp3-training/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "全5回+サンプル=410問取込済み(v3)"
+    },
+    {
+      "id": "portal",
+      "displayName": "Projects Portal",
+      "description": "公開プロジェクトの一覧ポータルサイト。",
+      "category": "ツール",
+      "repoName": "portal",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/portal/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": false,
+      "note": "projects.json 起点で catalog 自動生成"
+    },
+    {
+      "id": "ramdamain-commits",
+      "displayName": "ramdamain-commits",
+      "description": "公開プロジェクトのメタデータリポジトリ。",
+      "category": "ツール",
+      "repoName": "ramdamain-commits",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://github.com/ramdamain-commits/ramdamain-commits",
+      "sourceOfTruth": "README.md",
+      "portalVisible": false,
+      "note": "GitHub プロフィール用。catalog から README 自動生成"
+    },
+    {
+      "id": "personal-kb",
+      "displayName": "personal-kb",
+      "description": "個人ナレッジベース。交渉資料・キャリア情報等。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "private",
+      "status": "active",
+      "publicUrl": null,
+      "sourceOfTruth": "README.md",
+      "portalVisible": false,
+      "note": "交渉準備フェーズ。給与テーブル確認・1on1が次アクション"
+    },
+    {
+      "id": "rina-salon-plan",
+      "displayName": "眉毛サロン事業計画",
+      "description": "眉毛サロン独立開業の事業計画書と調査資料。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "private",
+      "status": "active",
+      "publicUrl": null,
+      "sourceOfTruth": "business-plan-v2.md",
+      "portalVisible": false,
+      "note": "条件付きドラフト。2027年初 Go/No-Go 判断で確定"
+    },
+    {
+      "id": "setting",
+      "displayName": "setting",
+      "description": "Workspace 共通ヘルパー・ランチャー群。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "private",
+      "status": "active",
+      "publicUrl": null,
+      "sourceOfTruth": "README.md",
+      "portalVisible": false,
+      "note": "19スクリプト+4 JSON正本。Life Ops Console もここ"
+    },
+    {
+      "id": "docs",
+      "displayName": "docs",
+      "description": "レビュー記録・横断設計文書。ローカルのみ。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "private",
+      "status": "active",
+      "publicUrl": null,
+      "sourceOfTruth": null,
+      "portalVisible": false,
+      "note": "設計書・レビュー記録・実装計画のアーカイブ"
+    },
+    {
+      "id": "menes",
+      "displayName": "menes",
+      "description": "個人プロジェクト。親repoの.gitignore除外。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "private",
+      "status": "active",
+      "publicUrl": null,
+      "sourceOfTruth": null,
+      "portalVisible": false,
+      "note": "3ソース統合+全員ティアランキング完了。スクレイパーv3が次"
+    },
+    {
+      "id": "paradox-game-guides",
+      "displayName": "パラドゲー攻略ガイド",
+      "description": "EU5/VIC3/CK3の攻略ガイド・MOD記事・ローカライズ対照表。ゲームスクリプト一次ソース方式。",
+      "category": "ゲーム",
+      "repoName": "paradox-game-guides",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク"
+    },
+    {
+      "id": "life-ops-console",
+      "displayName": "Life Ops Console",
+      "description": "プロジェクト横断の健全性ダッシュボード。setting/ の4つのJSONデータを集約表示。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "life-ops.html",
+      "sourceOfTruth": "setting/scripts/Invoke-LifeOpsConsole.ps1",
+      "portalVisible": true,
+      "note": "localStorage ビューア。Run-LifeOpsConsole.cmd -Action export でデータ生成"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "RSP-001",
+      "project": "rina-salon-plan",
+      "statement": "退職後の競業避止条項の有無が未確認。計画全体の前提を左右する最重要ポイント",
+      "category": "assumption",
+      "source": "business-plan-v2.md セクション4-5",
+      "reviewDate": "2026-06-30",
+      "owner": "璃奈",
+      "status": "open",
+      "note": "next-actions.md で最優先タスク。2026年6月までに確認予定"
+    },
+    {
+      "id": "RSP-002",
+      "project": "rina-salon-plan",
+      "statement": "前のお店からの指名客スライド率25%と想定（業界相場2〜3割）",
+      "category": "assumption",
+      "source": "business-plan-v2.md セクション7-2",
+      "reviewDate": "2026-06-30",
+      "owner": "璃奈",
+      "status": "open",
+      "note": "指名客の実数把握が先。60〜100名の範囲が曖昧"
+    },
+    {
+      "id": "RSP-003",
+      "project": "rina-salon-plan",
+      "statement": "美容師免許を2027年3月に取得見込み",
+      "category": "plan",
+      "source": "business-plan-v2.md 行91, 本人申告",
+      "reviewDate": "2027-03-31",
+      "owner": "璃奈",
+      "status": "open",
+      "note": "試験合格が前提。不合格時は開業スケジュール全体が後ろ倒し"
+    },
+    {
+      "id": "RSP-004",
+      "project": "rina-salon-plan",
+      "statement": "眉メニュー単独で2028年に400億円規模に成長する見込み",
+      "category": "external-change",
+      "source": "ホットペッパービューティーアカデミー（推計）",
+      "reviewDate": "2027-01-31",
+      "owner": "ramda",
+      "status": "open",
+      "note": "公的統計での裏付けが確認できていない旨が注記あり。2027年初頭のGo/No-Go判断で再検証"
+    },
+    {
+      "id": "RSP-005",
+      "project": "rina-salon-plan",
+      "statement": "2027年7月グランドオープン（6〜9月の幅あり）",
+      "category": "plan",
+      "source": "business-plan-v2.md セクション15-2",
+      "reviewDate": "2027-01-31",
+      "owner": "璃奈",
+      "status": "open",
+      "note": "保健所の確認済証交付が前提。RSP-003（免許取得）に依存"
+    },
+    {
+      "id": "RSP-006",
+      "project": "rina-salon-plan",
+      "statement": "自己資金を2027年3月までに96〜132万円確保（月5万円貯蓄、2026年4月開始）",
+      "category": "plan",
+      "source": "next-actions.md, business-plan-v2.md セクション11-3",
+      "reviewDate": "2026-09-30",
+      "owner": "璃奈",
+      "status": "open",
+      "note": "既存36万円が新規貯蓄と別枠かで金額が変動。融資枠にも影響"
+    },
+    {
+      "id": "RSP-007",
+      "project": "rina-salon-plan",
+      "statement": "開業6ヶ月前（2027年初頭）に主要データを全面更新し Go/No-Go 判断を行う",
+      "category": "plan",
+      "source": "research-A-macro-market.md 行351",
+      "reviewDate": "2027-01-31",
+      "owner": "ramda",
+      "status": "open",
+      "note": "現在の事業計画は条件付きドラフト。このゲートを通過して確定版に昇格"
+    },
+    {
+      "id": "PKB-001",
+      "project": "personal-kb",
+      "statement": "iDeCo を2026年4月に再開予定",
+      "category": "plan",
+      "source": "finance/handover.md 行69, 本人申告",
+      "reviewDate": "2026-04-30",
+      "owner": "ramda",
+      "status": "open",
+      "note": "申請手続きが必要。未実施"
+    },
+    {
+      "id": "PKB-002",
+      "project": "personal-kb",
+      "statement": "2026年5〜6月の評価時期に年収交渉を実施予定",
+      "category": "plan",
+      "source": "career/negotiation-preparation-checklist.md, 本人申告",
+      "reviewDate": "2026-06-30",
+      "owner": "ramda",
+      "status": "open",
+      "note": "準備チェックリスト作成済み。実行時期は評価サイクルに依存"
+    },
+    {
+      "id": "PKB-003",
+      "project": "personal-kb",
+      "statement": "JR EX-ICカード新規発行が2026年夏に終了、サービス自体は2027年夏に終了",
+      "category": "external-change",
+      "source": "JR公式発表, finance/asset-context.md 行27-28",
+      "reviewDate": "2026-07-31",
+      "owner": "ramda",
+      "status": "open",
+      "note": "カード見直しの判断トリガー。IC統合への移行が必要"
+    },
+    {
+      "id": "PKB-004",
+      "project": "personal-kb",
+      "statement": "FIRE試算は年利5%（名目）/3%（実質）の運用リターンを前提",
+      "category": "assumption",
+      "source": "finance/FIRE試算.md 行70",
+      "reviewDate": "2026-12-31",
+      "owner": "ramda",
+      "status": "open",
+      "note": "市場環境で±3〜5年の変動あり。年1回の見直し推奨"
+    },
+    {
+      "id": "PKB-005",
+      "project": "personal-kb",
+      "statement": "奨学金（JASSO第二種）完済は2029年3月",
+      "category": "fact",
+      "source": "JASSO契約書, finance/handover.md 行48",
+      "reviewDate": "2029-03-31",
+      "owner": "ramda",
+      "status": "confirmed",
+      "note": "固定金利0.82%。残36回、残額約49.6万円。繰上返済しない方針"
+    },
+    {
+      "id": "PKB-006",
+      "project": "personal-kb",
+      "statement": "2026年昇給（月+12,000円）がFIRE試算に反映済み",
+      "category": "fact",
+      "source": "会社通知, finance/FIRE試算.md 行70",
+      "reviewDate": "2026-04-30",
+      "owner": "ramda",
+      "status": "open",
+      "note": "承認済みだが実際の給与明細で未確認"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "project": "portal",
+      "title": "healthcare token URL を href=\"#\" に差し替え",
+      "decision": "portal/index.html の healthcare カードから shared_token 付き GAS URL を除去し、href=\"#\" に差し替える",
+      "context": "workspace-audit で portal に shared_token が public deployed HTML に露出していることを検出。P0-1 指摘",
+      "alternatives": [
+        "A: healthcare に public_readonly_token を新設して portal は読み替え",
+        "B: portal から healthcare リンクを外す",
+        "C: healthcare の公開面を別ページにする"
+      ],
+      "rationale": "P0-3 の token 分離設計が未定のため、暫定的にリンクを無効化して露出リスクだけ先に解消。最終方針は token 分離後に決定",
+      "status": "superseded",
+      "date": "2026-03-29",
+      "reviewDate": "2026-06-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-008"
+      ],
+      "supersededBy": "DEC-008",
+      "owner": "ramda",
+      "note": "DEC-008 で VIEW_TOKEN 復旧により superseded"
+    },
+    {
+      "id": "DEC-002",
+      "project": "setting",
+      "title": "公開正本を projects.json 起点に統一",
+      "decision": "全プロジェクトのメタデータを setting/projects.json に集約し、portal/index.html と ramdamain-commits/README.md を CATALOG マーカー経由で自動生成する",
+      "context": "docs の portal 設計書は 5 カード、portal 現物は 6 カード、ramdamain-commits に healthcare がないなど、公開情報が散逸。P0-2 指摘",
+      "alternatives": [
+        "A: 各 repo の README を手動で同期",
+        "B: docs/specs を正本にして生成",
+        "C: projects.json を single source of truth にして生成"
+      ],
+      "rationale": "JSON 正本 + コード生成が最も drift しにくい。手動同期は過去に失敗済み",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2026-12-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "project-catalog v0 として実装完了"
+    },
+    {
+      "id": "DEC-003",
+      "project": "rina-salon-plan",
+      "title": "md 正本 / docx 配布用生成物の分離",
+      "decision": "business-plan-v2.md を正本、.docx は配布用生成物として位置づけを明確化",
+      "context": "README で md と docx が並列に見え、どちらが正本か不明。P1-7 指摘",
+      "alternatives": [
+        "A: docx を正本にして md は廃止",
+        "B: md を正本、docx を生成物"
+      ],
+      "rationale": "md はバージョン管理・diff・AI 連携に適する。docx は対外配布時のみ生成",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2027-03-31",
+      "linkedAssumptions": [
+        "RSP-001"
+      ],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": ""
+    },
+    {
+      "id": "DEC-004",
+      "project": "fp3-training",
+      "title": "FP3 名称を「過去問」から「ドリル」に変更",
+      "decision": "README・portal・ramdamain-commits の表記を「FP3級過去問トレーニング」から「FP3級ドリル」に統一",
+      "context": "data.js の内容はサンプル/オリジナル問題であり「過去問」は不正確。P1-1 指摘",
+      "alternatives": [
+        "A: 過去問のまま（不正確だが認知度高い）",
+        "B: ドリルに改名（正確）",
+        "C: 練習問題に改名"
+      ],
+      "rationale": "著作権リスク回避と内容の正確性を優先。「ドリル」は学習ツールとして適切な表現",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2027-03-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": ""
+    },
+    {
+      "id": "DEC-005",
+      "project": "ssd-deal-tracker",
+      "title": "正本を設計書から README に変更",
+      "decision": "docs/specs の設計書は作成時点のスナップショット扱いとし、README を現行仕様の正本とする",
+      "context": "設計書は 10 機種 / 5% だが現実装は 14 系統 / 10%。設計書を追従更新するコストが高い。P1-2 指摘",
+      "alternatives": [
+        "A: 設計書を毎回更新",
+        "B: README を正本、設計書は archive"
+      ],
+      "rationale": "設計書は書いた時点のスナップショットとして価値がある。現行仕様の追従は README + CLAUDE.md が低コスト",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2027-03-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-006"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": ""
+    },
+    {
+      "id": "DEC-006",
+      "project": "setting",
+      "title": "docs 配下の設計書を archive 扱いにする方針",
+      "decision": "docs/superpowers/specs/ の設計書は作成時点の記録として archive 扱いとし、現行仕様への追従更新は行わない",
+      "context": "portal / healthcare 系の設計書が現実装とズレている。方針 A（archive）と方針 B（追従更新）の判断が必要",
+      "alternatives": [
+        "A: archive 扱い（冒頭に日時とREADME参照を入れる）",
+        "B: 現物に追従して都度更新"
+      ],
+      "rationale": "追従コストが高く、正本が二重になる。README + CLAUDE.md を正本にした方が管理コストが低い",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2027-03-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-005"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "action-plan の「docs 配下の設計書について」セクションで方針 A を採用"
+    },
+    {
+      "id": "DEC-007",
+      "project": "setting",
+      "title": "smoke test に許容パターン方式を採用",
+      "decision": "禁止パターン検出時に、プロジェクト別の許容リスト（allowedPatterns）で公開 API を除外する方式を採用",
+      "context": "ssd-deal-tracker の公開 GAS API URL が禁止パターン（AKfycb / script.google.com）に該当し false positive になった",
+      "alternatives": [
+        "A: 禁止パターンから GAS 系を外す（漏れリスク増）",
+        "B: プロジェクト別の許容リスト（精度高い）",
+        "C: URL ホワイトリスト方式"
+      ],
+      "rationale": "公開 API として設計されたものと秘匿 token を区別するには、プロジェクト単位の許容が最も精度が高い",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2026-09-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "Invoke-DeploySmokeTest.ps1 の $allowedPatterns で実装済み"
+    },
+    {
+      "id": "DEC-008",
+      "project": "portal",
+      "title": "healthcare カードに VIEW_TOKEN 付き URL を復旧",
+      "decision": "P0-3 token 3分割完了に伴い、読み取り専用の HEALTH_VIEW_TOKEN を portal の healthcare カード href に設定する",
+      "context": "DEC-001 で暫定的に href=\"#\" にしていた healthcare リンクを、VIEW_TOKEN（読み取り専用）で安全に復旧。VIEW_TOKEN は体重ダッシュボード閲覧のみ可能で、書き込み・管理操作は不可",
+      "alternatives": [
+        "A: href=\"#\" のまま維持（ユーザビリティ低下）",
+        "B: VIEW_TOKEN を使って復旧（安全かつ便利）"
+      ],
+      "rationale": "VIEW_TOKEN は読み取り専用で公開しても安全。smoke test の allowedPatterns にも登録済み",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2026-09-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-001"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "DEC-001 を supersede。portal PR #2 でマージ済み"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "REV-001",
+      "title": "2026-03-29 workspace 横断レビュー",
+      "date": "2026-03-29",
+      "scope": [
+        "portal",
+        "healthcare",
+        "personal-kb",
+        "ssd-deal-tracker",
+        "fp3-training",
+        "rina-salon-plan",
+        "magi-system",
+        "kaiserreich-akai-sakura",
+        "ramdamain-commits",
+        "it-passport-training"
+      ],
+      "reviewers": [
+        "ramda"
+      ],
+      "status": "closed",
+      "reviewDate": "2026-06-30",
+      "findings": [
+        {
+          "findingId": "REV-001-F01",
+          "severity": "P0",
+          "project": "portal",
+          "summary": "shared_token 付き URL が public deployed HTML に露出",
+          "resolution": "DEC-001 で href=\"#\" に差し替え。最終方針は P0-3 token 分離後に決定",
+          "linkedDecisions": [
+            "DEC-001"
+          ],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F02",
+          "severity": "P0",
+          "project": "setting",
+          "summary": "公開状態の正本がない（portal / ramdamain-commits / docs の drift）",
+          "resolution": "project-catalog v0 で projects.json を single source of truth に",
+          "linkedDecisions": [
+            "DEC-002"
+          ],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F03",
+          "severity": "P0",
+          "project": "healthcare",
+          "summary": "HEALTH_SYNC_SHARED_TOKEN が6種の操作を横断制御。token 分離が必要",
+          "resolution": "Phase 1-4 全完了。SYNC/ADMIN/VIEW の3分割実装済み（PR #62）",
+          "linkedDecisions": [
+            "DEC-008"
+          ],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F04",
+          "severity": "P0",
+          "project": "personal-kb",
+          "summary": "監査報告と現物の不一致（削除済み表記 vs 実在ファイル5件 + PDF残存）",
+          "resolution": "PDF削除完了、監査文書更新済み",
+          "linkedDecisions": [],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F05",
+          "severity": "P1",
+          "project": "portal",
+          "summary": "README に PWA 対応と記載。manifest.json / sw.js なし",
+          "resolution": "PWA 記載を削除",
+          "linkedDecisions": [],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F06",
+          "severity": "P1",
+          "project": "ssd-deal-tracker",
+          "summary": "設計書は 10 機種 / 5%、現実装は 14 系統 / 10%",
+          "resolution": "DEC-005 で正本を README に変更、設計書に注記追加",
+          "linkedDecisions": [
+            "DEC-005"
+          ],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F07",
+          "severity": "P1",
+          "project": "magi-system",
+          "summary": "HANDOFF に「削除済み」「公開サイトなし」が残存、実際は live",
+          "resolution": "旧履歴と現行状態を分離して記載",
+          "linkedDecisions": [],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F08",
+          "severity": "P1",
+          "project": "kaiserreich-akai-sakura",
+          "summary": "章数の数え方が README / CHANGELOG / AGENTS で不統一",
+          "resolution": "章数表記を統一。push/deploy は別途",
+          "linkedDecisions": [],
+          "linkedAssumptions": [],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F09",
+          "severity": "P1",
+          "project": "rina-salon-plan",
+          "summary": "README で md と docx が並列表記。正本不明",
+          "resolution": "DEC-003 で md 正本 / docx 配布用と明確化",
+          "linkedDecisions": [
+            "DEC-003"
+          ],
+          "linkedAssumptions": [
+            "RSP-001"
+          ],
+          "status": "closed"
+        },
+        {
+          "findingId": "REV-001-F10",
+          "severity": "P1",
+          "project": "healthcare",
+          "summary": "体重推移 UI が 3 系統に分散",
+          "resolution": "gas/WeightTrend.html を唯一の正本に指定。3ファイルにソースヘッダー追加済み",
+          "linkedDecisions": [],
+          "linkedAssumptions": [],
+          "status": "closed"
+        }
+      ],
+      "summary": "workspace-audit 結果を起点に P0 4件 + P1 6件を検出。7件の決定と13件の前提を登録",
+      "note": "初回横断レビュー。setting ツール群の整備と並行して実施"
+    }
+  ],
+  "categories": {
+    "ツール": {
+      "bgColor": "rgba(29, 78, 216, 0.25)",
+      "textColor": "#60a5fa"
+    },
+    "学習": {
+      "bgColor": "rgba(21, 128, 61, 0.25)",
+      "textColor": "#4ade80"
+    },
+    "ヘルスケア": {
+      "bgColor": "rgba(180, 83, 9, 0.25)",
+      "textColor": "#fb923c"
+    },
+    "AI": {
+      "bgColor": "rgba(124, 58, 237, 0.25)",
+      "textColor": "#a78bfa"
+    },
+    "創作": {
+      "bgColor": "rgba(190, 24, 93, 0.25)",
+      "textColor": "#f472b6"
+    },
+    "ゲーム": {
+      "bgColor": "rgba(234, 88, 12, 0.25)",
+      "textColor": "#fb923c"
+    }
+  }
+}

@@ -22,13 +22,33 @@
 - **ホスティング**: GitHub Pages
 - **データ連携**: SSD価格トラッカーの GAS API を参照
 
+## Life Ops Console
+
+`life-ops.html` は setting repo の4つの JSON データ（projects / assumptions / decisions / reviews）を集約表示するダッシュボードビューアです。
+
+- **自動読込**: 同ディレクトリの `life-ops-export.json` を `fetch()` で取得して即表示
+- **フォールバック**: JSON がない場合は localStorage → 手動ファイルアップロードの順で読込
+- **ボタン**: 「再取得」（fetch 再実行）/ 「データ更新」（ファイル選択）/ 「データ消去」（localStorage クリア）
+
+データ更新方法:
+
+```powershell
+# setting repo で生成 + portal にコピー
+& "C:\Users\ramda\projects\setting\Run-LifeOpsConsole.cmd"
+
+# GitHub Pages まで反映
+& "C:\Users\ramda\projects\setting\Run-LifeOpsConsole.cmd" -Deploy
+```
+
 ## ファイル構成
 
 ```
 portal/
-├── index.html           # メインページ（CSS・JS をインライン記述）
-├── favicon.svg          # Favicon
-└── og-image.svg         # OGP画像（1200×630）
+├── index.html              # メインページ（CSS・JS をインライン記述）
+├── life-ops.html           # Life Ops Console ビューア
+├── life-ops-export.json    # Life Ops データ（自動生成。GitHub Pages の fetch 用にコミット対象）
+├── favicon.svg             # Favicon
+└── og-image.svg            # OGP画像（1200×630）
 ```
 
 ## ローカル開発

@@ -272,6 +272,7 @@
             <h1>Life Ops Console</h1>
             <div class="header-right">
                 <span class="timestamp" id="sync-label"></span>
+                <button class="btn" id="btn-fetch">再取得</button>
                 <button class="btn" id="btn-refresh">データ更新</button>
                 <button class="btn btn-danger" id="btn-clear">データ消去</button>
             </div>
@@ -426,6 +427,11 @@
     });
 
     // ── Header ボタン ──
+    document.getElementById('btn-fetch').addEventListener('click', async () => {
+        if (await fetchExport()) return;
+        alert('JSONの取得に失敗しました。「データ更新」でファイルを選択してください。');
+    });
+
     const fileRefresh = document.getElementById('file-refresh');
     document.getElementById('btn-refresh').addEventListener('click', () => fileRefresh.click());
     fileRefresh.addEventListener('change', (e) => handleImportFile(e.target.files[0]));
@@ -610,6 +616,7 @@
 
     // ── ダッシュボード全体レンダリング ──
     function renderDashboard() {
+        clearDashboardDom();
         document.getElementById('sync-label').textContent = 'Last synced: ' + (EXPORTED_AT || '---');
         renderCards();
         renderAttention();
@@ -617,10 +624,26 @@
         renderTimeline();
     }
 
-    // ── 起動 ──
-    if (!loadFromStorage()) {
-        showImport();
+    // ── fetch による自動読込 ──
+    async function fetchExport() {
+        try {
+            const res = await fetch('life-ops-export.json', { cache: 'no-cache' });
+            if (!res.ok) return false;
+            const data = await res.json();
+            localStorage.setItem('lifeOpsData', JSON.stringify(data));
+            applyData(data);
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
+
+    // ── 起動 ──
+    (async () => {
+        if (await fetchExport()) return;
+        if (loadFromStorage()) return;
+        showImport();
+    })();
     </script>
 </body>
 </html>
