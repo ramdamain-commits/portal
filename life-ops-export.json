@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-12 15:55",
+  "exportedAt": "2026-04-13 03:42",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -35,7 +35,7 @@
       "repoName": "healthcare",
       "visibility": "limited",
       "status": "active",
-      "publicUrl": "https://script.google.com/macros/s/AKfycbwTeTtgCl4TrRC2Wdqtf23prVitDlrW3dOua3iFvnYCEPt7JHmzFJ25w1v9rCYI_p29bQ/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367",
+      "publicUrl": "https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367",
       "sourceOfTruth": "docs/health-tracking-system-spec.md",
       "portalVisible": true,
       "note": "※ 共有リンクで体重推移のみ閲覧可。食事記録など全機能は認証が必要です"
@@ -182,6 +182,19 @@
       "sourceOfTruth": "README.md",
       "portalVisible": true,
       "note": "GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク"
+    },
+    {
+      "id": "nagoya-hotel-deals",
+      "displayName": "名古屋ホテル価格トラッカー",
+      "description": "名古屋エリアのホテル宿泊プランの価格を日次トラッキングし、お得なタイミングでメール通知。楽天トラベルAPI + GAS + GitHub Pages。",
+      "category": "ツール",
+      "repoName": "nagoya-hotel-deals",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/nagoya-hotel-deals/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "21ホテル体制。ダッシュボード改善済"
     },
     {
       "id": "life-ops-console",
@@ -628,6 +641,47 @@
       "supersededBy": null,
       "owner": "ramda",
       "note": ""
+    },
+    {
+      "id": "DEC-014",
+      "project": "workspace",
+      "title": "TASKS.md 導入 — 全PJタスクの集約ダイジェスト",
+      "decision": "projects 直下に TASKS.md を新設し、各 project_*.md の次回アクション1行を集約。正本は project_*.md のまま。セッション終了ステップ5 に同期更新を組込み",
+      "context": "毎セッション開始時に15PJの project_*.md を巡回する手間が大きく、トークンも浪費していた。4名パネル議論（平均3.25/5）を経て設計",
+      "alternatives": [
+        "A: TASKS.md 導入（採用）",
+        "B: MEMORY.md テーブルに次タスク列追加",
+        "C: セッション冒頭にAIが毎回生成する揮発性ファイル"
+      ],
+      "rationale": "案Bは MEMORY.md の200行上限を圧迫。案Cはセッション冒頭の生成コストが毎回発生。案Aは1回の Read で全PJ把握可能かつ既存ステップに組込めるため採用",
+      "status": "accepted",
+      "date": "2026-04-12",
+      "reviewDate": "2026-07-12",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "50行上限。PJ25件超で上限見直し"
+    },
+    {
+      "id": "DEC-015",
+      "title": "GAS 再デプロイ時のポータル・smoke test 同期ルール",
+      "decision": "GAS デプロイ ID が変わったら、(1) setting/projects.json の publicUrl、(2) portal の該当リンク（カタログ→Apply / JS→直接編集）、(3) Invoke-DeploySmokeTest.ps1 の allowedPatterns を同時更新する。各 repo の CLAUDE.md にチェックリストを明文化",
+      "context": "healthcare・ssd-deal-tracker の GAS リンクがポータルで繰り返し死亡。原因は GAS 再デプロイ時に portal 側 URL が未更新のまま放置されること",
+      "alternatives": [
+        "A: 各 repo CLAUDE.md にチェックリスト記載（採用）",
+        "B: GAS デプロイスクリプトに自動 URL 置換を組込む",
+        "C: 手動運用のまま（却下）"
+      ],
+      "rationale": "案Bは GAS スクリプトの複雑化とメンテ負荷が高い。案Aは低コストで AI アシスタントが参照できるため即効性が高い。将来的に案B移行も可能",
+      "status": "accepted",
+      "date": "2026-04-13",
+      "reviewDate": "2026-07-13",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "対象PJ: healthcare, ssd-deal-tracker。portal CLAUDE.md に auto-push ルールも追加済み"
     }
   ],
   "reviews": [
