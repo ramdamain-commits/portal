@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-13 04:04",
+  "exportedAt": "2026-04-13 04:17",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -824,6 +824,41 @@
       "note": "初回横断レビュー。setting ツール群の整備と並行して実施"
     }
   ],
+  "tasks": {
+    "items": [
+      {
+        "project": "personal-kb",
+        "action": "スカウト4件の返信・面接準備（S3 PEファンド最優先）",
+        "priority": "HIGH"
+      },
+      {
+        "project": "rina-salon-plan",
+        "action": "競業避止条項の確認（2026-06 期限）",
+        "priority": "HIGH"
+      },
+      {
+        "project": "paradox-game-guides",
+        "action": "EU5 Patch 1.2 リリース後にガイド本文反映",
+        "priority": "NORMAL"
+      },
+      {
+        "project": "menes",
+        "action": "香坂ゆずは・八千草あやめWK購入→S昇格判定。水瀬はるか2回目検証",
+        "priority": "NORMAL"
+      },
+      {
+        "project": "nagoya-hotel-deals",
+        "action": "Wave2 recentAvgPrice 蓄積後に target_price 再設定",
+        "priority": "LOW"
+      },
+      {
+        "project": "ssd-deal-tracker",
+        "action": "NAND相場安定後に target_price 再調整（5製品）",
+        "priority": "LOW"
+      }
+    ],
+    "maintenance": "保守・待機: healthcare / kaiserreich-akai-sakura"
+  },
   "categories": {
     "ツール": {
       "bgColor": "rgba(29, 78, 216, 0.25)",

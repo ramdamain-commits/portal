@@ -227,6 +227,39 @@
             font-size: 0.85rem;
             text-align: center;
         }
+        /* タスクアイテム */
+        .task-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 8px 12px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.9rem;
+        }
+        .task-item:last-child { border-bottom: none; }
+        .task-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .task-badge-high { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .task-badge-normal { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .task-badge-low { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
+        .task-project { color: #94a3b8; font-size: 0.8rem; min-width: 120px; }
+        .task-action { color: #e2e8f0; flex: 1; }
+        .task-section-toggle {
+            background: none; border: none; color: #94a3b8; cursor: pointer;
+            font-size: 0.85rem; padding: 8px 12px; width: 100%; text-align: left;
+        }
+        .task-section-toggle:hover { color: #e2e8f0; }
+        .task-maintenance {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-style: italic;
+        }
 
         /* ── Table ── */
         table { width: 100%; border-collapse: collapse; }
@@ -499,6 +532,17 @@
         return d.innerHTML;
     }
 
+    function createTaskItem(task, level) {
+        const div = document.createElement('div');
+        div.className = 'task-item';
+        div.innerHTML = `
+            <span class="task-badge task-badge-${level}">${escapeHtml(task.priority)}</span>
+            <span class="task-project">${escapeHtml(task.project)}</span>
+            <span class="task-action">${escapeHtml(task.action)}</span>
+        `;
+        return div;
+    }
+
     // エクスポート日からの経過日数を計算
     function exportedDaysAgo() {
         if (!EXPORTED_AT) return null;
@@ -517,6 +561,8 @@
             applyData(data);
             return true;
         } catch (e) {
+            console.error('[loadFromStorage] データ破損。localStorage を消去:', e);
+            localStorage.removeItem('lifeOpsData');
             return false;
         }
     }
@@ -528,6 +574,7 @@
         REVIEWS     = data.reviews     || [];
         CATEGORIES  = data.categories  || {};
         EXPORTED_AT = data.exportedAt  || '';
+        window._exportData = data;
         renderDashboard();
         showDashboard();
     }
@@ -737,11 +784,53 @@
     function renderQueue() {
         const container = document.getElementById('queue-content');
 
-        // Phase 2 プレースホルダー
-        const placeholder = document.createElement('div');
-        placeholder.className = 'placeholder-block';
-        placeholder.innerHTML = 'TASKS.md・更新履歴の表示は Phase 2 で実装予定';
-        container.appendChild(placeholder);
+        // TASKS.md タスク表示
+        const tasksData = window._exportData && window._exportData.tasks;
+        if (tasksData && tasksData.items && tasksData.items.length > 0) {
+            const norm = t => (t.priority || '').toUpperCase();
+            const highTasks = tasksData.items.filter(t => norm(t) === 'HIGH');
+            const normalTasks = tasksData.items.filter(t => norm(t) === 'NORMAL');
+            const lowTasks = tasksData.items.filter(t => norm(t) === 'LOW');
+
+            // 折りたたみセクション生成ヘルパー
+            function appendCollapsible(label, tasks, level) {
+                const toggle = document.createElement('button');
+                toggle.className = 'task-section-toggle';
+                toggle.textContent = `${label} (${tasks.length}件) \u25B6`;
+                const list = document.createElement('div');
+                list.style.display = 'none';
+                tasks.forEach(t => list.appendChild(createTaskItem(t, level)));
+                toggle.addEventListener('click', () => {
+                    const open = list.style.display !== 'none';
+                    list.style.display = open ? 'none' : 'block';
+                    toggle.textContent = `${label} (${tasks.length}件) ${open ? '\u25B6' : '\u25BC'}`;
+                });
+                container.appendChild(toggle);
+                container.appendChild(list);
+            }
+
+            // HIGH: 展開表示
+            highTasks.forEach(t => {
+                container.appendChild(createTaskItem(t, 'high'));
+            });
+
+            // NORMAL / LOW: 折りたたみ
+            if (normalTasks.length > 0) appendCollapsible('NORMAL', normalTasks, 'normal');
+            if (lowTasks.length > 0) appendCollapsible('LOW', lowTasks, 'low');
+
+            // 保守・待��行
+            if (tasksData.maintenance) {
+                const maint = document.createElement('div');
+                maint.className = 'task-maintenance';
+                maint.textContent = tasksData.maintenance;
+                container.appendChild(maint);
+            }
+        } else {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'placeholder-block';
+            placeholder.innerHTML = '\u30BF\u30B9\u30AF\u30C7\u30FC\u30BF\u304C\u3042\u308A\u307E\u305B\u3093';
+            container.appendChild(placeholder);
+        }
 
         // 要注意アイテム（Findings + 警告）
         const items = computeQueueAttention();
@@ -891,7 +980,7 @@
             if (d.linkedAssumptions && d.linkedAssumptions.length > 0) {
                 const linked = d.linkedAssumptions.map(id => {
                     const found = ASSUMPTIONS.find(a => a.id === id);
-                    return found ? `${id}: ${escapeHtml(found.statement)}` : id;
+                    return found ? `${escapeHtml(id)}: ${escapeHtml(found.statement)}` : escapeHtml(id);
                 }).join('<br>');
                 linkedHtml = `<dt>関連前提条件</dt><dd>${linked}</dd>`;
             }
@@ -933,10 +1022,15 @@
             const res = await fetch('life-ops-export.json', { cache: 'no-cache' });
             if (!res.ok) return false;
             const data = await res.json();
-            localStorage.setItem('lifeOpsData', JSON.stringify(data));
+            try {
+                localStorage.setItem('lifeOpsData', JSON.stringify(data));
+            } catch (storageErr) {
+                console.warn('[fetchExport] localStorage 保存失敗:', storageErr);
+            }
             applyData(data);
             return true;
         } catch (e) {
+            console.warn('[fetchExport] 自動取得失敗:', e);
             return false;
         }
     }
