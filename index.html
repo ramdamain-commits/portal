@@ -583,7 +583,7 @@
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
-                                                <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+                                                      <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
 
       <!-- 1. SSD価格トラッカー -->
       <li class="card-item" data-category="ツール">
@@ -643,7 +643,7 @@
       <li class="card-item" data-category="ヘルスケア">
         <a
           class="card"
-          href="https://script.google.com/macros/s/AKfycbwTeTtgCl4TrRC2Wdqtf23prVitDlrW3dOua3iFvnYCEPt7JHmzFJ25w1v9rCYI_p29bQ/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367"
+          href="https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367"
           target="_blank"
           rel="noopener"
           aria-label="健康管理「律」（新しいタブで開く）"
@@ -774,7 +774,34 @@
         </a>
       </li>
 
-      <!-- 8. Life Ops Console -->
+      <!-- 8. 名古屋ホテル価格トラッカー -->
+      <li class="card-item" data-category="ツール">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/nagoya-hotel-deals/"
+          target="_blank"
+          rel="noopener"
+          aria-label="名古屋ホテル価格トラッカー（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(29, 78, 216, 0.25); color: #60a5fa;"
+          >ツール</span>
+          <h2 class="card__title">名古屋ホテル価格トラッカー</h2>
+          <p class="card__desc">
+            名古屋エリアのホテル宿泊プランの価格を日次トラッキングし、お得なタイミングでメール通知。楽天トラベルAPI + GAS + GitHub Pages。
+          </p>
+          <p class="card__note">21ホテル体制。ダッシュボード改善済</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 9. Life Ops Console -->
       <li class="card-item" data-category="ツール">
         <a
           class="card"
@@ -906,7 +933,7 @@
      * ======================================================== */
     (function initSsdWidget() {
       // GAS API: ssd-deal-tracker のリアルタイム価格データ
-      const API_URL = 'https://script.google.com/macros/s/AKfycbzNaFEMQHRiqbOjzItBMwFMetRiKLTcrNFMH0wbXzbfVpjWCHIcPMUlPfQKjR6JEj4now/exec';
+      const API_URL = 'https://script.google.com/macros/s/AKfycbx4wSK_sYIP8Ksu-nWibGAbJxKFBPWN02o3K7Ame21q0QdFCYbxqByWD087mvDkYs61/exec';
       const TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
       // 「買い時」ステータスの製品を最大3件表示
       const MAX_ITEMS = 3;
