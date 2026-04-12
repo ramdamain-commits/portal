@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-12 15:27",
+  "exportedAt": "2026-04-12 15:55",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -516,6 +516,118 @@
       "supersededBy": null,
       "owner": "ramda",
       "note": "DEC-001 を supersede。portal PR #2 でマージ済み"
+    },
+    {
+      "id": "DEC-009",
+      "project": "setting",
+      "title": "Life Ops Console を setting/ ツール + portal 表示層で実装",
+      "decision": "Life Ops Console の生成エンジン（PS1）を setting/ に、Web ダッシュボード（HTML）を portal/ に配置する。独立 repo にはしない",
+      "context": "Life Ops はデータソース集約＋ダッシュボード生成ツール。setting の他ツール（catalog, smoke-hub 等）と同粒度で、ファイル数5本程度。独立 repo にするとパイプラインが複雑化する",
+      "alternatives": [
+        "A: setting/ + portal/ に分散配置（現行）",
+        "B: 独立 repo（life-ops-console）を新設",
+        "C: portal/ に全部置く"
+      ],
+      "rationale": "ファイル数が少なく、setting の他ツールと同粒度。export → portal コピーの直接パイプラインが最もシンプル。データソース3つ以上・外部ユーザー・CI/CD が必要になったら再検討",
+      "status": "accepted",
+      "date": "2026-04-11",
+      "reviewDate": "2026-10-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-013"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "DEC-013 で独立 repo 化を見送る判断を追認"
+    },
+    {
+      "id": "DEC-010",
+      "project": "paradox-game-guides",
+      "title": "paradox-game-guides を GitHub Pages で公開",
+      "decision": "index.html + viewer.html を作成し、GitHub Pages で Markdown ガイドをブラウザ閲覧可能にする",
+      "context": "日本語のパラドゲー攻略は供給が薄く、SEO 的に上位を取れる可能性がある。kaiserreich-akai-sakura との相乗効果も期待",
+      "alternatives": [
+        "A: GitHub Pages で公開（低コスト・即時）",
+        "B: 独自ドメイン + SSG（Hugo 等）で公開",
+        "C: 非公開のまま維持"
+      ],
+      "rationale": "index.html + viewer.html の最小構成で十分。SSG は現時点で過剰。Markdown 正本のままブラウザ表示できる viewer 方式が管理コスト最小",
+      "status": "accepted",
+      "date": "2026-04-09",
+      "reviewDate": "2026-12-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "公開済み: https://ramdamain-commits.github.io/paradox-game-guides/"
+    },
+    {
+      "id": "DEC-011",
+      "project": "nagoya-hotel-deals",
+      "title": "nagoya-hotel-deals を GitHub Pages + GAS WebApp で公開",
+      "decision": "GAS WebApp で JSON API を提供し、GitHub Pages のダッシュボードから fetch して表示する構成を採用",
+      "context": "スプレッドシートのデータをブラウザダッシュボードで可視化したい。GAS WebApp は無料で CORS 対応可能",
+      "alternatives": [
+        "A: GAS WebApp + GitHub Pages（無料・サーバーレス）",
+        "B: Cloudflare Workers + D1（高性能だが過剰）",
+        "C: スプレッドシート共有リンクのみ"
+      ],
+      "rationale": "GAS WebApp は既存スプシと同一環境で追加コストゼロ。GitHub Pages は静的ホスティングとして最適。楽天 API の Referer 制約も GAS 側で解決済み",
+      "status": "accepted",
+      "date": "2026-04-07",
+      "reviewDate": "2026-12-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-012"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "公開済み: https://ramdamain-commits.github.io/nagoya-hotel-deals/"
+    },
+    {
+      "id": "DEC-012",
+      "project": "nagoya-hotel-deals",
+      "title": "楽天 API 15件超のバッチ分割方式を採用",
+      "decision": "checkAllPrices で hotelNo が15件を超える場合、15件ずつバッチ分割して API を呼び出す。バッチ間に delayMs の待機を入れる",
+      "context": "楽天トラベル空室検索 API は1リクエスト最大15ホテルの制限がある。14ホテル体制では収まるが、今後の追加に備えてバッチ分割を実装",
+      "alternatives": [
+        "A: 15件バッチ分割（汎用・安全）",
+        "B: ホテル数を15以下に制限（簡単だが拡張性なし）",
+        "C: 1ホテルずつ個別リクエスト（レート制限リスク大）"
+      ],
+      "rationale": "バッチ分割は実装コストが低く、将来のホテル追加にも対応できる。GAS 6分制限内で十分収まる",
+      "status": "accepted",
+      "date": "2026-04-12",
+      "reviewDate": "2027-06-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-011"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "PriceChecker.gs の _checkAllPricesImpl で実装済み"
+    },
+    {
+      "id": "DEC-013",
+      "project": "setting",
+      "title": "Life Ops Console の独立 repo 化を見送り",
+      "decision": "Life Ops Console は現時点で独立 repo にせず、setting/ + portal/ の分散配置を維持する",
+      "context": "ファイル数5本程度で setting の他ツールと同粒度。独立 repo にするとパイプライン複雑化・管理コスト増",
+      "alternatives": [
+        "A: 現状維持（setting/ + portal/）",
+        "B: 独立 repo 新設"
+      ],
+      "rationale": "独立 repo 化のトリガー条件（データソース3つ以上・外部ユーザー・CI/CD 必要）をいずれも満たしていない。トリガー条件を満たしたら再検討",
+      "status": "accepted",
+      "date": "2026-04-12",
+      "reviewDate": "2026-10-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-009"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": ""
     }
   ],
   "reviews": [
