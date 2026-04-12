@@ -24,13 +24,30 @@
 
 ## Life Ops Console
 
-`life-ops.html` は setting repo の4つの JSON データ（projects / assumptions / decisions / reviews）を集約表示するダッシュボードビューアです。
+`life-ops.html` は個人プロジェクト群の **総合ダッシュボード（司令塔）** です。
+
+開いたときに3つのことが分かる:
+
+1. **今日やること** — 人間アクションの期日・鮮度確認
+2. **今週のタスク** — 全PJ横断のタスクと更新履歴
+3. **判断の根拠** — 意思決定履歴・前提条件・PJ一覧
+
+### 3ゾーン構造
+
+| ゾーン | 確認頻度 | 内容 |
+|--------|---------|------|
+| 今日やること | 毎日 | 期日30日以内の人間アクション、鮮度インジケーター |
+| 今週のタスク | 週次 | TASKS.md ベースのタスク一覧、更新履歴 |
+| 判断の根拠 | 月次 | 前提条件・意思決定・プロジェクト一覧（デフォルト折りたたみ） |
+
+### データソース
+
+setting repo の JSON データ（projects / assumptions / decisions / reviews / changelog）+ TASKS.md を集約。
 
 - **自動読込**: 同ディレクトリの `life-ops-export.json` を `fetch()` で取得して即表示
 - **フォールバック**: JSON がない場合は localStorage → 手動ファイルアップロードの順で読込
-- **ボタン**: 「再取得」（fetch 再実行）/ 「データ更新」（ファイル選択）/ 「データ消去」（localStorage クリア）
 
-データ更新方法:
+### データ更新
 
 ```powershell
 # setting repo で生成 + portal にコピー
@@ -39,6 +56,8 @@
 # GitHub Pages まで反映
 & "C:\Users\ramda\projects\setting\Run-LifeOpsConsole.cmd" -Deploy
 ```
+
+仕様書: `setting/docs/life-ops-console-spec.md`
 
 ## ファイル構成
 
