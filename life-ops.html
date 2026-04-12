@@ -52,7 +52,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
         .card {
             background: #1e293b;
@@ -64,15 +64,124 @@
         .card .value { font-size: 1.8rem; font-weight: 700; margin-top: 4px; }
         .card .sub { font-size: 0.85rem; color: #64748b; margin-top: 2px; }
 
-        /* ── Section ── */
-        .section { margin-bottom: 32px; }
-        .section h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 6px;
+        /* ── 3ゾーン構造 ── */
+        .zone {
+            border-radius: 10px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        /* TODAYゾーン */
+        .zone-today {
+            border: 1px solid #1d4ed8;
+            background: rgba(29, 78, 216, 0.05);
+        }
+        .zone-today .zone-header {
+            background: rgba(29, 78, 216, 0.15);
+            border-bottom: 1px solid #1d4ed8;
+        }
+
+        /* QUEUEゾーン */
+        .zone-queue {
+            border: 1px solid #334155;
+            background: rgba(30, 41, 59, 0.5);
+        }
+        .zone-queue .zone-header {
+            background: rgba(51, 65, 85, 0.4);
             border-bottom: 1px solid #334155;
         }
+
+        /* REFERENCEゾーン */
+        .zone-reference {
+            border: 1px solid #334155;
+            background: rgba(15, 23, 42, 0.8);
+        }
+        .zone-reference .zone-header {
+            background: rgba(30, 41, 59, 0.6);
+            border-bottom: 1px solid #334155;
+        }
+
+        /* ゾーンヘッダー共通 */
+        .zone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            user-select: none;
+        }
+        .zone-header-left {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .zone-header h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .zone-today .zone-header h2 { color: #93c5fd; }
+        .zone-queue .zone-header h2 { color: #e2e8f0; }
+        .zone-reference .zone-header h2 { color: #94a3b8; }
+
+        .zone-subtitle {
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        /* 折りたたみ可能ゾーン */
+        .zone-collapsible .zone-header {
+            cursor: pointer;
+        }
+        .zone-collapsible .zone-header:hover {
+            background: rgba(51, 65, 85, 0.6);
+        }
+        .zone-toggle-icon {
+            font-size: 0.85rem;
+            color: #64748b;
+            transition: transform 0.2s;
+        }
+        .zone-collapsible.collapsed .zone-toggle-icon {
+            transform: rotate(-90deg);
+        }
+        .zone-body {
+            padding: 16px 20px;
+        }
+        .zone-collapsible.collapsed .zone-body {
+            display: none;
+        }
+
+        /* ── Section (ゾーン内) ── */
+        .section { margin-bottom: 20px; }
+        .section:last-child { margin-bottom: 0; }
+        .section h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* 鮮度インジケーター */
+        .freshness-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+        .freshness-bar .freshness-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            flex-shrink: 0;
+        }
+        .freshness-bar.stale .freshness-dot { background: #f59e0b; }
+        .freshness-bar.stale { color: #f59e0b; }
 
         /* ── Attention ── */
         .attention-item {
@@ -100,11 +209,22 @@
         .badge-no-review { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
         .badge-info { background: rgba(100, 116, 139, 0.15); color: #64748b; }
         .all-clear {
-            padding: 16px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 14px 16px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
             border-radius: 8px;
             color: #4ade80;
+            font-size: 0.9rem;
+        }
+
+        /* プレースホルダー */
+        .placeholder-block {
+            padding: 16px;
+            background: rgba(51, 65, 85, 0.3);
+            border: 1px dashed #334155;
+            border-radius: 8px;
+            color: #475569;
+            font-size: 0.85rem;
             text-align: center;
         }
 
@@ -281,33 +401,72 @@
         <!-- Summary Cards -->
         <div class="cards" id="cards"></div>
 
-        <!-- Attention Required -->
-        <div class="section">
-            <h2>Attention Required</h2>
-            <div id="attention"></div>
+        <!-- ゾーン1: 今日やること (TODAY) -->
+        <div class="zone zone-today" id="zone-today">
+            <div class="zone-header">
+                <div class="zone-header-left">
+                    <h2>今日やること</h2>
+                    <span class="zone-subtitle">期日アクションと鮮度確認</span>
+                </div>
+                <div id="freshness-indicator"></div>
+            </div>
+            <div class="zone-body">
+                <div id="today-actions"></div>
+            </div>
         </div>
 
-        <!-- Project Matrix -->
-        <div class="section">
-            <h2>Project Matrix</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Project</th>
-                        <th>Status</th>
-                        <th>Visibility</th>
-                        <th>Category</th>
-                        <th>Note</th>
-                    </tr>
-                </thead>
-                <tbody id="project-matrix"></tbody>
-            </table>
+        <!-- ゾーン2: 今週のタスク (QUEUE) -->
+        <div class="zone zone-queue" id="zone-queue">
+            <div class="zone-header">
+                <div class="zone-header-left">
+                    <h2>今週のタスク</h2>
+                    <span class="zone-subtitle">全PJ横断のタスクと更新履歴</span>
+                </div>
+            </div>
+            <div class="zone-body">
+                <div id="queue-content"></div>
+            </div>
         </div>
 
-        <!-- Decision Timeline -->
-        <div class="section">
-            <h2>Decision Timeline</h2>
-            <div id="timeline"></div>
+        <!-- ゾーン3: 判断の根拠 (REFERENCE) - デフォルト折りたたみ -->
+        <div class="zone zone-reference zone-collapsible collapsed" id="zone-reference">
+            <div class="zone-header" id="zone-reference-header" role="button" aria-expanded="false" tabindex="0">
+                <div class="zone-header-left">
+                    <h2>判断の根拠</h2>
+                    <span class="zone-subtitle">前提条件・意思決定・PJ一覧</span>
+                </div>
+                <span class="zone-toggle-icon">&#9660;</span>
+            </div>
+            <div class="zone-body">
+                <!-- 前提条件 -->
+                <div class="section">
+                    <h3>前提条件</h3>
+                    <div id="assumptions-list"></div>
+                </div>
+
+                <!-- 意思決定履歴 -->
+                <div class="section">
+                    <h3>意思決定履歴</h3>
+                    <div id="timeline"></div>
+                </div>
+
+                <!-- プロジェクト一覧 -->
+                <div class="section">
+                    <h3>プロジェクト一覧</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>プロジェクト</th>
+                                <th>状態</th>
+                                <th>公開設定</th>
+                                <th>カテゴリ</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-matrix"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -338,6 +497,15 @@
         const d = document.createElement('div');
         d.textContent = str;
         return d.innerHTML;
+    }
+
+    // エクスポート日からの経過日数を計算
+    function exportedDaysAgo() {
+        if (!EXPORTED_AT) return null;
+        const [y, m, d] = EXPORTED_AT.split(/[-T ]/);
+        if (!y || !m || !d) return null;
+        const exported = new Date(Number(y), Number(m) - 1, Number(d));
+        return Math.floor((today - exported) / (1000 * 60 * 60 * 24));
     }
 
     // ── データのロードと状態切替 ──
@@ -398,7 +566,6 @@
         if (!file) return;
         readJsonFile(file, (data) => {
             localStorage.setItem('lifeOpsData', JSON.stringify(data));
-            // Reset dashboard before re-render
             clearDashboardDom();
             applyData(data);
         });
@@ -406,9 +573,12 @@
 
     function clearDashboardDom() {
         document.getElementById('cards').innerHTML = '';
-        document.getElementById('attention').innerHTML = '';
+        document.getElementById('today-actions').innerHTML = '';
+        document.getElementById('queue-content').innerHTML = '';
+        document.getElementById('assumptions-list').innerHTML = '';
         document.getElementById('project-matrix').innerHTML = '';
         document.getElementById('timeline').innerHTML = '';
+        document.getElementById('freshness-indicator').innerHTML = '';
     }
 
     // ── Import Screen イベント ──
@@ -444,8 +614,25 @@
         }
     });
 
-    // ── Attention 算出 ──
-    function computeAttention() {
+    // ── REFERENCEゾーン折りたたみ ──
+    const zoneRef = document.getElementById('zone-reference');
+    const zoneRefHeader = document.getElementById('zone-reference-header');
+    zoneRefHeader.addEventListener('click', () => toggleZone(zoneRef));
+    zoneRefHeader.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleZone(zoneRef);
+        }
+    });
+
+    function toggleZone(zone) {
+        const isCollapsed = zone.classList.toggle('collapsed');
+        const header = zone.querySelector('.zone-header[role="button"]');
+        if (header) header.setAttribute('aria-expanded', String(!isCollapsed));
+    }
+
+    // ── 今日やること算出（期日30日以内の前提条件） ──
+    function computeTodayActions() {
         const items = [];
 
         ASSUMPTIONS.filter(a => a.status === 'open' && a.reviewDate).forEach(a => {
@@ -457,21 +644,31 @@
             }
         });
 
+        DECISIONS.filter(d => d.status === 'accepted' && d.reviewDate).forEach(d => {
+            const days = daysDiff(d.reviewDate);
+            if (days < 0) {
+                items.push({ id: d.id, project: d.project, text: d.title, type: 'overdue', days: days, sort: days });
+            } else if (days <= 30) {
+                items.push({ id: d.id, project: d.project, text: d.title, type: 'due', days: days, sort: days + 1000 });
+            }
+        });
+
+        items.sort((a, b) => a.sort - b.sort);
+        return items;
+    }
+
+    // ── 要注意項目（QUEUEゾーン用：未対応Findings + 警告） ──
+    function computeQueueAttention() {
+        const items = [];
+
         REVIEWS.forEach(r => {
             (r.findings || []).filter(f => f.status === 'open').forEach(f => {
                 items.push({ id: f.findingId, project: f.project, text: f.summary, type: 'open', days: null, sort: 500 });
             });
         });
 
-        DECISIONS.filter(d => d.status === 'accepted').forEach(d => {
-            if (!d.reviewDate) {
-                items.push({ id: d.id, project: d.project, text: d.title, type: 'no-review', days: null, sort: 2500 });
-                return;
-            }
-            const days = daysDiff(d.reviewDate);
-            if (days >= 0 && days <= 30) {
-                items.push({ id: d.id, project: d.project, text: d.title, type: 'due', days: days, sort: days + 2000 });
-            }
+        DECISIONS.filter(d => d.status === 'accepted' && !d.reviewDate).forEach(d => {
+            items.push({ id: d.id, project: d.project, text: d.title, type: 'no-review', days: null, sort: 2500 });
         });
 
         PROJECTS.filter(p => p.portalVisible === true && p.visibility === 'private').forEach(p => {
@@ -489,6 +686,110 @@
         return items;
     }
 
+    // ── 鮮度インジケーター描画 ──
+    function renderFreshness() {
+        const daysAgo = exportedDaysAgo();
+        const container = document.getElementById('freshness-indicator');
+        if (daysAgo === null) return;
+
+        const isStale = daysAgo >= 7;
+        const label = daysAgo === 0 ? '本日更新' : `最終更新 ${daysAgo}日前`;
+        const bar = document.createElement('div');
+        bar.className = 'freshness-bar' + (isStale ? ' stale' : '');
+        bar.innerHTML = `<span class="freshness-dot"></span><span>${escapeHtml(label)}</span>`;
+        container.appendChild(bar);
+    }
+
+    // ── ゾーン1: 今日やること描画 ──
+    function renderTodayActions() {
+        const items = computeTodayActions();
+        const container = document.getElementById('today-actions');
+
+        if (items.length === 0) {
+            container.innerHTML = '<div class="all-clear">今日は期日アクションなし</div>';
+            return;
+        }
+
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'attention-item' + (item.type === 'overdue' ? ' overdue' : '');
+
+            let badgeClass, badgeText;
+            if (item.type === 'overdue') {
+                badgeClass = 'badge-overdue';
+                badgeText = `${Math.abs(item.days)}日期限超過`;
+            } else {
+                badgeClass = 'badge-due';
+                badgeText = item.days === 0 ? '本日期限' : `残${item.days}日`;
+            }
+
+            div.innerHTML = `
+                <span class="badge ${badgeClass}">${badgeText}</span>
+                <span style="font-weight:600;min-width:100px">[${escapeHtml(item.id)}]</span>
+                <span style="color:#94a3b8;min-width:120px">${escapeHtml(item.project)}</span>
+                <span>${escapeHtml(item.text)}</span>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    // ── ゾーン2: 今週のタスク描画 ──
+    function renderQueue() {
+        const container = document.getElementById('queue-content');
+
+        // Phase 2 プレースホルダー
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder-block';
+        placeholder.innerHTML = 'TASKS.md・更新履歴の表示は Phase 2 で実装予定';
+        container.appendChild(placeholder);
+
+        // 要注意アイテム（Findings + 警告）
+        const items = computeQueueAttention();
+        if (items.length === 0) return;
+
+        const section = document.createElement('div');
+        section.className = 'section';
+        section.style.marginTop = '16px';
+        const h3 = document.createElement('h3');
+        h3.textContent = '要注意';
+        section.appendChild(h3);
+
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'attention-item' + (item.type === 'overdue' ? ' overdue' : '');
+
+            let badgeClass, badgeText;
+            if (item.type === 'open') {
+                badgeClass = 'badge-open';
+                badgeText = '未対応';
+            } else if (item.type === 'warning') {
+                badgeClass = 'badge-warning';
+                badgeText = '要注意';
+            } else if (item.type === 'no-review') {
+                badgeClass = 'badge-no-review';
+                badgeText = 'レビュー日未設定';
+            } else if (item.type === 'info') {
+                badgeClass = 'badge-info';
+                div.innerHTML = `<span class="badge ${badgeClass}">${escapeHtml(item.text)}</span>`;
+                section.appendChild(div);
+                return;
+            } else {
+                badgeClass = 'badge-due';
+                badgeText = `残${item.days}日`;
+            }
+
+            div.innerHTML = `
+                <span class="badge ${badgeClass}">${badgeText}</span>
+                <span style="font-weight:600;min-width:100px">[${escapeHtml(item.id)}]</span>
+                <span style="color:#94a3b8;min-width:120px">${escapeHtml(item.project)}</span>
+                <span>${escapeHtml(item.text)}</span>
+            `;
+            section.appendChild(div);
+        });
+
+        container.appendChild(section);
+    }
+
     // ── Summary Cards ──
     function renderCards() {
         const activeProjects = PROJECTS.filter(p => p.status === 'active').length;
@@ -499,10 +800,10 @@
         const openFindings = allFindings.filter(f => f.status === 'open').length;
 
         const cards = [
-            { label: 'Projects', value: activeProjects, sub: `/ ${PROJECTS.length} total` },
-            { label: 'Assumptions', value: `${overdueAssumptions} overdue`, sub: `/ ${openAssumptions} open` },
-            { label: 'Decisions', value: acceptedDecisions, sub: 'accepted' },
-            { label: 'Findings', value: `${openFindings} open`, sub: `/ ${allFindings.length} total` },
+            { label: 'プロジェクト', value: activeProjects, sub: `/ ${PROJECTS.length} 件中` },
+            { label: '前提条件', value: `${overdueAssumptions} 期限超過`, sub: `/ ${openAssumptions} 未対応` },
+            { label: '意思決定', value: acceptedDecisions, sub: '承認済み' },
+            { label: '指摘事項', value: `${openFindings} 未対応`, sub: `/ ${allFindings.length} 件中` },
         ];
 
         const container = document.getElementById('cards');
@@ -514,64 +815,59 @@
         });
     }
 
-    // ── Attention ──
-    function renderAttention() {
-        const items = computeAttention();
-        const container = document.getElementById('attention');
+    // ── 前提条件リスト描画 ──
+    function renderAssumptions() {
+        const container = document.getElementById('assumptions-list');
+        const open = ASSUMPTIONS.filter(a => a.status === 'open');
 
-        if (items.length === 0) {
-            container.innerHTML = '<div class="all-clear">All clear &#8212; &#23550;&#24540;&#19981;&#35201;</div>';
+        if (open.length === 0) {
+            container.innerHTML = '<div style="color:#64748b;font-size:0.85rem">未対応の前提条件はありません</div>';
             return;
         }
 
-        items.forEach(item => {
+        open.forEach(a => {
             const div = document.createElement('div');
-            div.className = 'attention-item' + (item.type === 'overdue' ? ' overdue' : '');
+            div.className = 'attention-item';
 
-            let badgeClass, badgeText;
-            if (item.type === 'overdue') {
-                badgeClass = 'badge-overdue';
-                badgeText = `${Math.abs(item.days)}&#26085;&#36229;&#36942;`;
-            } else if (item.type === 'open') {
-                badgeClass = 'badge-open';
-                badgeText = 'open';
-            } else if (item.type === 'warning') {
-                badgeClass = 'badge-warning';
-                badgeText = '&#30896;&#30431;';
-            } else if (item.type === 'no-review') {
-                badgeClass = 'badge-no-review';
-                badgeText = '&#26410;&#35373;&#23450;';
-            } else if (item.type === 'info') {
-                badgeClass = 'badge-info';
-                badgeText = item.text;
-            } else {
-                badgeClass = 'badge-due';
-                badgeText = `&#27231;${item.days}&#26085;`;
+            let badgeClass = 'badge-open';
+            let badgeText = '未対応';
+            if (a.reviewDate) {
+                const days = daysDiff(a.reviewDate);
+                if (days < 0) {
+                    div.classList.add('overdue');
+                    badgeClass = 'badge-overdue';
+                    badgeText = `${Math.abs(days)}日期限超過`;
+                } else if (days <= 30) {
+                    badgeClass = 'badge-due';
+                    badgeText = `残${days}日`;
+                }
             }
 
-            const isInfo = item.type === 'info';
-            div.innerHTML = isInfo
-                ? `<span class="badge ${badgeClass}">${escapeHtml(item.text)}</span>`
-                : `
+            div.innerHTML = `
                 <span class="badge ${badgeClass}">${badgeText}</span>
-                <span style="font-weight:600;min-width:100px">[${escapeHtml(item.id)}]</span>
-                <span style="color:#94a3b8;min-width:120px">${escapeHtml(item.project)}</span>
-                <span>${escapeHtml(item.text)}</span>
+                <span style="font-weight:600;min-width:100px">[${escapeHtml(a.id)}]</span>
+                <span style="color:#94a3b8;min-width:120px">${escapeHtml(a.project)}</span>
+                <span>${escapeHtml(a.statement)}</span>
             `;
             container.appendChild(div);
         });
     }
 
-    // ── Project Matrix ──
+    // ── プロジェクト一覧 ──
     function renderProjectMatrix() {
         const tbody = document.getElementById('project-matrix');
+
+        // ステータス日本語変換
+        const statusJa = { active: '稼働中', archived: 'アーカイブ', planned: '計画中' };
+        const visJa = { public: '公開', limited: '限定公開', private: '非公開' };
+
         PROJECTS.forEach(p => {
             const cat = CATEGORIES[p.category] || {};
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${escapeHtml(p.displayName)}${p.portalVisible ? ' &#127760;' : ''}</td>
-                <td><span class="status-${p.status}">${p.status}</span></td>
-                <td><span class="vis-${p.visibility}">${p.visibility}</span></td>
+                <td><span class="status-${p.status}">${escapeHtml(statusJa[p.status] || p.status)}</span></td>
+                <td><span class="vis-${p.visibility}">${escapeHtml(visJa[p.visibility] || p.visibility)}</span></td>
                 <td><span class="cat-badge" style="background:${cat.bgColor || '#334155'};color:${cat.textColor || '#e2e8f0'}">${escapeHtml(p.category)}</span></td>
                 <td style="color:#94a3b8;font-size:0.85rem">${escapeHtml(p.note || '')}</td>
             `;
@@ -579,10 +875,13 @@
         });
     }
 
-    // ── Decision Timeline ──
+    // ── 意思決定タイムライン ──
     function renderTimeline() {
         const container = document.getElementById('timeline');
         const sorted = [...DECISIONS].sort((a, b) => b.date.localeCompare(a.date));
+
+        // ステータス日本語変換
+        const statusJa = { accepted: '承認済み', superseded: '更新済み', rejected: '却下' };
 
         sorted.forEach(d => {
             const div = document.createElement('div');
@@ -594,18 +893,18 @@
                     const found = ASSUMPTIONS.find(a => a.id === id);
                     return found ? `${id}: ${escapeHtml(found.statement)}` : id;
                 }).join('<br>');
-                linkedHtml = `<dt>Linked Assumptions</dt><dd>${linked}</dd>`;
+                linkedHtml = `<dt>関連前提条件</dt><dd>${linked}</dd>`;
             }
 
             div.innerHTML = `
                 <div class="tl-header">
                     <span><span class="tl-id">${d.id}</span> <span class="tl-project">${escapeHtml(d.project)}</span></span>
-                    <span class="tl-date">${d.date} / ${d.status}</span>
+                    <span class="tl-date">${d.date} / ${escapeHtml(statusJa[d.status] || d.status)}</span>
                 </div>
                 <div class="tl-title">${escapeHtml(d.title)}</div>
                 <dl class="timeline-detail">
-                    <dt>Decision</dt><dd>${escapeHtml(d.decision)}</dd>
-                    <dt>Rationale</dt><dd>${escapeHtml(d.rationale)}</dd>
+                    <dt>決定内容</dt><dd>${escapeHtml(d.decision)}</dd>
+                    <dt>根拠</dt><dd>${escapeHtml(d.rationale)}</dd>
                     ${linkedHtml}
                 </dl>
             `;
@@ -617,9 +916,13 @@
     // ── ダッシュボード全体レンダリング ──
     function renderDashboard() {
         clearDashboardDom();
-        document.getElementById('sync-label').textContent = 'Last synced: ' + (EXPORTED_AT || '---');
+        const exportedStr = EXPORTED_AT ? EXPORTED_AT.replace('T', ' ').slice(0, 16) : '---';
+        document.getElementById('sync-label').textContent = '最終同期: ' + exportedStr;
         renderCards();
-        renderAttention();
+        renderFreshness();
+        renderTodayActions();
+        renderQueue();
+        renderAssumptions();
         renderProjectMatrix();
         renderTimeline();
     }
