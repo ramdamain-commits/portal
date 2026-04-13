@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-13 21:07",
+  "exportedAt": "2026-04-13 21:27",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -34,7 +34,7 @@
       "category": "ヘルスケア",
       "repoName": "healthcare",
       "visibility": "limited",
-      "status": "active",
+      "status": "maintenance",
       "publicUrl": "https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367",
       "sourceOfTruth": "docs/health-tracking-system-spec.md",
       "portalVisible": true,
@@ -125,7 +125,7 @@
       "category": "ツール",
       "repoName": null,
       "visibility": "private",
-      "status": "active",
+      "status": "waiting",
       "publicUrl": null,
       "sourceOfTruth": "business-plan-v2.md",
       "portalVisible": false,
@@ -889,13 +889,8 @@
       },
       {
         "project": "portal",
-        "action": "Life Ops Console Phase 3-5 実装（changelog/assumptions拡張/ヘルスチェック）",
+        "action": "Life Ops Console Phase 4-5 実装（ヘルスチェック/ideas/停滞検出）",
         "priority": "NORMAL"
-      },
-      {
-        "project": "setting",
-        "action": "CLAUDE.md セッション終了ルール ステップ4 を仕様書に合わせて更新",
-        "priority": "LOW"
       }
     ],
     "maintenance": "保守・待機: healthcare / kaiserreich-akai-sakura"
@@ -927,6 +922,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-04-13",
+      "project": "portal",
+      "summary": "Life Ops Console Phase 3: dueDate ベース人間アクション表示+changelog 更新履歴+assumptions 拡張"
+    },
     {
       "date": "2026-04-13",
       "project": "portal",
@@ -970,6 +970,160 @@
       "dueDate": "2026-07-31",
       "type": "future",
       "days": 109
+    }
+  ],
+  "projectHealth": [
+    {
+      "project": "ssd-deal-tracker",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "it-passport-training",
+      "lastCommitDate": "2026-04-04",
+      "daysSinceCommit": 9,
+      "declaredStatus": "active",
+      "healthStatus": "idle",
+      "missingDocs": [],
+      "warnings": [
+        "active PJ だが9日更新なし"
+      ]
+    },
+    {
+      "project": "healthcare",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "maintenance",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "magi-system",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "kaiserreich-akai-sakura",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "fp3-training",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "portal",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "ramdamain-commits",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "personal-kb",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "alert",
+      "missingDocs": [
+        "CHANGELOG.md"
+      ],
+      "warnings": [
+        "ドキュメント欠損: CHANGELOG.md"
+      ]
+    },
+    {
+      "project": "rina-salon-plan",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "waiting",
+      "healthStatus": "dormant",
+      "missingDocs": [
+        "CHANGELOG.md"
+      ],
+      "warnings": []
+    },
+    {
+      "project": "setting",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "docs",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "alert",
+      "missingDocs": [
+        "README.md",
+        "CHANGELOG.md"
+      ],
+      "warnings": [
+        "ドキュメント欠損: README.md, CHANGELOG.md"
+      ]
+    },
+    {
+      "project": "menes",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "paradox-game-guides",
+      "lastCommitDate": "2026-04-12",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "alert",
+      "missingDocs": [
+        "CHANGELOG.md"
+      ],
+      "warnings": [
+        "ドキュメント欠損: CHANGELOG.md"
+      ]
+    },
+    {
+      "project": "nagoya-hotel-deals",
+      "lastCommitDate": "2026-04-13",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
     }
   ]
 }

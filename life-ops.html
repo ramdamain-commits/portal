@@ -400,6 +400,44 @@
             display: none;
         }
 
+        /* ── ヘルスドットインジケーター ── */
+        .health-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .health-healthy  { background: #4ade80; }
+        .health-idle     { background: #facc15; }
+        .health-stale    { background: #fb923c; }
+        .health-alert    { background: #ef4444; }
+        .health-dormant  { background: #64748b; }
+        .health-missing  { background: #334155; }
+        .health-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        /* stale/alert 警告バナー */
+        .health-warning-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(249, 115, 22, 0.08);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: #fdba74;
+        }
+        .health-warning-banner .hw-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
         /* ── Dashboard (hidden until data loaded) ── */
         #dashboard { display: none; }
     </style>
@@ -490,6 +528,7 @@
                         <thead>
                             <tr>
                                 <th>プロジェクト</th>
+                                <th>健全性</th>
                                 <th>状態</th>
                                 <th>公開設定</th>
                                 <th>カテゴリ</th>
@@ -772,6 +811,23 @@
         const items = computeTodayActions();
         const container = document.getElementById('today-actions');
 
+        // stale/alert PJ 警告バナー
+        const phData = window._exportData && window._exportData.projectHealth;
+        if (phData) {
+            const troubled = phData.filter(h => h.healthStatus === 'stale' || h.healthStatus === 'alert');
+            if (troubled.length > 0) {
+                const banner = document.createElement('div');
+                banner.className = 'health-warning-banner';
+                const names = troubled.map(h => h.project).join(', ');
+                const detail = troubled.map(h => {
+                    const w = (h.warnings && h.warnings.length > 0) ? h.warnings[0] : h.healthStatus;
+                    return `${escapeHtml(h.project)}: ${escapeHtml(w)}`;
+                }).join(' / ');
+                banner.innerHTML = `<span class="hw-icon">&#9888;</span><span>${troubled.length}\u4EF6\u306EPJ\u304C\u505C\u6EEF\u4E2D \u2014 ${detail}</span>`;
+                container.appendChild(banner);
+            }
+        }
+
         if (items.length === 0) {
             container.innerHTML = '<div class="all-clear">今日は期日アクションなし</div>';
             return;
@@ -1028,14 +1084,26 @@
         const tbody = document.getElementById('project-matrix');
 
         // ステータス日本語変換
-        const statusJa = { active: '稼働中', archived: 'アーカイブ', planned: '計画中' };
+        const statusJa = { active: '稼働中', archived: 'アーカイブ', planned: '計画中', maintenance: '保守', waiting: '待機' };
         const visJa = { public: '公開', limited: '限定公開', private: '非公開' };
+        const healthJa = { healthy: '良好', idle: '低活動', stale: '停滞', alert: '要注意', dormant: '休止', missing: '不明' };
+
+        // projectHealth をマップ化
+        const healthMap = {};
+        const phData = window._exportData && window._exportData.projectHealth;
+        if (phData) {
+            phData.forEach(h => { healthMap[h.project] = h; });
+        }
 
         PROJECTS.forEach(p => {
             const cat = CATEGORIES[p.category] || {};
+            const h = healthMap[p.id] || {};
+            const hs = h.healthStatus || 'missing';
+            const daysInfo = h.daysSinceCommit != null ? ` (${h.daysSinceCommit}日前)` : '';
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>${escapeHtml(p.displayName)}${p.portalVisible ? ' &#127760;' : ''}</td>
+                <td><span class="health-dot health-${hs}"></span><span class="health-label">${escapeHtml(healthJa[hs] || hs)}${escapeHtml(daysInfo)}</span></td>
                 <td><span class="status-${p.status}">${escapeHtml(statusJa[p.status] || p.status)}</span></td>
                 <td><span class="vis-${p.visibility}">${escapeHtml(visJa[p.visibility] || p.visibility)}</span></td>
                 <td><span class="cat-badge" style="background:${cat.bgColor || '#334155'};color:${cat.textColor || '#e2e8f0'}">${escapeHtml(p.category)}</span></td>
