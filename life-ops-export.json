@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-13 21:35",
+  "exportedAt": "2026-04-13 21:36",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -968,6 +968,16 @@
       "date": "2026-04-13",
       "project": "setting",
       "summary": "Life Ops Console 再設計仕様書 v3 作成（掲載ルール・ヘルスチェック・段階リリース計画）"
+    },
+    {
+      "date": "2026-04-13",
+      "project": "portal",
+      "summary": "Life Ops Console Phase 4-5: ヘルスチェック自動スキャン+TASKS.md停滞検出を実装・デプロイ"
+    },
+    {
+      "date": "2026-04-13",
+      "project": "setting",
+      "summary": "projects.json ステータス修正（healthcare→maintenance, rina-salon-plan→waiting）"
     }
   ],
   "humanActions": [
