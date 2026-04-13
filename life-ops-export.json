@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-13 21:01",
+  "exportedAt": "2026-04-13 21:07",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -220,6 +220,8 @@
       "reviewDate": "2026-06-30",
       "owner": "璃奈",
       "status": "open",
+      "actionRequired": true,
+      "dueDate": "2026-06-30",
       "note": "next-actions.md で最優先タスク。2026年6月までに確認予定"
     },
     {
@@ -297,6 +299,8 @@
       "reviewDate": "2026-04-30",
       "owner": "ramda",
       "status": "open",
+      "actionRequired": true,
+      "dueDate": "2026-04-30",
       "note": "申請手続きが必要。未実施"
     },
     {
@@ -308,6 +312,8 @@
       "reviewDate": "2026-06-30",
       "owner": "ramda",
       "status": "open",
+      "actionRequired": true,
+      "dueDate": "2026-06-30",
       "note": "準備チェックリスト作成済み。実行時期は評価サイクルに依存"
     },
     {
@@ -319,6 +325,8 @@
       "reviewDate": "2026-07-31",
       "owner": "ramda",
       "status": "open",
+      "actionRequired": true,
+      "dueDate": "2026-07-31",
       "note": "カード見直しの判断トリガー。IC統合への移行が必要"
     },
     {
@@ -878,6 +886,16 @@
         "project": "ssd-deal-tracker",
         "action": "NAND相場安定後に target_price 再調整（5製品）",
         "priority": "LOW"
+      },
+      {
+        "project": "portal",
+        "action": "Life Ops Console Phase 3-5 実装（changelog/assumptions拡張/ヘルスチェック）",
+        "priority": "NORMAL"
+      },
+      {
+        "project": "setting",
+        "action": "CLAUDE.md セッション終了ルール ステップ4 を仕様書に合わせて更新",
+        "priority": "LOW"
       }
     ],
     "maintenance": "保守・待機: healthcare / kaiserreich-akai-sakura"
@@ -907,5 +925,51 @@
       "bgColor": "rgba(234, 88, 12, 0.25)",
       "textColor": "#fb923c"
     }
-  }
+  },
+  "changelog": [
+    {
+      "date": "2026-04-13",
+      "project": "portal",
+      "summary": "Life Ops Console Phase 1-2: 3ゾーン構造+UI日本語化+TASKS.mdパース+タスク表示を実装・デプロイ"
+    },
+    {
+      "date": "2026-04-13",
+      "project": "setting",
+      "summary": "Life Ops Console 再設計仕様書 v3 作成（掲載ルール・ヘルスチェック・段階リリース計画）"
+    }
+  ],
+  "humanActions": [
+    {
+      "id": "PKB-001",
+      "project": "personal-kb",
+      "text": "iDeCo を2026年4月に再開予定",
+      "dueDate": "2026-04-30",
+      "type": "upcoming",
+      "days": 17
+    },
+    {
+      "id": "RSP-001",
+      "project": "rina-salon-plan",
+      "text": "退職後の競業避止条項の有無が未確認。計画全体の前提を左右する最重要ポイント",
+      "dueDate": "2026-06-30",
+      "type": "future",
+      "days": 78
+    },
+    {
+      "id": "PKB-002",
+      "project": "personal-kb",
+      "text": "2026年5〜6月の評価時期に年収交渉を実施予定",
+      "dueDate": "2026-06-30",
+      "type": "future",
+      "days": 78
+    },
+    {
+      "id": "PKB-003",
+      "project": "personal-kb",
+      "text": "JR EX-ICカード新規発行が2026年夏に終了、サービス自体は2027年夏に終了",
+      "dueDate": "2026-07-31",
+      "type": "future",
+      "days": 109
+    }
+  ]
 }

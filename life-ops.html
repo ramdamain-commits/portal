@@ -678,28 +678,37 @@
         if (header) header.setAttribute('aria-expanded', String(!isCollapsed));
     }
 
-    // ── 今日やること算出（期日30日以内の前提条件） ──
+    // ── 今日やること算出（humanActions: dueDate ベース、フォールバック: reviewDate 30日以内） ──
     function computeTodayActions() {
+        const data = window._exportData;
+
+        // humanActions が PS1 から提供されている場合はそちらを優先
+        if (data && data.humanActions && data.humanActions.length > 0) {
+            // 30日以内 + overdue のみ表示（future は判断の根拠ゾーンに残す）
+            return data.humanActions
+                .filter(h => h.type !== 'future')
+                .map(h => ({
+                    id: h.id, project: h.project, text: h.text,
+                    dueDate: h.dueDate,
+                    type: h.type === 'overdue' ? 'overdue' : (h.type === 'urgent' ? 'urgent' : 'due'),
+                    days: h.days,
+                    sort: h.type === 'overdue' ? h.days : (h.type === 'urgent' ? h.days + 100 : h.days + 1000)
+                }))
+                .sort((a, b) => a.sort - b.sort);
+        }
+
+        // フォールバック: actionRequired + dueDate をクライアント側で算出
         const items = [];
-
-        ASSUMPTIONS.filter(a => a.status === 'open' && a.reviewDate).forEach(a => {
-            const days = daysDiff(a.reviewDate);
+        ASSUMPTIONS.filter(a => a.status === 'open' && a.actionRequired && a.dueDate).forEach(a => {
+            const days = daysDiff(a.dueDate);
             if (days < 0) {
-                items.push({ id: a.id, project: a.project, text: a.statement, type: 'overdue', days: days, sort: days });
+                items.push({ id: a.id, project: a.project, text: a.statement, dueDate: a.dueDate, type: 'overdue', days, sort: days });
+            } else if (days <= 7) {
+                items.push({ id: a.id, project: a.project, text: a.statement, dueDate: a.dueDate, type: 'urgent', days, sort: days + 100 });
             } else if (days <= 30) {
-                items.push({ id: a.id, project: a.project, text: a.statement, type: 'due', days: days, sort: days + 1000 });
+                items.push({ id: a.id, project: a.project, text: a.statement, dueDate: a.dueDate, type: 'due', days, sort: days + 1000 });
             }
         });
-
-        DECISIONS.filter(d => d.status === 'accepted' && d.reviewDate).forEach(d => {
-            const days = daysDiff(d.reviewDate);
-            if (days < 0) {
-                items.push({ id: d.id, project: d.project, text: d.title, type: 'overdue', days: days, sort: days });
-            } else if (days <= 30) {
-                items.push({ id: d.id, project: d.project, text: d.title, type: 'due', days: days, sort: days + 1000 });
-            }
-        });
-
         items.sort((a, b) => a.sort - b.sort);
         return items;
     }
@@ -733,10 +742,21 @@
         return items;
     }
 
-    // ── 鮮度インジケーター描画 ──
+    // ── 鮮度インジケーター描画（changelog 最新日付ベース） ──
     function renderFreshness() {
-        const daysAgo = exportedDaysAgo();
         const container = document.getElementById('freshness-indicator');
+
+        // changelog の最新エントリ日付を優先、なければ export 日付
+        let daysAgo = null;
+        const clData = window._exportData && window._exportData.changelog;
+        if (clData && clData.length > 0) {
+            const sorted = [...clData].sort((a, b) => b.date.localeCompare(a.date));
+            const [y, m, d] = sorted[0].date.split('-').map(Number);
+            const latest = new Date(y, m - 1, d);
+            daysAgo = Math.floor((today - latest) / (1000 * 60 * 60 * 24));
+        } else {
+            daysAgo = exportedDaysAgo();
+        }
         if (daysAgo === null) return;
 
         const isStale = daysAgo >= 7;
@@ -759,22 +779,29 @@
 
         items.forEach(item => {
             const div = document.createElement('div');
-            div.className = 'attention-item' + (item.type === 'overdue' ? ' overdue' : '');
+            const isOverdue = item.type === 'overdue';
+            const isUrgent = item.type === 'urgent';
+            div.className = 'attention-item' + (isOverdue ? ' overdue' : '');
 
             let badgeClass, badgeText;
-            if (item.type === 'overdue') {
+            if (isOverdue) {
                 badgeClass = 'badge-overdue';
                 badgeText = `${Math.abs(item.days)}日期限超過`;
+            } else if (isUrgent) {
+                badgeClass = 'badge-overdue';
+                badgeText = item.days === 0 ? '本日期限' : `残${item.days}日`;
             } else {
                 badgeClass = 'badge-due';
-                badgeText = item.days === 0 ? '本日期限' : `残${item.days}日`;
+                badgeText = `残${item.days}日`;
             }
+
+            const dueDateStr = item.dueDate ? ` <span style="color:#64748b;font-size:0.8rem">(期限: ${escapeHtml(item.dueDate)})</span>` : '';
 
             div.innerHTML = `
                 <span class="badge ${badgeClass}">${badgeText}</span>
                 <span style="font-weight:600;min-width:100px">[${escapeHtml(item.id)}]</span>
                 <span style="color:#94a3b8;min-width:120px">${escapeHtml(item.project)}</span>
-                <span>${escapeHtml(item.text)}</span>
+                <span>${escapeHtml(item.text)}${dueDateStr}</span>
             `;
             container.appendChild(div);
         });
@@ -830,6 +857,59 @@
             placeholder.className = 'placeholder-block';
             placeholder.innerHTML = '\u30BF\u30B9\u30AF\u30C7\u30FC\u30BF\u304C\u3042\u308A\u307E\u305B\u3093';
             container.appendChild(placeholder);
+        }
+
+        // 更新履歴（changelog）
+        const clData = window._exportData && window._exportData.changelog;
+        if (clData && clData.length > 0) {
+            const clSection = document.createElement('div');
+            clSection.className = 'section';
+            clSection.style.marginTop = '16px';
+            const clH3 = document.createElement('h3');
+            clH3.textContent = '更新履歴';
+            clSection.appendChild(clH3);
+
+            const sorted = [...clData].sort((a, b) => b.date.localeCompare(a.date));
+            const showCount = Math.min(5, sorted.length);
+            for (let i = 0; i < showCount; i++) {
+                const e = sorted[i];
+                const row = document.createElement('div');
+                row.className = 'task-item';
+                row.innerHTML = `
+                    <span style="color:#64748b;font-size:0.8rem;min-width:90px">${escapeHtml(e.date)}</span>
+                    <span class="task-project">${escapeHtml(e.project)}</span>
+                    <span class="task-action">${escapeHtml(e.summary)}</span>
+                `;
+                clSection.appendChild(row);
+            }
+
+            if (sorted.length > 5) {
+                const toggle = document.createElement('button');
+                toggle.className = 'task-section-toggle';
+                toggle.textContent = `\u904E\u53BB\u306E\u5C65\u6B74 (+${sorted.length - 5}\u4EF6) \u25B6`;
+                const extra = document.createElement('div');
+                extra.style.display = 'none';
+                for (let i = 5; i < sorted.length; i++) {
+                    const e = sorted[i];
+                    const row = document.createElement('div');
+                    row.className = 'task-item';
+                    row.innerHTML = `
+                        <span style="color:#64748b;font-size:0.8rem;min-width:90px">${escapeHtml(e.date)}</span>
+                        <span class="task-project">${escapeHtml(e.project)}</span>
+                        <span class="task-action">${escapeHtml(e.summary)}</span>
+                    `;
+                    extra.appendChild(row);
+                }
+                toggle.addEventListener('click', () => {
+                    const open = extra.style.display !== 'none';
+                    extra.style.display = open ? 'none' : 'block';
+                    toggle.textContent = `\u904E\u53BB\u306E\u5C65\u6B74 (+${sorted.length - 5}\u4EF6) ${open ? '\u25B6' : '\u25BC'}`;
+                });
+                clSection.appendChild(toggle);
+                clSection.appendChild(extra);
+            }
+
+            container.appendChild(clSection);
         }
 
         // 要注意アイテム（Findings + 警告）
@@ -907,7 +987,8 @@
     // ── 前提条件リスト描画 ──
     function renderAssumptions() {
         const container = document.getElementById('assumptions-list');
-        const open = ASSUMPTIONS.filter(a => a.status === 'open');
+        // actionRequired: true のものは「今日やること」ゾーンに昇格済みなので除外
+        const open = ASSUMPTIONS.filter(a => a.status === 'open' && !a.actionRequired);
 
         if (open.length === 0) {
             container.innerHTML = '<div style="color:#64748b;font-size:0.85rem">未対応の前提条件はありません</div>';
