@@ -260,6 +260,15 @@
             color: #64748b;
             font-style: italic;
         }
+        .task-stale-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 3px;
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            margin-left: 6px;
+        }
 
         /* ── Table ── */
         table { width: 100%; border-collapse: collapse; }
@@ -574,10 +583,14 @@
     function createTaskItem(task, level) {
         const div = document.createElement('div');
         div.className = 'task-item';
+        // staleTasks から停滞情報を取得
+        const staleData = window._exportData && window._exportData.staleTasks;
+        const staleInfo = staleData && staleData.find(s => s.project === task.project && s.action === task.action);
+        const staleBadge = staleInfo ? `<span class="task-stale-badge">${escapeHtml(String(staleInfo.daysSince))}\u65E5\u505C\u6EEF</span>` : '';
         div.innerHTML = `
             <span class="task-badge task-badge-${level}">${escapeHtml(task.priority)}</span>
             <span class="task-project">${escapeHtml(task.project)}</span>
-            <span class="task-action">${escapeHtml(task.action)}</span>
+            <span class="task-action">${escapeHtml(task.action)}${staleBadge}</span>
         `;
         return div;
     }
@@ -828,10 +841,27 @@
             }
         }
 
-        if (items.length === 0) {
-            container.innerHTML = '<div class="all-clear">今日は期日アクションなし</div>';
+        // 停滞タスクを「今日やること」に浮上
+        const staleData = window._exportData && window._exportData.staleTasks;
+        if (staleData && staleData.length > 0) {
+            staleData.forEach(st => {
+                const div = document.createElement('div');
+                div.className = 'attention-item';
+                div.innerHTML = `
+                    <span class="badge badge-warning">${st.daysSince}\u65E5\u505C\u6EEF</span>
+                    <span style="font-weight:600;min-width:100px">[HIGH]</span>
+                    <span style="color:#94a3b8;min-width:120px">${escapeHtml(st.project)}</span>
+                    <span>${escapeHtml(st.action)} <span style="color:#64748b;font-size:0.8rem">(\u6700\u7D42\u5909\u66F4: ${escapeHtml(st.lastChanged)})</span></span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        if (items.length === 0 && (!staleData || staleData.length === 0)) {
+            container.innerHTML = '<div class="all-clear">\u4ECA\u65E5\u306F\u671F\u65E5\u30A2\u30AF\u30B7\u30E7\u30F3\u306A\u3057</div>';
             return;
         }
+        if (items.length === 0) return;
 
         items.forEach(item => {
             const div = document.createElement('div');
