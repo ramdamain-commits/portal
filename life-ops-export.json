@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-13 04:17",
+  "exportedAt": "2026-04-13 21:01",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -682,6 +682,29 @@
       "supersededBy": null,
       "owner": "ramda",
       "note": "対象PJ: healthcare, ssd-deal-tracker。portal CLAUDE.md に auto-push ルールも追加済み"
+    },
+    {
+      "id": "DEC-016",
+      "project": "setting",
+      "title": "Life Ops Console を3ゾーン構造の総合ダッシュボードに再設計",
+      "decision": "Life Ops Console を「JSONビューア」から「個人PJ群の司令塔」に再定義。3ゾーン構造（今日やること/今週のタスク/判断の根拠）+ UI全面日本語化 + TASKS.mdパース統合を採用",
+      "context": "ユーザーから「目的が不明確」「更新が少ない」「英語UIが分かりにくい」と不満。4名パネル議論（推進派・批判派・ユーザー代弁者・技術審査官）で方向性を検討し、3ゾーン構造に収束",
+      "alternatives": [
+        "A: 5機能同時実装（過剰設計リスクで却下）",
+        "B: 人間アクション専用リストのみ追加（批判派提案、スコープ不足で却下）",
+        "C: git hook による自動エクスポート（Windows環境リスクで却下）"
+      ],
+      "rationale": "確認頻度で情報を分離（毎日/週次/月次）し、初期表示1スクロール以内を設計原則とした。段階リリース（Phase 1-5）で過剰設計リスクを回避。TASKS.mdを正本としてパース読取専用にすることで二重管理を防止",
+      "status": "accepted",
+      "date": "2026-04-13",
+      "reviewDate": "2026-07-13",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-009",
+        "DEC-013",
+        "DEC-014"
+      ],
+      "note": "仕様書: setting/docs/life-ops-console-spec.md。Phase 1-2 実装済み、Phase 3-5 は次セッション以降"
     }
   ],
   "reviews": [
