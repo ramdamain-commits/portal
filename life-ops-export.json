@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-13 21:32",
+  "exportedAt": "2026-04-13 21:35",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -713,6 +713,23 @@
         "DEC-014"
       ],
       "note": "仕様書: setting/docs/life-ops-console-spec.md。Phase 1-2 実装済み、Phase 3-5 は次セッション以降"
+    },
+    {
+      "id": "DEC-017",
+      "title": "サブエージェントのモデルルーティングを構造的に制御",
+      "context": "token-optimizer のトレンド分析で Opus 100%（980M tokens/週）が判明。CLAUDE.md の model=sonnet ルールが形骸化していた。5名パネル議論（推進派・批判派・技術審査官・財務審査官・DX審査官、平均 3.2/5）で方針決定",
+      "alternatives": [
+        "A: CLAUDE.md のルール強化のみ（形骸化の構造問題が残るため却下）",
+        "B: 3層構造（Opus/Sonnet/Haiku）を一括導入（過剰複雑との批判で段階的に）",
+        "C: カスタムエージェント frontmatter で model: sonnet を固定（採用）"
+      ],
+      "rationale": "ルールで縛るのではなく構造（frontmatter）で縛ることで、指定漏れを防止。Phase 1 で 2層（Opus/Sonnet）から開始し、効果測定後に Haiku 層を追加する段階アプローチ",
+      "status": "accepted",
+      "date": "2026-04-13",
+      "reviewDate": "2026-05-13",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "note": "カスタムエージェント4種（explorer/researcher/implementer/reviewer）を ~/.claude/agents/ に配置。セッション終了ルールは /session-end コマンドに分離。効果測定は次週の token-optimizer trends で確認"
     }
   ],
   "reviews": [
@@ -879,8 +896,8 @@
       },
       {
         "project": "nagoya-hotel-deals",
-        "action": "Wave2 recentAvgPrice 蓄積後に target_price 再設定",
-        "priority": "LOW"
+        "action": "全タスク完了・保守フェーズ（v0.4.0）",
+        "priority": "—"
       },
       {
         "project": "ssd-deal-tracker",
@@ -889,8 +906,13 @@
       },
       {
         "project": "portal",
-        "action": "Life Ops Console Phase 4-5 実装（ヘルスチェック/ideas/停滞検出）",
-        "priority": "NORMAL"
+        "action": "Life Ops Console Phase 4-5 完了。次: Phase 6 検討 or デプロイ確認",
+        "priority": "LOW"
+      },
+      {
+        "project": "setting",
+        "action": "30b530d630a830fc30b830a730f330c8904b752865395584 Phase 2-3 52b9679c6e2c5b9aFf086b219031 trends 78ba8a8d2192Haiku5c64691c8a0eFf09",
+        "priority": "LOW"
       }
     ],
     "maintenance": "保守・待機: healthcare / kaiserreich-akai-sakura"
@@ -922,6 +944,16 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-04-13",
+      "project": "nagoya-hotel-deals",
+      "summary": "v0.4.0: GASアラート改善（ホテル単位クールダウン+通知上限+グルーピング）+ チャート複数ホテル比較 + ダークモード。全タスク完了・保守フェーズ移行"
+    },
+    {
+      "date": "2026-04-13",
+      "project": "setting",
+      "summary": "サブエージェント運用改善: カスタムエージェント4種作成（model:sonnet固定）+ CLAUDE.md再構成 + session-endコマンド化"
+    },
     {
       "date": "2026-04-13",
       "project": "portal",
