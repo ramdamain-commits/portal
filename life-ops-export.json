@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 21:28",
+  "exportedAt": "2026-04-15 21:32",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1073,8 +1073,8 @@
     },
     {
       "project": "portal",
-      "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1115,8 +1115,8 @@
     },
     {
       "project": "setting",
-      "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1124,8 +1124,8 @@
     },
     {
       "project": "docs",
-      "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "alert",
       "missingDocs": [
@@ -1138,8 +1138,8 @@
     },
     {
       "project": "menes",
-      "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
