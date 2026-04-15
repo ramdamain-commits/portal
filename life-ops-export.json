@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 21:44",
+  "exportedAt": "2026-04-15 21:55",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -906,7 +906,7 @@
       },
       {
         "project": "portal",
-        "action": "Life Ops Console Phase 1-5 完了+同期サーバー追加済。次: Phase 6 検討",
+        "action": "ideas統合完了+同期スタートアップ登録済。次: 可視化強化(Chart.js)",
         "priority": "LOW"
       },
       {
@@ -998,6 +998,16 @@
       "date": "2026-04-15",
       "project": "portal",
       "summary": "データ更新ボタンにローカル同期サーバー連携追加（フォールバック付き）"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "portal",
+      "summary": "Life Ops Console ideas統合: projects.jsonにideas配列追加+ダッシュボードにアイデア候補セクション実装"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "setting",
+      "summary": "同期サーバーのWindowsスタートアップ登録（LifeOpsSyncServer.lnk、最小化起動）"
     }
   ],
   "humanActions": [
@@ -1114,13 +1124,9 @@
       "lastCommitDate": "2026-04-12",
       "daysSinceCommit": 3,
       "declaredStatus": "active",
-      "healthStatus": "alert",
-      "missingDocs": [
-        "CHANGELOG.md"
-      ],
-      "warnings": [
-        "ドキュメント欠損: CHANGELOG.md"
-      ]
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
     },
     {
       "project": "rina-salon-plan",
