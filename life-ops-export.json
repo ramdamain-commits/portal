@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 21:32",
+  "exportedAt": "2026-04-15 21:44",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -906,7 +906,7 @@
       },
       {
         "project": "portal",
-        "action": "Life Ops Console Phase 4-5 完了。次: Phase 6 検討 or デプロイ確認",
+        "action": "Life Ops Console Phase 1-5 完了+同期サーバー追加済。次: Phase 6 検討",
         "priority": "LOW"
       },
       {
@@ -945,6 +945,16 @@
   },
   "changelog": [
     {
+      "date": "2026-04-15",
+      "project": "healthcare",
+      "summary": "体重データ連続欠落時の警告表示を追加（3日以上missing_weightでサマリカードに黄色警告）。eufy→Health Connect連携切断の調査・復旧も実施"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "setting",
+      "summary": "Claude Code 許可設定をワイルドカード方式に整理（個別列挙→MCPサーバー単位、Agent/TodoWrite/Context7等の不足ツール追加）"
+    },
+    {
       "date": "2026-04-13",
       "project": "nagoya-hotel-deals",
       "summary": "v0.4.0: GASアラート改善（ホテル単位クールダウン+通知上限+グルーピング）+ チャート複数ホテル比較 + ダークモード。全タスク完了・保守フェーズ移行"
@@ -978,6 +988,16 @@
       "date": "2026-04-13",
       "project": "setting",
       "summary": "projects.json ステータス修正（healthcare→maintenance, rina-salon-plan→waiting）"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "setting",
+      "summary": "Life Ops 同期サーバー追加（localhost:8377）+ /sync コマンド + 毎朝スケジュールタスク"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "portal",
+      "summary": "データ更新ボタンにローカル同期サーバー連携追加（フォールバック付き）"
     }
   ],
   "humanActions": [
@@ -1037,8 +1057,8 @@
     },
     {
       "project": "healthcare",
-      "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -1166,6 +1186,23 @@
       "healthStatus": "healthy",
       "missingDocs": [],
       "warnings": []
+    }
+  ],
+  "ideas": [
+    {
+      "title": "ideas.json 統合（Phase 5）",
+      "status": "検討中",
+      "note": "projects.json に ideas 配列として実装。本エントリ自体がサンプル"
+    },
+    {
+      "title": "通知機能（GASメール版）",
+      "status": "構想",
+      "note": "期限切れタスク・ヘルスケアリマインダーをGASトリガーで通知"
+    },
+    {
+      "title": "分析・可視化強化（Chart.js）",
+      "status": "構想",
+      "note": "トレンドグラフ、週次サマリーをダッシュボードに追加"
     }
   ]
 }

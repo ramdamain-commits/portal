@@ -978,6 +978,48 @@
             container.appendChild(placeholder);
         }
 
+        // アイデア候補（ideas）
+        const ideasData = window._exportData && window._exportData.ideas;
+        if (ideasData && ideasData.length > 0) {
+            const ideasSection = document.createElement('div');
+            ideasSection.className = 'section';
+            ideasSection.style.marginTop = '16px';
+
+            const statusColors = {
+                '\u69CB\u60F3': { bg: 'rgba(124,58,237,0.2)', text: '#a78bfa' },
+                '\u691C\u8A0E\u4E2D': { bg: 'rgba(234,179,8,0.2)', text: '#facc15' },
+                '\u4FDD\u7559': { bg: 'rgba(100,116,139,0.2)', text: '#94a3b8' }
+            };
+
+            const toggle = document.createElement('button');
+            toggle.className = 'task-section-toggle';
+            toggle.textContent = `\u30A2\u30A4\u30C7\u30A2\u5019\u88DC (${ideasData.length}\u4EF6) \u25B6`;
+            const list = document.createElement('div');
+            list.style.display = 'none';
+
+            ideasData.forEach(idea => {
+                const row = document.createElement('div');
+                row.className = 'task-item';
+                const colors = statusColors[idea.status] || statusColors['\u4FDD\u7559'];
+                row.innerHTML = `
+                    <span class="badge" style="background:${colors.bg};color:${colors.text};font-size:0.7rem;padding:2px 8px;border-radius:4px;min-width:50px;text-align:center">${escapeHtml(idea.status)}</span>
+                    <span class="task-action" style="flex:1">${escapeHtml(idea.title)}</span>
+                    ${idea.note ? `<span style="color:#64748b;font-size:0.8rem;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(idea.note)}</span>` : ''}
+                `;
+                list.appendChild(row);
+            });
+
+            toggle.addEventListener('click', () => {
+                const open = list.style.display !== 'none';
+                list.style.display = open ? 'none' : 'block';
+                toggle.textContent = `\u30A2\u30A4\u30C7\u30A2\u5019\u88DC (${ideasData.length}\u4EF6) ${open ? '\u25B6' : '\u25BC'}`;
+            });
+
+            ideasSection.appendChild(toggle);
+            ideasSection.appendChild(list);
+            container.appendChild(ideasSection);
+        }
+
         // 更新履歴（changelog）
         const clData = window._exportData && window._exportData.changelog;
         if (clData && clData.length > 0) {
