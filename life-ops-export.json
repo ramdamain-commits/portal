@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 23:04",
+  "exportedAt": "2026-04-15 23:06",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -953,6 +953,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-04-15",
+      "project": "setting",
+      "summary": "同期サーバーのスタートアップ登録修正（CMD の pause 除去＋ショートカット再作成・最小化起動）"
+    },
     {
       "date": "2026-04-15",
       "project": "healthcare",
