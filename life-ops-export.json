@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 21:55",
+  "exportedAt": "2026-04-15 22:01",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1134,9 +1134,7 @@
       "daysSinceCommit": 3,
       "declaredStatus": "waiting",
       "healthStatus": "dormant",
-      "missingDocs": [
-        "CHANGELOG.md"
-      ],
+      "missingDocs": [],
       "warnings": []
     },
     {
@@ -1155,11 +1153,10 @@
       "declaredStatus": "active",
       "healthStatus": "alert",
       "missingDocs": [
-        "README.md",
         "CHANGELOG.md"
       ],
       "warnings": [
-        "ドキュメント欠損: README.md, CHANGELOG.md"
+        "ドキュメント欠損: CHANGELOG.md"
       ]
     },
     {
@@ -1176,13 +1173,9 @@
       "lastCommitDate": "2026-04-12",
       "daysSinceCommit": 3,
       "declaredStatus": "active",
-      "healthStatus": "alert",
-      "missingDocs": [
-        "CHANGELOG.md"
-      ],
-      "warnings": [
-        "ドキュメント欠損: CHANGELOG.md"
-      ]
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
     },
     {
       "project": "nagoya-hotel-deals",
