@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 22:01",
+  "exportedAt": "2026-04-15 22:04",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -715,6 +715,15 @@
       "note": "仕様書: setting/docs/life-ops-console-spec.md。Phase 1-2 実装済み、Phase 3-5 は次セッション以降"
     },
     {
+      "id": "DEC-018",
+      "date": "2026-04-15",
+      "title": "独立/半独立PJにREADME+CHANGELOG必須化",
+      "status": "accepted",
+      "context": "Life Ops Consoleで3PJのドキュメント欠損警告が出た。放置すると新規PJでもドキュメントが抜ける",
+      "decision": "全独立/半独立PJにREADME.md+CHANGELOG.mdを必須とし、CLAUDE.mdにルール追記",
+      "consequences": "新規repo作成時に初回コミットで両ファイルを含める運用"
+    },
+    {
       "id": "DEC-017",
       "title": "サブエージェントのモデルルーティングを構造的に制御",
       "context": "token-optimizer のトレンド分析で Opus 100%（980M tokens/週）が判明。CLAUDE.md の model=sonnet ルールが形骸化していた。5名パネル議論（推進派・批判派・技術審査官・財務審査官・DX審査官、平均 3.2/5）で方針決定",
@@ -906,12 +915,12 @@
       },
       {
         "project": "portal",
-        "action": "ideas統合完了+同期スタートアップ登録済。次: 可視化強化(Chart.js)",
+        "action": "Life Ops Console Phase 1-5 完了+同期サーバー連携追加済。次: Phase 6 検討",
         "priority": "LOW"
       },
       {
         "project": "setting",
-        "action": "30b530d630a830fc30b830a730f330c8904b752865395584 Phase 2-3 52b9679c6e2c5b9aFf086b219031 trends 78ba8a8d2192Haiku5c64691c8a0eFf09",
+        "action": "Life Ops Console 同期サーバー追加済。Phase 2-5 実装完了（trends 確認→Haiku 対応は保留）",
         "priority": "LOW"
       }
     ],
@@ -1008,6 +1017,11 @@
       "date": "2026-04-15",
       "project": "setting",
       "summary": "同期サーバーのWindowsスタートアップ登録（LifeOpsSyncServer.lnk、最小化起動）"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "workspace",
+      "summary": "全PJのCHANGELOG/README欠損を一括修正（新規3件+更新9件）+ドキュメント必須ルールをCLAUDE.mdに追加"
     }
   ],
   "humanActions": [
