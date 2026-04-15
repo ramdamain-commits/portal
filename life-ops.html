@@ -474,6 +474,7 @@
                 <span class="timestamp" id="sync-label"></span>
                 <button class="btn" id="btn-fetch">再取得</button>
                 <button class="btn" id="btn-refresh">データ更新</button>
+                <span class="sync-status" id="sync-status" style="display:none; font-size:.75rem; margin-left:.3rem;"></span>
                 <button class="btn btn-danger" id="btn-clear">データ消去</button>
             </div>
         </div>
@@ -702,7 +703,39 @@
     });
 
     const fileRefresh = document.getElementById('file-refresh');
-    document.getElementById('btn-refresh').addEventListener('click', () => fileRefresh.click());
+    const syncStatus = document.getElementById('sync-status');
+    const SYNC_SERVER = 'http://localhost:8377';
+
+    document.getElementById('btn-refresh').addEventListener('click', async () => {
+        // まず localhost 同期サーバーを試行
+        syncStatus.textContent = '同期中...';
+        syncStatus.style.display = 'inline';
+        syncStatus.style.color = '#ffa500';
+        try {
+            const res = await fetch(SYNC_SERVER + '/sync', {
+                method: 'POST',
+                signal: AbortSignal.timeout(60000)
+            });
+            const data = await res.json();
+            if (data.ok) {
+                syncStatus.textContent = '同期完了';
+                syncStatus.style.color = '#4caf50';
+                // 再取得して画面反映
+                setTimeout(async () => {
+                    await fetchExport();
+                    syncStatus.style.display = 'none';
+                }, 1500);
+                return;
+            }
+            throw new Error(data.error || 'sync failed');
+        } catch (e) {
+            console.warn('[sync] ローカルサーバー未検出、ファイル選択にフォールバック:', e.message);
+            syncStatus.textContent = 'サーバー未検出';
+            syncStatus.style.color = '#ef5350';
+            setTimeout(() => { syncStatus.style.display = 'none'; }, 2000);
+            fileRefresh.click();
+        }
+    });
     fileRefresh.addEventListener('change', (e) => handleImportFile(e.target.files[0]));
 
     document.getElementById('btn-clear').addEventListener('click', () => {
