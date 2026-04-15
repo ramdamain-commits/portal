@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 22:04",
+  "exportedAt": "2026-04-15 23:04",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1061,8 +1061,8 @@
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
-      "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1070,14 +1070,12 @@
     },
     {
       "project": "it-passport-training",
-      "lastCommitDate": "2026-04-04",
-      "daysSinceCommit": 11,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが11日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "healthcare",
@@ -1090,8 +1088,8 @@
     },
     {
       "project": "magi-system",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1099,8 +1097,8 @@
     },
     {
       "project": "kaiserreich-akai-sakura",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1108,8 +1106,8 @@
     },
     {
       "project": "fp3-training",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1126,8 +1124,8 @@
     },
     {
       "project": "ramdamain-commits",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1135,8 +1133,8 @@
     },
     {
       "project": "personal-kb",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1144,8 +1142,8 @@
     },
     {
       "project": "rina-salon-plan",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "waiting",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -1184,8 +1182,8 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-04-12",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
