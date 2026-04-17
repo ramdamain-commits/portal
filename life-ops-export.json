@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-15 23:06",
+  "exportedAt": "2026-04-17 22:28",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1036,7 +1036,7 @@
       "text": "iDeCo を2026年4月に再開予定",
       "dueDate": "2026-04-30",
       "type": "upcoming",
-      "days": 15
+      "days": 13
     },
     {
       "id": "RSP-001",
@@ -1044,7 +1044,7 @@
       "text": "退職後の競業避止条項の有無が未確認。計画全体の前提を左右する最重要ポイント",
       "dueDate": "2026-06-30",
       "type": "future",
-      "days": 76
+      "days": 74
     },
     {
       "id": "PKB-002",
@@ -1052,7 +1052,7 @@
       "text": "2026年5〜6月の評価時期に年収交渉を実施予定",
       "dueDate": "2026-06-30",
       "type": "future",
-      "days": 76
+      "days": 74
     },
     {
       "id": "PKB-003",
@@ -1060,14 +1060,14 @@
       "text": "JR EX-ICカード新規発行が2026年夏に終了、サービス自体は2027年夏に終了",
       "dueDate": "2026-07-31",
       "type": "future",
-      "days": 107
+      "days": 105
     }
   ],
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1076,7 +1076,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1085,7 +1085,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -1094,7 +1094,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1103,7 +1103,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1112,7 +1112,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1121,7 +1121,7 @@
     {
       "project": "portal",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1130,7 +1130,7 @@
     {
       "project": "ramdamain-commits",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1139,7 +1139,7 @@
     {
       "project": "personal-kb",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1148,7 +1148,7 @@
     {
       "project": "rina-salon-plan",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "waiting",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -1157,7 +1157,7 @@
     {
       "project": "setting",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1166,7 +1166,7 @@
     {
       "project": "docs",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "alert",
       "missingDocs": [
@@ -1179,7 +1179,7 @@
     {
       "project": "menes",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1188,7 +1188,7 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1197,7 +1197,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 2,
+      "daysSinceCommit": 4,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
