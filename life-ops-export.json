@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-18 16:52",
+  "exportedAt": "2026-04-18 17:05",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1032,6 +1032,11 @@
       "date": "2026-04-15",
       "project": "workspace",
       "summary": "全PJのCHANGELOG/README欠損を一括修正（新規3件+更新9件）+ドキュメント必須ルールをCLAUDE.mdに追加"
+    },
+    {
+      "date": "2026-04-18",
+      "project": "workspace",
+      "summary": "トークン最適化: tool-constraints.md からサイト固有メモを menes/CLAUDE.md に分離、vscode-mcp削除、hookify無効化、worldbuild重複コマンド削除"
     }
   ],
   "humanActions": [
