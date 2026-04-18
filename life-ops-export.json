@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-18 17:05",
+  "exportedAt": "2026-04-18 21:19",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1037,6 +1037,11 @@
       "date": "2026-04-18",
       "project": "workspace",
       "summary": "トークン最適化: tool-constraints.md からサイト固有メモを menes/CLAUDE.md に分離、vscode-mcp削除、hookify無効化、worldbuild重複コマンド削除"
+    },
+    {
+      "date": "2026-04-18",
+      "project": "workspace",
+      "summary": "tool-constraints.md ��pwsh7�Ăяo�����@�Eanthropic-skills�o����ǋL�BLifeOpsSyncServer �X�^�[�g�A�b�v�����N�����폜"
     }
   ],
   "humanActions": [
