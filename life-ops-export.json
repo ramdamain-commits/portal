@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-18 16:46",
+  "exportedAt": "2026-04-18 16:52",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -915,7 +915,7 @@
       },
       {
         "project": "portal",
-        "action": "Life Ops Console Phase 1-5 完了+同期サーバー連携追加済。次: Phase 6 検討",
+        "action": "Phase 1-5+同期サーバー完了。日次自動sync無効化（手動/sync のみ）。次: Phase 6 可視化強化",
         "priority": "LOW"
       },
       {
@@ -953,6 +953,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-04-18",
+      "project": "setting",
+      "summary": "定期タスク整理（プロプラン移行に伴うトークン節約）: life-ops-daily-sync を無効化、token-trends-weekly を月次（毎月1日 09:00）に変更"
+    },
     {
       "date": "2026-04-15",
       "project": "setting",
@@ -1120,8 +1125,8 @@
     },
     {
       "project": "portal",
-      "lastCommitDate": "2026-04-17",
-      "daysSinceCommit": 1,
+      "lastCommitDate": "2026-04-18",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1156,8 +1161,8 @@
     },
     {
       "project": "setting",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-18",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1165,8 +1170,8 @@
     },
     {
       "project": "docs",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-18",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "alert",
       "missingDocs": [
@@ -1178,8 +1183,8 @@
     },
     {
       "project": "menes",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-04-18",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
