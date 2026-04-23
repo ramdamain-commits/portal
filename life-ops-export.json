@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-23 23:06",
+  "exportedAt": "2026-04-23 23:20",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -739,6 +739,24 @@
       "linkedAssumptions": [],
       "linkedDecisions": [],
       "note": "カスタムエージェント4種（explorer/researcher/implementer/reviewer）を ~/.claude/agents/ に配置。セッション終了ルールは /session-end コマンドに分離。効果測定は次週の token-optimizer trends で確認"
+    },
+    {
+      "id": "DEC-018",
+      "project": "setting",
+      "title": "Life Ops 週次同期を Windows タスクスケジューラで自動化",
+      "context": "portal/life-ops.html を週1で自動更新したい要望。RemoteTrigger (Anthropic クラウド) 検討したがローカルの Invoke-LifeOpsConsole.ps1 にアクセス不可。SessionStart フック案もあったが、起動タイミング依存で確実性が低い",
+      "alternatives": [
+        "A: SessionStart フックで7日経過したら実行",
+        "B: RemoteTrigger（クラウド実行でローカル不可）",
+        "C: Windows タスクスケジューラで週次実行（採用）"
+      ],
+      "rationale": "ローカルスクリプト依存なのでローカル実行が必須。タスクスケジューラは Claude Code 非依存で確実。PC 起動中のみ発火する制約は許容",
+      "status": "accepted",
+      "date": "2026-04-23",
+      "reviewDate": "2026-07-23",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "note": "タスク名 LifeOpsWeeklySync。毎週日曜 21:00 に pwsh.exe -File Invoke-LifeOpsConsole.ps1 -Action export -Deploy -SkipOpen を実行。見逃し時の後追い実行は未設定"
     }
   ],
   "reviews": [
@@ -900,7 +918,7 @@
       },
       {
         "project": "menes",
-        "action": "百瀬りりあ4/19訪問→結果記録。香坂ゆずは・八千草あやめWK購入→S昇格判定。水瀬はるか2回目検証",
+        "action": "百瀬りりあ初訪問（未入店・Zebra31購入済）。香坂ゆずは・八千草あやめWK購入→S昇格判定",
         "priority": "NORMAL"
       },
       {
@@ -1052,6 +1070,11 @@
       "date": "2026-04-18",
       "project": "workspace",
       "summary": "tool-constraints.md ��pwsh7�Ăяo�����@�Eanthropic-skills�o����ǋL�BLifeOpsSyncServer �X�^�[�g�A�b�v�����N�����폜"
+    },
+    {
+      "date": "2026-04-23",
+      "project": "setting",
+      "summary": "Life Ops 週次同期を Windows タスクスケジューラ(LifeOpsWeeklySync)で自動化。毎週日曜21:00に export+deploy 実行"
     }
   ],
   "humanActions": [
@@ -1202,8 +1225,8 @@
     },
     {
       "project": "docs",
-      "lastCommitDate": "2026-04-18",
-      "daysSinceCommit": 5,
+      "lastCommitDate": "2026-04-23",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "alert",
       "missingDocs": [
@@ -1215,8 +1238,8 @@
     },
     {
       "project": "menes",
-      "lastCommitDate": "2026-04-18",
-      "daysSinceCommit": 5,
+      "lastCommitDate": "2026-04-23",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
