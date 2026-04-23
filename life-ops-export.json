@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-23 23:05",
+  "exportedAt": "2026-04-23 23:06",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -900,7 +900,7 @@
       },
       {
         "project": "menes",
-        "action": "香坂ゆずは・八千草あやめWK購入→S昇格判定。水瀬はるか2回目検証",
+        "action": "百瀬りりあ4/19訪問→結果記録。香坂ゆずは・八千草あやめWK購入→S昇格判定。水瀬はるか2回目検証",
         "priority": "NORMAL"
       },
       {
@@ -953,6 +953,16 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-04-23",
+      "project": "menes",
+      "summary": "アロマモア分析: 朝比奈まお Zebra31記事購入（9.5/18 → Bティア確定・下×）、百瀬りりあ Zebra31記事購入（12.0/18 → Sティア完全裏付け・購入済5記事中最高スコア）。analysis.md・メモリ更新完了"
+    },
+    {
+      "date": "2026-04-23",
+      "project": "personal-kb",
+      "summary": "2026年4月給与明細・厚生関係期末通知書を salary-benefits.md に反映。住宅財形残高595,015円、BA +12,000/月は4月未反映（6月遡及見込み）をフラグ"
+    },
     {
       "date": "2026-04-18",
       "project": "setting",
@@ -1145,8 +1155,8 @@
     },
     {
       "project": "portal",
-      "lastCommitDate": "2026-04-18",
-      "daysSinceCommit": 5,
+      "lastCommitDate": "2026-04-23",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1183,8 +1193,8 @@
     },
     {
       "project": "setting",
-      "lastCommitDate": "2026-04-18",
-      "daysSinceCommit": 5,
+      "lastCommitDate": "2026-04-23",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
