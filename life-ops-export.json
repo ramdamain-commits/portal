@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-23 23:20",
+  "exportedAt": "2026-04-26 21:00",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -1084,7 +1084,7 @@
       "text": "iDeCo を2026年4月に再開予定",
       "dueDate": "2026-04-30",
       "type": "urgent",
-      "days": 7
+      "days": 4
     },
     {
       "id": "RSP-001",
@@ -1092,7 +1092,7 @@
       "text": "退職後の競業避止条項の有無が未確認。計画全体の前提を左右する最重要ポイント",
       "dueDate": "2026-06-30",
       "type": "future",
-      "days": 68
+      "days": 65
     },
     {
       "id": "PKB-002",
@@ -1100,7 +1100,7 @@
       "text": "2026年5〜6月の評価時期に年収交渉を実施予定",
       "dueDate": "2026-06-30",
       "type": "future",
-      "days": 68
+      "days": 65
     },
     {
       "id": "PKB-003",
@@ -1108,36 +1108,36 @@
       "text": "JR EX-ICカード新規発行が2026年夏に終了、サービス自体は2027年夏に終了",
       "dueDate": "2026-07-31",
       "type": "future",
-      "days": 99
+      "days": 96
     }
   ],
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -1146,40 +1146,40 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "portal",
       "lastCommitDate": "2026-04-23",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 3,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1188,18 +1188,18 @@
     {
       "project": "ramdamain-commits",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "personal-kb",
       "lastCommitDate": "2026-04-23",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 3,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1208,7 +1208,7 @@
     {
       "project": "rina-salon-plan",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "waiting",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -1217,7 +1217,7 @@
     {
       "project": "setting",
       "lastCommitDate": "2026-04-23",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 3,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1226,7 +1226,7 @@
     {
       "project": "docs",
       "lastCommitDate": "2026-04-23",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 3,
       "declaredStatus": "active",
       "healthStatus": "alert",
       "missingDocs": [
@@ -1239,7 +1239,7 @@
     {
       "project": "menes",
       "lastCommitDate": "2026-04-23",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 3,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -1248,24 +1248,40 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 11,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが11日更新なし"
       ]
     },
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-04-13",
-      "daysSinceCommit": 10,
+      "daysSinceCommit": 13,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが10日更新なし"
+        "active PJ だが13日更新なし"
       ]
+    }
+  ],
+  "staleTasks": [
+    {
+      "project": "personal-kb",
+      "action": "繧ｹ繧ｫ繧ｦ繝・莉ｶ縺ｮ霑比ｿ｡繝ｻ髱｢謗･貅門ｙ・・3 PE繝輔ぃ繝ｳ繝画怙蜆ｪ蜈茨ｼ・",
+      "priority": "HIGH",
+      "lastChanged": "2026-04-12",
+      "daysSince": 14
+    },
+    {
+      "project": "rina-salon-plan",
+      "action": "遶ｶ讌ｭ驕ｿ豁｢譚｡鬆・・遒ｺ隱搾ｼ・026-06 譛滄剞・・",
+      "priority": "HIGH",
+      "lastChanged": "2026-04-12",
+      "daysSince": 14
     }
   ],
   "ideas": [
