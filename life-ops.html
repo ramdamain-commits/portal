@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Ops Console</title>
+    <style>
+        /* ── リセット + ベース ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 24px 32px;
+            line-height: 1.6;
+        }
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── ヘッダー ── */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 12px;
+        }
+        .header h1 { font-size: 1.5rem; font-weight: 600; }
+        .header .timestamp { color: #94a3b8; font-size: 0.85rem; }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn {
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 5px;
+            border: 1px solid #334155;
+            cursor: pointer;
+            background: #1e293b;
+            color: #e2e8f0;
+            transition: background 0.15s;
+        }
+        .btn:hover { background: #334155; }
+        .btn-danger { border-color: #7f1d1d; color: #fca5a5; }
+        .btn-danger:hover { background: rgba(239, 68, 68, 0.15); }
+
+        /* ── Summary Cards ── */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+        .card .label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+        .card .value { font-size: 1.8rem; font-weight: 700; margin-top: 4px; }
+        .card .sub { font-size: 0.85rem; color: #64748b; margin-top: 2px; }
+
+        /* ── 3ゾーン構造 ── */
+        .zone {
+            border-radius: 10px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        /* TODAYゾーン */
+        .zone-today {
+            border: 1px solid #1d4ed8;
+            background: rgba(29, 78, 216, 0.05);
+        }
+        .zone-today .zone-header {
+            background: rgba(29, 78, 216, 0.15);
+            border-bottom: 1px solid #1d4ed8;
+        }
+
+        /* QUEUEゾーン */
+        .zone-queue {
+            border: 1px solid #334155;
+            background: rgba(30, 41, 59, 0.5);
+        }
+        .zone-queue .zone-header {
+            background: rgba(51, 65, 85, 0.4);
+            border-bottom: 1px solid #334155;
+        }
+
+        /* REFERENCEゾーン */
+        .zone-reference {
+            border: 1px solid #334155;
+            background: rgba(15, 23, 42, 0.8);
+        }
+        .zone-reference .zone-header {
+            background: rgba(30, 41, 59, 0.6);
+            border-bottom: 1px solid #334155;
+        }
+
+        /* ゾーンヘッダー共通 */
+        .zone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            user-select: none;
+        }
+        .zone-header-left {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .zone-header h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .zone-today .zone-header h2 { color: #93c5fd; }
+        .zone-queue .zone-header h2 { color: #e2e8f0; }
+        .zone-reference .zone-header h2 { color: #94a3b8; }
+
+        .zone-subtitle {
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        /* 折りたたみ可能ゾーン */
+        .zone-collapsible .zone-header {
+            cursor: pointer;
+        }
+        .zone-collapsible .zone-header:hover {
+            background: rgba(51, 65, 85, 0.6);
+        }
+        .zone-toggle-icon {
+            font-size: 0.85rem;
+            color: #64748b;
+            transition: transform 0.2s;
+        }
+        .zone-collapsible.collapsed .zone-toggle-icon {
+            transform: rotate(-90deg);
+        }
+        .zone-body {
+            padding: 16px 20px;
+        }
+        .zone-collapsible.collapsed .zone-body {
+            display: none;
+        }
+
+        /* ── Section (ゾーン内) ── */
+        .section { margin-bottom: 20px; }
+        .section:last-child { margin-bottom: 0; }
+        .section h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* 鮮度インジケーター */
+        .freshness-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+        .freshness-bar .freshness-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            flex-shrink: 0;
+        }
+        .freshness-bar.stale .freshness-dot { background: #f59e0b; }
+        .freshness-bar.stale { color: #f59e0b; }
+
+        /* ── Attention ── */
+        .attention-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: #1e293b;
+            border-left: 3px solid #f59e0b;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 8px;
+        }
+        .attention-item.overdue { border-left-color: #ef4444; }
+        .attention-item .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .badge-overdue { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .badge-open { background: rgba(245, 158, 11, 0.2); color: #fcd34d; }
+        .badge-due { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .badge-warning { background: rgba(249, 115, 22, 0.2); color: #fdba74; }
+        .badge-no-review { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
+        .badge-info { background: rgba(100, 116, 139, 0.15); color: #64748b; }
+        .all-clear {
+            padding: 14px 16px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 8px;
+            color: #4ade80;
+            font-size: 0.9rem;
+        }
+
+        /* プレースホルダー */
+        .placeholder-block {
+            padding: 16px;
+            background: rgba(51, 65, 85, 0.3);
+            border: 1px dashed #334155;
+            border-radius: 8px;
+            color: #475569;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        /* タスクアイテム */
+        .task-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 8px 12px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.9rem;
+        }
+        .task-item:last-child { border-bottom: none; }
+        .task-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .task-badge-high { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .task-badge-normal { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .task-badge-low { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
+        .task-project { color: #94a3b8; font-size: 0.8rem; min-width: 120px; }
+        .task-action { color: #e2e8f0; flex: 1; }
+        .task-section-toggle {
+            background: none; border: none; color: #94a3b8; cursor: pointer;
+            font-size: 0.85rem; padding: 8px 12px; width: 100%; text-align: left;
+        }
+        .task-section-toggle:hover { color: #e2e8f0; }
+        .task-maintenance {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-style: italic;
+        }
+        .task-stale-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 3px;
+            background: rgba(249, 115, 22, 0.2);
+            color: #fb923c;
+            margin-left: 6px;
+        }
+
+        /* ── Table ── */
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            text-align: left;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 12px;
+            border-bottom: 1px solid #334155;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.9rem;
+        }
+        tr:hover td { background: #1e293b; }
+
+        /* ── Category Badge ── */
+        .cat-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* ── Timeline ── */
+        .timeline-item {
+            position: relative;
+            padding: 12px 16px 12px 28px;
+            margin-bottom: 8px;
+            background: #1e293b;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 18px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #60a5fa;
+        }
+        .timeline-item.superseded { opacity: 0.5; }
+        .timeline-item.superseded::before { background: #64748b; }
+        .timeline-item .tl-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .timeline-item .tl-id { font-weight: 600; color: #60a5fa; }
+        .timeline-item .tl-date { font-size: 0.8rem; color: #94a3b8; }
+        .timeline-item .tl-title { margin-top: 4px; }
+        .timeline-item .tl-project { font-size: 0.8rem; color: #94a3b8; }
+        .timeline-detail {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #334155;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+        .timeline-detail dt { font-weight: 600; color: #94a3b8; margin-top: 8px; }
+        .timeline-detail dd { margin-left: 0; margin-top: 2px; }
+        .timeline-item.open .timeline-detail { display: block; }
+
+        /* ── Visibility badge ── */
+        .vis-public { color: #4ade80; }
+        .vis-limited { color: #fbbf24; }
+        .vis-private { color: #94a3b8; }
+
+        /* ── Status badge ── */
+        .status-active { color: #4ade80; }
+        .status-archived { color: #64748b; }
+        .status-planned { color: #60a5fa; }
+
+        /* ── Import Screen ── */
+        #import-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            gap: 24px;
+        }
+        #import-screen h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        #import-screen p {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .dropzone {
+            width: 480px;
+            border: 2px dashed #334155;
+            border-radius: 12px;
+            padding: 40px 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .dropzone:hover,
+        .dropzone.dragover {
+            border-color: #60a5fa;
+            background: rgba(96, 165, 250, 0.06);
+        }
+        .dropzone-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+        .dropzone-label {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+        .dropzone-label strong { color: #e2e8f0; }
+        .btn-import {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .btn-import:hover { background: #1d4ed8; }
+        .import-error {
+            color: #fca5a5;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        /* ── ヘルスドットインジケーター ── */
+        .health-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .health-healthy  { background: #4ade80; }
+        .health-idle     { background: #facc15; }
+        .health-stale    { background: #fb923c; }
+        .health-alert    { background: #ef4444; }
+        .health-dormant  { background: #64748b; }
+        .health-missing  { background: #334155; }
+        .health-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        /* stale/alert 警告バナー */
+        .health-warning-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: rgba(249, 115, 22, 0.08);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 0.88rem;
+            color: #fdba74;
+        }
+        .health-warning-banner .hw-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Dashboard (hidden until data loaded) ── */
+        #dashboard { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- Import Screen -->
+    <div id="import-screen">
+        <h1>Life Ops Console</h1>
+        <p>データファイル (life-ops-export.json) をインポートしてください</p>
+        <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon">&#128196;</div>
+            <div class="dropzone-label"><strong>ファイルをドロップ</strong> または</div>
+            <button class="btn-import" id="btn-pick-file">ファイルを選択</button>
+        </div>
+        <div class="import-error" id="import-error"></div>
+        <input type="file" id="file-input" accept=".json" style="display:none">
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div class="header">
+            <h1>Life Ops Console</h1>
+            <div class="header-right">
+                <span class="timestamp" id="sync-label"></span>
+                <button class="btn" id="btn-fetch">再取得</button>
+                <button class="btn" id="btn-refresh">データ更新</button>
+                <span class="sync-status" id="sync-status" style="display:none; font-size:.75rem; margin-left:.3rem;"></span>
+                <button class="btn btn-danger" id="btn-clear">データ消去</button>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="cards" id="cards"></div>
+
+        <!-- ゾーン1: 今日やること (TODAY) -->
+        <div class="zone zone-today" id="zone-today">
+            <div class="zone-header">
+                <div class="zone-header-left">
+                    <h2>今日やること</h2>
+                    <span class="zone-subtitle">期日アクションと鮮度確認</span>
+                </div>
+                <div id="freshness-indicator"></div>
+            </div>
+            <div class="zone-body">
+                <div id="today-actions"></div>
+            </div>
+        </div>
+
+        <!-- ゾーン2: 今週のタスク (QUEUE) -->
+        <div class="zone zone-queue" id="zone-queue">
+            <div class="zone-header">
+                <div class="zone-header-left">
+                    <h2>今週のタスク</h2>
+                    <span class="zone-subtitle">全PJ横断のタスクと更新履歴</span>
+                </div>
+            </div>
+            <div class="zone-body">
+                <div id="queue-content"></div>
+            </div>
+        </div>
+
+        <!-- ゾーン3: 判断の根拠 (REFERENCE) - デフォルト折りたたみ -->
+        <div class="zone zone-reference zone-collapsible collapsed" id="zone-reference">
+            <div class="zone-header" id="zone-reference-header" role="button" aria-expanded="false" tabindex="0">
+                <div class="zone-header-left">
+                    <h2>判断の根拠</h2>
+                    <span class="zone-subtitle">前提条件・意思決定・PJ一覧</span>
+                </div>
+                <span class="zone-toggle-icon">&#9660;</span>
+            </div>
+            <div class="zone-body">
+                <!-- 前提条件 -->
+                <div class="section">
+                    <h3>前提条件</h3>
+                    <div id="assumptions-list"></div>
+                </div>
+
+                <!-- 意思決定履歴 -->
+                <div class="section">
+                    <h3>意思決定履歴</h3>
+                    <div id="timeline"></div>
+                </div>
+
+                <!-- プロジェクト一覧 -->
+                <div class="section">
+                    <h3>プロジェクト一覧</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>プロジェクト</th>
+                                <th>健全性</th>
+                                <th>状態</th>
+                                <th>公開設定</th>
+                                <th>カテゴリ</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-matrix"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden file input for refresh -->
+    <input type="file" id="file-refresh" accept=".json" style="display:none">
+
+    <script>
+    // ── グローバル変数 ──
+    let PROJECTS = [];
+    let ASSUMPTIONS = [];
+    let DECISIONS = [];
+    let REVIEWS = [];
+    let CATEGORIES = {};
+    let EXPORTED_AT = '';
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // ── ユーティリティ ──
+    function daysDiff(dateStr) {
+        const [y, m, d] = dateStr.split('-').map(Number);
+        const parsed = new Date(y, m - 1, d);
+        return Math.ceil((parsed - today) / (1000 * 60 * 60 * 24));
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
+    function createTaskItem(task, level) {
+        const div = document.createElement('div');
+        div.className = 'task-item';
+        // staleTasks から停滞情報を取得
+        const staleData = window._exportData && window._exportData.staleTasks;
+        const staleInfo = staleData && staleData.find(s => s.project === task.project && s.action === task.action);
+        const staleBadge = staleInfo ? `<span class="task-stale-badge">${escapeHtml(String(staleInfo.daysSince))}\u65E5\u505C\u6EEF</span>` : '';
+        div.innerHTML = `
+            <span class="task-badge task-badge-${level}">${escapeHtml(task.priority)}</span>
+            <span class="task-project">${escapeHtml(task.project)}</span>
+            <span class="task-action">${escapeHtml(task.action)}${staleBadge}</span>
+        `;
+        return div;
+    }
+
+    // エクスポート日からの経過日数を計算
+    function exportedDaysAgo() {
+        if (!EXPORTED_AT) return null;
+        const [y, m, d] = EXPORTED_AT.split(/[-T ]/);
+        if (!y || !m || !d) return null;
+        const exported = new Date(Number(y), Number(m) - 1, Number(d));
+        return Math.floor((today - exported) / (1000 * 60 * 60 * 24));
+    }
+
+    // ── データのロードと状態切替 ──
+    function loadFromStorage() {
+        const raw = localStorage.getItem('lifeOpsData');
+        if (!raw) return false;
+        try {
+            const data = JSON.parse(raw);
+            applyData(data);
+            return true;
+        } catch (e) {
+            console.error('[loadFromStorage] データ破損。localStorage を消去:', e);
+            localStorage.removeItem('lifeOpsData');
+            return false;
+        }
+    }
+
+    function applyData(data) {
+        PROJECTS    = data.projects    || [];
+        ASSUMPTIONS = data.assumptions || [];
+        DECISIONS   = data.decisions   || [];
+        REVIEWS     = data.reviews     || [];
+        CATEGORIES  = data.categories  || {};
+        EXPORTED_AT = data.exportedAt  || '';
+        window._exportData = data;
+        renderDashboard();
+        showDashboard();
+    }
+
+    function showImport() {
+        document.getElementById('import-screen').style.display = 'flex';
+        document.getElementById('dashboard').style.display = 'none';
+    }
+
+    function showDashboard() {
+        document.getElementById('import-screen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+    }
+
+    // ── ファイル読み込み ──
+    function readJsonFile(file, onSuccess) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const data = JSON.parse(e.target.result);
+                onSuccess(data);
+            } catch (err) {
+                showImportError('JSONのパースに失敗しました: ' + err.message);
+            }
+        };
+        reader.readAsText(file, 'UTF-8');
+    }
+
+    function showImportError(msg) {
+        const el = document.getElementById('import-error');
+        el.textContent = msg;
+        el.style.display = 'block';
+    }
+
+    function handleImportFile(file) {
+        if (!file) return;
+        readJsonFile(file, (data) => {
+            localStorage.setItem('lifeOpsData', JSON.stringify(data));
+            clearDashboardDom();
+            applyData(data);
+        });
+    }
+
+    function clearDashboardDom() {
+        document.getElementById('cards').innerHTML = '';
+        document.getElementById('today-actions').innerHTML = '';
+        document.getElementById('queue-content').innerHTML = '';
+        document.getElementById('assumptions-list').innerHTML = '';
+        document.getElementById('project-matrix').innerHTML = '';
+        document.getElementById('timeline').innerHTML = '';
+        document.getElementById('freshness-indicator').innerHTML = '';
+    }
+
+    // ── Import Screen イベント ──
+    const fileInput = document.getElementById('file-input');
+    document.getElementById('btn-pick-file').addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => handleImportFile(e.target.files[0]));
+
+    const dropzone = document.getElementById('dropzone');
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        const file = e.dataTransfer.files[0];
+        if (file) handleImportFile(file);
+    });
+
+    // ── Header ボタン ──
+    document.getElementById('btn-fetch').addEventListener('click', async () => {
+        if (await fetchExport()) return;
+        alert('JSONの取得に失敗しました。「データ更新」でファイルを選択してください。');
+    });
+
+    const fileRefresh = document.getElementById('file-refresh');
+    const syncStatus = document.getElementById('sync-status');
+    const SYNC_SERVER = 'http://localhost:8377';
+
+    document.getElementById('btn-refresh').addEventListener('click', async () => {
+        // まず localhost 同期サーバーを試行
+        syncStatus.textContent = '同期中...';
+        syncStatus.style.display = 'inline';
+        syncStatus.style.color = '#ffa500';
+        try {
+            const res = await fetch(SYNC_SERVER + '/sync', {
+                method: 'POST',
+                signal: AbortSignal.timeout(60000)
+            });
+            const data = await res.json();
+            if (data.ok) {
+                syncStatus.textContent = '同期完了';
+                syncStatus.style.color = '#4caf50';
+                // 再取得して画面反映
+                setTimeout(async () => {
+                    await fetchExport();
+                    syncStatus.style.display = 'none';
+                }, 1500);
+                return;
+            }
+            throw new Error(data.error || 'sync failed');
+        } catch (e) {
+            console.warn('[sync] ローカルサーバー未検出、ファイル選択にフォールバック:', e.message);
+            syncStatus.textContent = 'サーバー未検出';
+            syncStatus.style.color = '#ef5350';
+            setTimeout(() => { syncStatus.style.display = 'none'; }, 2000);
+            fileRefresh.click();
+        }
+    });
+    fileRefresh.addEventListener('change', (e) => handleImportFile(e.target.files[0]));
+
+    document.getElementById('btn-clear').addEventListener('click', () => {
+        if (confirm('localStorageのデータを消去し、インポート画面に戻りますか？')) {
+            localStorage.removeItem('lifeOpsData');
+            clearDashboardDom();
+            showImport();
+        }
+    });
+
+    // ── REFERENCEゾーン折りたたみ ──
+    const zoneRef = document.getElementById('zone-reference');
+    const zoneRefHeader = document.getElementById('zone-reference-header');
+    zoneRefHeader.addEventListener('click', () => toggleZone(zoneRef));
+    zoneRefHeader.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleZone(zoneRef);
+        }
+    });
+
+    function toggleZone(zone) {
+        const isCollapsed = zone.classList.toggle('collapsed');
+        const header = zone.querySelector('.zone-header[role="button"]');
+        if (header) header.setAttribute('aria-expanded', String(!isCollapsed));
+    }
+
+    // ── 今日やること算出（humanActions: dueDate ベース、フォールバック: reviewDate 30日以内） ──
+    function computeTodayActions() {
+        const data = window._exportData;
+
+        // humanActions が PS1 から提供されている場合はそちらを優先
+        if (data && data.humanActions && data.humanActions.length > 0) {
+            // 30日以内 + overdue のみ表示（future は判断の根拠ゾーンに残す）
+            return data.humanActions
+                .filter(h => h.type !== 'future')
+                .map(h => ({
+                    id: h.id, project: h.project, text: h.text,
+                    dueDate: h.dueDate,
+                    type: h.type === 'overdue' ? 'overdue' : (h.type === 'urgent' ? 'urgent' : 'due'),
+                    days: h.days,
+                    sort: h.type === 'overdue' ? h.days : (h.type === 'urgent' ? h.days + 100 : h.days + 1000)
+                }))
+                .sort((a, b) => a.sort - b.sort);
+        }
+
+        // フォールバック: actionRequired + dueDate をクライアント側で算出
+        const items = [];
+        ASSUMPTIONS.filter(a => a.status === 'open' && a.actionRequired && a.dueDate).forEach(a => {
+            const days = daysDiff(a.dueDate);
+            if (days < 0) {
+                items.push({ id: a.id, project: a.project, text: a.statement, dueDate: a.dueDate, type: 'overdue', days, sort: days });
+            } else if (days <= 7) {
+                items.push({ id: a.id, project: a.project, text: a.statement, dueDate: a.dueDate, type: 'urgent', days, sort: days + 100 });
+            } else if (days <= 30) {
+                items.push({ id: a.id, project: a.project, text: a.statement, dueDate: a.dueDate, type: 'due', days, sort: days + 1000 });
+            }
+        });
+        items.sort((a, b) => a.sort - b.sort);
+        return items;
+    }
+
+    // ── 要注意項目（QUEUEゾーン用：未対応Findings + 警告） ──
+    function computeQueueAttention() {
+        const items = [];
+
+        REVIEWS.forEach(r => {
+            (r.findings || []).filter(f => f.status === 'open').forEach(f => {
+                items.push({ id: f.findingId, project: f.project, text: f.summary, type: 'open', days: null, sort: 500 });
+            });
+        });
+
+        DECISIONS.filter(d => d.status === 'accepted' && !d.reviewDate).forEach(d => {
+            items.push({ id: d.id, project: d.project, text: d.title, type: 'no-review', days: null, sort: 2500 });
+        });
+
+        PROJECTS.filter(p => p.portalVisible === true && p.visibility === 'private').forEach(p => {
+            items.push({ id: p.id, project: p.displayName, text: 'ポータル公開設定が private と矛盾', type: 'warning', days: null, sort: 3000 });
+        });
+
+        items.sort((a, b) => a.sort - b.sort);
+
+        if (items.length > 10) {
+            const omitted = items.length - 10;
+            items.splice(10);
+            items.push({ id: '...', project: '', text: `+${omitted}件`, type: 'info', days: null, sort: 9999 });
+        }
+
+        return items;
+    }
+
+    // ── 鮮度インジケーター描画（changelog 最新日付ベース） ──
+    function renderFreshness() {
+        const container = document.getElementById('freshness-indicator');
+
+        // changelog の最新エントリ日付を優先、なければ export 日付
+        let daysAgo = null;
+        const clData = window._exportData && window._exportData.changelog;
+        if (clData && clData.length > 0) {
+            const sorted = [...clData].sort((a, b) => b.date.localeCompare(a.date));
+            const [y, m, d] = sorted[0].date.split('-').map(Number);
+            const latest = new Date(y, m - 1, d);
+            daysAgo = Math.floor((today - latest) / (1000 * 60 * 60 * 24));
+        } else {
+            daysAgo = exportedDaysAgo();
+        }
+        if (daysAgo === null) return;
+
+        const isStale = daysAgo >= 7;
+        const label = daysAgo === 0 ? '本日更新' : `最終更新 ${daysAgo}日前`;
+        const bar = document.createElement('div');
+        bar.className = 'freshness-bar' + (isStale ? ' stale' : '');
+        bar.innerHTML = `<span class="freshness-dot"></span><span>${escapeHtml(label)}</span>`;
+        container.appendChild(bar);
+    }
+
+    // ── ゾーン1: 今日やること描画 ──
+    function renderTodayActions() {
+        const items = computeTodayActions();
+        const container = document.getElementById('today-actions');
+
+        // stale/alert PJ 警告バナー
+        const phData = window._exportData && window._exportData.projectHealth;
+        if (phData) {
+            const troubled = phData.filter(h => h.healthStatus === 'stale' || h.healthStatus === 'alert');
+            if (troubled.length > 0) {
+                const banner = document.createElement('div');
+                banner.className = 'health-warning-banner';
+                const names = troubled.map(h => h.project).join(', ');
+                const detail = troubled.map(h => {
+                    const w = (h.warnings && h.warnings.length > 0) ? h.warnings[0] : h.healthStatus;
+                    return `${escapeHtml(h.project)}: ${escapeHtml(w)}`;
+                }).join(' / ');
+                banner.innerHTML = `<span class="hw-icon">&#9888;</span><span>${troubled.length}\u4EF6\u306EPJ\u304C\u505C\u6EEF\u4E2D \u2014 ${detail}</span>`;
+                container.appendChild(banner);
+            }
+        }
+
+        // 停滞タスクを「今日やること」に浮上
+        const staleData = window._exportData && window._exportData.staleTasks;
+        if (staleData && staleData.length > 0) {
+            staleData.forEach(st => {
+                const div = document.createElement('div');
+                div.className = 'attention-item';
+                div.innerHTML = `
+                    <span class="badge badge-warning">${st.daysSince}\u65E5\u505C\u6EEF</span>
+                    <span style="font-weight:600;min-width:100px">[HIGH]</span>
+                    <span style="color:#94a3b8;min-width:120px">${escapeHtml(st.project)}</span>
+                    <span>${escapeHtml(st.action)} <span style="color:#64748b;font-size:0.8rem">(\u6700\u7D42\u5909\u66F4: ${escapeHtml(st.lastChanged)})</span></span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        if (items.length === 0 && (!staleData || staleData.length === 0)) {
+            container.innerHTML = '<div class="all-clear">\u4ECA\u65E5\u306F\u671F\u65E5\u30A2\u30AF\u30B7\u30E7\u30F3\u306A\u3057</div>';
+            return;
+        }
+        if (items.length === 0) return;
+
+        items.forEach(item => {
+            const div = document.createElement('div');
+            const isOverdue = item.type === 'overdue';
+            const isUrgent = item.type === 'urgent';
+            div.className = 'attention-item' + (isOverdue ? ' overdue' : '');
+
+            let badgeClass, badgeText;
+            if (isOverdue) {
+                badgeClass = 'badge-overdue';
+                badgeText = `${Math.abs(item.days)}日期限超過`;
+            } else if (isUrgent) {
+                badgeClass = 'badge-overdue';
+                badgeText = item.days === 0 ? '本日期限' : `残${item.days}日`;
+            } else {
+                badgeClass = 'badge-due';
+                badgeText = `残${item.days}日`;
+            }
+
+            const dueDateStr = item.dueDate ? ` <span style="color:#64748b;font-size:0.8rem">(期限: ${escapeHtml(item.dueDate)})</span>` : '';
+
+            div.innerHTML = `
+                <span class="badge ${badgeClass}">${badgeText}</span>
+                <span style="font-weight:600;min-width:100px">[${escapeHtml(item.id)}]</span>
+                <span style="color:#94a3b8;min-width:120px">${escapeHtml(item.project)}</span>
+                <span>${escapeHtml(item.text)}${dueDateStr}</span>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    // ── ゾーン2: 今週のタスク描画 ──
+    function renderQueue() {
+        const container = document.getElementById('queue-content');
+
+        // TASKS.md タスク表示
+        const tasksData = window._exportData && window._exportData.tasks;
+        if (tasksData && tasksData.items && tasksData.items.length > 0) {
+            const norm = t => (t.priority || '').toUpperCase();
+            const highTasks = tasksData.items.filter(t => norm(t) === 'HIGH');
+            const normalTasks = tasksData.items.filter(t => norm(t) === 'NORMAL');
+            const lowTasks = tasksData.items.filter(t => norm(t) === 'LOW');
+
+            // 折りたたみセクション生成ヘルパー
+            function appendCollapsible(label, tasks, level) {
+                const toggle = document.createElement('button');
+                toggle.className = 'task-section-toggle';
+                toggle.textContent = `${label} (${tasks.length}件) \u25B6`;
+                const list = document.createElement('div');
+                list.style.display = 'none';
+                tasks.forEach(t => list.appendChild(createTaskItem(t, level)));
+                toggle.addEventListener('click', () => {
+                    const open = list.style.display !== 'none';
+                    list.style.display = open ? 'none' : 'block';
+                    toggle.textContent = `${label} (${tasks.length}件) ${open ? '\u25B6' : '\u25BC'}`;
+                });
+                container.appendChild(toggle);
+                container.appendChild(list);
+            }
+
+            // HIGH: 展開表示
+            highTasks.forEach(t => {
+                container.appendChild(createTaskItem(t, 'high'));
+            });
+
+            // NORMAL / LOW: 折りたたみ
+            if (normalTasks.length > 0) appendCollapsible('NORMAL', normalTasks, 'normal');
+            if (lowTasks.length > 0) appendCollapsible('LOW', lowTasks, 'low');
+
+            // 保守・待��行
+            if (tasksData.maintenance) {
+                const maint = document.createElement('div');
+                maint.className = 'task-maintenance';
+                maint.textContent = tasksData.maintenance;
+                container.appendChild(maint);
+            }
+        } else {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'placeholder-block';
+            placeholder.innerHTML = '\u30BF\u30B9\u30AF\u30C7\u30FC\u30BF\u304C\u3042\u308A\u307E\u305B\u3093';
+            container.appendChild(placeholder);
+        }
+
+        // アイデア候補（ideas）
+        const ideasData = window._exportData && window._exportData.ideas;
+        if (ideasData && ideasData.length > 0) {
+            const ideasSection = document.createElement('div');
+            ideasSection.className = 'section';
+            ideasSection.style.marginTop = '16px';
+
+            const statusColors = {
+                '\u69CB\u60F3': { bg: 'rgba(124,58,237,0.2)', text: '#a78bfa' },
+                '\u691C\u8A0E\u4E2D': { bg: 'rgba(234,179,8,0.2)', text: '#facc15' },
+                '\u4FDD\u7559': { bg: 'rgba(100,116,139,0.2)', text: '#94a3b8' }
+            };
+
+            const toggle = document.createElement('button');
+            toggle.className = 'task-section-toggle';
+            toggle.textContent = `\u30A2\u30A4\u30C7\u30A2\u5019\u88DC (${ideasData.length}\u4EF6) \u25B6`;
+            const list = document.createElement('div');
+            list.style.display = 'none';
+
+            ideasData.forEach(idea => {
+                const row = document.createElement('div');
+                row.className = 'task-item';
+                const colors = statusColors[idea.status] || statusColors['\u4FDD\u7559'];
+                row.innerHTML = `
+                    <span class="badge" style="background:${colors.bg};color:${colors.text};font-size:0.7rem;padding:2px 8px;border-radius:4px;min-width:50px;text-align:center">${escapeHtml(idea.status)}</span>
+                    <span class="task-action" style="flex:1">${escapeHtml(idea.title)}</span>
+                    ${idea.note ? `<span style="color:#64748b;font-size:0.8rem;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(idea.note)}</span>` : ''}
+                `;
+                list.appendChild(row);
+            });
+
+            toggle.addEventListener('click', () => {
+                const open = list.style.display !== 'none';
+                list.style.display = open ? 'none' : 'block';
+                toggle.textContent = `\u30A2\u30A4\u30C7\u30A2\u5019\u88DC (${ideasData.length}\u4EF6) ${open ? '\u25B6' : '\u25BC'}`;
+            });
+
+            ideasSection.appendChild(toggle);
+            ideasSection.appendChild(list);
+            container.appendChild(ideasSection);
+        }
+
+        // 更新履歴（changelog）
+        const clData = window._exportData && window._exportData.changelog;
+        if (clData && clData.length > 0) {
+            const clSection = document.createElement('div');
+            clSection.className = 'section';
+            clSection.style.marginTop = '16px';
+            const clH3 = document.createElement('h3');
+            clH3.textContent = '更新履歴';
+            clSection.appendChild(clH3);
+
+            const sorted = [...clData].sort((a, b) => b.date.localeCompare(a.date));
+            const showCount = Math.min(5, sorted.length);
+            for (let i = 0; i < showCount; i++) {
+                const e = sorted[i];
+                const row = document.createElement('div');
+                row.className = 'task-item';
+                row.innerHTML = `
+                    <span style="color:#64748b;font-size:0.8rem;min-width:90px">${escapeHtml(e.date)}</span>
+                    <span class="task-project">${escapeHtml(e.project)}</span>
+                    <span class="task-action">${escapeHtml(e.summary)}</span>
+                `;
+                clSection.appendChild(row);
+            }
+
+            if (sorted.length > 5) {
+                const toggle = document.createElement('button');
+                toggle.className = 'task-section-toggle';
+                toggle.textContent = `\u904E\u53BB\u306E\u5C65\u6B74 (+${sorted.length - 5}\u4EF6) \u25B6`;
+                const extra = document.createElement('div');
+                extra.style.display = 'none';
+                for (let i = 5; i < sorted.length; i++) {
+                    const e = sorted[i];
+                    const row = document.createElement('div');
+                    row.className = 'task-item';
+                    row.innerHTML = `
+                        <span style="color:#64748b;font-size:0.8rem;min-width:90px">${escapeHtml(e.date)}</span>
+                        <span class="task-project">${escapeHtml(e.project)}</span>
+                        <span class="task-action">${escapeHtml(e.summary)}</span>
+                    `;
+                    extra.appendChild(row);
+                }
+                toggle.addEventListener('click', () => {
+                    const open = extra.style.display !== 'none';
+                    extra.style.display = open ? 'none' : 'block';
+                    toggle.textContent = `\u904E\u53BB\u306E\u5C65\u6B74 (+${sorted.length - 5}\u4EF6) ${open ? '\u25B6' : '\u25BC'}`;
+                });
+                clSection.appendChild(toggle);
+                clSection.appendChild(extra);
+            }
+
+            container.appendChild(clSection);
+        }
+
+        // 要注意アイテム（Findings + 警告）
+        const items = computeQueueAttention();
+        if (items.length === 0) return;
+
+        const section = document.createElement('div');
+        section.className = 'section';
+        section.style.marginTop = '16px';
+        const h3 = document.createElement('h3');
+        h3.textContent = '要注意';
+        section.appendChild(h3);
+
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'attention-item' + (item.type === 'overdue' ? ' overdue' : '');
+
+            let badgeClass, badgeText;
+            if (item.type === 'open') {
+                badgeClass = 'badge-open';
+                badgeText = '未対応';
+            } else if (item.type === 'warning') {
+                badgeClass = 'badge-warning';
+                badgeText = '要注意';
+            } else if (item.type === 'no-review') {
+                badgeClass = 'badge-no-review';
+                badgeText = 'レビュー日未設定';
+            } else if (item.type === 'info') {
+                badgeClass = 'badge-info';
+                div.innerHTML = `<span class="badge ${badgeClass}">${escapeHtml(item.text)}</span>`;
+                section.appendChild(div);
+                return;
+            } else {
+                badgeClass = 'badge-due';
+                badgeText = `残${item.days}日`;
+            }
+
+            div.innerHTML = `
+                <span class="badge ${badgeClass}">${badgeText}</span>
+                <span style="font-weight:600;min-width:100px">[${escapeHtml(item.id)}]</span>
+                <span style="color:#94a3b8;min-width:120px">${escapeHtml(item.project)}</span>
+                <span>${escapeHtml(item.text)}</span>
+            `;
+            section.appendChild(div);
+        });
+
+        container.appendChild(section);
+    }
+
+    // ── Summary Cards ──
+    function renderCards() {
+        const activeProjects = PROJECTS.filter(p => p.status === 'active').length;
+        const openAssumptions = ASSUMPTIONS.filter(a => a.status === 'open').length;
+        const overdueAssumptions = ASSUMPTIONS.filter(a => a.status === 'open' && a.reviewDate && daysDiff(a.reviewDate) < 0).length;
+        const acceptedDecisions = DECISIONS.filter(d => d.status === 'accepted').length;
+        const allFindings = REVIEWS.flatMap(r => r.findings || []);
+        const openFindings = allFindings.filter(f => f.status === 'open').length;
+
+        const cards = [
+            { label: 'プロジェクト', value: activeProjects, sub: `/ ${PROJECTS.length} 件中` },
+            { label: '前提条件', value: `${overdueAssumptions} 期限超過`, sub: `/ ${openAssumptions} 未対応` },
+            { label: '意思決定', value: acceptedDecisions, sub: '承認済み' },
+            { label: '指摘事項', value: `${openFindings} 未対応`, sub: `/ ${allFindings.length} 件中` },
+        ];
+
+        const container = document.getElementById('cards');
+        cards.forEach(c => {
+            const div = document.createElement('div');
+            div.className = 'card';
+            div.innerHTML = `<div class="label">${c.label}</div><div class="value">${c.value}</div><div class="sub">${c.sub}</div>`;
+            container.appendChild(div);
+        });
+    }
+
+    // ── 前提条件リスト描画 ──
+    function renderAssumptions() {
+        const container = document.getElementById('assumptions-list');
+        // actionRequired: true のものは「今日やること」ゾーンに昇格済みなので除外
+        const open = ASSUMPTIONS.filter(a => a.status === 'open' && !a.actionRequired);
+
+        if (open.length === 0) {
+            container.innerHTML = '<div style="color:#64748b;font-size:0.85rem">未対応の前提条件はありません</div>';
+            return;
+        }
+
+        open.forEach(a => {
+            const div = document.createElement('div');
+            div.className = 'attention-item';
+
+            let badgeClass = 'badge-open';
+            let badgeText = '未対応';
+            if (a.reviewDate) {
+                const days = daysDiff(a.reviewDate);
+                if (days < 0) {
+                    div.classList.add('overdue');
+                    badgeClass = 'badge-overdue';
+                    badgeText = `${Math.abs(days)}日期限超過`;
+                } else if (days <= 30) {
+                    badgeClass = 'badge-due';
+                    badgeText = `残${days}日`;
+                }
+            }
+
+            div.innerHTML = `
+                <span class="badge ${badgeClass}">${badgeText}</span>
+                <span style="font-weight:600;min-width:100px">[${escapeHtml(a.id)}]</span>
+                <span style="color:#94a3b8;min-width:120px">${escapeHtml(a.project)}</span>
+                <span>${escapeHtml(a.statement)}</span>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    // ── プロジェクト一覧 ──
+    function renderProjectMatrix() {
+        const tbody = document.getElementById('project-matrix');
+
+        // ステータス日本語変換
+        const statusJa = { active: '稼働中', archived: 'アーカイブ', planned: '計画中', maintenance: '保守', waiting: '待機' };
+        const visJa = { public: '公開', limited: '限定公開', private: '非公開' };
+        const healthJa = { healthy: '良好', idle: '低活動', stale: '停滞', alert: '要注意', dormant: '休止', missing: '不明' };
+
+        // projectHealth をマップ化
+        const healthMap = {};
+        const phData = window._exportData && window._exportData.projectHealth;
+        if (phData) {
+            phData.forEach(h => { healthMap[h.project] = h; });
+        }
+
+        PROJECTS.forEach(p => {
+            const cat = CATEGORIES[p.category] || {};
+            const h = healthMap[p.id] || {};
+            const hs = h.healthStatus || 'missing';
+            const daysInfo = h.daysSinceCommit != null ? ` (${h.daysSinceCommit}日前)` : '';
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${escapeHtml(p.displayName)}${p.portalVisible ? ' &#127760;' : ''}</td>
+                <td><span class="health-dot health-${hs}"></span><span class="health-label">${escapeHtml(healthJa[hs] || hs)}${escapeHtml(daysInfo)}</span></td>
+                <td><span class="status-${p.status}">${escapeHtml(statusJa[p.status] || p.status)}</span></td>
+                <td><span class="vis-${p.visibility}">${escapeHtml(visJa[p.visibility] || p.visibility)}</span></td>
+                <td><span class="cat-badge" style="background:${cat.bgColor || '#334155'};color:${cat.textColor || '#e2e8f0'}">${escapeHtml(p.category)}</span></td>
+                <td style="color:#94a3b8;font-size:0.85rem">${escapeHtml(p.note || '')}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // ── 意思決定タイムライン ──
+    function renderTimeline() {
+        const container = document.getElementById('timeline');
+        const sorted = [...DECISIONS].sort((a, b) => b.date.localeCompare(a.date));
+
+        // ステータス日本語変換
+        const statusJa = { accepted: '承認済み', superseded: '更新済み', rejected: '却下' };
+
+        sorted.forEach(d => {
+            const div = document.createElement('div');
+            div.className = 'timeline-item' + (d.status === 'superseded' ? ' superseded' : '');
+
+            let linkedHtml = '';
+            if (d.linkedAssumptions && d.linkedAssumptions.length > 0) {
+                const linked = d.linkedAssumptions.map(id => {
+                    const found = ASSUMPTIONS.find(a => a.id === id);
+                    return found ? `${escapeHtml(id)}: ${escapeHtml(found.statement)}` : escapeHtml(id);
+                }).join('<br>');
+                linkedHtml = `<dt>関連前提条件</dt><dd>${linked}</dd>`;
+            }
+
+            div.innerHTML = `
+                <div class="tl-header">
+                    <span><span class="tl-id">${d.id}</span> <span class="tl-project">${escapeHtml(d.project)}</span></span>
+                    <span class="tl-date">${d.date} / ${escapeHtml(statusJa[d.status] || d.status)}</span>
+                </div>
+                <div class="tl-title">${escapeHtml(d.title)}</div>
+                <dl class="timeline-detail">
+                    <dt>決定内容</dt><dd>${escapeHtml(d.decision)}</dd>
+                    <dt>根拠</dt><dd>${escapeHtml(d.rationale)}</dd>
+                    ${linkedHtml}
+                </dl>
+            `;
+            div.addEventListener('click', () => div.classList.toggle('open'));
+            container.appendChild(div);
+        });
+    }
+
+    // ── ダッシュボード全体レンダリング ──
+    function renderDashboard() {
+        clearDashboardDom();
+        const exportedStr = EXPORTED_AT ? EXPORTED_AT.replace('T', ' ').slice(0, 16) : '---';
+        document.getElementById('sync-label').textContent = '最終同期: ' + exportedStr;
+        renderCards();
+        renderFreshness();
+        renderTodayActions();
+        renderQueue();
+        renderAssumptions();
+        renderProjectMatrix();
+        renderTimeline();
+    }
+
+    // ── fetch による自動読込 ──
+    async function fetchExport() {
+        try {
+            const res = await fetch('life-ops-export.json', { cache: 'no-cache' });
+            if (!res.ok) return false;
+            const data = await res.json();
+            try {
+                localStorage.setItem('lifeOpsData', JSON.stringify(data));
+            } catch (storageErr) {
+                console.warn('[fetchExport] localStorage 保存失敗:', storageErr);
+            }
+            applyData(data);
+            return true;
+        } catch (e) {
+            console.warn('[fetchExport] 自動取得失敗:', e);
+            return false;
+        }
+    }
+
+    // ── 起動 ──
+    (async () => {
+        if (await fetchExport()) return;
+        if (loadFromStorage()) return;
+        showImport();
+    })();
+    </script>
+</body>
+</html>

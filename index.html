@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects Portal</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- SEO -->
+  <meta name="description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作・ゲーム" />
+
+  <!-- OGP -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://ramdamain-commits.github.io/portal/" />
+  <meta property="og:title"       content="Projects Portal" />
+  <meta property="og:description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作・ゲーム" />
+  <meta property="og:image"       content="https://ramdamain-commits.github.io/portal/og-image.svg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="ja_JP" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Projects Portal" />
+  <meta name="twitter:description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作・ゲーム" />
+  <meta name="twitter:image"       content="https://ramdamain-commits.github.io/portal/og-image.svg" />
+  <!-- Theme color -->
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    /* ===== リセット・ベース ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    :root {
+      --bg:           #0f172a;
+      --card-bg:      #1e293b;
+      --accent:       #3b82f6;
+      --text:         #f1f5f9;
+      --text-muted:   #94a3b8;
+      --radius:       12px;
+      --transition:   0.25s ease;
+      /* スティッキーヘッダーの高さ */
+      --header-h:     56px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== ヘッダー・ナビ ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      /* 初期状態: 背景なし・blur なし */
+      background-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition:
+        background-color 0.3s ease,
+        backdrop-filter 0.3s ease,
+        -webkit-backdrop-filter 0.3s ease,
+        box-shadow 0.3s ease,
+        height 0.3s ease;
+    }
+
+    /* スクロール後に JS が付与するクラス */
+    header.is-scrolled {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+      height: 48px;
+    }
+
+    header .logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== ヒーローセクション ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+    }
+
+    .hero__eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== カテゴリフィルターバー ===== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0 1.5rem 2.5rem;
+    }
+
+    .filter-btn {
+      appearance: none;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.4em 1.1em;
+      transition:
+        background-color var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+      /* タッチ操作の最適化 */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .filter-btn:hover {
+      border-color: rgba(59, 130, 246, 0.5);
+      color: var(--text);
+    }
+
+    /* アクティブ状態 */
+    .filter-btn.is-active {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.35);
+    }
+
+    .filter-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ===== カードグリッド ===== */
+    .projects {
+      flex: 1;
+      padding: 0 1.5rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ===== カード ===== */
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+      /* タッチ最適化 */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+
+    .card:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      border-color: rgba(59, 130, 246, 0.35);
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* ===== カード登場アニメーション =====
+     * 初期状態: 不可視 + 少し下にオフセット
+     * IntersectionObserver が .is-visible を付与したときに
+     * フェードイン + スライドアップする
+     */
+    .card-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+    }
+
+    .card-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* フィルターで非表示にするアイテム */
+    .card-item.is-hidden {
+      display: none;
+    }
+
+    /* タグ */
+    .card__tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2em 0.65em;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    /* カードタイトル */
+    .card__title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* カード説明 */
+    .card__desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    /* 注記（健康管理のみ） */
+    .card__note {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.25rem;
+    }
+
+    /* カードフッター（リンク表示） */
+    .card__footer {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+
+    .card__footer svg {
+      flex-shrink: 0;
+    }
+
+    /* ===== フィルター結果が 0 件のとき ===== */
+    .no-results {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .no-results.is-visible {
+      display: block;
+    }
+
+    /* ===== SSD最安値ウィジェット ===== */
+    .ssd-widget {
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .ssd-widget__inner {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem 1rem;
+    }
+
+    /* ヘッダー行: タイトル + 更新日時 */
+    .ssd-widget__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .ssd-widget__title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.03em;
+    }
+
+    .ssd-widget__updated {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* 商品行リスト */
+    .ssd-widget__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .ssd-widget__row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    /* ステータスインジケーター (●) */
+    .ssd-widget__dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .ssd-widget__dot--buy {
+      background-color: #4ade80; /* 買い時: 緑 */
+    }
+
+    .ssd-widget__dot--wait {
+      background-color: #fbbf24; /* もう少し: 黄 */
+    }
+
+    /* 商品名 */
+    .ssd-widget__name {
+      flex: 1;
+      min-width: 0;
+      color: var(--text);
+      /* 長い名前は省略 */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* 価格 */
+    .ssd-widget__price {
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* ステータスラベル */
+    .ssd-widget__status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 0.15em 0.5em;
+      border-radius: 999px;
+    }
+
+    .ssd-widget__status--buy {
+      background-color: rgba(74, 222, 128, 0.15);
+      color: #4ade80;
+    }
+
+    .ssd-widget__status--wait {
+      background-color: rgba(251, 191, 36, 0.15);
+      color: #fbbf24;
+    }
+
+    /* フッターリンク */
+    .ssd-widget__footer {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      /* ボーダー上で視覚的に区切る */
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      width: 100%;
+    }
+
+    .ssd-widget__footer:hover {
+      color: #93c5fd;
+    }
+
+    .ssd-widget__footer:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    /* ローディング用スケルトン */
+    @keyframes ssd-skeleton-pulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 0.8; }
+    }
+
+    .ssd-widget__skeleton {
+      height: 0.75rem;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.1);
+      animation: ssd-skeleton-pulse 1.4s ease-in-out infinite;
+    }
+
+    /* モバイル: パディング縮小 */
+    @media (max-width: 768px) {
+      .ssd-widget {
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .ssd-widget__inner {
+        padding: 1rem 1.1rem 0.85rem;
+      }
+
+      .ssd-widget__name {
+        max-width: 140px;
+      }
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      text-align: center;
+      padding: 1.75rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ===== レスポンシブ（768px 以下） ===== */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3.5rem 1rem 2.5rem;
+      }
+
+      .filter-bar {
+        padding: 0 1rem 2rem;
+        gap: 0.4rem;
+      }
+
+      .filter-btn {
+        font-size: 0.75rem;
+        padding: 0.35em 0.9em;
+      }
+
+      .projects {
+        padding: 0 1rem 3.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== prefers-reduced-motion: アニメーション全無効 ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      /* 登場アニメーションを即座に表示済み状態にする */
+      .card-item {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ナビゲーション -->
+  <header id="site-header">
+    <span class="logo" aria-label="Projects Portal">Projects Portal</span>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero" aria-labelledby="hero-title">
+    <span class="hero__eyebrow">個人開発</span>
+    <h1 class="hero__title" id="hero-title">Projects Portal</h1>
+    <p class="hero__subtitle">個人プロジェクト一覧</p>
+  </section>
+
+  <!--
+    SSD最安値ウィジェット
+    JS が fetch 成功時に aria-hidden="false" + コンテンツ描画を行う
+    取得失敗時は aria-hidden="true" のまま（ユーザーにエラーを見せない）
+  -->
+  <aside
+    class="ssd-widget"
+    id="ssd-widget"
+    aria-label="SSD最安値速報"
+    aria-hidden="true"
+    hidden
+  >
+    <div class="ssd-widget__inner">
+      <!-- JS がここにコンテンツを挿入する -->
+    </div>
+  </aside>
+
+  <!--
+    カテゴリフィルターバー
+    role="toolbar" + aria-label でフィルターグループとして明示
+    aria-pressed でスクリーンリーダーにアクティブ状態を通知
+    roving tabindex: アクティブボタンだけ tabindex="0"
+  -->
+  <div class="filter-bar" role="toolbar" aria-label="カテゴリでフィルター">
+    <button class="filter-btn is-active" data-filter="all"        aria-pressed="true"  tabindex="0" >全て</button>
+    <button class="filter-btn"           data-filter="ツール"     aria-pressed="false" tabindex="-1">ツール</button>
+    <button class="filter-btn"           data-filter="学習"       aria-pressed="false" tabindex="-1">学習</button>
+    <button class="filter-btn"           data-filter="ヘルスケア" aria-pressed="false" tabindex="-1">ヘルスケア</button>
+    <button class="filter-btn"           data-filter="AI"         aria-pressed="false" tabindex="-1">AI</button>
+    <button class="filter-btn"           data-filter="創作"       aria-pressed="false" tabindex="-1">創作</button>
+    <button class="filter-btn"           data-filter="ゲーム"     aria-pressed="false" tabindex="-1">ゲーム</button>
+  </div>
+
+  <!-- カードグリッド -->
+  <main class="projects" id="main-content">
+    <ul class="grid" role="list">
+
+                                                      <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+
+      <!-- 1. SSD価格トラッカー -->
+      <li class="card-item" data-category="ツール">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/ssd-deal-tracker/"
+          target="_blank"
+          rel="noopener"
+          aria-label="SSD価格トラッカー（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(29, 78, 216, 0.25); color: #60a5fa;"
+          >ツール</span>
+          <h2 class="card__title">SSD価格トラッカー</h2>
+          <p class="card__desc">
+            SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。
+          </p>
+          <p class="card__note">1TB NVMe 5製品を監視中。NAND相場で target_price 再調整予定</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 2. ITパスポート演習 -->
+      <li class="card-item" data-category="学習">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/it-passport-training/"
+          target="_blank"
+          rel="noopener"
+          aria-label="ITパスポート演習（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(21, 128, 61, 0.25); color: #4ade80;"
+          >学習</span>
+          <h2 class="card__title">ITパスポート演習</h2>
+          <p class="card__desc">
+            過去問800問を収録したPWA学習アプリ。オフラインでも使える。
+          </p>
+          <p class="card__note">過去問800問収録済み。安定運用中</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 3. 健康管理「律」 -->
+      <li class="card-item" data-category="ヘルスケア">
+        <a
+          class="card"
+          href="https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367"
+          target="_blank"
+          rel="noopener"
+          aria-label="健康管理「律」（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(180, 83, 9, 0.25); color: #fb923c;"
+          >ヘルスケア</span>
+          <h2 class="card__title">健康管理「律」</h2>
+          <p class="card__desc">
+            食事記録・体重推移ダッシュボード。GAS + Android で個人運用中。
+          </p>
+          <p class="card__note">※ 共有リンクで体重推移のみ閲覧可。食事記録など全機能は認証が必要です</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 4. MAGI System -->
+      <li class="card-item" data-category="AI">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/magi-system/"
+          target="_blank"
+          rel="noopener"
+          aria-label="MAGI System（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(124, 58, 237, 0.25); color: #a78bfa;"
+          >AI</span>
+          <h2 class="card__title">MAGI System</h2>
+          <p class="card__desc">
+            3体のAIが異なる価値観で議論し、意思決定の死角を照らす多角的審議システム。
+          </p>
+          <p class="card__note">Claude API 連携。ブラウザ完結型</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 5. 赤い桜 世界設定資料 -->
+      <li class="card-item" data-category="創作">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/kaiserreich-akai-sakura/"
+          target="_blank"
+          rel="noopener"
+          aria-label="赤い桜 世界設定資料（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(190, 24, 93, 0.25); color: #f472b6;"
+          >創作</span>
+          <h2 class="card__title">赤い桜 世界設定資料</h2>
+          <p class="card__desc">
+            カイザーライヒ世界の設定資料集。国際関係・日本内政・連邦制度・シナリオ構成。
+          </p>
+          <p class="card__note">5稿+校正完了（421K字）。Pages公開済</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 6. FP3級ドリル -->
+      <li class="card-item" data-category="学習">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/fp3-training/"
+          target="_blank"
+          rel="noopener"
+          aria-label="FP3級ドリル（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(21, 128, 61, 0.25); color: #4ade80;"
+          >学習</span>
+          <h2 class="card__title">FP3級ドリル</h2>
+          <p class="card__desc">
+            FP3級の出題傾向ベース練習アプリ。オフラインでも使えるPWA。
+          </p>
+          <p class="card__note">全5回+サンプル=410問取込済み(v3)</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 7. パラドゲー攻略ガイド -->
+      <li class="card-item" data-category="ゲーム">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/paradox-game-guides/"
+          target="_blank"
+          rel="noopener"
+          aria-label="パラドゲー攻略ガイド（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(234, 88, 12, 0.25); color: #fb923c;"
+          >ゲーム</span>
+          <h2 class="card__title">パラドゲー攻略ガイド</h2>
+          <p class="card__desc">
+            EU5/VIC3/CK3の攻略ガイド・MOD記事・ローカライズ対照表。ゲームスクリプト一次ソース方式。
+          </p>
+          <p class="card__note">GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 8. 名古屋ホテル価格トラッカー -->
+      <li class="card-item" data-category="ツール">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/nagoya-hotel-deals/"
+          target="_blank"
+          rel="noopener"
+          aria-label="名古屋ホテル価格トラッカー（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(29, 78, 216, 0.25); color: #60a5fa;"
+          >ツール</span>
+          <h2 class="card__title">名古屋ホテル価格トラッカー</h2>
+          <p class="card__desc">
+            名古屋エリアのホテル宿泊プランの価格を日次トラッキングし、お得なタイミングでメール通知。楽天トラベルAPI + GAS + GitHub Pages。
+          </p>
+          <p class="card__note">21ホテル体制。ダッシュボード改善済</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 9. Life Ops Console -->
+      <li class="card-item" data-category="ツール">
+        <a
+          class="card"
+          href="life-ops.html"
+          target="_blank"
+          rel="noopener"
+          aria-label="Life Ops Console（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(29, 78, 216, 0.25); color: #60a5fa;"
+          >ツール</span>
+          <h2 class="card__title">Life Ops Console</h2>
+          <p class="card__desc">
+            プロジェクト横断の健全性ダッシュボード。setting/ の4つのJSONデータを集約表示。
+          </p>
+          <p class="card__note">localStorage ビューア。Run-LifeOpsConsole.cmd -Action export でデータ生成</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- CATALOG-END -->
+
+      <!-- フィルター結果が 0 件のとき表示 -->
+      <li class="no-results" aria-live="polite" role="status">
+        該当するプロジェクトはありません
+      </li>
+
+    </ul>
+  </main>
+
+  <!-- フッター -->
+  <footer>
+    <p>&copy; 2026 Projects Portal</p>
+  </footer>
+
+  <script>
+    'use strict';
+
+    /* ========================================================
+     * 1. prefers-reduced-motion の検出
+     *    motion 無効環境ではアニメーション系処理をスキップ
+     * ======================================================== */
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    /* ========================================================
+     * 2. スクロールに応じたスティッキーヘッダー
+     *    スクロール量が閾値を超えたら is-scrolled を付与し
+     *    backdrop-blur + 背景色でヘッダーをコンパクト化する
+     * ======================================================== */
+    (function initStickyHeader() {
+      const header = document.getElementById('site-header');
+      if (!header) return;
+
+      const SCROLL_THRESHOLD = 10;
+
+      function onScroll() {
+        if (window.scrollY > SCROLL_THRESHOLD) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+
+      // passive: true でスクロールパフォーマンスを確保
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ページリロード後にスクロール位置が残っている場合の初回チェック
+      onScroll();
+    })();
+
+    /* ========================================================
+     * 3. カード登場アニメーション（IntersectionObserver）
+     *    画面に入ったタイミングで stagger 付きフェードインを発火
+     * ======================================================== */
+    (function initCardEntrance() {
+      const items = document.querySelectorAll('.card-item');
+      if (!items.length) return;
+
+      // motion 無効環境では即座に全カードを表示
+      if (prefersReducedMotion) {
+        items.forEach((el) => { el.classList.add('is-visible'); });
+        return;
+      }
+
+      const STAGGER_MS = 80; // カード間の遅延（ミリ秒）
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            const index = parseInt(el.dataset.staggerIndex || '0', 10);
+
+            // stagger 遅延を付けてフェードイン
+            setTimeout(() => {
+              el.classList.add('is-visible');
+            }, index * STAGGER_MS);
+
+            // 一度表示したら監視を止める（再発火防止）
+            observer.unobserve(el);
+          });
+        },
+        {
+          threshold: 0.05,                  // 5% 可視になったら発火
+          rootMargin: '-40px 0px 0px 0px',  // ヘッダー分のオフセット
+        }
+      );
+
+      items.forEach((el, i) => {
+        el.dataset.staggerIndex = String(i);
+        observer.observe(el);
+      });
+    })();
+
+    /* ========================================================
+     * 4. SSD最安値ウィジェット
+     *    ssd-deal-tracker の GitHub Pages 上の mock-data.json を fetch し、
+     *    最大5件の最安値リストを描画する。
+     *    取得失敗 / タイムアウト時はウィジェット要素を非表示のままにする。
+     * ======================================================== */
+    (function initSsdWidget() {
+      // GAS API: ssd-deal-tracker のリアルタイム価格データ
+      const API_URL = 'https://script.google.com/macros/s/AKfycbx4wSK_sYIP8Ksu-nWibGAbJxKFBPWN02o3K7Ame21q0QdFCYbxqByWD087mvDkYs61/exec';
+      const TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
+      // 「買い時」ステータスの製品を最大3件表示
+      const MAX_ITEMS = 3;
+      // fetch タイムアウト（ms）: 遅い回線でも UX を損なわないよう短めに設定
+      const TIMEOUT_MS = 5000;
+
+      const widget = document.getElementById('ssd-widget');
+      if (!widget) return;
+
+      /* ---- ローディング中: スケルトンを表示 ---- */
+      function showSkeleton() {
+        const inner = widget.querySelector('.ssd-widget__inner');
+        inner.innerHTML =
+          '<div class="ssd-widget__header">' +
+            '<span class="ssd-widget__title">SSD 最安値速報</span>' +
+          '</div>' +
+          '<div class="ssd-widget__list">' +
+            Array(3).fill(
+              '<div class="ssd-widget__row" role="listitem">' +
+                '<div class="ssd-widget__skeleton" style="width:8px;height:8px;border-radius:50%;flex-shrink:0"></div>' +
+                '<div class="ssd-widget__skeleton" style="flex:1;max-width:200px"></div>' +
+                '<div class="ssd-widget__skeleton" style="width:64px"></div>' +
+              '</div>'
+            ).join('') +
+          '</div>';
+        widget.hidden = false;
+        widget.setAttribute('aria-hidden', 'false');
+      }
+
+      /* ---- 成功時: データを描画 ---- */
+      function renderSsdWidget(data) {
+        const products = data.products;
+        if (!Array.isArray(products) || products.length === 0) {
+          // データ不正は失敗扱いにして非表示
+          widget.hidden = true;
+          widget.setAttribute('aria-hidden', 'true');
+          return;
+        }
+
+        // 「買い時」ステータスに絞り、current_price 昇順で最大 MAX_ITEMS 件を表示
+        const buyItems = products.filter((p) => { return p.status === '買い時'; });
+        // 「買い時」が0件の場合は全製品を対象にする（フォールバック）
+        const candidates = buyItems.length > 0 ? buyItems : products;
+        const sorted = candidates
+          .slice()
+          .sort((a, b) => { return a.current_price - b.current_price; })
+          .slice(0, MAX_ITEMS);
+
+        // 更新日時を "MM/DD HH:mm" 形式でフォーマット
+        let updatedLabel = '';
+        if (data.updated_at) {
+          const d = new Date(data.updated_at);
+          if (!isNaN(d.getTime())) {
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate()).padStart(2, '0');
+            const hh = String(d.getHours()).padStart(2, '0');
+            const min = String(d.getMinutes()).padStart(2, '0');
+            updatedLabel = mm + '/' + dd + ' ' + hh + ':' + min + ' 更新';
+          }
+        }
+
+        // 商品行 HTML を生成
+        const rowsHtml = sorted.map((p) => {
+          // status が "買い時" なら緑、それ以外（"もう少し" 等）は黄
+          const isBuy = p.status === '買い時';
+          const dotClass    = isBuy ? 'ssd-widget__dot--buy'    : 'ssd-widget__dot--wait';
+          const statusClass = isBuy ? 'ssd-widget__status--buy' : 'ssd-widget__status--wait';
+          const statusLabel = p.status || '';
+
+          // 価格を "¥XX,XXX" 形式に変換
+          const priceStr = '¥' + Number(p.current_price).toLocaleString('ja-JP');
+
+          // 商品名 + 容量を結合（容量が別フィールドの場合のみ付与）
+          let nameStr = p.name || '';
+          if (p.capacity && nameStr.indexOf(p.capacity) === -1) {
+            nameStr += ' ' + p.capacity;
+          }
+
+          return (
+            '<div class="ssd-widget__row" role="listitem">' +
+              '<span class="ssd-widget__dot ' + dotClass + '" aria-hidden="true"></span>' +
+              '<span class="ssd-widget__name">' + escapeHtml(nameStr) + '</span>' +
+              '<span class="ssd-widget__price">' + escapeHtml(priceStr) + '</span>' +
+              '<span class="ssd-widget__status ' + statusClass + '">' + escapeHtml(statusLabel) + '</span>' +
+            '</div>'
+          );
+        }).join('');
+
+        const updatedHtml = updatedLabel
+          ? '<span class="ssd-widget__updated">' + escapeHtml(updatedLabel) + '</span>'
+          : '';
+
+        const inner = widget.querySelector('.ssd-widget__inner');
+        inner.innerHTML =
+          '<div class="ssd-widget__header">' +
+            '<span class="ssd-widget__title">SSD 最安値速報</span>' +
+            updatedHtml +
+          '</div>' +
+          '<div class="ssd-widget__list" role="list" aria-label="SSD価格一覧">' +
+            rowsHtml +
+          '</div>' +
+          '<a class="ssd-widget__footer" href="' + TRACKER_URL + '" target="_blank" rel="noopener noreferrer">' +
+            '<svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+              '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>' +
+            'SSD Deal Tracker で詳しく見る' +
+          '</a>';
+
+        widget.hidden = false;
+        widget.setAttribute('aria-hidden', 'false');
+      }
+
+      /* ---- XSS 対策: 最小限のエスケープ ---- */
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      /* ---- fetch + AbortController でタイムアウト制御 ---- */
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timeoutId = controller
+        ? setTimeout(() => { controller.abort(); }, TIMEOUT_MS)
+        : null;
+
+      // スケルトンを先に表示してからデータ取得開始
+      showSkeleton();
+
+      fetch(API_URL, controller ? { signal: controller.signal } : {})
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then((data) => {
+          clearTimeout(timeoutId);
+          renderSsdWidget(data);
+        })
+        .catch(() => {
+          // 取得失敗 / タイムアウト: ウィジェットを非表示に戻す
+          clearTimeout(timeoutId);
+          widget.hidden = true;
+          widget.setAttribute('aria-hidden', 'true');
+        });
+    })();
+
+    /* ========================================================
+     * 5. カテゴリフィルター
+     *    ボタンクリックでカードを絞り込む
+     *    キーボード: 矢印キーでボタン間を移動（roving focus パターン）
+     * ======================================================== */
+    (function initFilter() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cardItems  = document.querySelectorAll('.card-item');
+      const noResults  = document.querySelector('.no-results');
+      if (!filterBtns.length || !cardItems.length) return;
+
+      // フィルター切替時の stagger タイマーを保持（連打対策）
+      let staggerTimers = [];
+
+      // フィルター適用
+      function applyFilter(category) {
+        // 前回のタイマーをキャンセル
+        staggerTimers.forEach(clearTimeout);
+        staggerTimers = [];
+
+        let visibleCount = 0;
+
+        cardItems.forEach((item) => {
+          const itemCategory = item.dataset.category || '';
+          const isMatch = (category === 'all') || (itemCategory === category);
+
+          if (isMatch) {
+            item.classList.remove('is-hidden');
+            visibleCount++;
+
+            // motion 有効環境のみ、フィルター切替後に stagger を再適用
+            if (!prefersReducedMotion) {
+              item.classList.remove('is-visible');
+              const delay = (visibleCount - 1) * 60;
+              const timerId = setTimeout(() => { item.classList.add('is-visible'); }, delay);
+              staggerTimers.push(timerId);
+            }
+          } else {
+            item.classList.add('is-hidden');
+            item.classList.remove('is-visible');
+          }
+        });
+
+        // 0件メッセージの表示切替
+        if (noResults) {
+          if (visibleCount === 0) {
+            noResults.classList.add('is-visible');
+          } else {
+            noResults.classList.remove('is-visible');
+          }
+        }
+      }
+
+      // ボタンのアクティブ状態 + roving tabindex を切替
+      function setActiveBtn(activeBtn) {
+        filterBtns.forEach((btn) => {
+          const isActive = btn === activeBtn;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-pressed', String(isActive));
+          // roving tabindex: アクティブだけ Tab で到達可能にする
+          btn.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+      }
+
+      // クリックイベント
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const category = btn.dataset.filter || 'all';
+          setActiveBtn(btn);
+          applyFilter(category);
+        });
+      });
+
+      // キーボード操作: 矢印キーでボタン間を移動（roving tabindex パターン）
+      const btnArray = Array.from(filterBtns);
+      filterBtns.forEach((btn, i) => {
+        btn.addEventListener('keydown', (e) => {
+          let targetIndex = -1;
+
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            targetIndex = (i + 1) % btnArray.length;
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            targetIndex = (i - 1 + btnArray.length) % btnArray.length;
+          } else if (e.key === 'Home') {
+            targetIndex = 0;
+          } else if (e.key === 'End') {
+            targetIndex = btnArray.length - 1;
+          }
+
+          if (targetIndex >= 0) {
+            e.preventDefault();
+            // roving tabindex: 移動先だけ tabindex="0" にする
+            btnArray.forEach((b, j) => {
+              b.setAttribute('tabindex', j === targetIndex ? '0' : '-1');
+            });
+            btnArray[targetIndex].focus();
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

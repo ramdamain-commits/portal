@@ -1,0 +1,447 @@
+{
+  "exportedAt": "2026-06-06 20:41",
+  "projects": [
+    {
+      "id": "ssd-deal-tracker",
+      "displayName": "SSD価格トラッカー",
+      "description": "SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。",
+      "category": "ツール",
+      "repoName": "ssd-deal-tracker",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/ssd-deal-tracker/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "1TB NVMe 5製品を監視中。NAND相場で target_price 再調整予定"
+    },
+    {
+      "id": "it-passport-training",
+      "displayName": "ITパスポート演習",
+      "description": "過去問800問を収録したPWA学習アプリ。オフラインでも使える。",
+      "category": "学習",
+      "repoName": "it-passport-training",
+      "visibility": "public",
+      "status": "completed",
+      "publicUrl": "https://ramdamain-commits.github.io/it-passport-training/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "過去問800問収録済み。安定運用中"
+    },
+    {
+      "id": "healthcare",
+      "displayName": "健康管理「律」",
+      "description": "食事記録・体重推移ダッシュボード。GAS + Android で個人運用中。",
+      "category": "ヘルスケア",
+      "repoName": "healthcare",
+      "visibility": "limited",
+      "status": "maintenance",
+      "publicUrl": "https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367",
+      "sourceOfTruth": "docs/health-tracking-system-spec.md",
+      "portalVisible": true,
+      "note": "※ 共有リンクで体重推移のみ閲覧可。食事記録など全機能は認証が必要です"
+    },
+    {
+      "id": "magi-system",
+      "displayName": "MAGI System",
+      "description": "3体のAIが異なる価値観で議論し、意思決定の死角を照らす多角的審議システム。",
+      "category": "AI",
+      "repoName": "magi-system",
+      "visibility": "public",
+      "status": "completed",
+      "publicUrl": "https://ramdamain-commits.github.io/magi-system/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "Claude API 連携。ブラウザ完結型"
+    },
+    {
+      "id": "kaiserreich-akai-sakura",
+      "displayName": "赤い桜 世界設定資料",
+      "description": "カイザーライヒ世界の設定資料集。国際関係・日本内政・連邦制度・シナリオ構成。",
+      "category": "創作",
+      "repoName": "kaiserreich-akai-sakura",
+      "visibility": "public",
+      "status": "completed",
+      "publicUrl": "https://ramdamain-commits.github.io/kaiserreich-akai-sakura/",
+      "sourceOfTruth": "manuscript/ (non-public)",
+      "portalVisible": true,
+      "note": "5稿+校正完了（421K字）。Pages公開済"
+    },
+    {
+      "id": "fp3-training",
+      "displayName": "FP3級ドリル",
+      "description": "FP3級の出題傾向ベース練習アプリ。オフラインでも使えるPWA。",
+      "category": "学習",
+      "repoName": "fp3-training",
+      "visibility": "public",
+      "status": "completed",
+      "publicUrl": "https://ramdamain-commits.github.io/fp3-training/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "全5回+サンプル=410問取込済み(v3)"
+    },
+    {
+      "id": "paradox-game-guides",
+      "displayName": "パラドゲー攻略ガイド",
+      "description": "EU5/VIC3/CK3の攻略ガイド・MOD記事・ローカライズ対照表。ゲームスクリプト一次ソース方式。",
+      "category": "ゲーム",
+      "repoName": "paradox-game-guides",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク"
+    },
+    {
+      "id": "nagoya-hotel-deals",
+      "displayName": "名古屋ホテル価格トラッカー",
+      "description": "名古屋エリアのホテル宿泊プランの価格を日次トラッキングし、お得なタイミングでメール通知。楽天トラベルAPI + GAS + GitHub Pages。",
+      "category": "ツール",
+      "repoName": "nagoya-hotel-deals",
+      "visibility": "public",
+      "status": "maintenance",
+      "publicUrl": "https://ramdamain-commits.github.io/nagoya-hotel-deals/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "21ホテル体制。ダッシュボード改善済"
+    },
+    {
+      "id": "life-ops-console",
+      "displayName": "Life Ops Console",
+      "description": "プロジェクト横断の健全性ダッシュボード。setting/ の4つのJSONデータを集約表示。",
+      "category": "ツール",
+      "repoName": null,
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "life-ops.html",
+      "sourceOfTruth": "setting/scripts/Invoke-LifeOpsConsole.ps1",
+      "portalVisible": true,
+      "note": "localStorage ビューア。Run-LifeOpsConsole.cmd -Action export でデータ生成"
+    }
+  ],
+  "assumptions": [],
+  "decisions": [
+    {
+      "id": "DEC-004",
+      "project": "fp3-training",
+      "title": "FP3 名称を「過去問」から「ドリル」に変更",
+      "decision": "README・portal・ramdamain-commits の表記を「FP3級過去問トレーニング」から「FP3級ドリル」に統一",
+      "context": "data.js の内容はサンプル/オリジナル問題であり「過去問」は不正確。P1-1 指摘",
+      "alternatives": [
+        "A: 過去問のまま（不正確だが認知度高い）",
+        "B: ドリルに改名（正確）",
+        "C: 練習問題に改名"
+      ],
+      "rationale": "著作権リスク回避と内容の正確性を優先。「ドリル」は学習ツールとして適切な表現",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2027-03-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": ""
+    },
+    {
+      "id": "DEC-005",
+      "project": "ssd-deal-tracker",
+      "title": "正本を設計書から README に変更",
+      "decision": "docs/specs の設計書は作成時点のスナップショット扱いとし、README を現行仕様の正本とする",
+      "context": "設計書は 10 機種 / 5% だが現実装は 14 系統 / 10%。設計書を追従更新するコストが高い。P1-2 指摘",
+      "alternatives": [
+        "A: 設計書を毎回更新",
+        "B: README を正本、設計書は archive"
+      ],
+      "rationale": "設計書は書いた時点のスナップショットとして価値がある。現行仕様の追従は README + CLAUDE.md が低コスト",
+      "status": "accepted",
+      "date": "2026-03-29",
+      "reviewDate": "2027-03-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-006"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": ""
+    },
+    {
+      "id": "DEC-010",
+      "project": "paradox-game-guides",
+      "title": "paradox-game-guides を GitHub Pages で公開",
+      "decision": "index.html + viewer.html を作成し、GitHub Pages で Markdown ガイドをブラウザ閲覧可能にする",
+      "context": "日本語のパラドゲー攻略は供給が薄く、SEO 的に上位を取れる可能性がある。kaiserreich-akai-sakura との相乗効果も期待",
+      "alternatives": [
+        "A: GitHub Pages で公開（低コスト・即時）",
+        "B: 独自ドメイン + SSG（Hugo 等）で公開",
+        "C: 非公開のまま維持"
+      ],
+      "rationale": "index.html + viewer.html の最小構成で十分。SSG は現時点で過剰。Markdown 正本のままブラウザ表示できる viewer 方式が管理コスト最小",
+      "status": "accepted",
+      "date": "2026-04-09",
+      "reviewDate": "2026-12-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "公開済み: https://ramdamain-commits.github.io/paradox-game-guides/"
+    },
+    {
+      "id": "DEC-011",
+      "project": "nagoya-hotel-deals",
+      "title": "nagoya-hotel-deals を GitHub Pages + GAS WebApp で公開",
+      "decision": "GAS WebApp で JSON API を提供し、GitHub Pages のダッシュボードから fetch して表示する構成を採用",
+      "context": "スプレッドシートのデータをブラウザダッシュボードで可視化したい。GAS WebApp は無料で CORS 対応可能",
+      "alternatives": [
+        "A: GAS WebApp + GitHub Pages（無料・サーバーレス）",
+        "B: Cloudflare Workers + D1（高性能だが過剰）",
+        "C: スプレッドシート共有リンクのみ"
+      ],
+      "rationale": "GAS WebApp は既存スプシと同一環境で追加コストゼロ。GitHub Pages は静的ホスティングとして最適。楽天 API の Referer 制約も GAS 側で解決済み",
+      "status": "accepted",
+      "date": "2026-04-07",
+      "reviewDate": "2026-12-31",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-012"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "公開済み: https://ramdamain-commits.github.io/nagoya-hotel-deals/"
+    },
+    {
+      "id": "DEC-012",
+      "project": "nagoya-hotel-deals",
+      "title": "楽天 API 15件超のバッチ分割方式を採用",
+      "decision": "checkAllPrices で hotelNo が15件を超える場合、15件ずつバッチ分割して API を呼び出す。バッチ間に delayMs の待機を入れる",
+      "context": "楽天トラベル空室検索 API は1リクエスト最大15ホテルの制限がある。14ホテル体制では収まるが、今後の追加に備えてバッチ分割を実装",
+      "alternatives": [
+        "A: 15件バッチ分割（汎用・安全）",
+        "B: ホテル数を15以下に制限（簡単だが拡張性なし）",
+        "C: 1ホテルずつ個別リクエスト（レート制限リスク大）"
+      ],
+      "rationale": "バッチ分割は実装コストが低く、将来のホテル追加にも対応できる。GAS 6分制限内で十分収まる",
+      "status": "accepted",
+      "date": "2026-04-12",
+      "reviewDate": "2027-06-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-011"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "PriceChecker.gs の _checkAllPricesImpl で実装済み"
+    }
+  ],
+  "reviews": [],
+  "tasks": {
+    "items": [
+      {
+        "project": "paradox-game-guides",
+        "action": "VIC3 日本(501行)・プロイセン(363行)ガイドを 1.13.8 でゼロベース書き直し完了(06-01): 全数値再検証で実誤り訂正・統一JE/維新JE完全データ表化・未検証マーカー全解消。85149cb/47f4a30/600751d push。次: Web公開(GitHub Pages)検討・EU5 1.2拡充",
+        "priority": "NORMAL"
+      },
+      {
+        "project": "ssd-deal-tracker",
+        "action": "v1.3.1 T500 HSなし削除済(05-08、4製品体制)。次: 2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック",
+        "priority": "LOW"
+      }
+    ],
+    "maintenance": "完了・保守: it-passport-training / fp3-training / magi-system / healthcare / kaiserreich-akai-sakura / nagoya-hotel-deals"
+  },
+  "categories": {
+    "ツール": {
+      "bgColor": "rgba(29, 78, 216, 0.25)",
+      "textColor": "#60a5fa"
+    },
+    "学習": {
+      "bgColor": "rgba(21, 128, 61, 0.25)",
+      "textColor": "#4ade80"
+    },
+    "ヘルスケア": {
+      "bgColor": "rgba(180, 83, 9, 0.25)",
+      "textColor": "#fb923c"
+    },
+    "AI": {
+      "bgColor": "rgba(124, 58, 237, 0.25)",
+      "textColor": "#a78bfa"
+    },
+    "創作": {
+      "bgColor": "rgba(190, 24, 93, 0.25)",
+      "textColor": "#f472b6"
+    },
+    "ゲーム": {
+      "bgColor": "rgba(234, 88, 12, 0.25)",
+      "textColor": "#fb923c"
+    },
+    "生活": {
+      "bgColor": "rgba(13, 148, 136, 0.25)",
+      "textColor": "#2dd4bf"
+    }
+  },
+  "changelog": [
+    {
+      "date": "2026-05-16",
+      "project": "paradox-game-guides",
+      "summary": "EU5 ハンガリーガイドを 1.2 対応＋ビザンツ並み粒度に拡張完了。524行→1120行（+596）。研究3並列→執筆→3並列レビュー（Critical 7 / Warning 7 / Suggestion 5）→修正→コミットの5フェーズ1セッション完遂。黒軍/フサール/ハイドゥクをユニット別深掘り（is_garrison有無・地形適性・impact vs combat の意味）、HRE/PU ルート（cb_claim_throne 制約・union メカニクス・Imperial Diet 4 段階・Imperial Armory・Golden Bull 離脱条件）、Mohács 局面（専用ディザスター不存在 verified）、オーストリア＝ハンガリー逆転ルート、固有イベント 59 件全列挙、アドバンス取得ロードマップ新設。スクリプト検証ファイル 11+。ハイドゥクが HUN 固有advanceではなく balkan_hajduks 地域advance経由（POL/SER/ワラキア等も対象）と明示。CLAUDE.md に学び2点追記（impact vs combat 区別・固有ユニットの解禁経路確認・localization-reference の中央/本体分離ルール）。コミット 8a4fc34 / db5fb47、root サブモジュール参照 102dd73 / 1b26b4f"
+    },
+    {
+      "date": "2026-05-16",
+      "project": "paradox-game-guides",
+      "summary": "EU5 1.2 残り検証・修正セッション完了。①ビザンツガイド3並列レビュー→implementer委任修正→コミットの5フェーズ1セッション完遂（矛盾解消・訳語修正・出典統一・空欄削除）。②Complacency 単位誤記修正: 表ヘッダ『1ポイントあたり』→『慢心100時の値』、scales_with multiply=0.01 線形スケール仕様明記、漏れていた正効果 global_monthly_prosperity +1% 追加、出典を script verified に昇格。③Cavalry 二重確認: movement_speed (2.5/3.0) と combat_speed (5) の別 stat 確認、既存記述は正値で修正不要と判明。④『破壊的変更』表記揺れ統一: 表セル・箇条書きは『（**破壊的変更**）』、見出し・地の文は裸の語で文脈別ルール化。CLAUDE.md に学び3点追記（scales_with解釈・stat名混同回避・行内マーカー文脈別ルール）。コミット bb92bd0 / 567e973 / 15623e0 / b8c165c"
+    },
+    {
+      "date": "2026-05-16",
+      "project": "paradox-game-guides",
+      "summary": "EU5 ビザンツ帝国攻略ガイド新規追加（1015行、Patch 1.2 / DLC Fate of the Phoenix 主役国家）。DLC スクリプト一次検証で Restore Roman Borders CB / Pronoia / Katepanata / Cataphracts / Legionaries / Greek Fire / Varangians / Latinization vs Hellenization / 1337開始 stability -45 等を verified。スクリプトマーカー131・コミュニティ知見明示48。regional-guide のビザンツ評価を『⚠非推奨』→『★★★上級』に格上げ。localization-reference に固有用語24件追加、index.html カード追加、CHANGELOG 更新。CLAUDE.md に『新規ガイド追加時の付随更新4点セット』ルール追記（implementer 委任時の責任分離も含む）。コミット 54738ce + 8b92b28、root サブモジュール参照更新 7e8aa76"
+    },
+    {
+      "date": "2026-05-16",
+      "project": "paradox-game-guides",
+      "summary": "EU5 Patch 1.2 追加スクリプト検証 8項目完了。不一致 3件（HRE 投票権重 wiki『500/250/200』誤値→実値『皇帝150/選帝侯75/自由都市25/首座司教4』+Diet段階倍率、Papal Authority 75/25 は教皇側/反教皇側二分ではなく全カトリック国均等の religion_modifier、Golden Bull 1400年は期限切れではなく未採択時 HRE 離脱可能条件）を 9 ガイド全反映。一致 5件（Imperial Armories/Free Cities/Enforce Peace/Coalition/ロジスティクス）を `script verified` 昇格。2nd レビュー3並列で重大度高2・中5を検出→5ファイル整合修正。2コミット push（fd5c20b/fcdcf11）。paradox CLAUDE.md にマーカー運用ルール2件追記（テーブルと本文の同時昇格、総括ブロック行内分割）"
+    },
+    {
+      "date": "2026-05-10",
+      "project": "paradox-game-guides",
+      "summary": "EU5 Patch 1.2「Echinades」(2026-05-06 リリース、DLC Fate of the Phoenix 同時) 全9ガイド対応完了（universal/austria/regional/religion/government/brandenburg/castile/hungary/ottoman）。HRE 大幅オーバーホール・Papal Authority・正教オーバーホール・Heavy/Light 兵科分類・貿易改修・Urban Rights/Megalopolis・ビザンツ復興（Restore Roman Borders CB）等を全面反映。3コミット push 済（890999f/5991832/c6b65f3）。新規記述に `[src: Patch_1.2 wiki]`＋『コミュニティ知見：スクリプト未確認』併記。残作業: /debate レビュー＋スクリプト実検証"
+    },
+    {
+      "date": "2026-05-08",
+      "project": "ssd-deal-tracker",
+      "summary": "v1.3.1: Crucial T500 1TB（HSなし）を追跡対象から削除（4製品体制）。価格.com取扱店舗ゼロで13日連続取得失敗の対応。HTML構造変更ではなく『現在価格情報の登録がありません』状態と判明。CLAUDE.md に原因切り分けルール追記"
+    },
+    {
+      "date": "2026-05-08",
+      "project": "paradox-game-guides",
+      "summary": "VIC3 プロイセンガイド Patch 1.13 (Matcha) 全面対応 + 議論エージェントレビュー指摘修正。指揮官単一化・プロミネンス・砲撃外交・クーデター扇動・艦船デザイナー・戦略的関心度ティアド反映。用語対照表に新6用語追加。CLAUDE.md にレビューで得たルール追記"
+    },
+    {
+      "date": "2026-04-15",
+      "project": "healthcare",
+      "summary": "体重データ連続欠落時の警告表示を追加（3日以上missing_weightでサマリカードに黄色警告）。eufy→Health Connect連携切断の調査・復旧も実施"
+    },
+    {
+      "date": "2026-04-13",
+      "project": "nagoya-hotel-deals",
+      "summary": "v0.4.0: GASアラート改善（ホテル単位クールダウン+通知上限+グルーピング）+ チャート複数ホテル比較 + ダークモード。全タスク完了・保守フェーズ移行"
+    },
+    {
+      "date": "2026-04-30",
+      "project": "ssd-deal-tracker",
+      "summary": "v1.3.0 ターゲット価格を「市場×90%」から「正常化アンカー(2024-2025底値)」基準に変更。5製品更新。議論パネル5名合議3.6/5。2026-10 G4/SN7100 再レビュー予定"
+    },
+    {
+      "date": "2026-05-17",
+      "project": "paradox-game-guides",
+      "summary": "EU5ハンガリーガイド 1.2 整合性追加修正: ①序盤〜中盤(行150〜394)レビューで Critical 3/Warning 3/Suggestion 3 を反映(has_parliament トリガー追加・estate_satisfaction weak_penalty 訂正・order_of_chivalry_law 明記・ヴィシェグラード会議キャラ条件追加 ほか) ②市場中心ロケーション誤記修正(ブダ→ペスト)。is_market_center フラグの location 依存をスクリプト確認 ③EU4 派生メカニクス洗い出し(researcher 1回): 諜報による請求権捏造(fabricate_claim)は EU5 1.2 に不在(spy_actions/ ディレクトリ自体無し)・ボスニアは flavor_BOS.txt:28 で開始時 HUN 属国確認・cb_conquer_enemy(コア不要)と cb_conquer_province(コア要)の使い分けを本文+対照表に整理 ④paradox-game-guides/CLAUDE.md に学び5件追記(EU4派生メカニクス横断スキャン・市場 location 依存・属国スタートの間接確認・横断スキャン即委任パターン ほか)"
+    },
+    {
+      "date": "2026-05-17",
+      "project": "paradox-game-guides",
+      "summary": "VIC3 日本攻略ガイド新規完成 (vic3-japan-guide.md, 911行) — EP2 The Great Wave + Patch 1.13 Matcha (海軍改修)対応。1セッションで spec→plan→researcher (DLC スクリプト網羅 8章・322行レポート)→implementer 3並列でセクション分担執筆→reviewer 3並列 (critical 5/warning 16/suggestion 13検出)→修正 implementer 1並列→付随4点 (index.html カード追加・CHANGELOG・localization-reference に1.13汎用5用語+EP2日本固有13用語・CLAUDE.md 学び2件) を完遂。明治維新JE 2段構造 (je_meiji_restoration→je_meiji_main の経済/軍事/外交3サブJE、kobu_gattai/kogi_yoron 幕府勝利2分岐) を表形式化、海軍ドクトリンを1.13改修反映で独立セクション化 (JAP固有エントリ不在を明示)、開国の軛 (Unrecognized脱却・条約港・forced_market_opening) を序盤独立配置。src マーカー128件・未検証マーカー6件・コミュニティ知見マーカー40件。EU4派生キーワード grep 0件確認 (VIC3固有の関税は注意書きで区別)。コミット 5件 push (edd1319/0b06c77/4d089f8/3d574ff/1131cc6)。paradox-game-guides/CLAUDE.md に学び2件追記 (staging 直書きで末尾セクション独占ルール・staging 経由方式ではコミット境界統合判断)"
+    },
+    {
+      "date": "2026-06-01",
+      "project": "paradox-game-guides",
+      "summary": "VIC3 日本・プロイセン両ガイドをインストール版 1.13.8 + EP2 で全数値再検証→ゼロベース書き直し。日本(911→501行, 85149cb): explorer 3並列でゲームスクリプト再検証し既存 [src:] の実誤りを多数訂正(law_free_ports 不在→law_mercantilism・force_recognition CB 不在(承認は je_meiji_diplomacy)・law_bakufu 所在 00_distribution_of_power.txt:114・『プロミネンス+5』→magnate_leader_weight・岩倉社会技術+0.25%→実値+1%・je_meiji_economy >0.7 厳密・Authority 訳語を concept_authority に合わせ『権力』統一)。未検証マーカー6件全解消、A/B/C 結合痕跡と重複(鎖国表4回・維新条件3回・出典2つ等)を排除、3ペルソナ(プレイヤー/開発者/ライター)レビュー反映。プロイセン(361→363行, 47f4a30): 核心のドイツ統一 JE チェーンを完全データ表化(je_schleswig_holstein_question→je_german_unification_idea→je_north/south_german_unification→je_german_unification、技術ゲート NGF=nationalism/GER=pan-nationalism、GER 形成 greater_germany 73%)、ツォルフェラインを identity_trade_league パワーブロック(交易容量+25%)として正確化、amendment_prussian_education(同化/徴兵率/軍部政治力+10%)新規記載、ツォルフェライン拡大/ビスマルク社会立法イベントを events/ 全走査で不在確定、投機的 UI 導線節を削除。explorer 並列で staging 検証→単一著者で書き直す方式。paradox-game-guides/CLAUDE.md に学び4件追記(検証基準はインストール版に固定・前セッションの [src:] も再検証・ステータス訳語は concept_* で確認しガイド内統一・イベント ID 未確認は不在確定まで詰める, 600751d)"
+    },
+    {
+      "date": "2026-06-04",
+      "project": "nagoya-hotel-deals",
+      "summary": "GAS 価格取得を『向こう N 週間の全日』→『土曜泊(土曜チェックイン, getDay()===6)のみ』に変更(PriceChecker.gs:84 に土曜フィルタ追加)。API 呼び出しが週7日→週1日に減少しGAS 6分制限・レートリミットの余裕が増加。土曜泊(土曜in→日曜out)の解釈はユーザー確認済み。コミット7a333c2・clasp push --force でデプロイ済み。clasp が PATH 未登録だったため healthcare/node_modules のローカルバイナリで一旦push→その後ユーザーがグローバル導入(v3.3.0)。学び: clasp global v3.3.0 導入済み・nagoya CLAUDE.md にデプロイ手順注記追加"
+    }
+  ],
+  "humanActions": [],
+  "projectHealth": [
+    {
+      "project": "ssd-deal-tracker",
+      "lastCommitDate": "2026-05-08",
+      "daysSinceCommit": 29,
+      "declaredStatus": "active",
+      "healthStatus": "idle",
+      "missingDocs": [],
+      "warnings": [
+        "active PJ だが29日更新なし"
+      ]
+    },
+    {
+      "project": "it-passport-training",
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 52,
+      "declaredStatus": "completed",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "healthcare",
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 52,
+      "declaredStatus": "maintenance",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "magi-system",
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 52,
+      "declaredStatus": "completed",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "kaiserreich-akai-sakura",
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 52,
+      "declaredStatus": "completed",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "fp3-training",
+      "lastCommitDate": "2026-04-15",
+      "daysSinceCommit": 52,
+      "declaredStatus": "completed",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "paradox-game-guides",
+      "lastCommitDate": "2026-06-01",
+      "daysSinceCommit": 5,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "nagoya-hotel-deals",
+      "lastCommitDate": "2026-06-04",
+      "daysSinceCommit": 2,
+      "declaredStatus": "maintenance",
+      "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    }
+  ],
+  "ideas": [
+    {
+      "title": "ideas.json 統合（Phase 5）",
+      "status": "検討中",
+      "note": "projects.json に ideas 配列として実装。本エントリ自体がサンプル"
+    },
+    {
+      "title": "通知機能（GASメール版）",
+      "status": "構想",
+      "note": "期限切れタスク・ヘルスケアリマインダーをGASトリガーで通知"
+    },
+    {
+      "title": "分析・可視化強化（Chart.js）",
+      "status": "構想",
+      "note": "トレンドグラフ、週次サマリーをダッシュボードに追加"
+    }
+  ]
+}
