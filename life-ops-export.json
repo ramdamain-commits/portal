@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-06 20:41",
+  "exportedAt": "2026-06-06 20:58",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -419,8 +419,8 @@
     },
     {
       "project": "nagoya-hotel-deals",
-      "lastCommitDate": "2026-06-04",
-      "daysSinceCommit": 2,
+      "lastCommitDate": "2026-06-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
