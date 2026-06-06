@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-06 20:58",
+  "exportedAt": "2026-06-06 21:13",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -230,6 +230,24 @@
       "supersededBy": null,
       "owner": "ramda",
       "note": "PriceChecker.gs の _checkAllPricesImpl で実装済み"
+    },
+    {
+      "id": "DEC-031",
+      "project": "nagoya-hotel-deals",
+      "title": "ダッシュボードを土曜オンリーに再設計しお得/おすすめ/通知を廃止",
+      "decision": "価格取得が土曜泊のみ(7a333c2)になった整合として、ダッシュボード全セクションを土曜基準に統一。お得アラート・デート日おすすめ検索・通知履歴の各セクションと GAS のお得プラン Gmail 通知ロジック(Notifier.gs)を削除。曜日別平均価格ヒートマップは『土曜ベスト早見表』(各土曜の最安ホテル+最安値を安い順)に転用。過去の平日残存データの物理削除は不実施(フロント土曜フィルタ+WebApp14日窓で実害なし)",
+      "alternatives": [
+        "A: フィルタ徹底+不要セクション削除(採用) — 土曜基準に統一し冗長UIを除去",
+        "B: レイアウト全面再構成 — コスト過大で今回の目的に対し過剰",
+        "C: 最小限フィルタのみ(セクション残置) — 曜日別ヒートマップ等が無意味化したまま残る"
+      ],
+      "rationale": "土曜のみ運用ではお得/おすすめ/通知は意味が薄く、UIノイズになる。マルチエージェントレビュー(reviewer×3)で critical(charge falsy・Cleanupヘッダ保護・TZ依存)を事前検出し修正。通知廃止はユーザー方針。平日データ削除はDriveバックアップ+手動実行が必要で取り返しがつかないため、実害がない以上見送り",
+      "status": "accepted",
+      "date": "2026-06-06",
+      "reviewDate": "2026-09-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "note": "実装 34cbbf6→fb4558c(レビュー反映)・clasp push済・root 2a0c59c。設計書 docs/superpowers/specs/2026-06-06-nagoya-hotel-deals-saturday-only-design.md。要対応: Setup.gs の楽天APIキーが public git 履歴に残存→ローテーション推奨"
     }
   ],
   "reviews": [],
@@ -348,6 +366,11 @@
       "date": "2026-06-04",
       "project": "nagoya-hotel-deals",
       "summary": "GAS 価格取得を『向こう N 週間の全日』→『土曜泊(土曜チェックイン, getDay()===6)のみ』に変更(PriceChecker.gs:84 に土曜フィルタ追加)。API 呼び出しが週7日→週1日に減少しGAS 6分制限・レートリミットの余裕が増加。土曜泊(土曜in→日曜out)の解釈はユーザー確認済み。コミット7a333c2・clasp push --force でデプロイ済み。clasp が PATH 未登録だったため healthcare/node_modules のローカルバイナリで一旦push→その後ユーザーがグローバル導入(v3.3.0)。学び: clasp global v3.3.0 導入済み・nagoya CLAUDE.md にデプロイ手順注記追加"
+    },
+    {
+      "date": "2026-06-06",
+      "project": "nagoya-hotel-deals",
+      "summary": "ダッシュボードを土曜オンリーに再設計(v0.5.0)。お得アラート/デート日おすすめ検索/通知履歴の各セクションとGASのお得プランGmail通知(Notifier.gs)を廃止。曜日別平均価格を『土曜ベスト早見表』(各土曜の最安ホテル+最安値を安い順)に転用。サマリーを3カード化(追跡中/土曜最安/次の土曜)、チャート/ヒートマップ/ホテル一覧を土曜フィルタ。設計→マルチエージェントレビュー(reviewer×3)→指摘修正(charge falsyガード/当日土曜表示/Cleanup・updateRecentAvgPricesのTZ非依存土曜判定/デッドCSS一掃)→検証→push。コミット 34cbbf6→fb4558c、clasp push済、root 2a0c59c。過去の平日データ削除は不実施方針。要対応: Setup.gs の楽天APIキーが public git 履歴に残存→ローテーション推奨"
     }
   ],
   "humanActions": [],
