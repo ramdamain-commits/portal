@@ -577,13 +577,14 @@
     <button class="filter-btn"           data-filter="AI"         aria-pressed="false" tabindex="-1">AI</button>
     <button class="filter-btn"           data-filter="創作"       aria-pressed="false" tabindex="-1">創作</button>
     <button class="filter-btn"           data-filter="ゲーム"     aria-pressed="false" tabindex="-1">ゲーム</button>
+    <button class="filter-btn"           data-filter="生活"       aria-pressed="false" tabindex="-1">生活</button>
   </div>
 
   <!-- カードグリッド -->
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
-                                                      <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+                                                            <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
 
       <!-- 1. SSD価格トラッカー -->
       <li class="card-item" data-category="ツール">
@@ -819,6 +820,33 @@
             プロジェクト横断の健全性ダッシュボード。setting/ の4つのJSONデータを集約表示。
           </p>
           <p class="card__note">localStorage ビューア。Run-LifeOpsConsole.cmd -Action export でデータ生成</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 10. 東京ひとり遊びガイド -->
+      <li class="card-item" data-category="生活">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/tokyo-solo-guide/"
+          target="_blank"
+          rel="noopener"
+          aria-label="東京ひとり遊びガイド（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(13, 148, 136, 0.25); color: #2dd4bf;"
+          >生活</span>
+          <h2 class="card__title">東京ひとり遊びガイド</h2>
+          <p class="card__desc">
+            東京で一人で楽しめる文化・歴史スポットと今月のイベントまとめ。
+          </p>
+          <p class="card__note">月次で企画展/季節/休館を更新。常設スポットは随時。</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
