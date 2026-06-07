@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-07 19:28",
+  "exportedAt": "2026-06-07 20:12",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -117,6 +117,19 @@
       "sourceOfTruth": "setting/scripts/Invoke-LifeOpsConsole.ps1",
       "portalVisible": true,
       "note": "localStorage ビューア。Run-LifeOpsConsole.cmd -Action export でデータ生成"
+    },
+    {
+      "id": "tokyo-solo-guide",
+      "displayName": "東京ひとり遊びガイド",
+      "description": "東京で一人で楽しめる文化・歴史スポットと今月のイベントまとめ。",
+      "category": "生活",
+      "repoName": "tokyo-solo-guide",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/tokyo-solo-guide/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "月次で企画展/季節/休館を更新。常設スポットは随時。"
     }
   ],
   "assumptions": [],
@@ -248,6 +261,26 @@
       "linkedAssumptions": [],
       "linkedDecisions": [],
       "note": "実装 34cbbf6→fb4558c(レビュー反映)・clasp push済・root 2a0c59c。設計書 docs/superpowers/specs/2026-06-06-nagoya-hotel-deals-saturday-only-design.md。要対応: Setup.gs の楽天APIキーが public git 履歴に残存→ローテーション推奨"
+    },
+    {
+      "id": "DEC-032",
+      "project": "tokyo-solo-guide",
+      "title": "東京ソロ遊びを汎用公開ガイドとして個人版メモから分離・独立public PJ化",
+      "decision": "private メモ reference_tokyo_solo_play.md(個人属性・機微情報を含む・非公開)から汎用情報のみを抽出し、独立 public リポ tokyo-solo-guide + GitHub Pages として公開する。2層構成(常設=evergreen.json/月次=monthly.json)+JSON駆動描画、検索ソースは sources.json レジストリ、更新は完全手動(月次 researcher 調査→monthly.json差替→push)。個人版メモは非公開の正本として維持し、公開版とは別系統にする",
+      "alternatives": [
+        "A: 独立public PJ+個人情報の構造的除外(採用) — 汎用ガイドとして成立し露出リスクなし",
+        "B: 居住エリア起点情報を残し個人属性のみ除外 — 居住エリア推測リスクが残るため不採用",
+        "C: portal内1ページに同居 — 独立性が低く、portal露出是正の文脈で機微混入リスク"
+      ],
+      "rationale": "public repo(Googleインデックス対象)のため個人特定につながる属性をデータモデルに置かない設計とし、禁止語スキャン(居住エリア推測語・名店名)とexport機械リークチェックで多層に担保。DEC-030(portal機微情報是正)の教訓を踏襲。マルチエージェントレビュー(reviewer×3: プライバシー/技術/運用)で禁止語拡充・commitタイミング前倒し等を事前修正",
+      "status": "accepted",
+      "date": "2026-06-07",
+      "reviewDate": "2026-12-07",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-030"
+      ],
+      "note": "設計書 docs/superpowers/specs/2026-06-07-tokyo-solo-guide-design.md、計画書 docs/superpowers/plans/2026-06-07-tokyo-solo-guide.md(root d9508de以降にコミット)。実装は次セッション(リポ作成→データ投入→公開→portalカード追加→運用反映)"
     }
   ],
   "reviews": [],
@@ -262,6 +295,11 @@
         "project": "ssd-deal-tracker",
         "action": "v1.3.1 T500 HSなし削除済(05-08、4製品体制)。次: 2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック",
         "priority": "LOW"
+      },
+      {
+        "project": "tokyo-solo-guide",
+        "action": "**全10タスク実装+GitHub Pages公開完了(06-07・DEC-032)**。https://ramdamain-commits.github.io/tokyo-solo-guide/ 。常設5カテゴリ16施設+月次2026-06(企画展13/季節1/休館1)。禁止語スキャン0件・portalカード(生活)追加済。次: **7/4 古代オリエント博物館再開(特別展〜9/6)確認・7月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "priority": "NORMAL"
       }
     ],
     "maintenance": "完了・保守: it-passport-training / fp3-training / magi-system / healthcare / kaiserreich-akai-sakura / nagoya-hotel-deals"
@@ -371,6 +409,11 @@
       "date": "2026-06-06",
       "project": "nagoya-hotel-deals",
       "summary": "ダッシュボードを土曜オンリーに再設計(v0.5.0)。お得アラート/デート日おすすめ検索/通知履歴の各セクションとGASのお得プランGmail通知(Notifier.gs)を廃止。曜日別平均価格を『土曜ベスト早見表』(各土曜の最安ホテル+最安値を安い順)に転用。サマリーを3カード化(追跡中/土曜最安/次の土曜)、チャート/ヒートマップ/ホテル一覧を土曜フィルタ。設計→マルチエージェントレビュー(reviewer×3)→指摘修正(charge falsyガード/当日土曜表示/Cleanup・updateRecentAvgPricesのTZ非依存土曜判定/デッドCSS一掃)→検証→push。コミット 34cbbf6→fb4558c、clasp push済、root 2a0c59c。過去の平日データ削除は不実施方針。要対応: Setup.gs の楽天APIキーが public git 履歴に残存→ローテーション推奨"
+    },
+    {
+      "date": "2026-06-07",
+      "project": "tokyo-solo-guide",
+      "summary": "新規public PJを実装・公開。個人版メモ(reference_tokyo_solo_play・非公開)から汎用情報のみ分離し、独立リポ tokyo-solo-guide + GitHub Pages で公開(https://ramdamain-commits.github.io/tokyo-solo-guide/)。依存ゼロのバニラHTML/CSS/JS・2層JSON駆動(evergreen.json常設5カテゴリ16施設/monthly.json 2026-06=企画展13・季節1・休館1)。検索ソースは sources.json 承認レジストリ、更新手順は docs/UPDATING.md(完全手動・月次researcher調査)。subagent-driven-developmentで10タスク実装。公開前に禁止語スキャン0件・export機械リークチェックOKでプライバシー担保。portalに生活カテゴリカード+フィルタ追加。setting cd8b312・portal 5ade06b。"
     }
   ],
   "humanActions": [],
@@ -446,6 +489,15 @@
       "daysSinceCommit": 1,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "tokyo-solo-guide",
+      "lastCommitDate": "2026-06-07",
+      "daysSinceCommit": 0,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
       "missingDocs": [],
       "warnings": []
     }
