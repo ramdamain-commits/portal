@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-07 20:12",
+  "exportedAt": "2026-06-07 20:32",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -413,7 +413,7 @@
     {
       "date": "2026-06-07",
       "project": "tokyo-solo-guide",
-      "summary": "新規public PJを実装・公開。個人版メモ(reference_tokyo_solo_play・非公開)から汎用情報のみ分離し、独立リポ tokyo-solo-guide + GitHub Pages で公開(https://ramdamain-commits.github.io/tokyo-solo-guide/)。依存ゼロのバニラHTML/CSS/JS・2層JSON駆動(evergreen.json常設5カテゴリ16施設/monthly.json 2026-06=企画展13・季節1・休館1)。検索ソースは sources.json 承認レジストリ、更新手順は docs/UPDATING.md(完全手動・月次researcher調査)。subagent-driven-developmentで10タスク実装。公開前に禁止語スキャン0件・export機械リークチェックOKでプライバシー担保。portalに生活カテゴリカード+フィルタ追加。setting cd8b312・portal 5ade06b。"
+      "summary": "新規public PJを実装・公開。個人版メモ(reference_tokyo_solo_play・非公開)から汎用情報のみ分離し、独立リポ tokyo-solo-guide + GitHub Pages で公開(https://ramdamain-commits.github.io/tokyo-solo-guide/)。依存ゼロのバニラHTML/CSS/JS・2層JSON駆動(evergreen.json常設5カテゴリ16施設/monthly.json 2026-06=企画展13・季節1・休館1)。検索ソースは sources.json 承認レジストリ、更新手順は docs/UPDATING.md(完全手動・月次researcher調査)。subagent-driven-developmentで10タスク実装。公開前に禁止語スキャン0件・export機械リークチェックOKでプライバシー担保。portalに生活カテゴリカード+フィルタ追加。setting cd8b312・portal 5ade06b。 公開後の仕上げ: OGP/Twitter Card/canonical+絵文字SVG favicon追加、企画展の会期終了を自動判定し終了済みを薄表示+『終了』バッジ+末尾移動、全項目にGoogleマップ検索リンク(📍地図/会場名・スポット名ベース)追加。GitHubリポにtopics6件+説明+homepage設定。最終commit 69b2f45。subagent-driven-developmentで実装、preview検証(モバイル375px横スクロール無/コンソールエラー0)。"
     }
   ],
   "humanActions": [],
