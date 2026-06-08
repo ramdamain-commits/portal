@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-08 22:53",
+  "exportedAt": "2026-06-08 22:56",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -293,7 +293,7 @@
       },
       {
         "project": "ssd-deal-tracker",
-        "action": "v1.3.1 T500 HSなし削除済(05-08、4製品体制)。次: 2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック",
+        "action": "v1.3.2 日次サマリーメール無効化(06-08、`DAILY_SUMMARY_ENABLED=false`・週次のみ受信・clasp push済/2609359 push済)。v1.3.1 T500 HSなし削除済(05-08、4製品体制)。次: 2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック。任意: GASの`sendDailySummary`日次トリガー手動削除",
         "priority": "LOW"
       },
       {
@@ -419,6 +419,11 @@
       "date": "2026-06-08",
       "project": "tokyo-solo-guide",
       "summary": "観点拡張。一人で行ける別観点の遊びを追加。常設に「伝統芸能・寄席・演芸」(歌舞伎座一幕見席・新宿末廣亭・鈴本演芸場・浅草演芸ホール・観世/宝生能楽堂の6件)と「銭湯・サウナ・温泉」(サウナ東京・サウナラボ神田・小杉湯・押上温泉大黒湯・はすぬま温泉・稲村ヶ崎温泉の6件)を追加し常設7カテゴリ28施設に。月次monthly.jsonにevents配列(歳時・社寺行事・祭り)を新設し、app.jsに「今月の歳時・祭り」表示セクションを追加(会期終了の自動薄表示・末尾ソートは企画展ロジックを再利用)。2026夏の11件(夏越の祓・入谷朝顔まつり・浅草ほおずき市・靖國みたままつり・築地本願寺盆踊り等)を出典URL付きで収録。山王祭をexhibitions→eventsへ分類修正。対象エリアを東京中心+関東日帰り圏に拡大(area県名併記)。設計→レビュー反映→writing-plans→subagent-driven(researcher収集+implementer3タスク+コントローラ検証)で実装。preview検証(events描画/過去日イベントで終了薄表示・末尾ソート/既存非破壊/コンソールエラー0)。tokyo-solo-guide push 8f49abb。"
+    },
+    {
+      "date": "2026-06-08",
+      "project": "ssd-deal-tracker",
+      "summary": "日次サマリーメール(sendDailySummary・件名『【SSD日次レポート】』)を無効化し週次のみ受信に変更(v1.3.2)。Config.gs にフラグ定数 DAILY_SUMMARY_ENABLED=false を追加し sendDailySummary 冒頭で早期リターン。GASの時間トリガーはエディタUIの手動設定でコード管理外のため、トリガーを消し忘れてもフラグが false ならメールが飛ばない安全装置とした。買い時即時通知(sendDealNotifications)と週次レポート(sendWeeklySummary)は継続。node --check で構文検証→clasp push でGASデプロイ→commit 2609359 push。CHANGELOG/README/CLAUDE.md(通知トグル設計メモ)更新、CLAUDE.md は 93c7b2d で別コミット。再開は true に戻して clasp push。GASの日次トリガー手動削除は任意(残してもメールは止まる)。"
     }
   ],
   "humanActions": [],
