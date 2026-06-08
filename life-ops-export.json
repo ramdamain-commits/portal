@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-07 20:32",
+  "exportedAt": "2026-06-08 22:53",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -129,7 +129,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-solo-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "月次で企画展/季節/休館を更新。常設スポットは随時。"
+      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。"
     }
   ],
   "assumptions": [],
@@ -298,7 +298,7 @@
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "**全10タスク実装+GitHub Pages公開完了(06-07・DEC-032)**。https://ramdamain-commits.github.io/tokyo-solo-guide/ 。常設5カテゴリ16施設+月次2026-06(企画展13/季節1/休館1)。禁止語スキャン0件・portalカード(生活)追加済。次: **7/4 古代オリエント博物館再開(特別展〜9/6)確認・7月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "action": "GitHub Pages公開(06-07・DEC-032)。https://ramdamain-commits.github.io/tokyo-solo-guide/ 。**観点拡張(06-08・push 8f49abb)で常設7カテゴリ28施設(伝統芸能・寄席/銭湯・サウナ追加)+月次events配列(歳時・祭り2026夏11件)新設+関東日帰り圏に拡大**。preview検証済・禁止語0件。次: **7/4 古代オリエント博物館再開(特別展〜9/6)確認・7月月次更新(企画展+events、researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
         "priority": "NORMAL"
       }
     ],
@@ -414,25 +414,28 @@
       "date": "2026-06-07",
       "project": "tokyo-solo-guide",
       "summary": "新規public PJを実装・公開。個人版メモ(reference_tokyo_solo_play・非公開)から汎用情報のみ分離し、独立リポ tokyo-solo-guide + GitHub Pages で公開(https://ramdamain-commits.github.io/tokyo-solo-guide/)。依存ゼロのバニラHTML/CSS/JS・2層JSON駆動(evergreen.json常設5カテゴリ16施設/monthly.json 2026-06=企画展13・季節1・休館1)。検索ソースは sources.json 承認レジストリ、更新手順は docs/UPDATING.md(完全手動・月次researcher調査)。subagent-driven-developmentで10タスク実装。公開前に禁止語スキャン0件・export機械リークチェックOKでプライバシー担保。portalに生活カテゴリカード+フィルタ追加。setting cd8b312・portal 5ade06b。 公開後の仕上げ: OGP/Twitter Card/canonical+絵文字SVG favicon追加、企画展の会期終了を自動判定し終了済みを薄表示+『終了』バッジ+末尾移動、全項目にGoogleマップ検索リンク(📍地図/会場名・スポット名ベース)追加。GitHubリポにtopics6件+説明+homepage設定。最終commit 69b2f45。subagent-driven-developmentで実装、preview検証(モバイル375px横スクロール無/コンソールエラー0)。"
+    },
+    {
+      "date": "2026-06-08",
+      "project": "tokyo-solo-guide",
+      "summary": "観点拡張。一人で行ける別観点の遊びを追加。常設に「伝統芸能・寄席・演芸」(歌舞伎座一幕見席・新宿末廣亭・鈴本演芸場・浅草演芸ホール・観世/宝生能楽堂の6件)と「銭湯・サウナ・温泉」(サウナ東京・サウナラボ神田・小杉湯・押上温泉大黒湯・はすぬま温泉・稲村ヶ崎温泉の6件)を追加し常設7カテゴリ28施設に。月次monthly.jsonにevents配列(歳時・社寺行事・祭り)を新設し、app.jsに「今月の歳時・祭り」表示セクションを追加(会期終了の自動薄表示・末尾ソートは企画展ロジックを再利用)。2026夏の11件(夏越の祓・入谷朝顔まつり・浅草ほおずき市・靖國みたままつり・築地本願寺盆踊り等)を出典URL付きで収録。山王祭をexhibitions→eventsへ分類修正。対象エリアを東京中心+関東日帰り圏に拡大(area県名併記)。設計→レビュー反映→writing-plans→subagent-driven(researcher収集+implementer3タスク+コントローラ検証)で実装。preview検証(events描画/過去日イベントで終了薄表示・末尾ソート/既存非破壊/コンソールエラー0)。tokyo-solo-guide push 8f49abb。"
     }
   ],
   "humanActions": [],
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
-      "lastCommitDate": "2026-05-08",
-      "daysSinceCommit": 30,
+      "lastCommitDate": "2026-06-08",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが30日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 53,
+      "daysSinceCommit": 54,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -441,7 +444,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 53,
+      "daysSinceCommit": 54,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -450,7 +453,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 53,
+      "daysSinceCommit": 54,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -459,7 +462,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 53,
+      "daysSinceCommit": 54,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -468,7 +471,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 53,
+      "daysSinceCommit": 54,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -477,7 +480,7 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-06-01",
-      "daysSinceCommit": 6,
+      "daysSinceCommit": 7,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -486,7 +489,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 1,
+      "daysSinceCommit": 2,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -494,7 +497,7 @@
     },
     {
       "project": "tokyo-solo-guide",
-      "lastCommitDate": "2026-06-07",
+      "lastCommitDate": "2026-06-08",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
