@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-08 22:56",
+  "exportedAt": "2026-06-08 23:06",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -298,7 +298,7 @@
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "GitHub Pages公開(06-07・DEC-032)。https://ramdamain-commits.github.io/tokyo-solo-guide/ 。**観点拡張(06-08・push 8f49abb)で常設7カテゴリ28施設(伝統芸能・寄席/銭湯・サウナ追加)+月次events配列(歳時・祭り2026夏11件)新設+関東日帰り圏に拡大**。preview検証済・禁止語0件。次: **7/4 古代オリエント博物館再開(特別展〜9/6)確認・7月月次更新(企画展+events、researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "action": "GitHub Pages公開(06-07・DEC-032)。https://ramdamain-commits.github.io/tokyo-solo-guide/ 。**観点拡張(06-08・push 6769252)で常設7カテゴリ28施設(伝統芸能・寄席/銭湯・サウナ追加)+月次events配列(歳時・祭り計17件・うち関東都外6件)新設+関東日帰り圏に拡大**。preview検証済・禁止語0件。次: **7/4 古代オリエント博物館再開(特別展〜9/6)確認・7月月次更新(企画展+events、researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
         "priority": "NORMAL"
       }
     ],
@@ -424,6 +424,11 @@
       "date": "2026-06-08",
       "project": "ssd-deal-tracker",
       "summary": "日次サマリーメール(sendDailySummary・件名『【SSD日次レポート】』)を無効化し週次のみ受信に変更(v1.3.2)。Config.gs にフラグ定数 DAILY_SUMMARY_ENABLED=false を追加し sendDailySummary 冒頭で早期リターン。GASの時間トリガーはエディタUIの手動設定でコード管理外のため、トリガーを消し忘れてもフラグが false ならメールが飛ばない安全装置とした。買い時即時通知(sendDealNotifications)と週次レポート(sendWeeklySummary)は継続。node --check で構文検証→clasp push でGASデプロイ→commit 2609359 push。CHANGELOG/README/CLAUDE.md(通知トグル設計メモ)更新、CLAUDE.md は 93c7b2d で別コミット。再開は true に戻して clasp push。GASの日次トリガー手動削除は任意(残してもメールは止まる)。"
+    },
+    {
+      "date": "2026-06-08",
+      "project": "tokyo-solo-guide",
+      "summary": "観点拡張の関東イベント追補。月次events(歳時・祭り)が都内に偏っていたため、researcherで関東日帰り圏(神奈川・千葉・埼玉)の2026夏イベント5件を追加収集(川崎大師風鈴市・鶴岡八幡宮ぼんぼり祭・江の島灯籠・佐原の大祭夏祭り・秩父川瀬祭、全件公式出典・一人可・花火/相撲除外)。events計17件(都内11+関東都外6)に。areaの県名表記ゆれ(川越（埼玉県）vs秩父（埼玉）)を短縮形に統一。preview検証(events17件・関東6件描画・コンソールエラー0)。tokyo-solo-guide push 6769252。"
     }
   ],
   "humanActions": [],
