@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-16 23:06",
+  "exportedAt": "2026-06-16 23:19",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク"
+      "note": "GitHub Pages公開済み。EU5 1.3 open beta更新案をspec確定(06-16, DEC-037/案A純追記)。次=実装バッチ1(universal+government)＋残検証2件。VIC3日本/プロイセンは1.13.8書き直し完了"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -281,6 +281,22 @@
         "DEC-030"
       ],
       "note": "設計書 docs/superpowers/specs/2026-06-07-tokyo-solo-guide-design.md、計画書 docs/superpowers/plans/2026-06-07-tokyo-solo-guide.md(root d9508de以降にコミット)。実装は次セッション(リポ作成→データ投入→公開→portalカード追加→運用反映)"
+    },
+    {
+      "id": "DEC-037",
+      "project": "paradox-game-guides",
+      "title": "EU5 1.3 open beta はガイド本体を書き換えず差分セクション純追記で対応(案A)",
+      "decision": "1.2安定版を検証済みbaselineとして維持し、各ガイドに『1.3オープンベータ差分』専用セクションを純追記する。本体章は一切変更せず、beta起源の数値は本文に昇格させない。安定版リリース後に昇格フローで本文統合する。",
+      "context": "1.3はopen beta(1.3.0→1.3.2と流動中)で公開ガイドの読者多数派は1.2 stable。CLAUDE.md『インストール版固定・公開ベータを追わない』ルールとの整合が論点。",
+      "alternatives": "B:全面リベース(ルール違反かつbeta再調整で手戻り大・却下)／C:安定版まで追跡メモのみ(ルール最厳守だが情報価値ゼロ・却下)",
+      "rationale": "マルチエージェントレビュー(戦略構成)が案A条件付き支持。『インストール版固定』は本体章の書き換え禁止が趣旨であり、専用差分セクションの純追記はスコープ外と整理できる。ローカル1.3 betaスクリプトで検証した差分を早期提供でき、安定版化時の昇格も滑らか。",
+      "status": "accepted",
+      "date": "2026-06-16",
+      "reviewDate": "2026-09-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "owner": "ramda",
+      "note": "spec=docs/superpowers/specs/2026-06-16-eu5-patch13-update-design.md(6255492)。マーカーは既存体系に重ね合わせ([src:](1.3 beta)等)、単体新設禁止。実装は次セッション(バッチ1=universal+government)。"
     }
   ],
   "reviews": [],
@@ -288,7 +304,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "VIC3 日本(501行)・プロイセン(363行)ガイドを 1.13.8 でゼロベース書き直し完了(06-01): 全数値再検証で実誤り訂正・統一JE/維新JE完全データ表化・未検証マーカー全解消。85149cb/47f4a30/600751d push。次: Web公開(GitHub Pages)検討・EU5 1.2拡充",
+        "action": "**EU5 1.3 open beta 更新案を spec 確定(06-16, 6255492/CLAUDE.md学びc1311a1, DEC-037)**: 案A(純追記・差分セクション)・マルチエージェントレビュー3本＋1.2/1.3パッチノート突き合わせ反映。経済目玉値はエンジン内部値→changelog出典+beta注記。次: **実装バッチ1=universal+government(宮廷芸術家含む)＋着手前に残検証2件(Korea「Hall of Worthies」所在特定/スパイ網fog文言)**。バッチ2=religion+byzantium、次々回でregional単独+国別+Tier4。⚠子repoはpush未・root submodule参照更新も保留",
         "priority": "NORMAL"
       },
       {
@@ -429,6 +445,11 @@
       "date": "2026-06-08",
       "project": "tokyo-solo-guide",
       "summary": "観点拡張の関東イベント追補。月次events(歳時・祭り)が都内に偏っていたため、researcherで関東日帰り圏(神奈川・千葉・埼玉)の2026夏イベント5件を追加収集(川崎大師風鈴市・鶴岡八幡宮ぼんぼり祭・江の島灯籠・佐原の大祭夏祭り・秩父川瀬祭、全件公式出典・一人可・花火/相撲除外)。events計17件(都内11+関東都外6)に。areaの県名表記ゆれ(川越（埼玉県）vs秩父（埼玉）)を短縮形に統一。preview検証(events17件・関東6件描画・コンソールエラー0)。tokyo-solo-guide push 6769252。"
+    },
+    {
+      "date": "2026-06-16",
+      "project": "paradox-game-guides",
+      "summary": "EU5 1.3 open beta(buildid 23683141)のガイド更新案を確定版v2としてspec化+コミット(6255492)。現行12ファイル(全1.2基準)への差分を、ローカルbetaスクリプト+公式1.3.0/1.3.2ノートで分析。マルチエージェントレビュー3本(正確性/網羅性/戦略構成)を実施。ユーザー提案の1.2/1.3パッチノート突き合わせで、スクリプトに実値が無い経済目玉値(船コスト4x金/10x goods・利益率・建物維持費+50%・陸軍goods2倍・mills_employment半減・Prikazi/Collegium 0.15/0.20→0.10)を1.3真正変更と確定し、changelog出典+beta注記で記載する方針に。script一致6項目=兵科再分類4・低devotionペナルティ-0.1・交易範囲600→1100。レビュー補正=宮廷芸術家欠落補填/ゲルフ・ギベリンをイタリア章へ/Twilight of the Tsardomをバルカン+ビザンツへ/銀行割当是正/Ottoman・Hungary格上げ。学び2件をrepo CLAUDE.mdへ(c1311a1)。実装は次セッション。"
     }
   ],
   "humanActions": [],
@@ -491,14 +512,12 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-06-01",
-      "daysSinceCommit": 15,
+      "lastCommitDate": "2026-06-16",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが15日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "nagoya-hotel-deals",
