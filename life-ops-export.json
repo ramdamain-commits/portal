@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-18 19:25",
+  "exportedAt": "2026-06-18 19:36",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -12,7 +12,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/ssd-deal-tracker/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "1TB NVMe 5製品を監視中。NAND相場で target_price 再調整予定"
+      "note": "1TB NVMe 4製品を監視中。NAND相場で target_price 再調整予定"
     },
     {
       "id": "it-passport-training",
@@ -327,7 +327,7 @@
       },
       {
         "project": "ssd-deal-tracker",
-        "action": "v1.3.2 日次サマリーメール無効化(06-08、`DAILY_SUMMARY_ENABLED=false`・週次のみ受信・clasp push済/2609359 push済)。v1.3.1 T500 HSなし削除済(05-08、4製品体制)。次: 2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック。任意: GASの`sendDailySummary`日次トリガー手動削除",
+        "action": "**v1.3.3 孤児トリガー削除メニュー化(06-18、`deleteDailySummaryTrigger`・git 4819d02/clasp push済)**: GASエディタを開かず「SSD管理」メニューから1クリックで `sendDailySummary` 残存トリガーを削除可能に。v1.3.2 日次サマリー無効化(06-08、`DAILY_SUMMARY_ENABLED=false`・週次のみ)。v1.3.1 T500 HSなし削除済(4製品体制)。次: **スプレッドシートのメニューを1回実行して孤児トリガー削除**(任意・未実行でもメール不送信)。2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック",
         "priority": "LOW"
       },
       {
@@ -478,20 +478,23 @@
       "date": "2026-06-18",
       "project": "paradox-game-guides",
       "summary": "EU5 1.3 beta差分の純追記を全ガイド完遂(案A・1.2本体無変更)。regional単独(a32beb9)=百年戦争/薔薇戦争/ゲルフギベリン/Taula de Canvi/Twilight/Voivode/RGO再分配/植民移民/新文化(種別保留)/天然痘亜熱帯化(実機0.05・閾値0.15・subtropical)/Korea集賢殿ナーフ。国別5(2919576)=ottoman(船コスト/維持費/陸軍goods・更新Tier2メモ)/hungary(陸軍goods=黒軍直撃+no_female_heirs_for_poland例外)/austria(従属国への宗教統一強制不可)/brandenburg(Voivode+Berenberg=HAM固有で非該当)/castile(植民艦隊コスト+Taula=アラゴン固有で非該当)。Tier4先行=recommended-mods互換注記(655bdd6)。index.html betaバッジ計11・全push済/root submodule更新。load-bearing値は実機grep再確認。さらに『1.3安定版昇格計画書』作成(8496cd2)+付録A個別ガイド本文統合マッピング(b3adab8)を3エージェントレビュー(熟練者/構成サイズ/リスク運用)で改訂(f761376、判定=部分修正で可・全面作り直し不要、サイズ均衡フェーズ2.5新設で小型ガイド増強)。"
+    },
+    {
+      "date": "2026-06-18",
+      "project": "ssd-deal-tracker",
+      "summary": "v1.3.3: 日次サマリーの孤児トリガー削除をメニュー化。カスタムメニュー「SSD管理」に deleteDailySummaryTrigger を追加し、ScriptApp で sendDailySummary の残存時間トリガーを検出・削除。GASエディタのトリガー画面を開かず1クリックで掃除可能に（DAILY_SUMMARY_ENABLED=false の安全装置は維持）。node --check 構文検証・git push(4819d02)・gas/配下から clasp push 済。あわせて _staging/ の完了済みスクラッチ13ファイルを掃除。"
     }
   ],
   "humanActions": [],
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
-      "lastCommitDate": "2026-06-08",
-      "daysSinceCommit": 10,
+      "lastCommitDate": "2026-06-18",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが10日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "it-passport-training",
