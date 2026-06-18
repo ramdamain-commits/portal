@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-18 18:38",
+  "exportedAt": "2026-06-18 19:25",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。EU5 1.3 open beta更新案をspec確定(06-16, DEC-037/案A純追記)。次=実装バッチ1(universal+government)＋残検証2件。VIC3日本/プロイセンは1.13.8書き直し完了"
+      "note": "GitHub Pages公開済み。EU5 1.3 beta差分を全ガイド純追記完遂(06-18, regional a32beb9/国別5 2919576/mods 655bdd6 push済/root submodule更新, DEC-037)。1.3安定版昇格計画書を作成(8496cd2)+付録A+3エージェントレビュー改訂(f761376, DEC-038, サイズ均衡フェーズ2.5新設)。次=1.3安定版リリース後に昇格フロー+小型ガイド拡充。VIC3日本/プロイセンは1.13.8書き直し完了"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -297,6 +297,24 @@
       "linkedDecisions": [],
       "owner": "ramda",
       "note": "spec=docs/superpowers/specs/2026-06-16-eu5-patch13-update-design.md(6255492)。マーカーは既存体系に重ね合わせ([src:](1.3 beta)等)、単体新設禁止。実装は次セッション(バッチ1=universal+government)。"
+    },
+    {
+      "id": "DEC-038",
+      "project": "paradox-game-guides",
+      "title": "EU5 1.3安定版昇格は計画書化し、ページ間サイズ差を『増やす方向』で是正する",
+      "decision": "1.3が安定版になったら差分セクションを本文統合する昇格フローを計画書(docs/superpowers/plans/2026-06-18-eu5-patch13-stable-promotion.md)として用意。あわせて個別ガイドのサイズ差(ottoman/castile/brandenburg ≈28-31K字 vs austria 67K字)をフェーズ2.5で『増やす方向』に是正する。",
+      "context": "ユーザー要望=正式版時に全メニュー(11ガイド)を1.3化＋ページサイズ感の差を増やす方向で調整。現状は1.2本体無変更＋1.3 beta差分の純追記が全ガイド完了済(DEC-037)。",
+      "alternatives": "サイズ縮小方向での均衡(却下=情報量を削る)／統合と拡充を同一フェーズ実施(却下=本体誤変更リスク)／拡充しない(却下=要望未充足)",
+      "rationale": "3エージェントレビュー(熟練者/構成サイズ/リスク運用)で『部分修正で可・全面作り直し不要』判定。拡充はフェーズ1(本文統合)完了後に実測してから着手(目測順位が変わりうる)。セッション見積は拡充込みで5-6。",
+      "status": "accepted",
+      "date": "2026-06-18",
+      "reviewDate": "2026-09-30",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-037"
+      ],
+      "owner": "ramda",
+      "note": "着手トリガー=1.3安定版(buildid変化 AND betaフラグ外れ・wikiは補完)。小型3ガイド増強案=固有イベント時系列の完全テーブル化・10.5独立節(ottoman地中海制海/castile異端審問所運営)・brandenburg HRE財政節。誤帰属注記(Berenberg=HAM/Taula=アラゴン/政府への潜入=1.2既存)は昇格後も残置。プリフライトで宮廷芸術家12 vs spec14を実カウント確定。"
     }
   ],
   "reviews": [],
@@ -304,7 +322,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5 1.3 beta実装バッチ1+2完了(06-17, 60a01a4 push済/root 100d32d, DEC-037)**: universal/government/religion/byzantiumに1.3差分純追記+章追加4点セット+index.html該当4カードにbetaバッジ。残検証2件実機確定(Hall of Worthies=集賢殿/諜報網fog=政府への潜入1.2既存と切り分け)・spec誤り是正(芸術家12種・官僚制generic10種)。次: **regional単独(検証ポイント最多)→国別(ottoman/hungary格上げ・austria・brandenburg・castile)→Tier4(localization中央昇格)**。差分の本文統合は1.3安定版後の昇格フロー",
+        "action": "**EU5 1.3 beta差分 全ガイド純追記完遂(06-18, DEC-037/DEC-038)**: regional(a32beb9)+国別5(2919576, ottoman/hungary/austria/brandenburg/castile)+recommended-mods互換注記(655bdd6)を全push済/root submodule更新。index.html betaバッジ計11。load-bearing値は実機grep再確認。**『1.3安定版昇格計画書』作成(8496cd2)+付録A個別ガイド統合マッピング(b3adab8)を3エージェントレビューで改訂(f761376、判定=部分修正で可・サイズ均衡フェーズ2.5新設)**。次: **1.3安定版リリース後に昇格フロー実行(計画書 docs/superpowers/plans/2026-06-18-eu5-patch13-stable-promotion.md)＋小型3ガイド(ottoman/castile/brandenburg)をaustria/hungary水準へ拡充**。それまで凍結",
         "priority": "NORMAL"
       },
       {
@@ -455,6 +473,11 @@
       "date": "2026-06-16",
       "project": "paradox-game-guides",
       "summary": "EU5 1.3 open beta(buildid 23683141)のガイド更新案を確定版v2としてspec化+コミット(6255492)。現行12ファイル(全1.2基準)への差分を、ローカルbetaスクリプト+公式1.3.0/1.3.2ノートで分析。マルチエージェントレビュー3本(正確性/網羅性/戦略構成)を実施。ユーザー提案の1.2/1.3パッチノート突き合わせで、スクリプトに実値が無い経済目玉値(船コスト4x金/10x goods・利益率・建物維持費+50%・陸軍goods2倍・mills_employment半減・Prikazi/Collegium 0.15/0.20→0.10)を1.3真正変更と確定し、changelog出典+beta注記で記載する方針に。script一致6項目=兵科再分類4・低devotionペナルティ-0.1・交易範囲600→1100。レビュー補正=宮廷芸術家欠落補填/ゲルフ・ギベリンをイタリア章へ/Twilight of the Tsardomをバルカン+ビザンツへ/銀行割当是正/Ottoman・Hungary格上げ。学び2件をrepo CLAUDE.mdへ(c1311a1)。実装は次セッション。"
+    },
+    {
+      "date": "2026-06-18",
+      "project": "paradox-game-guides",
+      "summary": "EU5 1.3 beta差分の純追記を全ガイド完遂(案A・1.2本体無変更)。regional単独(a32beb9)=百年戦争/薔薇戦争/ゲルフギベリン/Taula de Canvi/Twilight/Voivode/RGO再分配/植民移民/新文化(種別保留)/天然痘亜熱帯化(実機0.05・閾値0.15・subtropical)/Korea集賢殿ナーフ。国別5(2919576)=ottoman(船コスト/維持費/陸軍goods・更新Tier2メモ)/hungary(陸軍goods=黒軍直撃+no_female_heirs_for_poland例外)/austria(従属国への宗教統一強制不可)/brandenburg(Voivode+Berenberg=HAM固有で非該当)/castile(植民艦隊コスト+Taula=アラゴン固有で非該当)。Tier4先行=recommended-mods互換注記(655bdd6)。index.html betaバッジ計11・全push済/root submodule更新。load-bearing値は実機grep再確認。さらに『1.3安定版昇格計画書』作成(8496cd2)+付録A個別ガイド本文統合マッピング(b3adab8)を3エージェントレビュー(熟練者/構成サイズ/リスク運用)で改訂(f761376、判定=部分修正で可・全面作り直し不要、サイズ均衡フェーズ2.5新設で小型ガイド増強)。"
     }
   ],
   "humanActions": [],
@@ -517,8 +540,8 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-06-17",
-      "daysSinceCommit": 1,
+      "lastCommitDate": "2026-06-18",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
