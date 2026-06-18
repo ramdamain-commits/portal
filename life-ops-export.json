@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-17 22:16",
+  "exportedAt": "2026-06-18 18:38",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -304,7 +304,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5 1.3 open beta 更新案を spec 確定(06-16, 6255492/CLAUDE.md学びc1311a1, DEC-037)**: 案A(純追記・差分セクション)・マルチエージェントレビュー3本＋1.2/1.3パッチノート突き合わせ反映。経済目玉値はエンジン内部値→changelog出典+beta注記。次: **実装バッチ1=universal+government(宮廷芸術家含む)＋着手前に残検証2件(Korea「Hall of Worthies」所在特定/スパイ網fog文言)**。バッチ2=religion+byzantium、次々回でregional単独+国別+Tier4。⚠子repoはpush未・root submodule参照更新も保留",
+        "action": "**EU5 1.3 beta実装バッチ1+2完了(06-17, 60a01a4 push済/root 100d32d, DEC-037)**: universal/government/religion/byzantiumに1.3差分純追記+章追加4点セット+index.html該当4カードにbetaバッジ。残検証2件実機確定(Hall of Worthies=集賢殿/諜報網fog=政府への潜入1.2既存と切り分け)・spec誤り是正(芸術家12種・官僚制generic10種)。次: **regional単独(検証ポイント最多)→国別(ottoman/hungary格上げ・austria・brandenburg・castile)→Tier4(localization中央昇格)**。差分の本文統合は1.3安定版後の昇格フロー",
         "priority": "NORMAL"
       },
       {
@@ -351,6 +351,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-06-17",
+      "project": "paradox-game-guides",
+      "summary": "EU5 1.3 open beta差分の純追記をバッチ1(universal+government)+バッチ2(religion+byzantium)で実装・push(60a01a4/root submodule 100d32d)。案A厳守(1.2本体無変更/beta数値非昇格/1行1マーカー)。4ガイドに「1.3オープンベータ差分」セクション+章追加4点セット(用語表beta仮登録/出典+Patch1.3 wiki/差分セクション/CHANGELOG)+index.html該当4カードにbetaバッジ。残検証2件を実機確定(Hall of Worthies=集賢殿flavor_kor.28経由/諜報網fog=政府への潜入1.2既存と切り分け)。spec誤りを実機是正(宮廷芸術家12種・官僚制generic10種)。残=regional単独→国別(ottoman/hungary格上げ等)→Tier4は次々セッション。"
+    },
     {
       "date": "2026-05-16",
       "project": "paradox-game-guides",
@@ -457,18 +462,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-06-08",
-      "daysSinceCommit": 9,
+      "daysSinceCommit": 10,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが9日更新なし"
+        "active PJ だが10日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 63,
+      "daysSinceCommit": 64,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -477,7 +482,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 63,
+      "daysSinceCommit": 64,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -486,7 +491,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 63,
+      "daysSinceCommit": 64,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -495,7 +500,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 63,
+      "daysSinceCommit": 64,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -504,7 +509,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 63,
+      "daysSinceCommit": 64,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -512,7 +517,7 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-06-16",
+      "lastCommitDate": "2026-06-17",
       "daysSinceCommit": 1,
       "declaredStatus": "active",
       "healthStatus": "healthy",
@@ -522,7 +527,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 11,
+      "daysSinceCommit": 12,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -531,12 +536,12 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-06-08",
-      "daysSinceCommit": 9,
+      "daysSinceCommit": 10,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが9日更新なし"
+        "active PJ だが10日更新なし"
       ]
     }
   ],
