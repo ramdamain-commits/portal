@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-03 00:39",
+  "exportedAt": "2026-07-03 01:12",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -545,14 +545,12 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 15,
+      "lastCommitDate": "2026-07-03",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが15日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "nagoya-hotel-deals",
