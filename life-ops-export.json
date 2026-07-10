@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-10 20:59",
+  "exportedAt": "2026-07-10 23:20",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -545,8 +545,8 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-07-03",
-      "daysSinceCommit": 7,
+      "lastCommitDate": "2026-07-10",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
