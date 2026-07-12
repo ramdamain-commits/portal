@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-11 14:32",
+  "exportedAt": "2026-07-12 13:10",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。EU5 1.3が安定版リリース(07-10, buildid24075414=1.3.10)されたため昇格フロー フェーズ0プリフライト+フェーズ1(全11ガイド本文統合、Task1-1〜1-4)を完遂(07-11)。次=フェーズ2(中央用語昇格+index.html betaバッジ除去)→フェーズ2.5(小型3ガイド拡充、opus推奨)→フェーズ3(検証)。VIC3日本/プロイセンは1.13.8書き直し完了"
+      "note": "GitHub Pages公開済み。EU5 1.3安定版昇格フロー フェーズ0〜3完遂(07-12、b/09-b6424de/ff9d6a1)。フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充。フェーズ3=reviewer3並列で全11ガイド検証、critical複数件(GP Score免除閾値の識別子非実在・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認等)を実機スクリプト裏取り後に修正済み。1.3安定版昇格プロジェクトは完了、次は通常運用。VIC3日本/プロイセンは1.13.8書き直し完了"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -322,8 +322,8 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5 1.3が安定版リリース(07-10, buildid24075414=1.3.10)、昇格フロー フェーズ0+フェーズ1(全11ガイド本文統合)完遂(07-11)**: Task1-1(universal/government/religion)→Task1-2(regional単独)→Task1-3(byzantium+国別5、相互参照はWave分割で解決)→Task1-4(recommended-mods、researcher委任でSteam Workshop実地調査)を全push済/root submodule更新。次: **フェーズ2(中央localization-reference昇格+index.html betaバッジ除去)→フェーズ2.5(小型3ガイド=ottoman/castile/brandenburgをaustria/hungary水準へ拡充、opus推奨)→フェーズ3(整合スイープ+検証)**。計画書 docs/superpowers/plans/2026-06-18-eu5-patch13-stable-promotion.md",
-        "priority": "NORMAL"
+        "action": "**EU5 1.3安定版昇格プロジェクト完了(07-12、フェーズ0〜3全完遂)**: フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充。フェーズ3=reviewer3並列で全11ガイド検証、critical複数件(GP Score免除閾値の識別子非実在4ガイド横断・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認)を実機スクリプト裏取り後に修正。paradox ff9d6a1・root 936ca20 push済。次: 通常運用（新パッチ待ち or 他タイトル拡充）",
+        "priority": "LOW"
       },
       {
         "project": "ssd-deal-tracker",
@@ -369,6 +369,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-07-12",
+      "project": "paradox-game-guides",
+      "summary": "EU5 1.3安定版昇格プロジェクトを完遂(フェーズ2.5+フェーズ3)。フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充(researcher→implementer opus→reviewer sonnet3並列)。フェーズ3=Task3-1整合スイープ0件確認、Task3-2で11ガイドをreviewer3並列(検証ポイント数で均等分割)しcritical複数件を検出: byzantium/regionalのTwilight of the Tsardom発火タイミング誤認(1338年以降にしか発火判定されないディザスターを「1400年代に狙う好機」と誤記)、austriaの架空出典ファイル31箇所混入(hab-*.mdはゲーム内にもリポジトリにも非実在)、government/hungary/austria/brandenburg横断のGP Score免除閾値識別子非実在、hungaryのハンガリーフサール兵科誤分類(Heavy→実際はLight Cavalry)。全て実機スクリプトで裏取り後にメイン側で修正、修正対象6ガイドのみで他ガイドへの波及なし。paradox ff9d6a1・root 936ca20 push済。EU5 1.3安定版昇格プロジェクトは完了、次は通常運用。"
+    },
     {
       "date": "2026-07-11",
       "project": "paradox-game-guides",
@@ -495,18 +500,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 23,
+      "daysSinceCommit": 24,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが23日更新なし"
+        "active PJ だが24日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 88,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -515,7 +520,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 88,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -524,7 +529,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 88,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -533,7 +538,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 88,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -542,7 +547,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 88,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -550,7 +555,7 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-07-11",
+      "lastCommitDate": "2026-07-12",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
@@ -560,7 +565,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 35,
+      "daysSinceCommit": 36,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -569,12 +574,12 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-06-08",
-      "daysSinceCommit": 33,
+      "daysSinceCommit": 34,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが33日更新なし"
+        "active PJ だが34日更新なし"
       ]
     }
   ],
