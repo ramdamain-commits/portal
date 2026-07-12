@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-12 13:10",
+  "exportedAt": "2026-07-12 19:16",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -322,7 +322,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5 1.3安定版昇格プロジェクト完了(07-12、フェーズ0〜3全完遂)**: フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充。フェーズ3=reviewer3並列で全11ガイド検証、critical複数件(GP Score免除閾値の識別子非実在4ガイド横断・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認)を実機スクリプト裏取り後に修正。paradox ff9d6a1・root 936ca20 push済。次: 通常運用（新パッチ待ち or 他タイトル拡充）",
+        "action": "**CK3 1.19最新化+EU5国別6ガイド見直しレビュー完了(07-12)**: CK3=実インストール版1.19.0.6に対しガイド3本の「1.19新設」誤帰属5件(正統性/封臣スタンス/戴冠式と誓約/遊牧連合/徴税スロット、実際は1.9〜1.17由来)を訂正、MOD互換5件更新（paradox 6051f96）。EU5=austria/brandenburg/byzantium/castile/hungary/ottomanを3名体制で再レビューしcritical5・important6を訂正（austria固有進歩表旧値残存・hungaryフサール兵科表矛盾・ottoman Monarch Power誤記+10.5節配置違反等、paradox 0b3c1dd）。root 1a648b6 反映済み。次: 通常運用（新パッチ待ち。suggestion級10件は`_staging/eu5-6countries-review-*.md`に残置）",
         "priority": "LOW"
       },
       {
@@ -493,6 +493,16 @@
       "date": "2026-06-18",
       "project": "ssd-deal-tracker",
       "summary": "v1.3.3: 日次サマリーの孤児トリガー削除をメニュー化。カスタムメニュー「SSD管理」に deleteDailySummaryTrigger を追加し、ScriptApp で sendDailySummary の残存時間トリガーを検出・削除。GASエディタのトリガー画面を開かず1クリックで掃除可能に（DAILY_SUMMARY_ENABLED=false の安全装置は維持）。node --check 構文検証・git push(4819d02)・gas/配下から clasp push 済。あわせて _staging/ の完了済みスクラッチ13ファイルを掃除。"
+    },
+    {
+      "date": "2026-07-12",
+      "project": "paradox-game-guides",
+      "summary": "CK3 1.19最新化: 実インストール版1.19.0.6に対しガイド3本が1.19.0.1(2026-04-09確認)のまま放置され約3ヶ月ドリフトしていたのを解消。researcher裏取りで単純なhotfix未反映に留まらず、正統性(実際はPatch1.12)・封臣スタンス(1.9)・戴冠式と誓約(1.17)・遊牧連合(1.16)・徴税スロット(1.11、正式名称は課税区域)を「1.19新設」と誤帰属していたcritical級の誤り5件を発見・訂正。叙勲セクションも刷新前旧仕様の説明を現行仕様に書き直し。MOD互換表5件を対応済みへ更新。中央localization-reference.mdの同根誤り2件も訂正。"
+    },
+    {
+      "date": "2026-07-12",
+      "project": "paradox-game-guides",
+      "summary": "EU5国別6ガイド見直しレビュー・訂正: austria/brandenburg/byzantium/castile/hungary/ottomanを標準3名体制(熟練者/プレイヤー/テクニカルライター)で再レビューし、critical5件・important6件を修正。austria(固有進歩表の旧値-50%残存・架空識別子hab_kammergericht混入)、hungary(フサール兵科表の自己矛盾)、ottoman(Monarch Power誤記・10.5節のテンプレート配置違反)が主な検出内容。個別修正が同一ガイド内の別表・要約セクションへ伝播していない再発パターンが目立った。Belligerent訳語も3ガイド横断で統一し中央対照表へ追加。"
     }
   ],
   "humanActions": [],
