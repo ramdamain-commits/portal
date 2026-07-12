@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-12 19:16",
+  "exportedAt": "2026-07-13 00:49",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -322,7 +322,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**CK3 1.19最新化+EU5国別6ガイド見直しレビュー完了(07-12)**: CK3=実インストール版1.19.0.6に対しガイド3本の「1.19新設」誤帰属5件(正統性/封臣スタンス/戴冠式と誓約/遊牧連合/徴税スロット、実際は1.9〜1.17由来)を訂正、MOD互換5件更新（paradox 6051f96）。EU5=austria/brandenburg/byzantium/castile/hungary/ottomanを3名体制で再レビューしcritical5・important6を訂正（austria固有進歩表旧値残存・hungaryフサール兵科表矛盾・ottoman Monarch Power誤記+10.5節配置違反等、paradox 0b3c1dd）。root 1a648b6 反映済み。次: 通常運用（新パッチ待ち。suggestion級10件は`_staging/eu5-6countries-review-*.md`に残置）",
+        "action": "**EU5列強スコア誤訳訂正+austria分割+README陳腐化解消完了(07-13)**: suggestion級12件対応・「列強スコア」誤訳10ファイル横断訂正・austriaガイド分割(paradox 56df325/3700b59, root 73ffe82)に続き、README.mdのEU5表(対応パッチ全行1.1.10のまま放置・byzantium未掲載)を解消（paradox 8685d2a）。次: 通常運用",
         "priority": "LOW"
       },
       {
@@ -503,6 +503,21 @@
       "date": "2026-07-12",
       "project": "paradox-game-guides",
       "summary": "EU5国別6ガイド見直しレビュー・訂正: austria/brandenburg/byzantium/castile/hungary/ottomanを標準3名体制(熟練者/プレイヤー/テクニカルライター)で再レビューし、critical5件・important6件を修正。austria(固有進歩表の旧値-50%残存・架空識別子hab_kammergericht混入)、hungary(フサール兵科表の自己矛盾)、ottoman(Monarch Power誤記・10.5節のテンプレート配置違反)が主な検出内容。個別修正が同一ガイド内の別表・要約セクションへ伝播していない再発パターンが目立った。Belligerent訳語も3ガイド横断で統一し中央対照表へ追加。"
+    },
+    {
+      "date": "2026-07-13",
+      "project": "paradox-game-guides",
+      "summary": "EU5 suggestion級12件対応+列強スコア誤訳の横断訂正: 前回レビューの持ち越しタスク(見出し統一・出典セクション重複統合・訳語誤り・用語対照表構成分割等)を全修正。対応中にottoman「大国指標|Dominance」の裏取りから、ゲーム内game_concepts_l_japanese.ymlで正式訳「列強スコア」を確認し、austria/brandenburgの「大国スコア」も誤訳と判明。austria/brandenburg/ottoman/government/hungary/regional/universalの計10ファイルを列強スコアに統一し、中央localization-reference.mdにも新規登録した。"
+    },
+    {
+      "date": "2026-07-13",
+      "project": "paradox-game-guides",
+      "summary": "austriaガイド分割(サイズ突出対応): テクニカルライターレビューで指摘されていた126,449字(次点hungary比+45%)の肥大化に対応。神聖ローマ帝国運営・ハプスブルク婚姻外交・宗教改革への対応の3セクション(計約22,000字)を新規eu5-austria-hre-guide.mdへ分離し、本編は要点+リンクのみ残して107,221字(hungary比+23%)に縮小。3セクションとも他ガイド未参照だったためcross-guideのリンク張替えは不要だった。index.html・README.mdにも反映。"
+    },
+    {
+      "date": "2026-07-13",
+      "project": "paradox-game-guides",
+      "summary": "README.md EU5セクションの陳腐化を解消: 勢力別・共通システム表の対応パッチが全行「1.1.10」のまま放置されていたのを、各ガイド冒頭のパッチ確認記述(1.3安定版buildid 24075414=1.3.10)に合わせて更新。一覧から欠落していたbyzantiumガイド(⚠非推奨・上級者向け挑戦枠)も追加。前セッションで別タスク切り出し済みだった案件を本セッションで対応。"
     }
   ],
   "humanActions": [],
@@ -510,18 +525,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 24,
+      "daysSinceCommit": 25,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが24日更新なし"
+        "active PJ だが25日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 88,
+      "daysSinceCommit": 89,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -530,7 +545,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 88,
+      "daysSinceCommit": 89,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -539,7 +554,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 88,
+      "daysSinceCommit": 89,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -548,7 +563,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 88,
+      "daysSinceCommit": 89,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -557,7 +572,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 88,
+      "daysSinceCommit": 89,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -565,7 +580,7 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-07-12",
+      "lastCommitDate": "2026-07-13",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
@@ -575,7 +590,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 36,
+      "daysSinceCommit": 37,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -584,12 +599,12 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-06-08",
-      "daysSinceCommit": 34,
+      "daysSinceCommit": 35,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが34日更新なし"
+        "active PJ だが35日更新なし"
       ]
     }
   ],
