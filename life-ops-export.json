@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-16 16:32",
+  "exportedAt": "2026-07-16 21:01",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -129,7 +129,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-solo-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。"
+      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。次回7月更新は2026-08頭。"
     }
   ],
   "assumptions": [],
@@ -332,8 +332,8 @@
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "GitHub Pages公開(06-07・DEC-032)。https://ramdamain-commits.github.io/tokyo-solo-guide/ 。**観点拡張(06-08・push 6769252)で常設7カテゴリ28施設(伝統芸能・寄席/銭湯・サウナ追加)+月次events配列(歳時・祭り計17件・うち関東都外6件)新設+関東日帰り圏に拡大**。preview検証済・禁止語0件。次: **7/4 古代オリエント博物館再開(特別展〜9/6)確認・7月月次更新(企画展+events、researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
-        "priority": "NORMAL"
+        "action": "GitHub Pages公開(06-07・DEC-032)。**07-16 7月月次更新完了**(企画展33件/季節5件/休館3件・古代オリエント博物館特別展は予定通り7/4開幕確認しexhibitionsへ移行・events17件は維持、commit 040c41e・push済)。次: **8月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "priority": "LOW"
       }
     ],
     "maintenance": "完了・保守: it-passport-training / fp3-training / magi-system / healthcare / kaiserreich-akai-sakura / nagoya-hotel-deals"
@@ -369,6 +369,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-07-16",
+      "project": "tokyo-solo-guide",
+      "summary": "7月月次更新を実施(企画展33件/季節5件/休館3件)。researcher(Sonnet)委任で調査、目玉は東京国立博物館「空海と真言の名宝」(弘法大師生誕1250年記念)・東京都庭園美術館「ルーシー・リー展」・東京都美術館開館100周年記念2企画。古代オリエント博物館の特別展『古代オリエントのたてものとまちづくり』は予定通り7/4開幕を公式サイト(aom-tokyo.com)で確認し closures から exhibitions へ移行。events配列(17件)は既存を維持。commit 040c41e・push済(GitHub Pages即反映)。"
+    },
     {
       "date": "2026-07-12",
       "project": "paradox-game-guides",
@@ -598,14 +603,12 @@
     },
     {
       "project": "tokyo-solo-guide",
-      "lastCommitDate": "2026-06-08",
-      "daysSinceCommit": 38,
+      "lastCommitDate": "2026-07-16",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "stale",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが38日更新なし"
-      ]
+      "warnings": []
     }
   ],
   "ideas": [
