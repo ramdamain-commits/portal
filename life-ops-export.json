@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-17 22:29",
+  "exportedAt": "2026-07-17 22:39",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -391,7 +391,7 @@
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**07-16 ビューワ実装完了+取材傾向タブ追加(非公開・ローカルgit)**: 都内7エリアのパチンコ店旧イベ日+店概要のローカル静的ビューワ(4タブ)に加え、`data/media.json`(取材媒体7件・DEC-053で案A採用)を新設し5番目のタブ「取材傾向」を実装。ブラウザ実表示確認済(ローカルcommit f24009c)。次: 通常運用のみ。四半期(10月・1月…)に閉店/リニューアル/傾向変化を棚卸し",
+        "action": "**07-17 非公開→公開化(DEC-054)**: 都内7エリアのパチンコ店旧イベ日+店概要ビューワ(5タブ)を本人判断でGitHub公開(ramdamain-commits/tokyo-pachi-guide)+GitHub Pages+portal掲載へ切替。公開前に個人情報の非混入を機械チェック済。公開URL: https://ramdamain-commits.github.io/tokyo-pachi-guide/ 。次: 通常運用。四半期(10月)棚卸しで閉店/リニューアル/傾向変化＋公開継続の是非を再評価",
         "priority": "LOW"
       }
     ],
