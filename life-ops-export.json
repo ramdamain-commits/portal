@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-16 22:14",
+  "exportedAt": "2026-07-17 22:29",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -130,6 +130,19 @@
       "sourceOfTruth": "README.md",
       "portalVisible": true,
       "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。次回7月更新は2026-08頭。"
+    },
+    {
+      "id": "tokyo-pachi-guide",
+      "displayName": "東京パチ・スロ特定日ガイド",
+      "description": "都内主要7エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。",
+      "category": "生活",
+      "repoName": "tokyo-pachi-guide",
+      "visibility": "public",
+      "status": "active",
+      "publicUrl": "https://ramdamain-commits.github.io/tokyo-pachi-guide/",
+      "sourceOfTruth": "README.md",
+      "portalVisible": true,
+      "note": "2026-07-16新設・ビューワ実装完了。data/stores.json全32店(7エリア)・match.mjs(rules全7種)・test/match.test.mjs(node --test 18件pass)・index.html/app.js(今日/明日/日付指定/エリア別一覧/取材傾向の5タブ)・data/media.json(取材媒体7件・DEC-053)。旧イベント日は第三者サイトの過去傾向推定で店舗公式情報ではない。2026-07-17に非公開→公開へ変更(本人判断・DEC-054)、GitHub公開リポジトリ+GitHub Pages+portal掲載。掲載データは店舗の公開情報・第三者推定のみで個人情報は含めない。"
     }
   ],
   "assumptions": [],
@@ -315,6 +328,47 @@
       ],
       "owner": "ramda",
       "note": "着手トリガー=1.3安定版(buildid変化 AND betaフラグ外れ・wikiは補完)。小型3ガイド増強案=固有イベント時系列の完全テーブル化・10.5独立節(ottoman地中海制海/castile異端審問所運営)・brandenburg HRE財政節。誤帰属注記(Berenberg=HAM/Taula=アラゴン/政府への潜入=1.2既存)は昇格後も残置。プリフライトで宮廷芸術家12 vs spec14を実カウント確定。"
+    },
+    {
+      "id": "DEC-053",
+      "project": "tokyo-pachi-guide",
+      "title": "取材傾向機能は媒体単位の静的辞書方式（案A）で実装、店舗別動的追跡（案B）は却下",
+      "decision": "「都内の取材傾向を集計して表示できるか」というユーザー質問に対し2案を提示。案A（媒体×一般的傾向の静的辞書、researcherで収集し四半期棚卸し）を採用し `data/media.json`（7媒体）を新設、ビューワに5番目のタブ「取材傾向」として実装した。",
+      "context": "既存 `data/stores.json` は特定日パターンのみで取材情報を持たない。案B（店舗×取材予定の動的表示）はDMMぱちタウン等の取材予定ページを継続取得する必要があり、特定日データの相互検証で既に判明していた通り主要ソース（アナスロ）はPlaywrightでも全ドメイン403でbot遮断されるため、同種のサイトへの継続アクセスは同じ壁に当たる可能性が高いと判断した。",
+      "alternatives": [
+        "案B: 店舗×取材予定の動的表示: 不採用（bot遮断サイトへの継続取得が必要で保守コストが重く、このPJの『特定日パターンは原則更新不要』という静的運用方針と合わない）"
+      ],
+      "rationale": "案Aは既存の特定日データと同じ『出典URL必須・四半期棚卸しで足りる』運用に収まり、researcher 1回の委任で収集が完結する。取材傾向は非公式の伝聞情報であるため、媒体単位の抽象的な傾向記述（断定を避け「〜と言われる」等の伝聞形式）にとどめ、店舗と紐付けた確度の高い主張はしない設計とした。",
+      "status": "accepted",
+      "date": "2026-07-16",
+      "reviewDate": null,
+      "linkedAssumptions": [],
+      "linkedDecisions": [],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "変更ファイル: data/media.json（新規・7媒体）・index.html・app.js（取材傾向タブ追加）・README.md・CHANGELOG.md。researcher(Sonnet)で収集、断定的な設定示唆表現は避け伝聞形式に統一。ブラウザ実表示で7件全件・既存4タブへの影響なしを確認済み。ローカルcommit f24009c（非公開ローカルgit専用のためpushなし）。"
+    },
+    {
+      "id": "DEC-054",
+      "project": "tokyo-pachi-guide",
+      "title": "tokyo-pachi-guide を非公開→公開へ変更（GitHub公開+Pages+portal掲載）",
+      "decision": "当初プライバシー配慮で非公開（ローカルgitのみ・portal掲載なし）としていた方針を、本人判断で公開へ切替。GitHub公開リポジトリ（ramdamain-commits/tokyo-pachi-guide）＋GitHub Pages でビューワを公開し、setting/projects.json を visibility:public / portalVisible:true / repoName・publicUrl 設定に更新して portal に掲載する。",
+      "context": "非公開運用していた本ガイドを公開したいとの依頼を受け、公開に伴うプライバシー面とデータ性質面の留意点を提示のうえ、本人が公開を選択。",
+      "alternatives": [
+        "A: 非公開のまま維持（安全策・当初方針の踏襲）",
+        "B: 一部情報を伏せた形で公開"
+      ],
+      "rationale": "掲載データは店舗の公開情報と第三者サイトの一般的な傾向情報のみで、個人を特定する属性は含まない設計。公開前に追跡ファイルを機械チェックし個人情報の非混入を確認。DEC-030/032（portal機微是正）の教訓を踏襲し、公開PJの台帳本文も抽象表現に統一する。",
+      "status": "accepted",
+      "date": "2026-07-17",
+      "reviewDate": "2026-10-01",
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-053"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "README/設計書/CHANGELOG を公開方針へ更新しコミット（0e043d1）→ gh repo create --public で push（gitleaks: no leaks found）→ GitHub Pages 有効化。詳細な検討経緯（提示したリスクと本人判断の内訳）は非公開メモ project_tokyo_pachi_guide.md に記録。四半期棚卸し（2026-10）で露出を再評価する。"
     }
   ],
   "reviews": [],
@@ -333,6 +387,11 @@
       {
         "project": "tokyo-solo-guide",
         "action": "GitHub Pages公開(06-07・DEC-032)。**07-16 7月月次更新完了**(企画展33件/季節5件/休館3件・古代オリエント博物館特別展は予定通り7/4開幕確認しexhibitionsへ移行・events17件は維持、commit 040c41e・push済)。次: **8月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "priority": "LOW"
+      },
+      {
+        "project": "tokyo-pachi-guide",
+        "action": "**07-16 ビューワ実装完了+取材傾向タブ追加(非公開・ローカルgit)**: 都内7エリアのパチンコ店旧イベ日+店概要のローカル静的ビューワ(4タブ)に加え、`data/media.json`(取材媒体7件・DEC-053で案A採用)を新設し5番目のタブ「取材傾向」を実装。ブラウザ実表示確認済(ローカルcommit f24009c)。次: 通常運用のみ。四半期(10月・1月…)に閉店/リニューアル/傾向変化を棚卸し",
         "priority": "LOW"
       }
     ],
@@ -369,6 +428,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-07-16",
+      "project": "tokyo-pachi-guide",
+      "summary": "「取材傾向」機能を新規追加。ユーザーから『取材媒体の設定示唆傾向を集計表示できるか』と問われ、案A(媒体単位の静的辞書・四半期棚卸し)と案B(店舗別動的追跡・bot遮断サイト継続取得が必要)を提示しAを採用(DEC-053)。researcher(Sonnet)で媒体7件(スロパチステーション/ジャンバリ.ネット/DMMぱちタウン/パチ7ホール取材/サンスポトクダネ！/パチスロ必勝本/パチンコ攻略マガジン)の一般的傾向を収集し `data/media.json` を新設、ビューワに5番目のタブとして追加。断定的な設定示唆表現は避け「〜と言われる」等の伝聞形式に統一。ブラウザ実表示で7件全件・既存4タブへの影響なしを確認。ローカルcommit f24009c(非公開ローカルgit専用のためpushなし)。"
+    },
     {
       "date": "2026-07-16",
       "project": "tokyo-solo-guide",
@@ -523,6 +587,21 @@
       "date": "2026-07-13",
       "project": "paradox-game-guides",
       "summary": "README.md EU5セクションの陳腐化を解消: 勢力別・共通システム表の対応パッチが全行「1.1.10」のまま放置されていたのを、各ガイド冒頭のパッチ確認記述(1.3安定版buildid 24075414=1.3.10)に合わせて更新。一覧から欠落していたbyzantiumガイド(⚠非推奨・上級者向け挑戦枠)も追加。前セッションで別タスク切り出し済みだった案件を本セッションで対応。"
+    },
+    {
+      "date": "2026-07-16",
+      "project": "tokyo-pachi-guide",
+      "summary": "PJ新設(非公開)。claude.aiで都度調べていた「今日の特定日該当店」検索をローカル静的ビューワ化する計画を確定。事前Web調査でソース選定(第1=すろざんまい、第2=みんパチ、突合=アナスロ※Playwright要)。方針: 7エリア(上野/秋葉原/新宿/新橋/池袋/渋谷/京橋・銀座)30〜40店、旧イベ日パターン+店概要のみ(取材イベv2送り)、ローカルgitのみ。設計書・README・CHANGELOG作成、初回コミット済。同日中にreviewer(Sonnet)の設計レビューを実施し指摘11件(critical4/should4/suggestion2+アナスロ照合の担当矛盾1件=Playwright必須取得はresearcher不可)を設計書へ反映済み。次: researcher3並列収集→メイン側アナスロ照合+統合→ビューワ実装(Sonnet委任、2セッション想定)。"
+    },
+    {
+      "date": "2026-07-16",
+      "project": "tokyo-pachi-guide",
+      "summary": "ビューワ実装完了(implementer委任・Sonnet)。`match.mjs`に日付マッチングロジック(rules[].type全7種=digit/monthday(last含む)/annual/weekday/nth-weekday/zorome/month-day-match)を分離実装、`test/match.test.mjs`で設計書§検証の境界ケース(31日非存在月・月末last・閏年2/29・zorome+monthday併記の重複非排除・month-day-match+digit同時マッチ・年跨ぎnth-weekday)を網羅し`node --test`で18件全pass。`index.html`/`app.js`に今日/明日/日付指定/エリア別一覧の4タブビューワを実装(固定注記ヘッダー、閉店店は今日系タブ除外・一覧タブで閉店バッジ、スロ/パチ専門店注記)。ブラウザで実表示・タブ切替・データ内容を確認済み(root `.claude/launch.json`にport8099のpreview設定を追加)。README/CHANGELOGを実装完了の実態に更新。次: 通常運用のみ(四半期棚卸し)。"
+    },
+    {
+      "date": "2026-07-17",
+      "project": "tokyo-pachi-guide",
+      "summary": "非公開→公開へ方針変更（DEC-054）。GitHub公開リポジトリ（ramdamain-commits/tokyo-pachi-guide）を作成しpush（gitleaks: no leaks found）、GitHub Pagesでビューワを公開。setting/projects.json を visibility:public / portalVisible:true / repoName・publicUrl 設定に更新し portal へ掲載。公開前に追跡ファイルの個人情報非混入を機械チェック済。"
     }
   ],
   "humanActions": [],
@@ -530,18 +609,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 28,
+      "daysSinceCommit": 29,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが28日更新なし"
+        "active PJ だが29日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 92,
+      "daysSinceCommit": 93,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -550,7 +629,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 92,
+      "daysSinceCommit": 93,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -559,7 +638,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 92,
+      "daysSinceCommit": 93,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -568,7 +647,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 92,
+      "daysSinceCommit": 93,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -577,7 +656,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 92,
+      "daysSinceCommit": 93,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -586,7 +665,7 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-07-13",
-      "daysSinceCommit": 3,
+      "daysSinceCommit": 4,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -595,7 +674,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 40,
+      "daysSinceCommit": 41,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -604,6 +683,15 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-07-16",
+      "daysSinceCommit": 1,
+      "declaredStatus": "active",
+      "healthStatus": "healthy",
+      "missingDocs": [],
+      "warnings": []
+    },
+    {
+      "project": "tokyo-pachi-guide",
+      "lastCommitDate": "2026-07-17",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",

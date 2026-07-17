@@ -584,7 +584,7 @@
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
-                                                            <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+                                                                  <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
 
       <!-- 1. SSD価格トラッカー -->
       <li class="card-item" data-category="ツール">
@@ -603,7 +603,7 @@
           <p class="card__desc">
             SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。
           </p>
-          <p class="card__note">1TB NVMe 5製品を監視中。NAND相場で target_price 再調整予定</p>
+          <p class="card__note">1TB NVMe 4製品を監視中。NAND相場で target_price 再調整予定</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -765,7 +765,7 @@
           <p class="card__desc">
             EU5/VIC3/CK3の攻略ガイド・MOD記事・ローカライズ対照表。ゲームスクリプト一次ソース方式。
           </p>
-          <p class="card__note">GitHub Pages 公開済み。EU5 Patch 1.2 対応が次タスク</p>
+          <p class="card__note">GitHub Pages公開済み。EU5 1.3安定版昇格フロー フェーズ0〜3完遂(07-12、b/09-b6424de/ff9d6a1)。フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充。フェーズ3=reviewer3並列で全11ガイド検証、critical複数件(GP Score免除閾値の識別子非実在・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認等)を実機スクリプト裏取り後に修正済み。1.3安定版昇格プロジェクトは完了、次は通常運用。VIC3日本/プロイセンは1.13.8書き直し完了</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -846,7 +846,34 @@
           <p class="card__desc">
             東京で一人で楽しめる文化・歴史スポットと今月のイベントまとめ。
           </p>
-          <p class="card__note">月次で企画展/季節/休館を更新。常設スポットは随時。</p>
+          <p class="card__note">月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。次回7月更新は2026-08頭。</p>
+          <span class="card__footer" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            開く
+          </span>
+        </a>
+      </li>
+
+      <!-- 11. 東京パチ・スロ特定日ガイド -->
+      <li class="card-item" data-category="生活">
+        <a
+          class="card"
+          href="https://ramdamain-commits.github.io/tokyo-pachi-guide/"
+          target="_blank"
+          rel="noopener"
+          aria-label="東京パチ・スロ特定日ガイド（新しいタブで開く）"
+        >
+          <span
+            class="card__tag"
+            style="background-color: rgba(13, 148, 136, 0.25); color: #2dd4bf;"
+          >生活</span>
+          <h2 class="card__title">東京パチ・スロ特定日ガイド</h2>
+          <p class="card__desc">
+            都内主要7エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。
+          </p>
+          <p class="card__note">2026-07-16新設・ビューワ実装完了。data/stores.json全32店(7エリア)・match.mjs(rules全7種)・test/match.test.mjs(node --test 18件pass)・index.html/app.js(今日/明日/日付指定/エリア別一覧/取材傾向の5タブ)・data/media.json(取材媒体7件・DEC-053)。旧イベント日は第三者サイトの過去傾向推定で店舗公式情報ではない。2026-07-17に非公開→公開へ変更(本人判断・DEC-054)、GitHub公開リポジトリ+GitHub Pages+portal掲載。掲載データは店舗の公開情報・第三者推定のみで個人情報は含めない。</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
