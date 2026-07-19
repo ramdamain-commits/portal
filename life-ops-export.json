@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-20 00:24",
+  "exportedAt": "2026-07-20 00:45",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -691,8 +691,8 @@
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-07-17",
-      "daysSinceCommit": 3,
+      "lastCommitDate": "2026-07-20",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
