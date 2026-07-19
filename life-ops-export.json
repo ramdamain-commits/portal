@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-20 00:45",
+  "exportedAt": "2026-07-20 07:40",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -134,7 +134,7 @@
     {
       "id": "tokyo-pachi-guide",
       "displayName": "東京パチ・スロ特定日ガイド",
-      "description": "都内主要7エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。",
+      "description": "都内主要8エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。",
       "category": "生活",
       "repoName": "tokyo-pachi-guide",
       "visibility": "public",
@@ -142,7 +142,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-pachi-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "2026-07-16新設・ビューワ実装完了。data/stores.json全32店(7エリア)・match.mjs(rules全7種)・test/match.test.mjs(node --test 18件pass)・index.html/app.js(今日/明日/日付指定/エリア別一覧/取材傾向の5タブ)・data/media.json(取材媒体7件・DEC-053)。旧イベント日は第三者サイトの過去傾向推定で店舗公式情報ではない。2026-07-17に非公開→公開へ変更(本人判断・DEC-054)、GitHub公開リポジトリ+GitHub Pages+portal掲載。掲載データは店舗の公開情報・第三者推定のみで個人情報は含めない。"
+      "note": "2026-07-16新設・ビューワ実装、2026-07-17公開化(DEC-054)。2026-07-20に対象エリアを1つ追加(全35店・8エリア)し取材系を強化: data/coverage.json(店舗×媒体の取材実績・過去実績の推定/伝聞)新設、data/media.json拡充(取材媒体17件・各媒体に公式スケジュールURL)、ビューワに取材実績バッジと媒体別の実績店/公式スケジュールリンク、docs/取材予定の確認手順.md、coverage.mjs+テスト(node --test 全23件pass)。旧イベント日・取材実績はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。掲載データは公開情報・第三者推定のみで個人情報は含めない。"
     }
   ],
   "assumptions": [],
@@ -391,7 +391,7 @@
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**07-17 非公開→公開化(DEC-054)**: 都内7エリアのパチンコ店旧イベ日+店概要ビューワ(5タブ)を本人判断でGitHub公開(ramdamain-commits/tokyo-pachi-guide)+GitHub Pages+portal掲載へ切替。公開前に個人情報の非混入を機械チェック済。公開URL: https://ramdamain-commits.github.io/tokyo-pachi-guide/ 。次: 通常運用。四半期(10月)棚卸しで閉店/リニューアル/傾向変化＋公開継続の是非を再評価",
+        "action": "**07-17公開化(DEC-054)→07-20 対象エリア1つ追加(全35店・8エリア)+取材系強化**(push済): coverage.json新設=店舗×媒体の取材実績35件を相互検証(集約→媒体公式)でresearcher3並列収集(高/中/低、UIは高/中のみ肯定表示)、media.json 7→17媒体(公式スケジュールURL付与)、coverage.mjs+テスト(全23件pass)でビューワに取材実績バッジ・媒体別実績店・スケジュールリンク、取材予定の確認手順.md新設。旧イベ日・取材実績は第三者推定で公式情報でない。次: **①残課題=JS描画でcurl抽出不可の媒体×店舗の突合・新規媒体候補の裏取り〔researcher/Sonnet・工数中〕は四半期(10月)棚卸しで ②通常運用(閉店/リニューアル/coverage鮮度/公開継続の是非を再評価)**",
         "priority": "LOW"
       }
     ],
@@ -428,6 +428,11 @@
     }
   },
   "changelog": [
+    {
+      "date": "2026-07-20",
+      "project": "tokyo-pachi-guide",
+      "summary": "対象エリアを1つ追加(全35店・8エリア)し取材系機能を強化。(1)data/coverage.json新設=店舗×媒体の取材実績35件を「集約サイトで当たり付け→媒体公式ページで裏取り」の相互検証で収集(researcher3並列・confidence高/中/低)。UIは高/中のみ肯定表示し、低(最終確認が数年前や未確認)はデータ保持のみで誤誘導を回避 (2)data/media.jsonを7→17媒体へ拡充し各媒体に公式スケジュールURLを付与 (3)coverage.mjs+テストを追加しビューワに取材実績バッジ・媒体別の実績店・公式スケジュールリンクを表示(node --test 全23件pass) (4)docs/取材予定の確認手順.md新設(予定はデータで持たず巡回手順+リンク集)。収集中にセッション上限で3並列が中断→SendMessageで文脈保持のまま再開・完走。旧イベント日・取材実績はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。残課題=JS描画でcurl抽出不可の媒体×店舗の突合・新規媒体候補の裏取りは次回四半期棚卸しへ。"
+    },
     {
       "date": "2026-07-16",
       "project": "tokyo-pachi-guide",
