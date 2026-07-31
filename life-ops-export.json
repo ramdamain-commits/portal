@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-31 20:56",
+  "exportedAt": "2026-07-31 22:09",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -361,14 +361,14 @@
       "rationale": "掲載データは店舗の公開情報と第三者サイトの一般的な傾向情報のみで、個人を特定する属性は含まない設計。公開前に追跡ファイルを機械チェックし個人情報の非混入を確認。DEC-030/032（portal機微是正）の教訓を踏襲し、公開PJの台帳本文も抽象表現に統一する。",
       "status": "accepted",
       "date": "2026-07-17",
-      "reviewDate": "2026-10-01",
+      "reviewDate": null,
       "linkedAssumptions": [],
       "linkedDecisions": [
         "DEC-053"
       ],
       "supersededBy": null,
       "owner": "ramda",
-      "note": "README/設計書/CHANGELOG を公開方針へ更新しコミット（0e043d1）→ gh repo create --public で push（gitleaks: no leaks found）→ GitHub Pages 有効化。詳細な検討経緯（提示したリスクと本人判断の内訳）は非公開メモ project_tokyo_pachi_guide.md に記録。四半期棚卸し（2026-10）で露出を再評価する。"
+      "note": "README/設計書/CHANGELOG を公開方針へ更新しコミット（0e043d1）→ gh repo create --public で push（gitleaks: no leaks found）→ GitHub Pages 有効化。詳細な検討経緯は非公開メモ project_tokyo_pachi_guide.md に記録。2026-07-31 本人判断で公開継続方針を確定（掲載データは公開情報かつ合法のため、露出再評価の予定は終了）。"
     }
   ],
   "reviews": [],
@@ -391,7 +391,7 @@
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**07-17公開化(DEC-054)→07-20 対象エリア1つ追加(全35店・8エリア)+取材系強化**(push済): coverage.json新設=店舗×媒体の取材実績35件を相互検証(集約→媒体公式)でresearcher3並列収集(高/中/低、UIは高/中のみ肯定表示)、media.json 7→17媒体(公式スケジュールURL付与)、coverage.mjs+テスト(全23件pass)でビューワに取材実績バッジ・媒体別実績店・スケジュールリンク、取材予定の確認手順.md新設。旧イベ日・取材実績は第三者推定で公式情報でない。次: **①残課題=JS描画でcurl抽出不可の媒体×店舗の突合・新規媒体候補の裏取り〔researcher/Sonnet・工数中〕は四半期(10月)棚卸しで ②通常運用(閉店/リニューアル/coverage鮮度/公開継続の是非を再評価)**",
+        "action": "**07-17公開化(DEC-054、公開継続方針は確定事項)→07-20 対象エリア1つ追加(全35店・8エリア)+取材系強化→07-31 v3拡張Phase1(データ基盤)完了・push済**: lottery.mjs(抽選方式のtype/random/tool派生)+validate.mjs(スキーマ検証)+移行スクリプトで既存35店に反映(確定14店・要確認21店)、収集手順書新設。テスト69件pass。旧イベ日・取材実績は第三者推定で公式情報でない。次: **①新規8エリア収集(立川/町田/蒲田/錦糸町/北千住/赤羽/中野/吉祥寺・researcher3並列〔Sonnet〕) ②Phase2要確認21店の再確認 ③Phase3ビューワー配線 ④残課題=JS描画でcurl抽出不可の媒体×店舗の突合は四半期(10月)棚卸しで ⑤通常運用(閉店/リニューアル/coverage鮮度確認)**",
         "priority": "LOW"
       }
     ],
@@ -700,14 +700,12 @@
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-07-20",
-      "daysSinceCommit": 11,
+      "lastCommitDate": "2026-07-31",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが11日更新なし"
-      ]
+      "warnings": []
     }
   ],
   "ideas": [
