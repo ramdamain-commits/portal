@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-31 22:09",
+  "exportedAt": "2026-07-31 22:15",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -607,6 +607,11 @@
       "date": "2026-07-17",
       "project": "tokyo-pachi-guide",
       "summary": "非公開→公開へ方針変更（DEC-054）。GitHub公開リポジトリ（ramdamain-commits/tokyo-pachi-guide）を作成しpush（gitleaks: no leaks found）、GitHub Pagesでビューワを公開。setting/projects.json を visibility:public / portalVisible:true / repoName・publicUrl 設定に更新し portal へ掲載。公開前に追跡ファイルの個人情報非混入を機械チェック済。"
+    },
+    {
+      "date": "2026-07-31",
+      "project": "tokyo-pachi-guide",
+      "summary": "ユーザー依頼3点（特定日強化+地域拡大／朝の抽選方法の構造化／取材以外のイベント示唆）をv3拡張として設計しPhase1(データ基盤)を実装・公開push完了。設計はbrainstormingスキルでreviewer12件反映後に確定(抽選のtype軸とrandom軸を分離する等)、subagent-driven-developmentで全7タスクを実装。lottery.mjs(method文言→type/random/tool派生。判別不能はnull保持)+validate.mjs(スキーマ検証)+移行スクリプトで既存35店に反映(確定14店・要確認21店)。ユーザー指摘で実データ全件へのドライランを追加実施し、ユニットテストでは検出できない推測混入(略称「コンパス」を777コンパスと無条件補完)を発見・是正。validate.mjsのレビューで実バグ3件(非配列rulesでクラッシュ/id欠損の誤検知/型崩れの素通り)を検出・修正。テスト69件pass、実データ35店errors0。あわせて2026-07-17公開化(DEC-054)時にフッターへ残っていた「非公開」表記の更新漏れを発見・修正。push後の機微語チェックで設計書中の記述1行を検出し抽象表現へ修正。セッション終盤、ユーザー判断でDEC-054のreviewDate(2026-10-01)を解消し公開継続を確定事項として台帳・メモリ・TASKS.mdへ反映。"
     }
   ],
   "humanActions": [],
