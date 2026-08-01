@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-31 22:15",
+  "exportedAt": "2026-08-01 12:36",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -134,7 +134,7 @@
     {
       "id": "tokyo-pachi-guide",
       "displayName": "東京パチ・スロ特定日ガイド",
-      "description": "都内主要8エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。",
+      "description": "都内16エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。",
       "category": "生活",
       "repoName": "tokyo-pachi-guide",
       "visibility": "public",
@@ -142,7 +142,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-pachi-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "2026-07-16新設・ビューワ実装、2026-07-17公開化(DEC-054)。2026-07-20に対象エリアを1つ追加(全35店・8エリア)し取材系を強化: data/coverage.json(店舗×媒体の取材実績・過去実績の推定/伝聞)新設、data/media.json拡充(取材媒体17件・各媒体に公式スケジュールURL)、ビューワに取材実績バッジと媒体別の実績店/公式スケジュールリンク、docs/取材予定の確認手順.md、coverage.mjs+テスト(node --test 全23件pass)。旧イベント日・取材実績はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。掲載データは公開情報・第三者推定のみで個人情報は含めない。"
+      "note": "2026-07-16新設・ビューワ実装、2026-07-17公開化(DEC-054)。2026-07-20に対象エリアを1つ追加(全35店・8エリア)し取材系を強化: data/coverage.json(店舗×媒体の取材実績・過去実績の推定/伝聞)新設、data/media.json拡充(取材媒体17件・各媒体に公式スケジュールURL)、ビューワに取材実績バッジと媒体別の実績店/公式スケジュールリンク、docs/取材予定の確認手順.md、coverage.mjs+テスト(node --test 全23件pass)。2026-07-31 v3拡張Phase1(抽選方式・周年・SNS・混雑参考のスキーマ拡張とデータ基盤)完了、2026-08-01 新規8エリア48店を追加(全83店・16エリア、Phase1データ収集完了・push済)。旧イベント日・取材実績・抽選方式はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。掲載データは公開情報・第三者推定のみで個人情報は含めない。次はビューワーへの抽選バッジ等の反映(Phase3)。"
     }
   ],
   "assumptions": [],
@@ -391,7 +391,7 @@
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**07-17公開化(DEC-054、公開継続方針は確定事項)→07-20 対象エリア1つ追加(全35店・8エリア)+取材系強化→07-31 v3拡張Phase1(データ基盤)完了・push済**: lottery.mjs(抽選方式のtype/random/tool派生)+validate.mjs(スキーマ検証)+移行スクリプトで既存35店に反映(確定14店・要確認21店)、収集手順書新設。テスト69件pass。旧イベ日・取材実績は第三者推定で公式情報でない。次: **①新規8エリア収集(立川/町田/蒲田/錦糸町/北千住/赤羽/中野/吉祥寺・researcher3並列〔Sonnet〕) ②Phase2要確認21店の再確認 ③Phase3ビューワー配線 ④残課題=JS描画でcurl抽出不可の媒体×店舗の突合は四半期(10月)棚卸しで ⑤通常運用(閉店/リニューアル/coverage鮮度確認)**",
+        "action": "**08-01 新規8エリア収集+統合完了・push済(3ff3b1f、全83店・16エリア)**: researcher3並列で48店収集、マージレビューで型不整合バグ(weekdayルール文字列値)を発見・修正。validate errors0/test69件pass。次: **①Phase2=要確認21店の出典再確認 ②Phase3=ビューワー配線(未解決事項2件を先に決定)+確認手順doc+README/CHANGELOG ③通常運用(閉店/リニューアル/coverage鮮度確認、次回は吉祥寺60%閉店の知見を踏まえ収集時に閉店裏取りをセット化)**",
         "priority": "LOW"
       }
     ],
@@ -612,6 +612,11 @@
       "date": "2026-07-31",
       "project": "tokyo-pachi-guide",
       "summary": "ユーザー依頼3点（特定日強化+地域拡大／朝の抽選方法の構造化／取材以外のイベント示唆）をv3拡張として設計しPhase1(データ基盤)を実装・公開push完了。設計はbrainstormingスキルでreviewer12件反映後に確定(抽選のtype軸とrandom軸を分離する等)、subagent-driven-developmentで全7タスクを実装。lottery.mjs(method文言→type/random/tool派生。判別不能はnull保持)+validate.mjs(スキーマ検証)+移行スクリプトで既存35店に反映(確定14店・要確認21店)。ユーザー指摘で実データ全件へのドライランを追加実施し、ユニットテストでは検出できない推測混入(略称「コンパス」を777コンパスと無条件補完)を発見・是正。validate.mjsのレビューで実バグ3件(非配列rulesでクラッシュ/id欠損の誤検知/型崩れの素通り)を検出・修正。テスト69件pass、実データ35店errors0。あわせて2026-07-17公開化(DEC-054)時にフッターへ残っていた「非公開」表記の更新漏れを発見・修正。push後の機微語チェックで設計書中の記述1行を検出し抽象表現へ修正。セッション終盤、ユーザー判断でDEC-054のreviewDate(2026-10-01)を解消し公開継続を確定事項として台帳・メモリ・TASKS.mdへ反映。"
+    },
+    {
+      "date": "2026-08-01",
+      "project": "tokyo-pachi-guide",
+      "summary": "v3拡張Phase1の新規8エリア収集を実施し統合・公開push完了(全35店・8エリア→全83店・16エリア)。着手前確認2点（すろざんまいの対象8エリア収録有無、DMMぱちタウンのcurl可否）をサンプル実施し、DMMは駅単位一覧にアクセス集中日情報が無いと判明したためcrowdフィールドはベストエフォート運用に確定。researcher3並列(沿線別)で48店を収集し、implementer委任で統合。統合前レビューで実バグを発見: 収集データの一部でweekday/nth-weekdayルールの値が文字列だったが実装(match.mjs)は数値0〜6を要求しており、型不一致のまま取り込むと該当ルールが実行時に黙って無効化されるところだった。統合指示に修正を明記し是正。みんパチのエリア一覧は閉店店舗を除去しないため候補店の個別裏取りが必要と判明(吉祥寺は候補10店中8店が閉店済み)。validate-data.mjs errors0/warnings9(想定内)、node --test 69件pass、機微語チェッククリア。次はPhase2(既存21店の抽選方式再確認)とPhase3(ビューワーへの反映)。"
     }
   ],
   "humanActions": [],
@@ -619,18 +624,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 43,
+      "daysSinceCommit": 44,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが43日更新なし"
+        "active PJ だが44日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 107,
+      "daysSinceCommit": 108,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -639,7 +644,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 107,
+      "daysSinceCommit": 108,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -648,7 +653,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 107,
+      "daysSinceCommit": 108,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -657,7 +662,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 107,
+      "daysSinceCommit": 108,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -666,7 +671,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 107,
+      "daysSinceCommit": 108,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -675,18 +680,18 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-07-13",
-      "daysSinceCommit": 18,
+      "daysSinceCommit": 19,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが18日更新なし"
+        "active PJ だが19日更新なし"
       ]
     },
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 55,
+      "daysSinceCommit": 56,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -695,17 +700,17 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-07-16",
-      "daysSinceCommit": 15,
+      "daysSinceCommit": 16,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが15日更新なし"
+        "active PJ だが16日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-07-31",
+      "lastCommitDate": "2026-08-01",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
