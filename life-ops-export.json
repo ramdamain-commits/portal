@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-01 22:46",
+  "exportedAt": "2026-08-02 00:22",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -391,7 +391,7 @@
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**08-01 新規8エリア収集+統合完了・push済(3ff3b1f、全83店・16エリア)**: researcher3並列で48店収集、マージレビューで型不整合バグ(weekdayルール文字列値)を発見・修正。validate errors0/test69件pass。次: **①Phase2=要確認21店の出典再確認 ②Phase3=ビューワー配線(未解決事項2件を先に決定)+確認手順doc+README/CHANGELOG ③通常運用(閉店/リニューアル/coverage鮮度確認、次回は吉祥寺60%閉店の知見を踏まえ収集時に閉店裏取りをセット化)**",
+        "action": "**08-01 v3拡張Phase1-3完了・push済(全83店・16エリア)**: Phase2で既存21店の抽選方式を出典再確認(パチ/スロ差分7店を分割)、Phase3でビューワーへ抽選バッジ/SNSリンク/crowd表示を配線。本番バグ(AREA_ORDER未更新で48店/58%が全タブから欠落)も発見・修正。全テスト69件pass/validate errors0。次: **通常運用のみ(10月棚卸しで閉店/リニューアル/coverage鮮度確認、吉祥寺60%閉店の知見を踏まえ収集時は閉店裏取りをセット化)**",
         "priority": "LOW"
       }
     ],
@@ -617,6 +617,11 @@
       "date": "2026-08-01",
       "project": "tokyo-pachi-guide",
       "summary": "v3拡張Phase1の新規8エリア収集を実施し統合・公開push完了(全35店・8エリア→全83店・16エリア)。着手前確認2点（すろざんまいの対象8エリア収録有無、DMMぱちタウンのcurl可否）をサンプル実施し、DMMは駅単位一覧にアクセス集中日情報が無いと判明したためcrowdフィールドはベストエフォート運用に確定。researcher3並列(沿線別)で48店を収集し、implementer委任で統合。統合前レビューで実バグを発見: 収集データの一部でweekday/nth-weekdayルールの値が文字列だったが実装(match.mjs)は数値0〜6を要求しており、型不一致のまま取り込むと該当ルールが実行時に黙って無効化されるところだった。統合指示に修正を明記し是正。みんパチのエリア一覧は閉店店舗を除去しないため候補店の個別裏取りが必要と判明(吉祥寺は候補10店中8店が閉店済み)。validate-data.mjs errors0/warnings9(想定内)、node --test 69件pass、機微語チェッククリア。次はPhase2(既存21店の抽選方式再確認)とPhase3(ビューワーへの反映)。"
+    },
+    {
+      "date": "2026-08-01",
+      "project": "tokyo-pachi-guide",
+      "summary": "v3拡張のPhase2②(既存21店の抽選方式・出典再確認)とPhase3(ビューワー配線)を完了しpush。Phase2: researcher3並列でみんパチ再訪問しlottery.type/random/toolを確定、パチ/スロ差分7店をpachinko/slotサブオブジェクトへ分割。migrate-lottery.mjsの要確認リスト生成バグ(method自由文の再解析に依存しサブオブジェクトで解決済みでもフラグが残存)を発見・修正し構造化フィールドの実値判定へ変更(要確認21→7店)。isolation:worktreeとgitignore対象の_staging直書きを併用したためresearcher3体全員でworktree自動クリーンアップによる書き込み消失が発生し、SendMessageで全文をテキスト再送させて復旧(CLAUDE.mdへルール化)。Phase3着手前の実機確認で本番バグを発見: app.jsのAREA_ORDERがPhase1の新8エリア追加時に未更新のまま、48店(全83店の58%)が公開サイトの全タブから欠落していた。即座に1行修正でpush(CLAUDE.mdへルール化=列挙値追加時はハードコード配列の同期確認)。brainstormingで設計書の未解決事項3点(抽選バッジの表示範囲・パチ/スロ差分の表示方式・低確度値の扱い)を決定後、subagent-driven-developmentで6タスクを実装(抽選バッジ/SNSリンク/crowd表示/確認手順doc新設/README・CHANGELOG更新/最終確認)。各タスクでspec compliance→code quality reviewの2段階レビューを実施し、実データに影響する不具合2件(パチ/スロ片方のみ確定時にジャンル名欠落・crowdLineとvalidate.mjsの制約不整合)を検出・修正。テスト69件pass/validate errors0/全5タブブラウザ実機確認/機微語grepクリア。"
     }
   ],
   "humanActions": [],
@@ -624,18 +629,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 44,
+      "daysSinceCommit": 45,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが44日更新なし"
+        "active PJ だが45日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -644,7 +649,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -653,7 +658,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -662,7 +667,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -671,7 +676,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -680,18 +685,18 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-07-13",
-      "daysSinceCommit": 19,
+      "daysSinceCommit": 20,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが19日更新なし"
+        "active PJ だが20日更新なし"
       ]
     },
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 56,
+      "daysSinceCommit": 57,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -700,17 +705,17 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-07-16",
-      "daysSinceCommit": 16,
+      "daysSinceCommit": 17,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが16日更新なし"
+        "active PJ だが17日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-08-01",
+      "lastCommitDate": "2026-08-02",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
