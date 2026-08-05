@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-05 20:37",
+  "exportedAt": "2026-08-06 01:01",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -628,19 +628,17 @@
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
-      "lastCommitDate": "2026-06-18",
-      "daysSinceCommit": 48,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "stale",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが48日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "it-passport-training",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 112,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -648,8 +646,8 @@
     },
     {
       "project": "healthcare",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 112,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -657,8 +655,8 @@
     },
     {
       "project": "magi-system",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 112,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -666,8 +664,8 @@
     },
     {
       "project": "kaiserreich-akai-sakura",
-      "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 112,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -676,7 +674,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 112,
+      "daysSinceCommit": 113,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -684,19 +682,17 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-07-13",
-      "daysSinceCommit": 23,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが23日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "nagoya-hotel-deals",
-      "lastCommitDate": "2026-06-06",
-      "daysSinceCommit": 60,
+      "lastCommitDate": "2026-08-06",
+      "daysSinceCommit": 0,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -705,18 +701,18 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-07-16",
-      "daysSinceCommit": 20,
+      "daysSinceCommit": 21,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが20日更新なし"
+        "active PJ だが21日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-08-02",
-      "daysSinceCommit": 3,
+      "daysSinceCommit": 4,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
