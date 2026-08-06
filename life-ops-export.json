@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-06 01:46",
+  "exportedAt": "2026-08-06 10:46",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -376,22 +376,22 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5列強スコア誤訳訂正+austria分割+README陳腐化解消完了(07-13)**: suggestion級12件対応・「列強スコア」誤訳10ファイル横断訂正・austriaガイド分割(paradox 56df325/3700b59, root 73ffe82)に続き、README.mdのEU5表(対応パッチ全行1.1.10のまま放置・byzantium未掲載)を解消（paradox 8685d2a）。次: 通常運用",
+        "action": "**EU5列強スコア誤訳訂正+austria分割+README陳腐化解消完了(07-13)**。次: 通常運用。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
         "project": "ssd-deal-tracker",
-        "action": "**v1.3.3 孤児トリガー削除メニュー化(06-18、`deleteDailySummaryTrigger`・git 4819d02/clasp push済)**: GASエディタを開かず「SSD管理」メニューから1クリックで `sendDailySummary` 残存トリガーを削除可能に。v1.3.2 日次サマリー無効化(06-08、`DAILY_SUMMARY_ENABLED=false`・週次のみ)。v1.3.1 T500 HSなし削除済(4製品体制)。次: **スプレッドシートのメニューを1回実行して孤児トリガー削除**(任意・未実行でもメール不送信)。2026-10 G4/SN7100 推定アンカー再評価 + T500 HSなし取扱再開チェック",
+        "action": "**v1.3.3 孤児トリガー削除メニュー化(06-18)**。次: **スプレッドシートのメニューを1回実行して孤児トリガー削除**(任意)。2026-10 G4/SN7100アンカー再評価+T500 HSなし取扱再開チェック",
         "priority": "LOW"
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "GitHub Pages公開(06-07・DEC-032)。**07-16 7月月次更新完了**(企画展33件/季節5件/休館3件・古代オリエント博物館特別展は予定通り7/4開幕確認しexhibitionsへ移行・events17件は維持、commit 040c41e・push済)。次: **8月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "action": "GitHub Pages公開(06-07)。**07-16 7月月次更新完了**。次: **8月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
         "priority": "LOW"
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**08-01 v3拡張Phase1-3完了・push済(全83店・16エリア)**: Phase2で既存21店の抽選方式を出典再確認(パチ/スロ差分7店を分割)、Phase3でビューワーへ抽選バッジ/SNSリンク/crowd表示を配線。本番バグ(AREA_ORDER未更新で48店/58%が全タブから欠落)も発見・修正。全テスト69件pass/validate errors0。次: **通常運用のみ(10月棚卸しで閉店/リニューアル/coverage鮮度確認、吉祥寺60%閉店の知見を踏まえ収集時は閉店裏取りをセット化)**",
+        "action": "**08-01 v3拡張Phase1-3完了・push済(全83店・16エリア)**。本番バグ(AREA_ORDER未更新で48店/58%欠落)も発見・修正済み。全テスト69件pass。次: **通常運用のみ(10月棚卸しで閉店/coverage鮮度確認)**",
         "priority": "LOW"
       }
     ],
