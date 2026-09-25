@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-09-25 21:22",
+  "exportedAt": "2026-09-25 21:27",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -129,7 +129,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-solo-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。次回7月更新は2026-08頭。"
+      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。8・9月分は未更新。次回は2026-10月次更新（常設の追加候補の検討を含む）。"
     },
     {
       "id": "tokyo-pachi-guide",
@@ -386,7 +386,7 @@
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "GitHub Pages公開(06-07)。**07-16 7月月次更新完了**。次: **8月月次更新(researcher調査→monthly.json差替→push)・ソース棚卸し予定2026-12**",
+        "action": "GitHub Pages公開(06-07)。07-16 7月月次更新が最後(8・9月未更新)。次: **10月月次更新＋常設追加(江戸東京博物館・両国湯屋江戸遊・箱根日帰り湯)**。引継ぎはproject_tokyo_solo_guide.md。ソース棚卸し2026-12",
         "priority": "LOW"
       },
       {
