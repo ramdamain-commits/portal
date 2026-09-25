@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-09-25 21:28",
+  "exportedAt": "2026-09-25 21:42",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -129,7 +129,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-solo-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。8・9月分は未更新。次回は2026-10月次更新（常設の追加候補の検討を含む）。"
+      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-09-25 10月月次更新済（企画展31/季節5/休館4/歳時10）。各項目に雨の日の可否バッジ（可/非推奨/不可）を追加。常設31施設（江戸東京博物館・両国の温浴施設・箱根の日帰り温泉2件を追加）。次回は2026-11月次更新。"
     },
     {
       "id": "tokyo-pachi-guide",
@@ -386,7 +386,7 @@
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "GitHub Pages公開(06-07)。07-16 7月月次更新が最後(8・9月未更新)。次: **10月月次更新＋常設追加(江戸東京博物館・両国湯屋江戸遊・箱根日帰り湯)**。引継ぎはproject_tokyo_solo_guide.md。ソース棚卸し2026-12",
+        "action": "GitHub Pages公開(06-07)。09-25 10月月次更新＋雨の日の可否バッジ追加＋常設4施設追加(31件)。次: **11月月次更新**(10月末〜11月初。researcher出力の会期年を公式で抜き取り確認)。引継ぎはproject_tokyo_solo_guide.md。ソース棚卸し2026-12",
         "priority": "LOW"
       },
       {
@@ -622,6 +622,11 @@
       "date": "2026-08-01",
       "project": "tokyo-pachi-guide",
       "summary": "v3拡張のPhase2②(既存21店の抽選方式・出典再確認)とPhase3(ビューワー配線)を完了しpush。Phase2: researcher3並列でみんパチ再訪問しlottery.type/random/toolを確定、パチ/スロ差分7店をpachinko/slotサブオブジェクトへ分割。migrate-lottery.mjsの要確認リスト生成バグ(method自由文の再解析に依存しサブオブジェクトで解決済みでもフラグが残存)を発見・修正し構造化フィールドの実値判定へ変更(要確認21→7店)。isolation:worktreeとgitignore対象の_staging直書きを併用したためresearcher3体全員でworktree自動クリーンアップによる書き込み消失が発生し、SendMessageで全文をテキスト再送させて復旧(CLAUDE.mdへルール化)。Phase3着手前の実機確認で本番バグを発見: app.jsのAREA_ORDERがPhase1の新8エリア追加時に未更新のまま、48店(全83店の58%)が公開サイトの全タブから欠落していた。即座に1行修正でpush(CLAUDE.mdへルール化=列挙値追加時はハードコード配列の同期確認)。brainstormingで設計書の未解決事項3点(抽選バッジの表示範囲・パチ/スロ差分の表示方式・低確度値の扱い)を決定後、subagent-driven-developmentで6タスクを実装(抽選バッジ/SNSリンク/crowd表示/確認手順doc新設/README・CHANGELOG更新/最終確認)。各タスクでspec compliance→code quality reviewの2段階レビューを実施し、実データに影響する不具合2件(パチ/スロ片方のみ確定時にジャンル名欠落・crowdLineとvalidate.mjsの制約不整合)を検出・修正。テスト69件pass/validate errors0/全5タブブラウザ実機確認/機微語grepクリア。"
+    },
+    {
+      "date": "2026-09-25",
+      "project": "tokyo-solo-guide",
+      "summary": "10月月次更新(企画展31/季節5/休館4/歳時・祭り10、researcher調査→公式で抜き取り確認)。調査結果のうち誤り1件(横浜トリエンナーレ2026→公式は第9回を2027年開催と発表)と、2026年開催を公式で確認できなかった2件を除外。各項目に雨の日の可否バッジ(☔可/非推奨/不可・rainフィールド)を追加し、判定基準をREADMEに記載。常設に4施設を追加(27→31件、営業時間・料金は公式、営業状況はGoogleマップで確認)。preview検証(375px横スクロールなし・コンソールエラー0)。push 207a710。"
     }
   ],
   "humanActions": [],
@@ -704,14 +709,12 @@
     },
     {
       "project": "tokyo-solo-guide",
-      "lastCommitDate": "2026-07-16",
-      "daysSinceCommit": 71,
+      "lastCommitDate": "2026-09-25",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "stale",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが71日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "tokyo-pachi-guide",
