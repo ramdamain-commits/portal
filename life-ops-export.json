@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-13 02:50",
+  "exportedAt": "2026-10-13 21:42",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。EU5 1.3安定版昇格フロー フェーズ0〜3完遂(07-12、b/09-b6424de/ff9d6a1)。フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充。フェーズ3=reviewer3並列で全11ガイド検証、critical複数件(GP Score免除閾値の識別子非実在・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認等)を実機スクリプト裏取り後に修正済み。1.3安定版昇格プロジェクトは完了、次は通常運用。VIC3日本/プロイセンは1.13.8書き直し完了"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し中（DEC-096）。ブランチ eu5-checklist-reset で Task 5/9 まで実装・未マージ。VIC3/CK3 は従来どおり"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -376,8 +376,8 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5列強スコア誤訳訂正+austria分割+README陳腐化解消完了(07-13)**。次: 通常運用。詳細=memory/project_paradox_game_guides.md",
-        "priority": "LOW"
+        "action": "**EU5をプレイ中チェックリストへ作り直し中(10-13・DEC-096)**。ブランチeu5-checklist-reset Task5/9。次: Task5修正→Task6〜9→マージ確認。詳細=memory/project_paradox_game_guides.md",
+        "priority": "MID"
       },
       {
         "project": "ssd-deal-tracker",
@@ -694,14 +694,12 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "lastCommitDate": "2026-10-13",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "stale",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが68日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "nagoya-hotel-deals",
