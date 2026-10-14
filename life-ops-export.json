@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-13 21:42",
+  "exportedAt": "2026-10-14 23:20",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し中（DEC-096）。ブランチ eu5-checklist-reset で Task 5/9 まで実装・未マージ。VIC3/CK3 は従来どおり"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し中（DEC-096）。ブランチ eu5-checklist-reset で Task 7/9 の修正中・未マージ。VIC3/CK3 は従来どおり"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -376,7 +376,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "**EU5をプレイ中チェックリストへ作り直し中(10-13・DEC-096)**。ブランチeu5-checklist-reset Task5/9。次: Task5修正→Task6〜9→マージ確認。詳細=memory/project_paradox_game_guides.md",
+        "action": "**EU5をプレイ中チェックリストへ作り直し中(10-13・DEC-096)**。ブランチeu5-checklist-reset Task7/9(修正ラウンド2から)。次: Task7仕上げ→Task8 3名レビュー→Task9→最終レビュー→マージ確認。詳細=memory/project_paradox_game_guides.md",
         "priority": "MID"
       },
       {
@@ -639,18 +639,18 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "daysSinceCommit": 69,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが68日更新なし"
+        "active PJ だが69日更新なし"
       ]
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "daysSinceCommit": 69,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -659,7 +659,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "daysSinceCommit": 69,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -668,7 +668,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "daysSinceCommit": 69,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -677,7 +677,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "daysSinceCommit": 69,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -686,7 +686,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 181,
+      "daysSinceCommit": 182,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -694,7 +694,7 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-10-13",
+      "lastCommitDate": "2026-10-14",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
@@ -704,7 +704,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 68,
+      "daysSinceCommit": 69,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -713,23 +713,23 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 18,
+      "daysSinceCommit": 19,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが18日更新なし"
+        "active PJ だが19日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-08-02",
-      "daysSinceCommit": 72,
+      "daysSinceCommit": 73,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが72日更新なし"
+        "active PJ だが73日更新なし"
       ]
     }
   ],
