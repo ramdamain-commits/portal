@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-18 21:00",
+  "exportedAt": "2026-10-19 21:27",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -8,11 +8,11 @@
       "category": "ツール",
       "repoName": "ssd-deal-tracker",
       "visibility": "public",
-      "status": "active",
+      "status": "completed",
       "publicUrl": "https://ramdamain-commits.github.io/ssd-deal-tracker/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "1TB NVMe 4製品を監視中。NAND相場で target_price 再調整予定"
+      "note": "2026-10-19 追跡を停止（NAND高騰で価格が上がり続けるため）。最後に取得したデータは表示したまま。再開は TRACKING_ENABLED=true"
     },
     {
       "id": "it-passport-training",
@@ -381,7 +381,7 @@
       },
       {
         "project": "ssd-deal-tracker",
-        "action": "**v1.3.3 孤児トリガー削除メニュー化(06-18)**。次: **スプレッドシートのメニューを1回実行して孤児トリガー削除**(任意)。2026-10 G4/SN7100アンカー再評価+T500 HSなし取扱再開チェック",
+        "action": "**10-19 v1.4.0 追跡停止**（NAND高騰。TRACKING_ENABLED=false・clasp push済）。次: スプレッドシートのメニュー「全トリガー削除（停止）」を1回実行(任意・未実行でもフラグで止まっている)。再開条件=NAND相場の正常化",
         "priority": "LOW"
       },
       {
@@ -637,25 +637,28 @@
       "date": "2026-10-15",
       "project": "paradox-game-guides",
       "summary": "EU5 の攻略を、国別ガイド12本から「どの国でも共通のいつ・何をするか」をまとめたプレイ中チェックリスト1本に作り直して公開した。81項目で、チェック状態はブラウザに保存される。数値は出典をゲームスクリプトで確かめ、熟練者・プレイヤー・ライターの3名レビューとブランチ全体の最終レビューを経て反映した。作業中にベータのビルドが更新されたので、新しいビルドで照合し直している。"
+    },
+    {
+      "date": "2026-10-19",
+      "project": "ssd-deal-tracker",
+      "summary": "NAND高騰で価格が上がり続け追跡の意味が薄いため、価格取得とメール送信を停止した（v1.4.0）。コード側のフラグで止めたので、トリガーが残っていても動かない。ページと最後に取得したデータはそのまま残してあり、再開はフラグを戻すだけでできる。"
     }
   ],
   "humanActions": [],
   "projectHealth": [
     {
       "project": "ssd-deal-tracker",
-      "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 73,
-      "declaredStatus": "active",
-      "healthStatus": "stale",
+      "lastCommitDate": "2026-10-19",
+      "daysSinceCommit": 0,
+      "declaredStatus": "completed",
+      "healthStatus": "dormant",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが73日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 73,
+      "daysSinceCommit": 74,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -664,7 +667,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 73,
+      "daysSinceCommit": 74,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -673,7 +676,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 73,
+      "daysSinceCommit": 74,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -682,7 +685,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 73,
+      "daysSinceCommit": 74,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -691,7 +694,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 186,
+      "daysSinceCommit": 187,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -700,7 +703,7 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-10-15",
-      "daysSinceCommit": 3,
+      "daysSinceCommit": 4,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -709,7 +712,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 73,
+      "daysSinceCommit": 74,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -718,23 +721,23 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 23,
+      "daysSinceCommit": 24,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが23日更新なし"
+        "active PJ だが24日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-08-02",
-      "daysSinceCommit": 77,
+      "daysSinceCommit": 78,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが77日更新なし"
+        "active PJ だが78日更新なし"
       ]
     }
   ],
