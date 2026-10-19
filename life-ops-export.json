@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-19 21:33",
+  "exportedAt": "2026-10-20 00:20",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。VIC3/CK3 は従来どおり"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手（DEC-097・作業ブランチ vic3-checklist-reset）。CK3 は従来どおり"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -376,7 +376,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "EU5プレイ中チェックリストを公開(10-15・DEC-096・1.4beta ビルド25905365)。次: 再開時にbuildid照合／1.4安定版で全数値再検証／不要なら作業ブランチ削除。詳細=memory/project_paradox_game_guides.md",
+        "action": "VIC3をEU5同様のプレイ中チェックリストへ作り直し中(DEC-097・1.14beta)。次: Task4レビューから再開(ブランチ vic3-checklist-reset)。EU5は1.4安定版で再検証。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -649,7 +649,7 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-10-19",
-      "daysSinceCommit": 0,
+      "daysSinceCommit": 1,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -658,7 +658,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 74,
+      "daysSinceCommit": 75,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -667,7 +667,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 74,
+      "daysSinceCommit": 75,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -676,7 +676,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 74,
+      "daysSinceCommit": 75,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -685,7 +685,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 74,
+      "daysSinceCommit": 75,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -694,7 +694,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 187,
+      "daysSinceCommit": 188,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -702,8 +702,8 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-10-15",
-      "daysSinceCommit": 4,
+      "lastCommitDate": "2026-10-20",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -712,7 +712,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 74,
+      "daysSinceCommit": 75,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -721,23 +721,23 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 24,
+      "daysSinceCommit": 25,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが24日更新なし"
+        "active PJ だが25日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-08-02",
-      "daysSinceCommit": 78,
+      "daysSinceCommit": 79,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが78日更新なし"
+        "active PJ だが79日更新なし"
       ]
     }
   ],
