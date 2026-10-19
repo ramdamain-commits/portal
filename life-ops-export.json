@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-19 21:27",
+  "exportedAt": "2026-10-19 21:33",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -381,7 +381,7 @@
       },
       {
         "project": "ssd-deal-tracker",
-        "action": "**10-19 v1.4.0 追跡停止**（NAND高騰。TRACKING_ENABLED=false・clasp push済）。次: スプレッドシートのメニュー「全トリガー削除（停止）」を1回実行(任意・未実行でもフラグで止まっている)。再開条件=NAND相場の正常化",
+        "action": "**10-19 v1.4.0 追跡停止**（NAND高騰。TRACKING_ENABLED=false・clasp push済）。トリガー削除も実行済み・完全停止。再開条件=NAND相場の正常化",
         "priority": "LOW"
       },
       {
