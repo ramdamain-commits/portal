@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-22 21:23",
+  "exportedAt": "2026-10-22 22:02",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手（DEC-097・作業ブランチ vic3-checklist-reset）。CK3 は従来どおり"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。CK3 は従来どおり"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -376,7 +376,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "VIC3をEU5同様のプレイ中チェックリストへ作り直し中(DEC-097・1.14beta)。次: Task4レビューから再開(ブランチ vic3-checklist-reset)。EU5は1.4安定版で再検証。詳細=memory/project_paradox_game_guides.md",
+        "action": "VIC3もEU5同様のプレイ中チェックリストへ作り直して10-22公開(DEC-097・1.14beta)。次: 安定版(EU5 1.4・VIC3 1.14)が出たら再検証。外交レンズのタブ名「外交的要求」は実機で確認。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -642,6 +642,11 @@
       "date": "2026-10-19",
       "project": "ssd-deal-tracker",
       "summary": "NAND高騰で価格が上がり続け追跡の意味が薄いため、価格取得とメール送信を停止した（v1.4.0）。コード側のフラグで止めたので、トリガーが残っていても動かない。ページと最後に取得したデータはそのまま残してあり、再開はフラグを戻すだけでできる。"
+    },
+    {
+      "date": "2026-10-22",
+      "project": "paradox-game-guides",
+      "summary": "VIC3 の攻略も、国別ガイド（日本・プロイセン）と MOD 記事から「どの国でも共通のいつ・何をするか」をまとめたプレイ中チェックリスト1本（70項目・1.14 オープンベータ基準）に作り直して公開した。数値と出典はゲームのファイルで照合し、熟練者・プレイヤー・テクニカルライターの3名レビューを反映した。検証スクリプトは Markdown のパスからゲームを選ぶようにした。"
     }
   ],
   "humanActions": [],
