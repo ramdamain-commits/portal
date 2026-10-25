@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-25 21:00",
+  "exportedAt": "2026-10-25 21:26",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。CK3 は従来どおり"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -376,7 +376,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "VIC3もEU5同様のプレイ中チェックリストへ作り直して10-22公開(DEC-097・1.14beta)。次: 安定版(EU5 1.4・VIC3 1.14)が出たら再検証。軽微6件は対応済み(e7e09bd)。タブ名「外交的要求」は実機未確認(ローカライズ上は一致)。詳細=memory/project_paradox_game_guides.md",
+        "action": "10-25 CK3聖職者チェックリスト公開(DEC-099・1.20.1)。次: CK3 2本目(All Under Heaven の政体。先にパッチ履歴で追加順を確認)／安定版(EU5 1.4・VIC3 1.14)で再検証。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -647,6 +647,11 @@
       "date": "2026-10-22",
       "project": "paradox-game-guides",
       "summary": "VIC3 の攻略も、国別ガイド（日本・プロイセン）と MOD 記事から「どの国でも共通のいつ・何をするか」をまとめたプレイ中チェックリスト1本（70項目・1.14 オープンベータ基準）に作り直して公開した。数値と出典はゲームのファイルで照合し、熟練者・プレイヤー・テクニカルライターの3名レビューを反映した。検証スクリプトは Markdown のパスからゲームを選ぶようにした。"
+    },
+    {
+      "date": "2026-10-25",
+      "project": "paradox-game-guides",
+      "summary": "CK3 の攻略を、政体ごとのプレイ中チェックリストに作り直し始め、1本目の聖職者（聖界・神権制）版を公開した（57項目・1.20.1 基準）。数値と出典はゲームのファイルで照合し、タスクごとのレビューと3名レビューを通した。古いイングランド・システムガイドと MOD 記事は削除した。"
     }
   ],
   "humanActions": [],
