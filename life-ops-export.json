@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-26 22:57",
+  "exportedAt": "2026-10-30 00:11",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html、1.4オープンベータ基準）へ作り直し、2026-10-15 に公開（DEC-096）。1.4 安定版が出たら再検証する。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -376,7 +376,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "10-25 CK3聖職者チェックリスト公開(DEC-099・1.20.1)。次: CK3 2本目(All Under Heaven の政体。先にパッチ履歴で追加順を確認)／安定版(EU5 1.4・VIC3 1.14)で再検証。詳細=memory/project_paradox_game_guides.md",
+        "action": "10-30 EU5を1.4正式版に更新・主要国カスティーリャのチェックリスト公開(DEC-101)。次: CK3 2本目(All Under Heaven)／VIC3 1.14安定版で再検証／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -652,6 +652,16 @@
       "date": "2026-10-25",
       "project": "paradox-game-guides",
       "summary": "CK3 の攻略を、政体ごとのプレイ中チェックリストに作り直し始め、1本目の聖職者（聖界・神権制）版を公開した（57項目・1.20.1 基準）。数値と出典はゲームのファイルで照合し、タスクごとのレビューと3名レビューを通した。古いイングランド・システムガイドと MOD 記事は削除した。"
+    },
+    {
+      "date": "2026-10-29",
+      "project": "paradox-game-guides",
+      "summary": "EU5 の 1.4 正式版の公開に合わせて、共通のプレイ中チェックリストの出典209件と数値を正式版のゲームファイルで照合し直した。直す箇所は無く、1.4 で加わった「決断が利用可能」のアラートの項目を足して公開した。"
+    },
+    {
+      "date": "2026-10-30",
+      "project": "paradox-game-guides",
+      "summary": "1.4 の主要国カスティーリャのチェックリスト（27項目）を公開した。2つの局面の勝利条件と影響力の増減をゲームファイルで裏取りし、レビューで見つかった誤り（従属国とは同盟できない点など）を直してから入れた。"
     }
   ],
   "humanActions": [],
@@ -659,7 +669,7 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-10-19",
-      "daysSinceCommit": 7,
+      "daysSinceCommit": 11,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -668,7 +678,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 81,
+      "daysSinceCommit": 85,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -677,7 +687,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 81,
+      "daysSinceCommit": 85,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -686,7 +696,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 81,
+      "daysSinceCommit": 85,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -695,7 +705,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 81,
+      "daysSinceCommit": 85,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -704,7 +714,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 194,
+      "daysSinceCommit": 198,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -712,8 +722,8 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-10-25",
-      "daysSinceCommit": 1,
+      "lastCommitDate": "2026-10-30",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -722,7 +732,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 81,
+      "daysSinceCommit": 85,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -731,23 +741,23 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 31,
+      "daysSinceCommit": 35,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが31日更新なし"
+        "active PJ だが35日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-08-02",
-      "daysSinceCommit": 85,
+      "daysSinceCommit": 89,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが85日更新なし"
+        "active PJ だが89日更新なし"
       ]
     }
   ],
