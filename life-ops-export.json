@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-10-31 21:00",
+  "exportedAt": "2026-11-01 02:11",
   "projects": [
     {
       "id": "ssd-deal-tracker",
@@ -142,7 +142,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-pachi-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "2026-07-16新設・ビューワ実装、2026-07-17公開化(DEC-054)。2026-07-20に対象エリアを1つ追加(全35店・8エリア)し取材系を強化: data/coverage.json(店舗×媒体の取材実績・過去実績の推定/伝聞)新設、data/media.json拡充(取材媒体17件・各媒体に公式スケジュールURL)、ビューワに取材実績バッジと媒体別の実績店/公式スケジュールリンク、docs/取材予定の確認手順.md、coverage.mjs+テスト(node --test 全23件pass)。2026-07-31 v3拡張Phase1(抽選方式・周年・SNS・混雑参考のスキーマ拡張とデータ基盤)完了、2026-08-01 新規8エリア48店を追加(全83店・16エリア、Phase1データ収集完了・push済)。旧イベント日・取材実績・抽選方式はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。掲載データは公開情報・第三者推定のみで個人情報は含めない。次はビューワーへの抽選バッジ等の反映(Phase3)。"
+      "note": "2026-07-16新設・ビューワ実装、2026-07-17公開化(DEC-054)。2026-07-20に対象エリアを1つ追加(全35店・8エリア)し取材系を強化: data/coverage.json(店舗×媒体の取材実績・過去実績の推定/伝聞)新設、data/media.json拡充(取材媒体17件・各媒体に公式スケジュールURL)、ビューワに取材実績バッジと媒体別の実績店/公式スケジュールリンク、docs/取材予定の確認手順.md、coverage.mjs+テスト(node --test 全23件pass)。2026-07-31 v3拡張Phase1(抽選方式・周年・SNS・混雑参考のスキーマ拡張とデータ基盤)完了、2026-08-01 新規8エリア48店を追加(全83店・16エリア、Phase1データ収集完了・push済)。旧イベント日・取材実績・抽選方式はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。掲載データは公開情報・第三者推定のみで個人情報は含めない。2026-11-01 来店・取材予定を自動収集する「近日のイベント」タブと取材実績の参考表示を公開し、PCのタスクスケジューラで毎週・毎月更新（DEC-103）。熱さの点数は根拠データが自動取得できないため停止中。"
     }
   ],
   "assumptions": [],
@@ -391,7 +391,7 @@
       },
       {
         "project": "tokyo-pachi-guide",
-        "action": "**08-01 v3拡張Phase1-3完了・push済(全83店・16エリア)**。本番バグ(AREA_ORDER未更新で48店/58%欠落)も発見・修正済み。全テスト69件pass。次: **通常運用のみ(10月棚卸しで閉店/coverage鮮度確認)**",
+        "action": "**11-01 「近日のイベント」(予定の自動収集)＋取材実績の参考表示を公開・PC週次/月次タスク稼働**。熱さの点数は根拠データが無く停止中。次: 公開ページの「最終更新」が週次で進むか確認／閉店・coverage の棚卸し（詳細は project_tokyo_pachi_guide.md）",
         "priority": "LOW"
       }
     ],
@@ -662,6 +662,11 @@
       "date": "2026-10-30",
       "project": "paradox-game-guides",
       "summary": "1.4 の主要国カスティーリャのチェックリスト（27項目）を公開した。2つの局面の勝利条件と影響力の増減をゲームファイルで裏取りし、レビューで見つかった誤り（従属国とは同盟できない点など）を直してから入れた。"
+    },
+    {
+      "date": "2026-11-01",
+      "project": "tokyo-pachi-guide",
+      "summary": "来店・取材予定を毎週・毎月自動で集めて、公開ページの最初のタブ「近日のイベント」に日付順で出すようにした。熱さの点数に使う予定だった外部データは、自動取得を拒否していたため回避せず外し、手で確かめるためのリンクと取材実績の回数を参考として各予定に添えた。PCのタスクから収集・公開まで通ることを確かめた。"
     }
   ],
   "humanActions": [],
@@ -669,7 +674,7 @@
     {
       "project": "ssd-deal-tracker",
       "lastCommitDate": "2026-10-19",
-      "daysSinceCommit": 12,
+      "daysSinceCommit": 13,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -678,7 +683,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 86,
+      "daysSinceCommit": 87,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -687,7 +692,7 @@
     {
       "project": "healthcare",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 86,
+      "daysSinceCommit": 87,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -696,7 +701,7 @@
     {
       "project": "magi-system",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 86,
+      "daysSinceCommit": 87,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -705,7 +710,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 86,
+      "daysSinceCommit": 87,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -714,7 +719,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 199,
+      "daysSinceCommit": 200,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -723,7 +728,7 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-10-30",
-      "daysSinceCommit": 1,
+      "daysSinceCommit": 2,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -732,7 +737,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 86,
+      "daysSinceCommit": 87,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -741,17 +746,17 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 36,
+      "daysSinceCommit": 37,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが36日更新なし"
+        "active PJ だが37日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-10-31",
+      "lastCommitDate": "2026-11-01",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
