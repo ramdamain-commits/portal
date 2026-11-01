@@ -1,19 +1,6 @@
 {
-  "exportedAt": "2026-11-01 02:11",
+  "exportedAt": "2026-11-01 19:28",
   "projects": [
-    {
-      "id": "ssd-deal-tracker",
-      "displayName": "SSD価格トラッカー",
-      "description": "SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。",
-      "category": "ツール",
-      "repoName": "ssd-deal-tracker",
-      "visibility": "public",
-      "status": "completed",
-      "publicUrl": "https://ramdamain-commits.github.io/ssd-deal-tracker/",
-      "sourceOfTruth": "README.md",
-      "portalVisible": true,
-      "note": "2026-10-19 追跡を停止（NAND高騰で価格が上がり続けるため）。最後に取得したデータは表示したまま。再開は TRACKING_ENABLED=true"
-    },
     {
       "id": "it-passport-training",
       "displayName": "ITパスポート演習",
@@ -26,32 +13,6 @@
       "sourceOfTruth": "README.md",
       "portalVisible": true,
       "note": "過去問800問収録済み。安定運用中"
-    },
-    {
-      "id": "healthcare",
-      "displayName": "健康管理「律」",
-      "description": "食事記録・体重推移ダッシュボード。GAS + Android で個人運用中。",
-      "category": "ヘルスケア",
-      "repoName": "healthcare",
-      "visibility": "limited",
-      "status": "maintenance",
-      "publicUrl": "https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367",
-      "sourceOfTruth": "docs/health-tracking-system-spec.md",
-      "portalVisible": true,
-      "note": "※ 共有リンクで体重推移のみ閲覧可。食事記録など全機能は認証が必要です"
-    },
-    {
-      "id": "magi-system",
-      "displayName": "MAGI System",
-      "description": "3体のAIが異なる価値観で議論し、意思決定の死角を照らす多角的審議システム。",
-      "category": "AI",
-      "repoName": "magi-system",
-      "visibility": "public",
-      "status": "completed",
-      "publicUrl": "https://ramdamain-commits.github.io/magi-system/",
-      "sourceOfTruth": "README.md",
-      "portalVisible": true,
-      "note": "Claude API 連携。ブラウザ完結型"
     },
     {
       "id": "kaiserreich-akai-sakura",
@@ -164,28 +125,6 @@
       "reviewDate": "2027-03-31",
       "linkedAssumptions": [],
       "linkedDecisions": [],
-      "supersededBy": null,
-      "owner": "ramda",
-      "note": ""
-    },
-    {
-      "id": "DEC-005",
-      "project": "ssd-deal-tracker",
-      "title": "正本を設計書から README に変更",
-      "decision": "docs/specs の設計書は作成時点のスナップショット扱いとし、README を現行仕様の正本とする",
-      "context": "設計書は 10 機種 / 5% だが現実装は 14 系統 / 10%。設計書を追従更新するコストが高い。P1-2 指摘",
-      "alternatives": [
-        "A: 設計書を毎回更新",
-        "B: README を正本、設計書は archive"
-      ],
-      "rationale": "設計書は書いた時点のスナップショットとして価値がある。現行仕様の追従は README + CLAUDE.md が低コスト",
-      "status": "accepted",
-      "date": "2026-03-29",
-      "reviewDate": "2027-03-31",
-      "linkedAssumptions": [],
-      "linkedDecisions": [
-        "DEC-006"
-      ],
       "supersededBy": null,
       "owner": "ramda",
       "note": ""
@@ -380,11 +319,6 @@
         "priority": "LOW"
       },
       {
-        "project": "ssd-deal-tracker",
-        "action": "**10-19 v1.4.0 追跡停止**（NAND高騰。TRACKING_ENABLED=false・clasp push済）。トリガー削除も実行済み・完全停止。再開条件=NAND相場の正常化",
-        "priority": "LOW"
-      },
-      {
         "project": "tokyo-solo-guide",
         "action": "GitHub Pages公開(06-07)。09-25 10月月次更新＋雨の日の可否バッジ追加＋常設23件追加(50件)。次: **11月月次更新**(10月末〜11月初。researcher出力の会期年を公式で抜き取り確認)。引継ぎはproject_tokyo_solo_guide.md。ソース棚卸し2026-12",
         "priority": "LOW"
@@ -395,7 +329,7 @@
         "priority": "LOW"
       }
     ],
-    "maintenance": "完了・保守: it-passport-training / fp3-training / magi-system / healthcare / kaiserreich-akai-sakura / nagoya-hotel-deals / pc-health-check（**08-09診断完了**。サーマルスロットリング発見・DISM修復・WinSxS6.35GB削減。汎用ツール化しGitHub private repo化。残=サーマル物理対策〔本人対応〕・Control Center / DSA更新は入手元確認でき次第）"
+    "maintenance": "完了・保守: it-passport-training / fp3-training / kaiserreich-akai-sakura / nagoya-hotel-deals / pc-health-check（**08-09診断完了**。サーマルスロットリング発見・DISM修復・WinSxS6.35GB削減。汎用ツール化しGitHub private repo化。残=サーマル物理対策〔本人対応〕・Control Center / DSA更新は入手元確認でき次第）"
   },
   "categories": {
     "ツール": {
@@ -485,28 +419,13 @@
     },
     {
       "date": "2026-05-08",
-      "project": "ssd-deal-tracker",
-      "summary": "v1.3.1: Crucial T500 1TB（HSなし）を追跡対象から削除（4製品体制）。価格.com取扱店舗ゼロで13日連続取得失敗の対応。HTML構造変更ではなく『現在価格情報の登録がありません』状態と判明。CLAUDE.md に原因切り分けルール追記"
-    },
-    {
-      "date": "2026-05-08",
       "project": "paradox-game-guides",
       "summary": "VIC3 プロイセンガイド Patch 1.13 (Matcha) 全面対応 + 議論エージェントレビュー指摘修正。指揮官単一化・プロミネンス・砲撃外交・クーデター扇動・艦船デザイナー・戦略的関心度ティアド反映。用語対照表に新6用語追加。CLAUDE.md にレビューで得たルール追記"
-    },
-    {
-      "date": "2026-04-15",
-      "project": "healthcare",
-      "summary": "体重データ連続欠落時の警告表示を追加（3日以上missing_weightでサマリカードに黄色警告）。eufy→Health Connect連携切断の調査・復旧も実施"
     },
     {
       "date": "2026-04-13",
       "project": "nagoya-hotel-deals",
       "summary": "v0.4.0: GASアラート改善（ホテル単位クールダウン+通知上限+グルーピング）+ チャート複数ホテル比較 + ダークモード。全タスク完了・保守フェーズ移行"
-    },
-    {
-      "date": "2026-04-30",
-      "project": "ssd-deal-tracker",
-      "summary": "v1.3.0 ターゲット価格を「市場×90%」から「正常化アンカー(2024-2025底値)」基準に変更。5製品更新。議論パネル5名合議3.6/5。2026-10 G4/SN7100 再レビュー予定"
     },
     {
       "date": "2026-05-17",
@@ -545,11 +464,6 @@
     },
     {
       "date": "2026-06-08",
-      "project": "ssd-deal-tracker",
-      "summary": "日次サマリーメール(sendDailySummary・件名『【SSD日次レポート】』)を無効化し週次のみ受信に変更(v1.3.2)。Config.gs にフラグ定数 DAILY_SUMMARY_ENABLED=false を追加し sendDailySummary 冒頭で早期リターン。GASの時間トリガーはエディタUIの手動設定でコード管理外のため、トリガーを消し忘れてもフラグが false ならメールが飛ばない安全装置とした。買い時即時通知(sendDealNotifications)と週次レポート(sendWeeklySummary)は継続。node --check で構文検証→clasp push でGASデプロイ→commit 2609359 push。CHANGELOG/README/CLAUDE.md(通知トグル設計メモ)更新、CLAUDE.md は 93c7b2d で別コミット。再開は true に戻して clasp push。GASの日次トリガー手動削除は任意(残してもメールは止まる)。"
-    },
-    {
-      "date": "2026-06-08",
       "project": "tokyo-solo-guide",
       "summary": "観点拡張の関東イベント追補。月次events(歳時・祭り)が都内に偏っていたため、researcherで関東日帰り圏(神奈川・千葉・埼玉)の2026夏イベント5件を追加収集(川崎大師風鈴市・鶴岡八幡宮ぼんぼり祭・江の島灯籠・佐原の大祭夏祭り・秩父川瀬祭、全件公式出典・一人可・花火/相撲除外)。events計17件(都内11+関東都外6)に。areaの県名表記ゆれ(川越（埼玉県）vs秩父（埼玉）)を短縮形に統一。preview検証(events17件・関東6件描画・コンソールエラー0)。tokyo-solo-guide push 6769252。"
     },
@@ -562,11 +476,6 @@
       "date": "2026-06-18",
       "project": "paradox-game-guides",
       "summary": "EU5 1.3 beta差分の純追記を全ガイド完遂(案A・1.2本体無変更)。regional単独(a32beb9)=百年戦争/薔薇戦争/ゲルフギベリン/Taula de Canvi/Twilight/Voivode/RGO再分配/植民移民/新文化(種別保留)/天然痘亜熱帯化(実機0.05・閾値0.15・subtropical)/Korea集賢殿ナーフ。国別5(2919576)=ottoman(船コスト/維持費/陸軍goods・更新Tier2メモ)/hungary(陸軍goods=黒軍直撃+no_female_heirs_for_poland例外)/austria(従属国への宗教統一強制不可)/brandenburg(Voivode+Berenberg=HAM固有で非該当)/castile(植民艦隊コスト+Taula=アラゴン固有で非該当)。Tier4先行=recommended-mods互換注記(655bdd6)。index.html betaバッジ計11・全push済/root submodule更新。load-bearing値は実機grep再確認。さらに『1.3安定版昇格計画書』作成(8496cd2)+付録A個別ガイド本文統合マッピング(b3adab8)を3エージェントレビュー(熟練者/構成サイズ/リスク運用)で改訂(f761376、判定=部分修正で可・全面作り直し不要、サイズ均衡フェーズ2.5新設で小型ガイド増強)。"
-    },
-    {
-      "date": "2026-06-18",
-      "project": "ssd-deal-tracker",
-      "summary": "v1.3.3: 日次サマリーの孤児トリガー削除をメニュー化。カスタムメニュー「SSD管理」に deleteDailySummaryTrigger を追加し、ScriptApp で sendDailySummary の残存時間トリガーを検出・削除。GASエディタのトリガー画面を開かず1クリックで掃除可能に（DAILY_SUMMARY_ENABLED=false の安全装置は維持）。node --check 構文検証・git push(4819d02)・gas/配下から clasp push 済。あわせて _staging/ の完了済みスクラッチ13ファイルを掃除。"
     },
     {
       "date": "2026-07-12",
@@ -639,11 +548,6 @@
       "summary": "EU5 の攻略を、国別ガイド12本から「どの国でも共通のいつ・何をするか」をまとめたプレイ中チェックリスト1本に作り直して公開した。81項目で、チェック状態はブラウザに保存される。数値は出典をゲームスクリプトで確かめ、熟練者・プレイヤー・ライターの3名レビューとブランチ全体の最終レビューを経て反映した。作業中にベータのビルドが更新されたので、新しいビルドで照合し直している。"
     },
     {
-      "date": "2026-10-19",
-      "project": "ssd-deal-tracker",
-      "summary": "NAND高騰で価格が上がり続け追跡の意味が薄いため、価格取得とメール送信を停止した（v1.4.0）。コード側のフラグで止めたので、トリガーが残っていても動かない。ページと最後に取得したデータはそのまま残してあり、再開はフラグを戻すだけでできる。"
-    },
-    {
       "date": "2026-10-22",
       "project": "paradox-game-guides",
       "summary": "VIC3 の攻略も、国別ガイド（日本・プロイセン）と MOD 記事から「どの国でも共通のいつ・何をするか」をまとめたプレイ中チェックリスト1本（70項目・1.14 オープンベータ基準）に作り直して公開した。数値と出典はゲームのファイルで照合し、熟練者・プレイヤー・テクニカルライターの3名レビューを反映した。検証スクリプトは Markdown のパスからゲームを選ぶようにした。"
@@ -672,34 +576,7 @@
   "humanActions": [],
   "projectHealth": [
     {
-      "project": "ssd-deal-tracker",
-      "lastCommitDate": "2026-10-19",
-      "daysSinceCommit": 13,
-      "declaredStatus": "completed",
-      "healthStatus": "dormant",
-      "missingDocs": [],
-      "warnings": []
-    },
-    {
       "project": "it-passport-training",
-      "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 87,
-      "declaredStatus": "completed",
-      "healthStatus": "dormant",
-      "missingDocs": [],
-      "warnings": []
-    },
-    {
-      "project": "healthcare",
-      "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 87,
-      "declaredStatus": "maintenance",
-      "healthStatus": "dormant",
-      "missingDocs": [],
-      "warnings": []
-    },
-    {
-      "project": "magi-system",
       "lastCommitDate": "2026-08-06",
       "daysSinceCommit": 87,
       "declaredStatus": "completed",

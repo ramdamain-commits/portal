@@ -106,24 +106,24 @@
 
   <!-- タグ群 -->
   <!-- ツール -->
-  <rect x="282" y="438" width="84" height="28" rx="14" fill="rgba(29,78,216,0.3)" stroke="#60a5fa" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="324" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#60a5fa">ツール</text>
+  <rect x="358" y="438" width="84" height="28" rx="14" fill="rgba(29,78,216,0.3)" stroke="#60a5fa" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="400" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#60a5fa">ツール</text>
 
   <!-- 学習 -->
-  <rect x="382" y="438" width="84" height="28" rx="14" fill="rgba(21,128,61,0.3)" stroke="#4ade80" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="424" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#4ade80">学習</text>
-
-  <!-- AI -->
-  <rect x="482" y="438" width="84" height="28" rx="14" fill="rgba(124,58,237,0.3)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="524" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="2" text-anchor="middle" fill="#a78bfa">AI</text>
-
-  <!-- ヘルスケア -->
-  <rect x="582" y="438" width="104" height="28" rx="14" fill="rgba(180,83,9,0.3)" stroke="#fb923c" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="634" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#fb923c">ヘルスケア</text>
+  <rect x="458" y="438" width="84" height="28" rx="14" fill="rgba(21,128,61,0.3)" stroke="#4ade80" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="500" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#4ade80">学習</text>
 
   <!-- 創作 -->
-  <rect x="702" y="438" width="84" height="28" rx="14" fill="rgba(190,24,93,0.3)" stroke="#f472b6" stroke-opacity="0.4" stroke-width="1"/>
-  <text x="744" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#f472b6">創作</text>
+  <rect x="558" y="438" width="84" height="28" rx="14" fill="rgba(190,24,93,0.3)" stroke="#f472b6" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="600" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#f472b6">創作</text>
+
+  <!-- ゲーム -->
+  <rect x="658" y="438" width="84" height="28" rx="14" fill="rgba(124,58,237,0.3)" stroke="#a78bfa" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="700" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#a78bfa">ゲーム</text>
+
+  <!-- 生活 -->
+  <rect x="758" y="438" width="84" height="28" rx="14" fill="rgba(180,83,9,0.3)" stroke="#fb923c" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="800" y="457" font-family="system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="1" text-anchor="middle" fill="#fb923c">生活</text>
 
   <!-- URL -->
   <text

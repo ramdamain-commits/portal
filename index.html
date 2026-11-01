@@ -9,13 +9,13 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
   <!-- SEO -->
-  <meta name="description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作・ゲーム" />
+  <meta name="description" content="個人プロジェクト一覧 — ツール・学習・創作・ゲーム・生活" />
 
   <!-- OGP -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://ramdamain-commits.github.io/portal/" />
   <meta property="og:title"       content="Projects Portal" />
-  <meta property="og:description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作・ゲーム" />
+  <meta property="og:description" content="個人プロジェクト一覧 — ツール・学習・創作・ゲーム・生活" />
   <meta property="og:image"       content="https://ramdamain-commits.github.io/portal/og-image.svg" />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
@@ -24,7 +24,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Projects Portal" />
-  <meta name="twitter:description" content="個人プロジェクト一覧 — ツール・学習・ヘルスケア・AI・創作・ゲーム" />
+  <meta name="twitter:description" content="個人プロジェクト一覧 — ツール・学習・創作・ゲーム・生活" />
   <meta name="twitter:image"       content="https://ramdamain-commits.github.io/portal/og-image.svg" />
   <!-- Theme color -->
   <meta name="theme-color" content="#0f172a" />
@@ -320,165 +320,6 @@
       display: block;
     }
 
-    /* ===== SSD最安値ウィジェット ===== */
-    .ssd-widget {
-      max-width: 680px;
-      margin: 0 auto 2.5rem;
-      padding: 0 1.5rem;
-    }
-
-    .ssd-widget__inner {
-      background-color: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem 1rem;
-    }
-
-    /* ヘッダー行: タイトル + 更新日時 */
-    .ssd-widget__header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .ssd-widget__title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: 0.03em;
-    }
-
-    .ssd-widget__updated {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    /* 商品行リスト */
-    .ssd-widget__list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .ssd-widget__row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.82rem;
-      line-height: 1.4;
-    }
-
-    /* ステータスインジケーター (●) */
-    .ssd-widget__dot {
-      flex-shrink: 0;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .ssd-widget__dot--buy {
-      background-color: #4ade80; /* 買い時: 緑 */
-    }
-
-    .ssd-widget__dot--wait {
-      background-color: #fbbf24; /* もう少し: 黄 */
-    }
-
-    /* 商品名 */
-    .ssd-widget__name {
-      flex: 1;
-      min-width: 0;
-      color: var(--text);
-      /* 長い名前は省略 */
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    /* 価格 */
-    .ssd-widget__price {
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      color: var(--text);
-      white-space: nowrap;
-    }
-
-    /* ステータスラベル */
-    .ssd-widget__status {
-      font-size: 0.7rem;
-      font-weight: 600;
-      white-space: nowrap;
-      padding: 0.15em 0.5em;
-      border-radius: 999px;
-    }
-
-    .ssd-widget__status--buy {
-      background-color: rgba(74, 222, 128, 0.15);
-      color: #4ade80;
-    }
-
-    .ssd-widget__status--wait {
-      background-color: rgba(251, 191, 36, 0.15);
-      color: #fbbf24;
-    }
-
-    /* フッターリンク */
-    .ssd-widget__footer {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.75rem;
-      color: var(--accent);
-      text-decoration: none;
-      /* ボーダー上で視覚的に区切る */
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      width: 100%;
-    }
-
-    .ssd-widget__footer:hover {
-      color: #93c5fd;
-    }
-
-    .ssd-widget__footer:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 3px;
-    }
-
-    /* ローディング用スケルトン */
-    @keyframes ssd-skeleton-pulse {
-      0%, 100% { opacity: 0.4; }
-      50%       { opacity: 0.8; }
-    }
-
-    .ssd-widget__skeleton {
-      height: 0.75rem;
-      border-radius: 4px;
-      background-color: rgba(255, 255, 255, 0.1);
-      animation: ssd-skeleton-pulse 1.4s ease-in-out infinite;
-    }
-
-    /* モバイル: パディング縮小 */
-    @media (max-width: 768px) {
-      .ssd-widget {
-        padding: 0 1rem;
-        margin-bottom: 2rem;
-      }
-
-      .ssd-widget__inner {
-        padding: 1rem 1.1rem 0.85rem;
-      }
-
-      .ssd-widget__name {
-        max-width: 140px;
-      }
-    }
-
     /* ===== フッター ===== */
     footer {
       text-align: center;
@@ -547,23 +388,6 @@
   </section>
 
   <!--
-    SSD最安値ウィジェット
-    JS が fetch 成功時に aria-hidden="false" + コンテンツ描画を行う
-    取得失敗時は aria-hidden="true" のまま（ユーザーにエラーを見せない）
-  -->
-  <aside
-    class="ssd-widget"
-    id="ssd-widget"
-    aria-label="SSD最安値速報"
-    aria-hidden="true"
-    hidden
-  >
-    <div class="ssd-widget__inner">
-      <!-- JS がここにコンテンツを挿入する -->
-    </div>
-  </aside>
-
-  <!--
     カテゴリフィルターバー
     role="toolbar" + aria-label でフィルターグループとして明示
     aria-pressed でスクリーンリーダーにアクティブ状態を通知
@@ -573,8 +397,6 @@
     <button class="filter-btn is-active" data-filter="all"        aria-pressed="true"  tabindex="0" >全て</button>
     <button class="filter-btn"           data-filter="ツール"     aria-pressed="false" tabindex="-1">ツール</button>
     <button class="filter-btn"           data-filter="学習"       aria-pressed="false" tabindex="-1">学習</button>
-    <button class="filter-btn"           data-filter="ヘルスケア" aria-pressed="false" tabindex="-1">ヘルスケア</button>
-    <button class="filter-btn"           data-filter="AI"         aria-pressed="false" tabindex="-1">AI</button>
     <button class="filter-btn"           data-filter="創作"       aria-pressed="false" tabindex="-1">創作</button>
     <button class="filter-btn"           data-filter="ゲーム"     aria-pressed="false" tabindex="-1">ゲーム</button>
     <button class="filter-btn"           data-filter="生活"       aria-pressed="false" tabindex="-1">生活</button>
@@ -584,36 +406,9 @@
   <main class="projects" id="main-content">
     <ul class="grid" role="list">
 
-                                                                  <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
+                                                                        <!-- CATALOG-START: この領域は Invoke-ProjectCatalog.ps1 が生成。手編集しない -->
 
-      <!-- 1. SSD価格トラッカー -->
-      <li class="card-item" data-category="ツール">
-        <a
-          class="card"
-          href="https://ramdamain-commits.github.io/ssd-deal-tracker/"
-          target="_blank"
-          rel="noopener"
-          aria-label="SSD価格トラッカー（新しいタブで開く）"
-        >
-          <span
-            class="card__tag"
-            style="background-color: rgba(29, 78, 216, 0.25); color: #60a5fa;"
-          >ツール</span>
-          <h2 class="card__title">SSD価格トラッカー</h2>
-          <p class="card__desc">
-            SSDの価格推移を自動追跡・グラフ表示するダッシュボード。Google Apps Script でデータ収集。
-          </p>
-          <p class="card__note">1TB NVMe 4製品を監視中。NAND相場で target_price 再調整予定</p>
-          <span class="card__footer" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            開く
-          </span>
-        </a>
-      </li>
-
-      <!-- 2. ITパスポート演習 -->
+      <!-- 1. ITパスポート演習 -->
       <li class="card-item" data-category="学習">
         <a
           class="card"
@@ -640,61 +435,7 @@
         </a>
       </li>
 
-      <!-- 3. 健康管理「律」 -->
-      <li class="card-item" data-category="ヘルスケア">
-        <a
-          class="card"
-          href="https://script.google.com/macros/s/AKfycbxV5h5GdWX6g8KeGcwGD5_NVvW7tciKeTQyu6rO7eqepbWnbV7hKBPWkNDI4EX2VXW3rg/exec?page=weight-trend&shared_token=b1bf1857-2d31-4002-8a7f-d9f3751bb07baddfec4418a84f338e6d77b350af2367"
-          target="_blank"
-          rel="noopener"
-          aria-label="健康管理「律」（新しいタブで開く）"
-        >
-          <span
-            class="card__tag"
-            style="background-color: rgba(180, 83, 9, 0.25); color: #fb923c;"
-          >ヘルスケア</span>
-          <h2 class="card__title">健康管理「律」</h2>
-          <p class="card__desc">
-            食事記録・体重推移ダッシュボード。GAS + Android で個人運用中。
-          </p>
-          <p class="card__note">※ 共有リンクで体重推移のみ閲覧可。食事記録など全機能は認証が必要です</p>
-          <span class="card__footer" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            開く
-          </span>
-        </a>
-      </li>
-
-      <!-- 4. MAGI System -->
-      <li class="card-item" data-category="AI">
-        <a
-          class="card"
-          href="https://ramdamain-commits.github.io/magi-system/"
-          target="_blank"
-          rel="noopener"
-          aria-label="MAGI System（新しいタブで開く）"
-        >
-          <span
-            class="card__tag"
-            style="background-color: rgba(124, 58, 237, 0.25); color: #a78bfa;"
-          >AI</span>
-          <h2 class="card__title">MAGI System</h2>
-          <p class="card__desc">
-            3体のAIが異なる価値観で議論し、意思決定の死角を照らす多角的審議システム。
-          </p>
-          <p class="card__note">Claude API 連携。ブラウザ完結型</p>
-          <span class="card__footer" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            開く
-          </span>
-        </a>
-      </li>
-
-      <!-- 5. 赤い桜 世界設定資料 -->
+      <!-- 2. 赤い桜 世界設定資料 -->
       <li class="card-item" data-category="創作">
         <a
           class="card"
@@ -721,7 +462,7 @@
         </a>
       </li>
 
-      <!-- 6. FP3級ドリル -->
+      <!-- 3. FP3級ドリル -->
       <li class="card-item" data-category="学習">
         <a
           class="card"
@@ -748,7 +489,7 @@
         </a>
       </li>
 
-      <!-- 7. パラドゲー攻略ガイド -->
+      <!-- 4. パラドゲー攻略ガイド -->
       <li class="card-item" data-category="ゲーム">
         <a
           class="card"
@@ -765,7 +506,7 @@
           <p class="card__desc">
             EU5/VIC3/CK3の攻略ガイド・MOD記事・ローカライズ対照表。ゲームスクリプト一次ソース方式。
           </p>
-          <p class="card__note">GitHub Pages公開済み。EU5 1.3安定版昇格フロー フェーズ0〜3完遂(07-12、b/09-b6424de/ff9d6a1)。フェーズ2.5=小型3ガイド(ottoman/castile/brandenburg)を各75-81K字へ拡充。フェーズ3=reviewer3並列で全11ガイド検証、critical複数件(GP Score免除閾値の識別子非実在・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認等)を実機スクリプト裏取り後に修正済み。1.3安定版昇格プロジェクトは完了、次は通常運用。VIC3日本/プロイセンは1.13.8書き直し完了</p>
+          <p class="card__note">GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -775,7 +516,7 @@
         </a>
       </li>
 
-      <!-- 8. 名古屋ホテル価格トラッカー -->
+      <!-- 5. 名古屋ホテル価格トラッカー -->
       <li class="card-item" data-category="ツール">
         <a
           class="card"
@@ -802,7 +543,7 @@
         </a>
       </li>
 
-      <!-- 9. Life Ops Console -->
+      <!-- 6. Life Ops Console -->
       <li class="card-item" data-category="ツール">
         <a
           class="card"
@@ -829,7 +570,7 @@
         </a>
       </li>
 
-      <!-- 10. 東京ひとり遊びガイド -->
+      <!-- 7. 東京ひとり遊びガイド -->
       <li class="card-item" data-category="生活">
         <a
           class="card"
@@ -846,7 +587,7 @@
           <p class="card__desc">
             東京で一人で楽しめる文化・歴史スポットと今月のイベントまとめ。
           </p>
-          <p class="card__note">月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-07-16 7月月次更新済（企画展33/季節5/休館3、events17件は維持）。次回7月更新は2026-08頭。</p>
+          <p class="card__note">月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-09-25 10月月次更新済（企画展31/季節5/休館4/歳時10）。各項目に雨の日の可否バッジ（可/非推奨/不可）を追加。常設50施設（09-25に江戸東京博物館・庭園・展望台・老舗飲食店など23件を追加）。次回は2026-11月次更新。</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -856,7 +597,7 @@
         </a>
       </li>
 
-      <!-- 11. 東京パチ・スロ特定日ガイド -->
+      <!-- 8. 東京パチ・スロ特定日ガイド -->
       <li class="card-item" data-category="生活">
         <a
           class="card"
@@ -871,9 +612,9 @@
           >生活</span>
           <h2 class="card__title">東京パチ・スロ特定日ガイド</h2>
           <p class="card__desc">
-            都内主要7エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。
+            都内16エリアのパチンコ店の旧イベント日パターンと店舗概要をローカルで即答するガイド。
           </p>
-          <p class="card__note">2026-07-16新設・ビューワ実装完了。data/stores.json全32店(7エリア)・match.mjs(rules全7種)・test/match.test.mjs(node --test 18件pass)・index.html/app.js(今日/明日/日付指定/エリア別一覧/取材傾向の5タブ)・data/media.json(取材媒体7件・DEC-053)。旧イベント日は第三者サイトの過去傾向推定で店舗公式情報ではない。2026-07-17に非公開→公開へ変更(本人判断・DEC-054)、GitHub公開リポジトリ+GitHub Pages+portal掲載。掲載データは店舗の公開情報・第三者推定のみで個人情報は含めない。</p>
+          <p class="card__note">2026-07-16新設・ビューワ実装、2026-07-17公開化(DEC-054)。2026-07-20に対象エリアを1つ追加(全35店・8エリア)し取材系を強化: data/coverage.json(店舗&#215;媒体の取材実績・過去実績の推定/伝聞)新設、data/media.json拡充(取材媒体17件・各媒体に公式スケジュールURL)、ビューワに取材実績バッジと媒体別の実績店/公式スケジュールリンク、docs/取材予定の確認手順.md、coverage.mjs+テスト(node --test 全23件pass)。2026-07-31 v3拡張Phase1(抽選方式・周年・SNS・混雑参考のスキーマ拡張とデータ基盤)完了、2026-08-01 新規8エリア48店を追加(全83店・16エリア、Phase1データ収集完了・push済)。旧イベント日・取材実績・抽選方式はいずれも第三者サイトの過去傾向推定で店舗/媒体の公式情報ではない。掲載データは公開情報・第三者推定のみで個人情報は含めない。2026-11-01 来店・取材予定を自動収集する「近日のイベント」タブと取材実績の参考表示を公開し、PCのタスクスケジューラで毎週・毎月更新（DEC-103）。熱さの点数は根拠データが自動取得できないため停止中。</p>
           <span class="card__footer" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -981,164 +722,7 @@
     })();
 
     /* ========================================================
-     * 4. SSD最安値ウィジェット
-     *    ssd-deal-tracker の GitHub Pages 上の mock-data.json を fetch し、
-     *    最大5件の最安値リストを描画する。
-     *    取得失敗 / タイムアウト時はウィジェット要素を非表示のままにする。
-     * ======================================================== */
-    (function initSsdWidget() {
-      // GAS API: ssd-deal-tracker のリアルタイム価格データ
-      const API_URL = 'https://script.google.com/macros/s/AKfycbx4wSK_sYIP8Ksu-nWibGAbJxKFBPWN02o3K7Ame21q0QdFCYbxqByWD087mvDkYs61/exec';
-      const TRACKER_URL = 'https://ramdamain-commits.github.io/ssd-deal-tracker/';
-      // 「買い時」ステータスの製品を最大3件表示
-      const MAX_ITEMS = 3;
-      // fetch タイムアウト（ms）: 遅い回線でも UX を損なわないよう短めに設定
-      const TIMEOUT_MS = 5000;
-
-      const widget = document.getElementById('ssd-widget');
-      if (!widget) return;
-
-      /* ---- ローディング中: スケルトンを表示 ---- */
-      function showSkeleton() {
-        const inner = widget.querySelector('.ssd-widget__inner');
-        inner.innerHTML =
-          '<div class="ssd-widget__header">' +
-            '<span class="ssd-widget__title">SSD 最安値速報</span>' +
-          '</div>' +
-          '<div class="ssd-widget__list">' +
-            Array(3).fill(
-              '<div class="ssd-widget__row" role="listitem">' +
-                '<div class="ssd-widget__skeleton" style="width:8px;height:8px;border-radius:50%;flex-shrink:0"></div>' +
-                '<div class="ssd-widget__skeleton" style="flex:1;max-width:200px"></div>' +
-                '<div class="ssd-widget__skeleton" style="width:64px"></div>' +
-              '</div>'
-            ).join('') +
-          '</div>';
-        widget.hidden = false;
-        widget.setAttribute('aria-hidden', 'false');
-      }
-
-      /* ---- 成功時: データを描画 ---- */
-      function renderSsdWidget(data) {
-        const products = data.products;
-        if (!Array.isArray(products) || products.length === 0) {
-          // データ不正は失敗扱いにして非表示
-          widget.hidden = true;
-          widget.setAttribute('aria-hidden', 'true');
-          return;
-        }
-
-        // 「買い時」ステータスに絞り、current_price 昇順で最大 MAX_ITEMS 件を表示
-        const buyItems = products.filter((p) => { return p.status === '買い時'; });
-        // 「買い時」が0件の場合は全製品を対象にする（フォールバック）
-        const candidates = buyItems.length > 0 ? buyItems : products;
-        const sorted = candidates
-          .slice()
-          .sort((a, b) => { return a.current_price - b.current_price; })
-          .slice(0, MAX_ITEMS);
-
-        // 更新日時を "MM/DD HH:mm" 形式でフォーマット
-        let updatedLabel = '';
-        if (data.updated_at) {
-          const d = new Date(data.updated_at);
-          if (!isNaN(d.getTime())) {
-            const mm = String(d.getMonth() + 1).padStart(2, '0');
-            const dd = String(d.getDate()).padStart(2, '0');
-            const hh = String(d.getHours()).padStart(2, '0');
-            const min = String(d.getMinutes()).padStart(2, '0');
-            updatedLabel = mm + '/' + dd + ' ' + hh + ':' + min + ' 更新';
-          }
-        }
-
-        // 商品行 HTML を生成
-        const rowsHtml = sorted.map((p) => {
-          // status が "買い時" なら緑、それ以外（"もう少し" 等）は黄
-          const isBuy = p.status === '買い時';
-          const dotClass    = isBuy ? 'ssd-widget__dot--buy'    : 'ssd-widget__dot--wait';
-          const statusClass = isBuy ? 'ssd-widget__status--buy' : 'ssd-widget__status--wait';
-          const statusLabel = p.status || '';
-
-          // 価格を "¥XX,XXX" 形式に変換
-          const priceStr = '¥' + Number(p.current_price).toLocaleString('ja-JP');
-
-          // 商品名 + 容量を結合（容量が別フィールドの場合のみ付与）
-          let nameStr = p.name || '';
-          if (p.capacity && nameStr.indexOf(p.capacity) === -1) {
-            nameStr += ' ' + p.capacity;
-          }
-
-          return (
-            '<div class="ssd-widget__row" role="listitem">' +
-              '<span class="ssd-widget__dot ' + dotClass + '" aria-hidden="true"></span>' +
-              '<span class="ssd-widget__name">' + escapeHtml(nameStr) + '</span>' +
-              '<span class="ssd-widget__price">' + escapeHtml(priceStr) + '</span>' +
-              '<span class="ssd-widget__status ' + statusClass + '">' + escapeHtml(statusLabel) + '</span>' +
-            '</div>'
-          );
-        }).join('');
-
-        const updatedHtml = updatedLabel
-          ? '<span class="ssd-widget__updated">' + escapeHtml(updatedLabel) + '</span>'
-          : '';
-
-        const inner = widget.querySelector('.ssd-widget__inner');
-        inner.innerHTML =
-          '<div class="ssd-widget__header">' +
-            '<span class="ssd-widget__title">SSD 最安値速報</span>' +
-            updatedHtml +
-          '</div>' +
-          '<div class="ssd-widget__list" role="list" aria-label="SSD価格一覧">' +
-            rowsHtml +
-          '</div>' +
-          '<a class="ssd-widget__footer" href="' + TRACKER_URL + '" target="_blank" rel="noopener noreferrer">' +
-            '<svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
-              '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-            '</svg>' +
-            'SSD Deal Tracker で詳しく見る' +
-          '</a>';
-
-        widget.hidden = false;
-        widget.setAttribute('aria-hidden', 'false');
-      }
-
-      /* ---- XSS 対策: 最小限のエスケープ ---- */
-      function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      /* ---- fetch + AbortController でタイムアウト制御 ---- */
-      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const timeoutId = controller
-        ? setTimeout(() => { controller.abort(); }, TIMEOUT_MS)
-        : null;
-
-      // スケルトンを先に表示してからデータ取得開始
-      showSkeleton();
-
-      fetch(API_URL, controller ? { signal: controller.signal } : {})
-        .then((res) => {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.json();
-        })
-        .then((data) => {
-          clearTimeout(timeoutId);
-          renderSsdWidget(data);
-        })
-        .catch(() => {
-          // 取得失敗 / タイムアウト: ウィジェットを非表示に戻す
-          clearTimeout(timeoutId);
-          widget.hidden = true;
-          widget.setAttribute('aria-hidden', 'true');
-        });
-    })();
-
-    /* ========================================================
-     * 5. カテゴリフィルター
+     * 4. カテゴリフィルター
      *    ボタンクリックでカードを絞り込む
      *    キーボード: 矢印キーでボタン間を移動（roving focus パターン）
      * ======================================================== */

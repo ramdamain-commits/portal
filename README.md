@@ -8,10 +8,9 @@
 
 | 機能 | 概要 |
 |------|------|
-| カテゴリフィルター | 全て / ツール / 学習 / ヘルスケア / AI / 創作 / ゲーム |
+| カテゴリフィルター | 全て / ツール / 学習 / 創作 / ゲーム / 生活 |
 | カード登場アニメーション | IntersectionObserver + stagger で順次フェードイン |
 | スティッキーヘッダー | スクロール連動で backdrop-blur を適用 |
-| SSD最安値ウィジェット | ssd-deal-tracker の価格データを取得して最安値速報を表示 |
 | アクセシビリティ | roving tabindex によるキーボードナビゲーション、prefers-reduced-motion 対応 |
 | OGP / Twitter Card | og-image.svg + favicon.svg によるリッチプレビュー |
 | レスポンシブ対応 | モバイル〜デスクトップに対応 |
@@ -20,7 +19,6 @@
 
 - **フロントエンド**: バニラ HTML / CSS / JavaScript（フレームワーク不使用）
 - **ホスティング**: GitHub Pages
-- **データ連携**: SSD価格トラッカーの GAS API を参照
 
 ## Life Ops Console
 
