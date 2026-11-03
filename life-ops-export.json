@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-01 21:25",
+  "exportedAt": "2026-11-03 22:21",
   "projects": [
     {
       "id": "it-passport-training",
@@ -329,7 +329,7 @@
         "priority": "LOW"
       }
     ],
-    "maintenance": "完了・保守: it-passport-training / fp3-training / kaiserreich-akai-sakura / nagoya-hotel-deals / pc-health-check（**08-09診断完了**。サーマルスロットリング発見・DISM修復・WinSxS6.35GB削減。汎用ツール化しGitHub private repo化。残=サーマル物理対策〔本人対応〕・Control Center / DSA更新は入手元確認でき次第）"
+    "maintenance": "完了・保守: it-passport-training / fp3-training / kaiserreich-akai-sakura / nagoya-hotel-deals / pc-health-check（保守。作業機の対応が残っている。詳細と次の作業は project_pc_health_check.md）"
   },
   "categories": {
     "ツール": {
@@ -578,7 +578,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 89,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -587,7 +587,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 89,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -596,7 +596,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 200,
+      "daysSinceCommit": 202,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -605,7 +605,7 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-10-30",
-      "daysSinceCommit": 2,
+      "daysSinceCommit": 4,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
@@ -614,7 +614,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 87,
+      "daysSinceCommit": 89,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -623,18 +623,18 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 37,
+      "daysSinceCommit": 39,
       "declaredStatus": "active",
       "healthStatus": "stale",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが37日更新なし"
+        "active PJ だが39日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-11-01",
-      "daysSinceCommit": 0,
+      "lastCommitDate": "2026-11-02",
+      "daysSinceCommit": 1,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
