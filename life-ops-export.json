@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-12 23:30",
+  "exportedAt": "2026-11-14 12:29",
   "projects": [
     {
       "id": "it-passport-training",
@@ -90,7 +90,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/tokyo-solo-guide/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-09-25 10月月次更新済（企画展31/季節5/休館4/歳時10）。各項目に雨の日の可否バッジ（可/非推奨/不可）を追加。常設50施設（09-25に江戸東京博物館・庭園・展望台・老舗飲食店など23件を追加）。次回は2026-11月次更新。"
+      "note": "月次で企画展/季節/休館/歳時イベントを更新。常設は7カテゴリ（歴史/観戦/自然/グルメ/体験/伝統芸能・寄席/銭湯・サウナ）。東京中心＋関東日帰り圏。2026-11-14 11月月次更新済（企画展48/季節7/休館5/歳時16・全件の会期を出典ページで照合）。各項目に雨の日の可否バッジ（可/非推奨/不可）。常設50施設。次回は2026-12月次更新（12月中旬）とソース棚卸し。"
     },
     {
       "id": "tokyo-pachi-guide",
@@ -320,7 +320,7 @@
       },
       {
         "project": "tokyo-solo-guide",
-        "action": "GitHub Pages公開(06-07)。09-25 10月月次更新＋雨の日の可否バッジ追加＋常設23件追加(50件)。次: **11月月次更新**(10月末〜11月初。researcher出力の会期年を公式で抜き取り確認)。引継ぎはproject_tokyo_solo_guide.md。ソース棚卸し2026-12",
+        "action": "GitHub Pages公開(06-07)。09-25 雨の日の可否バッジ追加＋常設50件。11-14 11月月次更新(企画展48/季節7/休館5/歳時16・fb4418b)。次: **12月月次更新**(12月中旬。年末年始の休館と1月開幕展・初詣/だるま市。researcher出力は全件を公式ページで照合)。引継ぎはproject_tokyo_solo_guide.md。ソース棚卸し2026-12",
         "priority": "LOW"
       },
       {
@@ -571,6 +571,11 @@
       "date": "2026-11-01",
       "project": "tokyo-pachi-guide",
       "summary": "来店・取材予定を毎週・毎月自動で集めて、公開ページの最初のタブ「近日のイベント」に日付順で出すようにした。熱さの点数に使う予定だった外部データは、自動取得を拒否していたため回避せず外し、手で確かめるためのリンクと取材実績の回数を参考として各予定に添えた。PCのタスクから収集・公開まで通ることを確かめた。"
+    },
+    {
+      "date": "2026-11-14",
+      "project": "tokyo-solo-guide",
+      "summary": "11月版に更新して公開した（企画展48件・季節7件・休館5件・歳時/祭り16件）。全件の会期を出典ページで照合し、日付を確認できなかった7件は掲載を見送った。前回版の展覧会名の誤り1件と、公式に記載のない休館の再開時期を訂正。"
     }
   ],
   "humanActions": [],
@@ -578,7 +583,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 98,
+      "daysSinceCommit": 100,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -587,7 +592,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 98,
+      "daysSinceCommit": 100,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -596,7 +601,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 211,
+      "daysSinceCommit": 213,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -605,18 +610,18 @@
     {
       "project": "paradox-game-guides",
       "lastCommitDate": "2026-10-30",
-      "daysSinceCommit": 13,
+      "daysSinceCommit": 15,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが13日更新なし"
+        "active PJ だが15日更新なし"
       ]
     },
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 98,
+      "daysSinceCommit": 100,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -624,19 +629,17 @@
     },
     {
       "project": "tokyo-solo-guide",
-      "lastCommitDate": "2026-09-25",
-      "daysSinceCommit": 48,
+      "lastCommitDate": "2026-11-14",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "stale",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが48日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-11-09",
-      "daysSinceCommit": 3,
+      "daysSinceCommit": 5,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
