@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-22 20:13",
+  "exportedAt": "2026-11-22 20:18",
   "projects": [
     {
       "id": "it-passport-training",
@@ -51,7 +51,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。1.14 安定版が出たら再検証する。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。2026-11-22 VIC3 を 1.15.2 安定版、EU5 2本を 1.4.9 に合わせて再検証・公開した（CK3 は未着手）。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -315,7 +315,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "10-30 EU5を1.4正式版に更新・主要国カスティーリャのチェックリスト公開(DEC-101)。次: CK3 2本目(All Under Heaven)／VIC3 1.14安定版で再検証／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
+        "action": "11-22 VIC3を1.15.2・EU5 2本を1.4.9に更新公開。次: CK3を最新版で更新(手順書あり)／CK3 2本目(All Under Heaven)／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -576,6 +576,11 @@
       "date": "2026-11-14",
       "project": "tokyo-solo-guide",
       "summary": "11月版に更新して公開した（企画展48件・季節7件・休館5件・歳時/祭り16件）。全件の会期を出典ページで照合し、日付を確認できなかった7件は掲載を見送った。前回版の展覧会名の誤り1件と、公式に記載のない休館の再開時期を訂正。"
+    },
+    {
+      "date": "2026-11-22",
+      "project": "paradox-game-guides",
+      "summary": "VIC3のチェックリストを1.15.2、EU5の2本を1.4.9に合わせて全出典を照合し直して公開した。VIC3は大型更新で消えた警告を後継の項目に差し替え、EU5カスティーリャ版は前回未確認だったグラナダを属国にする手段を見つけて手順に入れた。"
     }
   ],
   "humanActions": [],
