@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-22 21:00",
+  "exportedAt": "2026-11-23 03:24",
   "projects": [
     {
       "id": "it-passport-training",
@@ -51,7 +51,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。2026-11-22 VIC3 を 1.15.2 安定版、EU5 2本を 1.4.9 に合わせて再検証・公開した（CK3 は未着手）。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。2026-11-22 VIC3 を 1.15.2 安定版、EU5 2本を 1.4.9 に合わせて再検証・公開した。2026-11-23 CK3 聖職者版を 1.21.0.3 に合わせて再検証・公開した。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -315,7 +315,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "11-22 VIC3を1.15.2・EU5 2本を1.4.9に更新公開。次: CK3を最新版で更新(手順書あり)／CK3 2本目(All Under Heaven)／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
+        "action": "11-23 CK3聖職者版を1.21.0.3に更新公開(VIC3=1.15.2・EU5=1.4.9 も最新)。次: CK3 2本目(All Under Heaven)／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -581,6 +581,11 @@
       "date": "2026-11-22",
       "project": "paradox-game-guides",
       "summary": "VIC3のチェックリストを1.15.2、EU5の2本を1.4.9に合わせて全出典を照合し直して公開した。VIC3は大型更新で消えた警告を後継の項目に差し替え、EU5カスティーリャ版は前回未確認だったグラナダを属国にする手段を見つけて手順に入れた。"
+    },
+    {
+      "date": "2026-11-23",
+      "project": "paradox-game-guides",
+      "summary": "CK3の聖職者チェックリストを大型更新1.21.0.3に合わせて全出典を照合し直して公開した。ずれた出典を付け替え、聖職者の封臣が納める税の計算が変わった点を本文に反映した。"
     }
   ],
   "humanActions": [],
@@ -588,7 +593,7 @@
     {
       "project": "it-passport-training",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -597,7 +602,7 @@
     {
       "project": "kaiserreich-akai-sakura",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -606,7 +611,7 @@
     {
       "project": "fp3-training",
       "lastCommitDate": "2026-04-15",
-      "daysSinceCommit": 221,
+      "daysSinceCommit": 222,
       "declaredStatus": "completed",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -614,7 +619,7 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-11-22",
+      "lastCommitDate": "2026-11-23",
       "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
@@ -624,7 +629,7 @@
     {
       "project": "nagoya-hotel-deals",
       "lastCommitDate": "2026-08-06",
-      "daysSinceCommit": 108,
+      "daysSinceCommit": 109,
       "declaredStatus": "maintenance",
       "healthStatus": "dormant",
       "missingDocs": [],
@@ -633,18 +638,18 @@
     {
       "project": "tokyo-solo-guide",
       "lastCommitDate": "2026-11-14",
-      "daysSinceCommit": 8,
+      "daysSinceCommit": 9,
       "declaredStatus": "active",
       "healthStatus": "idle",
       "missingDocs": [],
       "warnings": [
-        "active PJ だが8日更新なし"
+        "active PJ だが9日更新なし"
       ]
     },
     {
       "project": "tokyo-pachi-guide",
       "lastCommitDate": "2026-11-16",
-      "daysSinceCommit": 6,
+      "daysSinceCommit": 7,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
