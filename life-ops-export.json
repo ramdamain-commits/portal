@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-22 15:52",
+  "exportedAt": "2026-11-22 20:13",
   "projects": [
     {
       "id": "it-passport-training",
@@ -609,14 +609,12 @@
     },
     {
       "project": "paradox-game-guides",
-      "lastCommitDate": "2026-10-30",
-      "daysSinceCommit": 23,
+      "lastCommitDate": "2026-11-22",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
-      "healthStatus": "idle",
+      "healthStatus": "healthy",
       "missingDocs": [],
-      "warnings": [
-        "active PJ だが23日更新なし"
-      ]
+      "warnings": []
     },
     {
       "project": "nagoya-hotel-deals",
