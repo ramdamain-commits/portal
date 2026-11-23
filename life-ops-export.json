@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-11-23 03:24",
+  "exportedAt": "2026-11-23 20:50",
   "projects": [
     {
       "id": "it-passport-training",
@@ -51,7 +51,7 @@
       "publicUrl": "https://ramdamain-commits.github.io/paradox-game-guides/",
       "sourceOfTruth": "README.md",
       "portalVisible": true,
-      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。2026-11-22 VIC3 を 1.15.2 安定版、EU5 2本を 1.4.9 に合わせて再検証・公開した。2026-11-23 CK3 聖職者版を 1.21.0.3 に合わせて再検証・公開した。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。次は All Under Heaven の政体"
+      "note": "GitHub Pages公開済み。2026-10-13 EU5を国別ガイドから共通のプレイ中チェックリスト（Markdown＋checklist.html）へ作り直し、2026-10-15 に公開（DEC-096）。2026-10-29 に 1.4 正式版で再検証し、2026-10-30 にアップデートの主要国カスティーリャのチェックリストを追加（DEC-101）。2026-10-19 VIC3 も同じ形のチェックリスト（1.14オープンベータ基準）へ作り直しに着手し、2026-10-22 に公開（DEC-097）。国別ガイドとMOD記事は廃止。2026-11-22 VIC3 を 1.15.2 安定版、EU5 2本を 1.4.9 に合わせて再検証・公開した。2026-11-23 CK3 聖職者版を 1.21.0.3 に合わせて再検証・公開した。2026-10-25 CK3 も政体ごとのチェックリストへ切り替え、1本目の聖職者版（1.20.1）を公開（DEC-099）。2026-11-23 2本目の交易商人版（Silk & Silver・1.21.0.3）を公開（DEC-109）。次は3本目の共和制"
     },
     {
       "id": "nagoya-hotel-deals",
@@ -308,6 +308,28 @@
       "supersededBy": null,
       "owner": "ramda",
       "note": "README/設計書/CHANGELOG を公開方針へ更新しコミット（0e043d1）→ gh repo create --public で push（gitleaks: no leaks found）→ GitHub Pages 有効化。詳細な検討経緯は非公開メモ project_tokyo_pachi_guide.md に記録。2026-07-31 本人判断で公開継続方針を確定（掲載データは公開情報かつ合法のため、露出再評価の予定は終了）。"
+    },
+    {
+      "id": "DEC-109",
+      "project": "paradox-game-guides",
+      "title": "CK3 政体別チェックリストの2本目を交易商人にし、共和制は別の1本にする",
+      "context": "設計書8章の順番表は DLC 番号順で2本目を All Under Heaven としていたが、1.21（2026-11-18）で Silk & Silver（dlc031_ep5・所持済み）が入り、交易商人と共和制がプレイ可能になっていた。シリーズの決めごとは「最近追加された政体から順に」。",
+      "decision": "2本目は交易商人（merchant_government）にする。共和制は所領なしの商会と仕組みが大きく違うため3本目として別に作る。All Under Heaven は4本目に下げる。",
+      "alternatives": [
+        "予定どおり All Under Heaven を2本目にする（不採用: 最近追加された順の決めごとから外れる）",
+        "交易商人と共和制を1本にまとめ、交易商人中心・共和制3割にする（不採用: 2本に分けるとユーザーが選んだ）"
+      ],
+      "rationale": "交易商人は所領なしで商会を動かし、共和制は所領ありで議会とパトリシアンの家がある。1本に詰めると2万字の上限でどちらも薄くなる。",
+      "status": "accepted",
+      "date": "2026-11-23",
+      "reviewDate": null,
+      "linkedAssumptions": [],
+      "linkedDecisions": [
+        "DEC-099"
+      ],
+      "supersededBy": null,
+      "owner": "ramda",
+      "note": "記録=paradox-game-guides/docs/superpowers/specs/2026-11-23-ck3-merchant-checklist-design.md・2026-10-24-ck3-clergy-checklist-design.md の8章（02bab1f）。公開=ck3/ck3-merchant-play-checklist.md（322cbd0）。"
     }
   ],
   "reviews": [],
@@ -315,7 +337,7 @@
     "items": [
       {
         "project": "paradox-game-guides",
-        "action": "11-23 CK3聖職者版を1.21.0.3に更新公開(VIC3=1.15.2・EU5=1.4.9 も最新)。次: CK3 2本目(All Under Heaven)／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
+        "action": "11-23 CK3 2本目の交易商人版を公開(DEC-109)。次: CK3 3本目(共和制)／repo CLAUDE.md 31KB圧縮／次の大型更新で主要国版。詳細=memory/project_paradox_game_guides.md",
         "priority": "LOW"
       },
       {
@@ -586,6 +608,11 @@
       "date": "2026-11-23",
       "project": "paradox-game-guides",
       "summary": "CK3の聖職者チェックリストを大型更新1.21.0.3に合わせて全出典を照合し直して公開した。ずれた出典を付け替え、聖職者の封臣が納める税の計算が変わった点を本文に反映した。"
+    },
+    {
+      "date": "2026-11-23",
+      "project": "paradox-game-guides",
+      "summary": "CK3の政体別チェックリストの2本目として、新DLC Silk & Silverの交易商人のプレイ中チェックリスト（49項目）を公開した。数値はすべてゲームのスクリプトで裏付け、3名のレビューで見つかった誤りと条件の欠けを直した。"
     }
   ],
   "humanActions": [],
@@ -648,8 +675,8 @@
     },
     {
       "project": "tokyo-pachi-guide",
-      "lastCommitDate": "2026-11-16",
-      "daysSinceCommit": 7,
+      "lastCommitDate": "2026-11-23",
+      "daysSinceCommit": 0,
       "declaredStatus": "active",
       "healthStatus": "healthy",
       "missingDocs": [],
